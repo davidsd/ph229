@@ -1,0 +1,17 @@
+.DS_Store
+*.log
+*.blg
+*.aux
+*.bbl
+*.out
+*.toc
+*.synctex.*
+*.pdf
+*.dvi
+*.idx
+*.mtc
+*.mtc0
+*.top
+*.tui
+*.maf
+*.mp

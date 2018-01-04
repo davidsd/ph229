@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For support : Yolande Koh, <ykoh@wspc.com.sg>
+%% Technical assistance : D. Rajesh Babu, <rajesh@wspc.com.sg>
+%% Book Template (updated on 15-12-2013)
+%% Book Trim Size: 9in x 6in
+%% Text Area: 7.35in (include runningheads) x 4.5in
+%% Main Text: 10/13pt
+%%
+%% The content, structure, format and layout of this style file is
+%% the property of World Scientific Publishing Co. Pte. Ltd.
+%% Copyright 2009 by World Scientific Publishing Co.
+%% All rights are reserved.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ws-crop9x6}[2014/01/20 WSPC Crop 9x6]
+% do not adjust these values
+\paperwidth=152.4truemm % 6in
+\paperheight=228.6truemm % 9in
+\oddsidemargin=-.25in % adjust this value to center the text
+\evensidemargin=-.25in % adjust this value to center the text
+\topmargin=-.2in % adjust this value to center the text
+\usepackage[a4,center,cam]{crop}
+\makeatletter
+\def\cropnote{\scriptsize\sf \today \quad\currenttime\hfill
+            \the\projecttitle\hfill
+            \jobname\quad page~\thepage\strut}
+\renewcommand*\CROP@@info{{%
+    \global\advance\CROP@index\@ne
+    \def\x{\discretionary{}{}{\hbox{\kern.5em---\kern.5em}}}%
+    \advance\paperwidth-20\p@
+    \dimen@4pt
+    \ifx\CROP@pagecolor\@empty
+    \else
+        \advance\dimen@\CROP@overlap
+    \fi
+    \hb@xt@\z@{%
+        \hss
+        \vbox to\z@{%
+            \centering
+            \hsize\paperwidth
+            \vss
+            \cropnote
+            \vskip\dimen@
+            }%
+        \hss
+    }%
+}}
+
+\renewcommand*\CROP@@ulc{%
+    \begin{picture}(0,0)
+        \unitlength\p@\thinlines
+        \put(-35,0){\line(1,0){30}}
+        \put(0,35){\line(0,-1){30}}
+    \end{picture}%
+}
+\renewcommand*\CROP@@urc{%
+    \begin{picture}(0,0)
+        \unitlength\p@\thinlines
+        \put(35,0){\line(-1,0){30}}
+        \put(0,35){\line(0,-1){30}}
+    \end{picture}%
+}
+\renewcommand*\CROP@@llc{%
+    \begin{picture}(0,0)
+        \unitlength\p@\thinlines
+        \put(-35,0){\line(1,0){30}}
+        \put(0,-35){\line(0,1){30}}
+    \end{picture}%
+}
+\renewcommand*\CROP@@lrc{%
+    \begin{picture}(0,0)
+        \unitlength\p@\thinlines
+        \put(35,0){\line(-1,0){30}}
+        \put(0,-35){\line(0,1){30}}
+    \end{picture}%
+}
+\cropdef\CROP@@ulc\CROP@@urc\CROP@@llc\CROP@@lrc{cam}
+\crop[cam]
+\makeatother
+\endinput 
