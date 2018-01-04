@@ -6,7 +6,6 @@
 *.out
 *.toc
 *.synctex.*
-*.pdf
 *.dvi
 *.idx
 *.mtc
