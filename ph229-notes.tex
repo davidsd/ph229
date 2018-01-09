@@ -72,6 +72,9 @@
 \newcommand\GeV{\mathrm{GeV}}
 \newcommand\g\gamma
 \newcommand\arXiv[1]{{\tt arXiv:#1}}
+\newcommand\z\zeta
+\renewcommand\hat[1]{\widehat{#1}}
+\newcommand\bs{\mathbf{s}}
 
 \newtheorem{exercise}{Exercise}[section]
 \let\Exercisefont\itshape
@@ -306,9 +309,9 @@ i.e.\ the spin operator has dimension $\Delta_s = \frac{d-2}{2}+\frac \eta 2$.
 Don't worry, I can't keep track of all these critical exponents either. We will see shortly that all of this behavior can be explained using effective field theory, scaling symmetry, and dimensional analysis.
 
 Now, here is an amazing fact:
-\begin{enumerate}
-\item[] {\bf We find the same critical exponents in many different uni-axial magnets, regardless of what material they're made of.}
-\end{enumerate}
+\begin{claim}
+We find the same critical exponents in many different uni-axial magnets, regardless of what material they're made of.
+\end{claim}
 In fact, critical uni-axial magnets are all described by the same scale-invariant QFT at long distances. This phenomenon is called ``critical universality."
 
 \subsubsection{Liquid-vapor transitions}
@@ -332,9 +335,9 @@ Additionally, the difference in density between the liquid and gas phases behave
 \rho_\mathrm{liquid}-\rho_\mathrm{gas} &\sim (-t)^\b.
 \ee
 Amazingly,
-\begin{enumerate}
-\item[] {\bf Water and other liquid-vapor transitions have precisely the same critical exponents as uni-axial magnets.}
-\end{enumerate}
+\begin{claim}
+Water and other liquid-vapor transitions have precisely the same critical exponents as uni-axial magnets.
+\end{claim}
 We say that liquid-vapor transitions are in the same ``universality class" as uni-axial magnets.
 
 \subsubsection{The Ising model}
@@ -423,11 +426,11 @@ But this is just the tip of the iceberg --- there is a huge zoo of different typ
 
 \section{Path integrals, quantization, and the quantum-classical correspondence}
 
-In this section, we explain in more detail why classical statistical systems are described by Euclidean quantum field theory, and also how they are related to quantum condensed-matter systems via Wick rotation. Along the way, we will introduce some important technical concepts in QFT. This section is heavily based on John McGreevy's lectures \cite{}.
+In this section, we explain in more detail why classical statistical systems are described by Euclidean quantum field theory, and also how they are related to quantum condensed-matter systems via Wick rotation. Along the way, we will introduce some important technical concepts in QFT, like cutting-and-gluing rules for path integrals and the idea of quantization. This section is heavily based on John McGreevy's lectures \cite{}.
 
 \subsection{The 1d Ising model and the transfer matrix}
 
-Let us start with the Ising lattice model in 1-dimension. For concreteness, we will study the theory on a periodic lattice with length $M$, so the spins $s_i$ are labeled by $i\in \Z/M\Z$.  The partition function is given by
+Let us start with the Ising lattice model in 1-dimension. For concreteness, we will study the theory on a periodic lattice with length $M$, so the spins $s_i$ are labeled by $i\in \Z_M$.  The partition function is given by
 \be
 Z_1 &= \sum_{\{s_i=\pm 1\}} e^{-S[s]} \nn\\
 S[s] &= -K \sum_{i=1}^{M} s_i s_{i+1} - h \sum_{i=1}^M s_i.
@@ -440,9 +443,9 @@ The key idea is to build up the partition sum by moving along the lattice site-b
 \be
 Z_\mathrm{partial}(i,s_i) &= \sum_{\{s_j:j<i\}} e^{K\sum_{j < i} s_j s_{j+1} + h \sum_{j< i} s_j}.
 \ee
-Because of the interaction term $s_{i-1}s_{i}$, we cannot do the sum over $\{s_1,\dots, s_{i-1}\}$ without specifying the spin $s_i$. Thus, we have a function of $s_i$. In short, $Z_\mathrm{partial}(i,s)$ is the partition function of the theory on the lattice $1\dots i$, with fixed boundary condition $s$ at site $i$.
+Because of the interaction term $s_{i-1}s_{i}$, we cannot do the sum over $\{s_1,\dots, s_{i-1}\}$ without specifying the spin $s_i$. Thus, we have a function of $s_i$. In short, $Z_\mathrm{partial}(i,s)$ is the partition function of the theory on the lattice $1\dots i$, with fixed boundary condition $s$ at site $i$.\footnote{We must also impose some boundary condition at site $1$. The precise choice is not important for this discussion, so we have left it implicit.}
 
-Note that $Z_\mathrm{partial}(i+1,s_{i+1})$ can be related to $Z_\mathrm{partial}(i,s_{i})$ by inserting the remaining Boltzmann weights depending on $s_i$ and performing the sum over $s_i=\pm 1$,
+Note that $Z_\mathrm{partial}(i+1,s_{i+1})$ can be related to $Z_\mathrm{partial}(i,s_{i})$ by inserting the remaining Boltzmann weights that depend on $s_i$ and performing the sum over $s_i=\pm 1$,
 \be
 \label{eq:onestepsum}
 Z_\mathrm{partial}(i+1,s_{i+1}) &= \sum_{s_i = \pm 1} T(s_{i+1},s_i) Z_\mathrm{partial}(i,s_{i}),
@@ -476,13 +479,14 @@ To be explicit, the (integrated) Schrodinger equation in a quantum theory in Euc
 \be
 |\Psi(\tau+\Delta\tau)\> &= e^{-\De\tau \hat H} |\Psi(\tau)\>,
 \ee
-where $\tau$ is the Euclidean time coordinate, $\De\tau$ is some time-step, and $\hat H$ is the quantum Hamiltonian. Thus,  the $1$-dimensional Ising lattice model is precisely equivalent to a 2-state quantum theory with Hamiltonian
+where $\tau$ is the Euclidean time coordinate, $\De\tau$ is some time-step, and $\hat H$ is the quantum Hamiltonian. Thus,  the $1$-dimensional Ising lattice model is equivalent to a 2-state quantum theory with Hamiltonian
 \be
 \hat H &= -\frac{1}{\Delta\tau} \log \hat T.
 \ee
 
 When the lattice is periodic, the partition function is related to the transfer matrix by
 \be
+\label{eq:partitionfunctionastransfermatrix}
 Z_1 %&= \sum_{\{s_i\}} T(s_M, s_{M-1}) T(s_{M-1},s_{M-2}) \cdots T(s_1,s_M) \nn\\
 &= \sum_{\{s_i\}} \<s_M|\hat{T}|s_{M-1}\>\<s_{M-1}|\hat{T}|s_{M-2}\> \cdots \< s_1|\hat{T}|s_M\> \nn\\
 &= \Tr(\hat{T}^M).
@@ -500,51 +504,53 @@ where
 \end{cases}\qquad (\textrm{when }h=0).
 \ee
 
-In the thermodynamic limit $M\to\oo$, the partition function is dominated by the larger eigenvalue of $\hat T$
+In the thermodynamic limit $M\to\oo$, the partition function is dominated by the larger eigenvalue
 \be
 Z_1 &=\l_+^M \p{1+\p{\frac{\l_-}{\l_+}}^M} \approx \l_+^M.
 \ee
-In quantum mechanical language, the state with the largest eigenvalue of $\hat T$ has the smallest eigenvalue of $\hat H$ --- i.e.\ it is the ground state, and we should call it $|0\>$. We have shown that the ground state dominates the thermodynamic limit, and contributions from the excited state are exponentially suppressed in the energy gap 
+In quantum mechanical language, the state with the largest eigenvalue of $\hat T$ has the smallest eigenvalue of $\hat H$ --- i.e.\ it is the ground state, and we should call it $|0\>$. We have shown that the ground state dominates the thermodynamic limit. Contributions from the excited state are exponentially suppressed in the energy gap times the size of the system
 \be
-m_\mathrm{gap} \equiv - \frac 1 {\Delta \tau} \log (\l_-/\l_+).
+\p{\frac{\l_-}{\l_+}}^M &= e^{-(M\Delta\tau) m_\mathrm{gap}}, \nn\\
+m_\mathrm{gap} &\equiv - \frac 1 {\Delta \tau} \log (\l_-/\l_+).
 \ee
 
-We can also use the transfer matrix to compute correlation functions. For example, consider the two-point function $\<s_{i_1} s_{i_2}\>$ and suppose $i_1>i_2$. We have
+We can also use the transfer matrix to compute correlation functions. For example, consider the two-point function $\<s_{i_1} s_{i_2}\>_{\Z_M}$ where the subscript $M$ indicates that we are on a periodic lattice with length $M$. Suppose $i_1>i_2$. We have
 \be
-\<s_{i_1} s_{i_2} \> &= \frac 1 {Z_1} \sum_{\{s_i\}} \<s_M|\hat{T}|s_{M-1}\> \cdots \<s_{i_1+1}|\hat{T}|s_{i_1}\> s_{i_1} \<s_{i_1}|\hat{T}|s_{i_1-1}\>\cdots \nn\\
+\<s_{i_1} s_{i_2} \>_{\Z_M} &= \frac 1 {Z_1} \sum_{\{s_i\}} \<s_M|\hat{T}|s_{M-1}\> \cdots \<s_{i_1+1}|\hat{T}|s_{i_1}\> s_{i_1} \<s_{i_1}|\hat{T}|s_{i_1-1}\>\cdots \nn\\
 & \qquad \x\cdots\<s_{i_2+1}|\hat{T}|s_{i_2}\> s_{i_2} \<s_{i_2}|\hat{T}|s_{i_2-1}\>\cdots \<s_1|\hat{T}|s_M\> \nn\\
-&= \frac{1}{Z_1}\Tr(\hat{T}^{M-i_1} \hat{s} \hat{T}^{i_1 - i_2}\hat s \hat T^{i_2}) \qquad (i_1 > i_2).
+&= \frac{1}{Z_1}\Tr(\hat{T}^{M-i_1} \hat{\s}^z \hat{T}^{i_1 - i_2}\hat \s^z \hat T^{i_2}) \qquad (i_1 > i_2).
 \label{eq:correlatorastrace}
 \ee
-Here, we introduced the spin operator $\hat s$, which has matrix elements
+Here, we introduced the Pauli spin operator $\hat \s^z$ that measures the spin of a state
 \be
-\<s|\hat s|s'\> &= s \de_{ss'}.
+\hat \s^z|s\> &= s|s\>.
 \ee
 It is easy to compute the correlation function (\ref{eq:correlatorastrace}) by expressing $\hat s$ in the eigenbasis of $\hat T$.
 \begin{exercise}
-Show that in the limit of large $M$ and large ``distance" $i_1-i_2$, the correlator factorizes into a product of expectation values $\<0|\hat s|0\>$, plus exponential corrections from the excited state
+Show that in the limit of large $M$ and large ``distance" $i_1-i_2$, the correlator factorizes into a product of expectation values $\<0|\hat \s^z|0\>$, plus exponential corrections from the excited state
 \be
-\<s_{i_1} s_{i_2}\> &= \<0|\hat s|0\>^2 + O(e^{-m_\mathrm{gap} \tau}, e^{- m_\mathrm{gap}(L-\tau)}),
+\<s_{i_1} s_{i_2}\>_{\Z_M} &= \<0|\hat \s^z|0\>^2 + O(e^{-m_\mathrm{gap} \tau}, e^{- m_\mathrm{gap}(L-\tau)}),
 \ee
 where $\tau\equiv (i_1-i_2)\Delta\tau$, $L\equiv M\Delta\tau$.
 \end{exercise}
 
 Let us write (\ref{eq:correlatorastrace}) in a slightly different way by introducing ``Heisenberg picture" operators
 \be
-\hat s(i) &= \hat T^{-i} \hat s \hat T^i.
+\hat s(i) &= \hat T^{-i} \hat \s^z \hat T^i.
 \ee
 Equation~(\ref{eq:correlatorastrace}) is equivalent to
 \be
 \label{eq:heisenbergtwopt}
-\<s_{i_1} s_{i_2}\> &= \frac 1 {Z_1} \Tr(\hat s(i_1) \hat s(i_2) \hat T^M) \qquad (i_1 > i_2).
+\<s_{i_1} s_{i_2}\>_{\Z_M} &= \frac 1 {Z_1} \Tr(\hat s(i_1) \hat s(i_2) \hat T^M) \qquad (i_1 > i_2).
 \ee
 Note that in deriving (\ref{eq:correlatorastrace}, \ref{eq:heisenbergtwopt}), we used that $i_1>i_2$. If instead $i_2 > i_1$, the path integral would give a product of operators in the opposite order
 \be
-\<s_{i_1} s_{i_2}\> &= \frac 1 {Z_1} \Tr(\hat s(i_2) \hat s(i_1) \hat T^M ) \qquad (i_2 > i_1).
+\<s_{i_1} s_{i_2}\>_{\Z_M} &= \frac 1 {Z_1} \Tr(\hat s(i_2) \hat s(i_1) \hat T^M ) \qquad (i_2 > i_1).
 \ee
 The general statement is that the path integral becomes a time-ordered product of quantum operators\footnote{We hope that the time-ordering symbol $T\{\cdots\}$ will not be confused with the transfer matrix.}
 \be
-\<s_{i_1} \cdots s_{i_n}\> &= \Tr(T\{ \hat s(i_1) \cdots \hat s(i_n)\}\hat T^M ),
+\label{eq:periodiccorrelationlattice}
+\<s_{i_1} \cdots s_{i_n}\>_{\Z_M} &= \frac{1}{Z_1}\Tr(T\{ \hat s(i_1) \cdots \hat s(i_n)\}\hat T^M ),
 \ee
 where the definition of the time-ordering symbol is
 \be
@@ -552,11 +558,25 @@ T\{\hat s (i_1)\cdots \hat s(i_n)\} &\equiv \hat s(i_1)\cdots \hat s(i_n) \theta
 \ee
 Here $\theta(i_1 > \cdots > i_n)$ is $1$ if the $i_k$ are in the specified order and zero otherwise.
 
+Finally, in the limit of large-$M$, the factor $\frac{\hat T^M}{\l_+^M}$ projects onto the ground state, so a path integral on the full lattice $\Z$ becomes a vacuum expectation value of a time-ordered product
+\be
+\label{eq:fulllattice}
+\<s_{i_1}\cdots s_{i_n}\>_\Z &= \<0|T\{ \hat s(i_1) \cdots \hat s(i_n)\}|0\>.
+\ee
+
+\begin{exercise}
+Consider adding a next-to-nearest neighbor interaction to the 1d Ising model
+\be
+S[s] &= \sum_{i} K s_{i}s_{i+1} + K' s_{i} s_{i+2}.
+\ee
+Find the associated quantum Hilbert space and transfer matrix, and compute the partition function on $\Z_M$ in the limit of large $M$.
+\end{exercise}
+
 \subsection{Quantization in quantum mechanics}
 
 The procedure of turning a path integral into a product of quantum operators is called quantization. It is an extremely general procedure that ultimately stems from ``cutting and gluing" rules of the path integral.
 
-For a more familiar example, let us review quantization for the path integral of a quantum mechanical particle. This theory has Euclidean action
+For a more familiar example, let us review quantization for the path integral of a quantum particle on the real line. This theory has Euclidean action
 \be
 S[x] &= \int d\tau \p{\frac 1 2 \dot x^2 + V(x)},
 \ee
@@ -564,14 +584,16 @@ where $x(\tau)$ is a map from Euclidean time $\tau$ to $\R$.
 %To quantize, we introduce an orthonormal basis state $|x\>$ for every classical configuration at a fixed time $\tau_0$. These are the analogs of $|s=\pm 1\>$ in the Ising case, which were in one-to-one correspondence with classical configurations at a fixed lattice site $i_0$.
 Consider the path integral on the interval $\tau\in[\tau_a,\tau_b]$ with fixed boundary conditions
 \be
+\label{eq:qmtransitionamplitude}
 U(x_b,\tau_b;x_a,\tau_a) &\equiv \int_{\substack{x(\tau_b)=x_b \\ x(\tau_a) = x_a}} Dx(\tau) e^{-S[x]}.
 \ee
-The integrals $U(\cdots)$ satisfy simple cutting and gluing rules that come from grouping paths according to their positions at a fixed time $\tau_c\in(\tau_a,\tau_b)$,
+By grouping paths according to their positions at a fixed time $\tau_c\in(\tau_a,\tau_b)$, we obtain a simple ``gluing" rule for $U$,
 \be
+\label{eq:gluingruleqm}
 U(x_b,\tau_b;x_a,\tau_a) &= \int_{-\oo}^\oo dx_c U(x_b,\tau_b;x_c,\tau_c)U(x_c,\tau_c;x_a,\tau_a).
 \ee
 
-To quantize the theory, we build up the path integral  in small time-increments using the gluing rule. Suppose we have already computed the path integral $U(x_0,\tau_0;x_a,\tau_a)$ on the interval $[\tau_a,\tau_0]$. To extend $\tau_0\to \tau_0+\e$, we have
+To quantize the theory, we build up the path integral  in small time-increments using the gluing rule. Suppose we have already computed the path integral $U(x_0,\tau_0;x_a,\tau_a)$ on the interval $[\tau_a,\tau_0]$. To extend $\tau_0\to \tau_0+\e$, we write
 \be
 \label{eq:gluingforsmallinterval}
 U(x_1,\tau_0+\e;x_a,\tau_a) &= \int dx_0\, U(x',\tau_0+\e;x_0,\tau_0) U(x_0,\tau_0;x_a,\tau_a).
@@ -580,53 +602,298 @@ The quantity
 \be
 U(x_1,\tau_0+\e;x_0,\tau_0) &= U(x_1,\e;x_0,0).
 \ee
-plays the role of a transfer matrix. To see this, introduce an orthonormal basis vector $|x\>$ for each $x\in \R$. The $|x\>$ are analogs of the basis states $|s=\pm 1\>$ in the Ising case. Writing
+plays the role of a transfer matrix, and $U(x_0,\tau_0;x_a,\tau_a)$ plays the role of a state at time $\tau_0$. To see this, we introduce a Hilbert space
+\be
+\label{eq:qmhilberspace}
+\mathcal{H} &= \mathrm{Span}\{|x\> : x\in \R\}
+\ee
+with inner product $\<x'|x\>=\de(x-x')$.
+The $|x\>$ are analogs of the basis states $|s=\pm 1\>$ in the Ising model. Defining $\hat T_\e$ and $|\Psi(\tau_0)\>$ by
 \be
 \<x_1|\hat T_\e|x_0\> &= U(x_1,\e;x_0,0),\nn\\
 \<x_0|\Psi(\tau_0)\> &= U(x_0,\tau_0;x_a,\tau_a),
 \ee
 equation (\ref{eq:gluingforsmallinterval}) becomes
 \be
+\label{eq:transfermatrixforqmeq}
 |\Psi(\tau_0+\e)\> &= \hat T_\e |\Psi(\tau_0)\>.
 \ee
 
-To recover the Schrodinger equation, it remains to show that $\hat T_\e = 1 - \e \hat H + O(\e^2)$, where
+To recover the Schrodinger equation, we must show that 
+\be
+\hat T_\e &= 1 - \e \hat H + O(\e^2),
+\ee
+where
 \be
 \hat H &= -\frac 1 2 \frac{\ptl^2}{\ptl x^2} + V(x)
 \ee
 is the usual quantum-mechanical Hamiltonian. This is a standard argument, and we give a quick version here for completeness. We have
 \be
-\<x_1|\hat T|x_0\> &= \int_{\substack{x(\e)=x_1 \\ x(0) = x_0}} Dx(\tau) e^{-S[x]},\nn\\
+\<x_1|\hat T_\e|x_0\> &= \int_{\substack{x(\e)=x_1 \\ x(0) = x_0}} Dx(\tau) e^{-S[x]},\qquad(\e \ll 1)\nn\\
 S[x] &= \int_0^\e d\tau \p{\frac 1 2 \dot x^2 + V(x)}.
 \ee
-Because the time interval is so short, if the distance traveled is larger than $O(\e)$, the amplitude will be highly suppressed. Thus, let us assume $|x(\tau)-x_0| = O(\e)$. This means we can replace $V(x)\to V(x_0)$ (up to subleading corrections in $\e$) and the potential factors out of the path integral
+Because the time interval is so short, if $|x(\tau)-x_0|$ ever becomes larger than $O(\e)$, the kinetic term will cause the amplitude to be highly suppressed. Thus, let us assume $|x(\tau)-x_0|$ is of order $\e$. This means we can replace $V(x)\to V(x_0)$ (up to subleading corrections in $\e$), so the potential factors out of the integrand
 \be
 e^{-S[x]} &= e^{-\e V(x_0)} \exp\p{\int_0^\e d\tau \frac{\dot x^2}{2}}.
 \ee
-We can now split $x(\tau)$ into a classical term and a fluctuation term $\xi(\tau)$ with boundary conditions $\xi(0)=\xi(\e)=0$,
+
+We can now split $x(\tau)$ into a classical term and a fluctuation term $\z(\tau)$ with boundary conditions $\z(0)=\z(\e)=0$,
 \be
-x(\tau) &= x_0\p{1-\frac{\tau}{\e}} + x_1\frac{\tau}{\e} + \xi(\tau),\nn\\
-\int_0^\e d\tau \frac{\dot x^2}{2} &= \frac{(x_1-x_0)}{2\e} + \int_0^\e d\tau \frac{\dot\xi^2}{2}.
+x(\tau) &= x_0\p{1-\frac{\tau}{\e}} + x_1\frac{\tau}{\e} + \z(\tau),\nn\\
+\int_0^\e d\tau \frac{\dot x^2}{2} &= \frac{(x_1-x_0)}{2\e} + \int_0^\e d\tau \frac{\dot\z^2}{2}.
 \ee
-The path integral over $\xi$ contributes a constant $A_\e$ that depends on how the theory is regulated.\footnote{A very simple regulator is to approximate $x(\tau)$ as a piecewise linear path over segments of length $\e$. This is equivalent to simply setting $\xi=0$ and not doing the integral.} We thus find
+The path integral over $\z$ contributes a constant $A_\e$ that depends on how the theory is regulated.\footnote{A very simple regulator is to approximate $x(\tau)$ as a piecewise linear path with segments of length $\e$. This is equivalent to simply setting $\z=0$ and not doing the integral.} We thus find
 \be
-\<x'|\hat T|x_0\> &= A_\e e^{-\e V(x_0)} e^{-\frac{(x_1-x_0)^2}{2\e}}(1+O(\e))
+\<x_1|\hat T|x_0\> &= A_\e e^{-\e V(x_0)} e^{-\frac{(x_1-x_0)^2}{2\e}}(1+O(\e)).
 \ee
 Finally, the Gaussian factor can be expanded in $\e$ using
 \be
 \label{eq:simplifyexponential}
 e^{-\frac{x^2}{2\e}} &= \sqrt{2\pi \e}\p{\de(x) + \frac \e 2 \de''(x) + O(\e^2)},
 \ee
-to get
+which gives
 \be
-\<x_1|\hat T|x_0\> &= A_\e \sqrt{2\pi \e} \p{\de(x_1-x_0) - \e\p{-\de''(x_1-x_0) + V(x_0)} + O(\e^2)} \nn\\
- &= A_\e \sqrt{2\pi \e}\<x_1|1 - \e \hat H|x_0\>
+\<x_1|\hat T|x_0\> &= A_\e \sqrt{2\pi \e} \p{\de(x_1-x_0) - \e\p{-\frac 1 2\de''(x_1-x_0) + V(x_0)\de(x_1-x_0)} + O(\e^2)} \nn\\
+ &= A_\e \sqrt{2\pi \e}\<x_1|1 - \e \hat H + O(\e^2)|x_0\>.
 \ee
-The prefactor $A_\e \sqrt{2\pi \e}$ is an overall regulator-dependent constant that must be renormalized by adding a ``cosmological constant" term to the action.
+The prefactor $A_\e \sqrt{2\pi \e}$ is an overall regulator-dependent constant that can be renormalized away by adding a ``cosmological constant" term to the action.
+
+Thus, in the limit $\e\to 0$, equation (\ref{eq:transfermatrixforqmeq}) becomes a Euclidean version of the Schrodinger equation
+\be
+\frac{d}{d\tau} |\Psi(\tau)\> &= - \hat H|\Psi(\tau)\>.
+\ee
+Integrating using the initial condition $U(x',0,x,0)=\de(x-x')$, we find
+\be
+\label{eq:pathintegralwithbcsasamplitude}
+U(x_b,\tau_b;x_a,\tau_a) &= \<x_b|e^{-\hat H (\tau_b-\tau_a)} |x_b\>.
+\ee
+
+Path integrals on different geometries correspond to different quantum mechanical observables. For example, the path integral on a circle $S^1_\b$ of length $\b$ with periodic boundary conditions is equal to
+\be
+\int_{-\oo}^\oo dx\, U(x,\b;x,0) = \Tr(e^{-\b \hat H}),
+\ee
+which is the quantum partition function at inverse temperature $\b$.
+This is the continuum analog of equation~(\ref{eq:partitionfunctionastransfermatrix}).
+Inserting observables into the path integral gives a time-ordered product of the associated quantum operators. For example, with periodic boundary conditions,
+\be
+\label{eq:periodiccorrelation}
+\<x(\tau_1) \cdots x(\tau_n)\>_{S^1_\b} &=
+\int_{x(\b)=x(0)} Dx\, x(\tau_1) \cdots x(\tau_n) e^{-S[x]}\nn\\
+ &= \Tr(T\{\hat x(\tau_1) \cdots \hat x(\tau_n)\} e^{-\b \hat H}),
+\ee
+where we introduced the operator
+\be
+\hat x(\tau) &= e^{\tau \hat H} \hat x e^{-\tau \hat H}, \nn\\
+\hat x|x\> &= x|x\>.
+\ee
+To derive (\ref{eq:periodiccorrelation}), we cut the interval $[0,\b]$ into segments $[0,\tau_1]\cup [\tau_1,\tau_2] \cup \cdots [\tau_n,\b]$ (assuming $\tau_n > \cdots > \tau_1$) and use (\ref{eq:pathintegralwithbcsasamplitude}) for each segment.
+The operator $\hat x$ is the analog of $\hat s$ and equation~(\ref{eq:periodiccorrelation}) is the analog of (\ref{eq:periodiccorrelationlattice}).
+
+Finally, in the limit $\b\to \oo$, the factor $e^{-\b \hat H}$ projects onto the ground state. Thus the Euclidean path integral on $\R$ is equal to a time-ordered correlation function in the ground state,
+\be
+\<x(\tau_1) \cdots x(\tau_n)\>_{\R} &= \<0|T\{\hat x(\tau_1) \cdots \hat x(\tau_n)\}|0\>.
+\ee
+This is the continuum analog of (\ref{eq:fulllattice}).
 
 \subsection{The 2d Ising model}
 
+Let us now consider a slightly more complicated case: the 2d Ising model. This will be a good toy example for how cutting, gluing, and quantization work in a general QFT. For simplicity, we set $h=0$. We consider the partition function on the doubly-periodic lattice $\Z_{M} \x \Z_{N}$ and label spins $s_{i,j}$ by a pair $(i,j) \in \Z_{M} \x \Z_{N}$.
 
+The action is given by
+\be
+S[s] &= -K\sum_{i,j} (s_{i,j}s_{i+1,j}  +  s_{i,j}s_{i,j+1}) \nn\\
+&= K \sum_{i,j} \p{\frac 1 2 (s_{i,j+1} - s_{i,j})^2 - 1} - K \sum_{i,j}  s_{i,j} s_{i+1,j} \nn\\
+&= \mathrm{const.} + \sum_{j=1}^{N} L( \bs_{j+1}, \bs_{j}).
+\label{eq:unimportant}
+\ee
+In the last line, we split the action into contributions from pairs of neighboring rows.
+The notation $s_{j}$ represents the configuration of spins in the $j$-th row,
+\be
+(\bs_{j})_{i} &= s_{i,j}.
+\ee
+The action associated with a pair of neighboring rows is given by
+\be
+L(\bs',\bs) &= \frac 1 2 K \sum_{i=1}^{M}(\bs'_i - \bs_i)^2 - \frac 1 2 K \sum_{i=1}^{M}(\bs_{i+1} \bs_i + \bs'_{i+1} \bs'_i).
+\ee
+(The constant in (\ref{eq:unimportant}) gives an unimportant multiplicative constant in the path integral that will disappear in normalized correlation functions, so we will ignore it.)
+
+To quantize the theory, we can think of the $j$ direction as time, so $s_{j}$ is interpreted as a classical configuration on a fixed time-slice. The Hilbert space has an orthonormal basis vector for each such configuration,
+\be
+\label{eq:twodisinghilbert}
+\mathcal{H}_{M} &= \mathrm{Span}\left\{|\pm\! 1, \pm 1, \cdots,\pm 1\>\right\} \nn\\
+&= \bigotimes_{i=1}^{M} \mathcal{H}_i,
+\ee
+where $\mathcal{H}_i$ is a 1-qubit Hilbert space for each site $i$. $\mathcal{H}_{M}$ is the quantum Hilbert space of $M$ qubits, and is $2^{M}$-dimensional.
+
+The transfer matrix between successive time slices is a $2^{M} \x 2^{M}$ matrix with entries
+\be
+\<\bs'|\hat T|\bs\> &= e^{L(\bs',\bs)}.
+\ee
+The partition function on $\Z_{M} \x \Z_{N}$ is then
+\be
+\label{eq:partitionfunctionastracetwod}
+Z(\Z_{M} \x \Z_{N}) &= \Tr_{\mathcal{H}_{M}}(\hat T^{N}).
+\ee
+To compute correlation functions, we need an operator that measures the spin at site $i$. This is simply the Pauli spin matrix $\hat \s^z_i$ associated with the $i$-th site
+\be
+\hat \s^z_i |s_1,\dots,s_j,\dots,s_{M_1}\> &= s_i |s_1,\dots,s_i,\dots,s_{M_1}\>.
+\ee
+We also have Heisenberg picture operators
+\be
+\label{eq:oldspinop}
+\hat s_{i,j} &= \hat T^{-j} \hat \s_i^z \hat T^j.
+\ee
+Correlation functions become traces of time-ordered products, e.g.
+\be
+\<s_{i_1,j_1} s_{i_2,j_2}\> &= \Tr_{\mathcal{H}_{M}}(\hat T^{N+j_2-j_1} \hat \s_{i_1}^z \hat T_2^{j_1-j_2} \hat \s_{i_2}^z) \th (j_1-j_2) + (1\leftrightarrow 2) \nn\\
+&= \Tr_{\mathcal{H}_M}(T\{\hat s_{i_1,j_1} \hat s_{i_2,j_2}\} \hat T^{N}).
+\ee
+
+Let us now emphasize an important new ingredient in the 2-dimensional case compared to the 1-dimensional case. To arrive at (\ref{eq:partitionfunctionastracetwod}), we had to choose $j$ as the time direction. We then cut the path integral along rows of constant $j$. However, we could just as well have chosen $i$ as the time direction and cut the path integral along columns of constant $i$. This would give a different Hilbert space $\mathcal{H}_N$ with dimension $2^N$, a new transfer matrix $\hat T'$ (acting on $\mathcal{H}_N$), and a different formula for the same path integral,
+\be
+Z(\Z_M\x\Z_N) &= \Tr_{\mathcal{H}_N}(\hat T'^M) = \Tr_{\mathcal{H}_M}(\hat T^N).
+\ee
+In this new quantization, an insertion of $s_{i,j}$ in the path integral becomes an insertion of
+\be
+\label{eq:newspinop}
+s_{i,j} &\to \hat T'^{-i} \hat \s_j^z \hat T'^i
+\ee
+in a time-ordered product of quantum operators.
+Let us emphasize that the operators (\ref{eq:oldspinop}) and (\ref{eq:newspinop}) truly are different, even though they represent the same path integral variable. They even act on different-dimensional Hilbert spaces ($2^M$ vs.\ $2^N$)! Furthermore, even the notion of ``time"-ordering is different in this different quantization.
+
+\begin{exercise}
+Show how to quantize the 2d Ising model in yet another way, using $i+j$ as the time coordinate and $i-j$ as space coordinate. What is the Hilbert space? What is the transfer matrix?
+\end{exercise}
+
+%More generally, we can build up the 2d Ising path integral by cutting and gluing path integrals on arbitrary regions on the lattice. For example, given a subset of spins $B\subset \Z^2$, let the ``boundary" $\ptl B$ consist of the spins in $B$ that have nontrivial interactions with spins outside of $B$. We use $s_b$ to indicate spins in the boundary $\ptl B$ and $s_i$ to indicate spins in the interior. We can associate a Hilbert space to $\ptl B$ by introducing an orthonormal basis vector for every spin configuration on $\ptl B$,
+%\be
+%\mathcal{H}_{\ptl B} &= \mathrm{Span}\left\{|s_b\> : \textrm{$s_b$ is a configuration of spins on $\ptl B$} \right\}.
+%\ee
+%The path integral over the interior with fixed boundary conditions gives a state $|\Psi\> \in \mathcal{H}$ with wavefunction
+%\be
+%\<s_{b 0}|\Psi\> &= \sum_{\substack {s_i=\pm 1 \\ s_b = s_{b0}}} e^{-S[s]}.
+%\ee
+%Consider now the complement $\bar B$, which also has $\ptl B$ as a boundary, and let $|\Psi'\>\in \mathcal{H}$ be the state produced by performing the path integral over the interior of $\bar B$. The path integral over $\bar B\cup B$ is given by taking a product of the associated wavefunctions and summing over boundary spins 
+%\be
+%Z(\bar B\cup B) &= \sum_{s_b} \<\Psi'|s_b\>\<s_{b}|\Psi\> = \<\Psi'|\Psi\>.
+%\ee
+%
+%In general when two regions $B_1,B_2$ share part of their boundary, we can partially glue states in $\mathcal{H}_{\ptl B_1}$ and $\mathcal{H}_{\ptl B_2}$ by summing over the shared boundary spins. This gives a state in the Hilbert space $\mathcal{H}_{\ptl(B_1\cup B_2)}$ (figure~\ref{}).
+%
+%In the special case where we cut the path integral into pieces related by a translation symmetry, we can introduce a transfer matrix and interpret correlators in terms of time-ordered products of quantum operators.
+
+\subsection{Atiyah-Segal axioms}
+
+We are now ready to understand some axioms of continuum QFT. We will simultaneously state them and give examples in a scalar theory with field $\f$. A version of these axioms in the case of TQFTs is due to Atiyah and Segal. Consider a $d$-dimensional QFT $Q$.
+
+\begin{enumerate}
+\item To every $(d-1)$-manifold $N$ without boundary, $Q$ assigns a Hilbert space $\mathcal{H}_{N}$ called the space of states on $N$. In theories with an explicit path integral over some fields (called ``Lagrangian theories"), $\mathcal{H}_N$ has an orthonormal basis state for every field configuration on $N$. For example, in a scalar field theory
+\be
+\label{eq:scalarfieldhilbertspace}
+\mathcal{H}_N &= \mathrm{Span}\{|\f_b\> : \f_b\in C(N,\R)\}.
+\ee
+with inner product $\<\f_{b1}|\f_{b2}\> = \de(\f_{b1}-\f_{b2})$ (a functional $\de$-function).
+Here $C(N,\R)$ is a space of real-valued functions on $N$.\footnote{We are being deliberately vague about {\it which\/} space of functions on $N$, e.g.\ $C^1(N)$, $C^\oo(N)$, etc.. In reality, the path integral is defined by introducing a regulator and taking a limit as the regulator is removed. Different regulators will result in different spaces of functions, and we prefer to be agnostic about which regulator is being used.} This is the analog of the Hilbert spaces (\ref{eq:qmhilberspace}) and (\ref{eq:twodisinghilbert}) for quantum mechanics and the 2d Ising model.
+
+\item The space of states on a disconnected union is a tensor product
+\be
+\label{eq:disjointunionrule}
+\mathcal{H}_{N_1 \sqcup N_2} &= \mathcal{H}_{N_1}\otimes \mathcal{H}_{N_2}.
+\ee
+This should be clear in scalar theory from the definition (\ref{eq:scalarfieldhilbertspace}). It is technically useful to assign the trivial Hilbert space to the empty manifold
+\be
+\mathcal{H}_{\varnothing} &= \mathbb{C}.
+\ee
+Note that this is consistent with (\ref{eq:disjointunionrule}).
+
+\item To every $d$-manifold $M$ with incoming boundary $N$ and outgoing boundary $N'$, $Q$ assigns a transition amplitude
+\be
+Z_M : \mathcal{H}_N \to \mathcal{H}_{N'}.
+\ee
+In Lagrangian theories, $Z_M$ is obtained by fixing boundary conditions on $N,N'$ and performing the path integral over the interior. For example in a scalar theory,
+\be
+\label{eq:transitionmatrixelement}
+\<\f_b'|Z_M|\f_{b}\> &= \int_{\substack{\phi|_{N} = \f_b \\ \phi|_{N'} = \f_b'}} D\phi(x) e^{-S[\f]}.
+\ee
+Here, the notation $\f|_{N}$ means the restriction of $\f$ to $N$.
+
+In the special case where $M$ is a closed manifold, $Z_M$ is a linear map
+\be
+\Z_M : \mathbb{C} \to \mathbb{C},
+\ee
+i.e. a complex number called the ``partition function" on $M$.
+
+\item Suppose $M_1$ has boundaries $(N,N')$ and $M_2$ has boundaries $(N',N'')$. (The first element of the ordered pair is the incoming boundary and the second is the outgoing boundary.) We can form a new $d$-manifold $M_1\cup_{N'} M_2$ by gluing $M_1$ and $M_2$ along $N'$. This manifold has boundaries $(N,N'')$. The total transition amplitude is the composition
+\be
+\label{eq:compositionrule}
+Z_{M_1\cup_{N'} M_2} &= Z_{M_2} Z_{M_1} : \mathcal{H}_N \to \mathcal{H}_{N''}.
+\ee
+
+In scalar field theory, this follows by cutting the path integral along $N'$ by fixing boundary conditions $\f_b'\in C(N',\R)$, and then finally performing the $(d-1)$-dimensional path integral over $\f_b'$,
+\be
+&\int_{\substack{\phi|_{N} = \f_b \\ \phi|_{N''} = \f_b''}} D\phi(x) e^{-S[\f]} \nn\\
+&= \int_{y\in N'} D\f_b'(y)
+\int_{\substack{\phi_2|_{N'} = \f_b' \\ \phi_1|_{N''} = \f_b'' \\ x \in M_2}} D\phi_2(x) e^{-S[\f_2]}
+\int_{\substack{\phi_1|_{N} = \f_b \\ \phi_1|_{N'} = \f_b' \\ x \in M_1}} D\phi_1(x) e^{-S[\f_1]}.
+\ee
+This is the field-theory analog of our gluing rule for transition amplitudes in quantum mechanics (\ref{eq:gluingruleqm}).
+In the notation (\ref{eq:transitionmatrixelement}), we have simply inserted a complete set of states on $N'$,
+\be
+\<\f_b''|Z_{M_2} Z_{M_1}|\f_b\> &= \int_{y\in N'} D\f'_b(y) \<\f_b''|Z_{M_2}|\f_b'\>\<\f_b'|Z_{M_1}|\f_b\>.
+\ee
+
+\end{enumerate}
+
+Although we have given explicit prescriptions in the case of a continuum theory, each of these axioms has obvious analogs in the case of the 2d Ising model. It is not hard to imagine how the continuum axioms might arise in the continuum limit of the Ising model, at least in the case where the ``manifolds" $M,N,\dots$ are regions of flat space.
+
+\subsection{Quantization in continuum QFT}
+
+Let us use the above axioms to describe the quantization procedure one more time, now in continuum QFT.
+First note that when $M_L=I_{L} \x N$ is the product of a $(d-1)$-manifold $N$ and an interval of length $L$, the composition rule (\ref{eq:compositionrule}) implies that
+\be
+\label{eq:exponentiatedtransition}
+Z_{M_L} &= e^{-L \hat H}
+\ee
+for some operator
+\be
+\hat H:\mathcal{H}_N \to \mathcal{H}_N,
+\ee
+namely the Hamiltonian.
+
+Consider a correlation function on $S_\b^1 \x N$
+\be
+\label{eq:correlatorcontinuum}
+\<\f(\tau_1,y_1)\cdots \f(\tau_n,y_n)\>_{S_\b^1 \x N} &= 
+\int_{\f(\b,y)=\f(0,y)} D\f(x)\, \f(\tau_1,y_1)\cdots \f(\tau_n,y_n) e^{-S[\f]}.
+\ee
+Here, $\tau,y$ are coordinates on $S_\b^1,N$, respectively.
+As before, we introduce operators $\hat \f(y)$ that measure the field configuration on a time-slice
+\be
+\hat \f(y)|\f_b\> &= \f_b(y)|\f_b\>.
+\ee
+To compute (\ref{eq:correlatorcontinuum}), we cut the path integral at times $\tau_1,\dots,\tau_n$ and repeatedly use (\ref{eq:exponentiatedtransition}). By the usual logic, this gives
+\be
+\<\f(\tau_1,y_1)\cdots \f(\tau_n,y_n)\>_{S_\b^1 \x N} &= \Tr_{\mathcal{H}_N}(e^{-\b\hat H} T\{\hat \f(\tau_1,y_1)\cdots \hat \f(\tau_n,y_n)\}),
+\ee
+where
+\be
+\hat \f(\tau,y) &\equiv e^{\tau \hat H} \hat \f(y) e^{-\tau \hat H},
+\ee
+and $T\{\cdots\}$ represents time ordering in $\tau$.
+Taking the limit of a long interval, the factor $e^{-\b \hat H}$ projects onto the ground state, and we obtain
+\be
+\<\f(\tau_1,y_1)\cdots \f(\tau_n,y_n)\>_{\R \x N} &=\<0|T\{\hat \f(\tau_1,y_1)\cdots \hat \f(\tau_n,y_n)\}|0\>.
+\ee
+
+For a QFT in $\R^d$, we can quantize the theory in many different ways by choosing different directions to play the role of ``time." In every quantization of the theory, we have
+\be
+\<\f(x_1)\cdots \f(x_n)\>_{\R^d} &= \<0|T\{\hat \f(x_1)\cdots \hat \f(x_n)\}|0\>.
+\ee
+However, in different quantizations, the objects appearing on the right-hand side are different. The Hilbert spaces are different (though isomorphic if the theory is $\SO(d)$-invariant), the ground states $|0\>$ are different, the quantum operators $\hat\f(x)$ are different, and the time-ordering symbols means different things. However, because they originate from a single path integral, the resulting expectation values are the same. It is sometimes useful to think of expressions like the RHS above as ``interpretations" of one underlying path integral.
+
+\subsection{The transverse-field quantum Ising model}
+
+After a lot of abstract nonsense, let's return to more concrete things and try to understand the critical point of the 2d Ising model.
 
 \begin{appendix}
 \end{appendix}
