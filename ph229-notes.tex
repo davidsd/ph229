@@ -76,6 +76,7 @@
 \renewcommand\hat[1]{\widehat{#1}}
 \newcommand\bs{\mathbf{s}}
 \newcommand\draftnote[1]{{\color{blue} #1}}
+\newcommand\C{\mathbb{C}}
 
 \newtheorem{exercise}{Exercise}[section]
 \let\Exercisefont\itshape
@@ -97,7 +98,7 @@ Conformal Field Theory
 dsd@caltech.edu}
 
 \begin{abstract}
-Notes for Physics 229, 2017-2018. These notes are in progress. They were last updated on \today.
+Notes for Physics 229, 2017-2018. These notes are in progress. They were last updated on \today. In a few places, there are notes to the author to later add additional discussion/comments, written \draftnote{in blue}. There may also be empty citations and missing figures.
 \end{abstract}
 \body
 
@@ -424,6 +425,8 @@ We have seen several different systems that fall into the Ising universality cla
 S &= \int d^3 x \p{\frac 1 2 \sum_i \ptl_\mu \f_i \ptl^\mu \f_i + \frac 1 2 m^2 \sum_i \f_i \f_i + g \p{\sum_i \f_i \f_i}^2}.
 \ee
 XY magnets are in the same universality class of the $O(2)$ model and Heisenberg magnets are in the same universality class of the $O(3)$ model.
+
+\draftnote{Discuss non-uniqueness of UV Lagrangian description. An example is particle-vortex duality between the gauged $O(2)$ model and the $O(2)$ model. Distinguish between IR duality and exact duality.}
 
 But this is just the tip of the iceberg --- there is a huge zoo of different types of critical points that we can construct in a variety of ways. One of our goals will be to better understand this zoo.
 
@@ -791,16 +794,28 @@ Show how to quantize the 2d Ising model in yet another way, using $i+j$ as the t
 
 \subsection{Atiyah-Segal axioms}
 
-We are now ready to understand some axioms of continuum QFT. We will simultaneously state them and give examples in a scalar theory with field $\f$. A version of these axioms in the case of TQFTs is due to Atiyah and Segal. Consider a $d$-dimensional QFT $Q$.
+We are now ready to understand some axioms of continuum QFT. We will simultaneously state them and give examples in a real scalar theory with field $\f$. A version of these axioms in TQFTs is due to Atiyah and a version in 2d CFTs is due to Segal. We will be interested in QFTs that depend on the geometry of the space in which they live, so when we say ``manifold" below, we mean ``Riemannian manifold with a metric."
 
+Consider a $d$-dimensional QFT $Q$. 
 \begin{enumerate}
-\item To every $(d-1)$-manifold $N$ without boundary, $Q$ assigns a Hilbert space $\mathcal{H}_{N}$ called the space of states on $N$. In theories with an explicit path integral over some fields (called ``Lagrangian theories"), $\mathcal{H}_N$ has an orthonormal basis state for every field configuration on $N$. For example, in a scalar field theory
+\item To every $(d-1)$-manifold $N$ without boundary, $Q$ assigns a Hilbert space $\mathcal{H}_{N}$ called the space of states on $N$.
+
+For example, in theories with an explicit path integral over some fields (``Lagrangian theories"), $\mathcal{H}_N$ has an orthonormal basis state for every field configuration on $N$. In scalar field theory,
 \be
 \label{eq:scalarfieldhilbertspace}
 \mathcal{H}_N &= \mathrm{Span}\{|\f_b\> : \f_b\in C(N,\R)\}.
 \ee
-with inner product $\<\f_{b1}|\f_{b2}\> = \de(\f_{b1}-\f_{b2})$ (a functional $\de$-function).\footnote{Note that the Hilbert space $\mathcal{H}_N$ is not the same as the space of functions $C(N,\R)$. In particular, the inner product of field eigenstates states $\<\f_{b1}|\f_{b2}\>$ has nothing to do with any inner product structure on $C(N,\R)$. For example, in quantum mechanics, we have $N=\bullet$ (a point), $C(\bullet,\R)=\R$, and $\mathcal{H}_\bullet = L^2(\R)$. The pairing $\<x_1|x_2\>=\de(x_1-x_2)$ has nothing to do with the product $x_1 x_2$.}
-Here $C(N,\R)$ is a space of real-valued functions on $N$.\footnote{We are being deliberately vague about {\it which\/} space of functions on $N$, e.g.\ $C^1(N)$, $C^\oo(N)$, etc.. In reality, the path integral is defined by introducing a regulator and taking a limit as the regulator is removed. Different regulators will result in different spaces of functions, and we prefer to be agnostic about which regulator is being used.} This is the analog of the Hilbert spaces (\ref{eq:qmhilberspace}) and (\ref{eq:twodisinghilbert}) for quantum mechanics and the 2d Ising model.
+with inner product $\<\f_{b1}|\f_{b2}\> = \de(\f_{b1}-\f_{b2})$ (a functional $\de$-function).
+
+Here $C(N,\R)$ is a space of real-valued functions on $N$.\footnote{We are being deliberately vague about {\it which\/} space of functions on $N$, e.g.\ $C^1(N)$, $C^\oo(N)$, etc.. In reality, the path integral is defined by introducing a regulator and taking a limit as the regulator is removed. Different regulators will result in different spaces of functions, and we prefer to be agnostic about which regulator is being used.}  More formally, we can write
+\be
+\cH_N &= L^2(C(N,\R),\C).
+\ee
+Here $L^2(X)$ denotes the square-integrable complex functions on a measure space $X$.\footnote{Again, to define the measure we must regularize so that $C(N,\R)$ becomes finite-dimensional, and remove the regulator at the end.}
+
+The space $\cH_N$ is the analog of the Hilbert spaces (\ref{eq:qmhilberspace}) and (\ref{eq:twodisinghilbert}) for quantum mechanics and the 2d Ising model. Let us discuss the example of quantum mechanics more explicitly. Quantum mechanics is a $1$-dimensional QFT. In this case $d-1=0$, and the only possible $0$-manifolds are disjoint unions of points. The space of fields on a point is $C(\bullet,\R)=\R$, so the Hilbert space associated to a point is $\cH_\bullet = L^2(C(\bullet,\R)) = L^2(\R,\C)$. This is spanned by the usual basis states $|x\>$ with inner product $\de(x-x')$. Note in particular that $L^2(C(\bullet,\R),\C)$ totally different from $L^2(\bullet,\C)=\C$.
+
+%Note that $L^2(C(N,\R),\C)$ totally different from $L^2(N,\C)$. To understand this, consider the special case of quantum mechanics, which is a $1$-dimensional QFT. The only possible $(d-1)$-manifolds are then disjoint unions of points. The space of fields on a point is $C(\bullet,\R)=\R$, so the Hilbert space is $\cH_\bullet = L^2(C(\bullet,\R)) = L^2(\R,\C)$. This is spanned by the usual basis states $|x\>$ with inner product $\de(x-x')$. This is not the same as $L^2(\bullet,\C)=\C$.
 
 \item The space of states on a disconnected union is a tensor product
 \be
@@ -849,9 +864,16 @@ In the notation (\ref{eq:transitionmatrixelement}), we have simply inserted a co
 \<\f_b''|Z_{M_2} Z_{M_1}|\f_b\> &= \int_{y\in N'} D\f'_b(y) \<\f_b''|Z_{M_2}|\f_b'\>\<\f_b'|Z_{M_1}|\f_b\>.
 \ee
 
+\item \draftnote{Describe generalization to correlation functions.}
+
+\item \draftnote{Discuss orientation, orientation reversal, conjugation.}
+
 \end{enumerate}
 
+\draftnote{Discuss the possibility of giving the manifolds different amounts of structure, for instance topological structure, a Riemannian metric, etc. In these notes, we will initially be interested in manifolds with a metric. Later, we will see that in certain cases we can relax this structure to only a conformal class of metrics.}
+
 Although we have given explicit prescriptions in the case of a continuum theory, each of these axioms has obvious analogs in the case of the 2d Ising model. It is not hard to imagine how the continuum axioms might arise in the continuum limit of the Ising model, at least in the case where the ``manifolds" $M,N,\dots$ are regions of flat space.
+
 
 \hfill \draftnote{\it End of lecture 4}
 
@@ -899,6 +921,8 @@ For a QFT in $\R^d$, we can quantize the theory in many different ways by choosi
 \<\f(x_1)\cdots \f(x_n)\>_{\R^d} &= \<0|T\{\hat \f(x_1)\cdots \hat \f(x_n)\}|0\>.
 \ee
 However, in different quantizations, the objects appearing on the right-hand side are different. The Hilbert spaces are different (though isomorphic if the theory is $\SO(d)$-invariant), the ground states $|0\>$ are different, the quantum operators $\hat\f(x)$ are different, and the time-ordering symbols means different things. However, because they originate from a single path integral, the resulting expectation values are the same. It is sometimes useful to think of expressions like the RHS above as ``interpretations" of one underlying path integral.
+
+\draftnote{Discuss boundary conditions and whether we should think of $\R^d$ as having a boundary or not.}
 
 \subsection{The quantum transverse-field Ising model}
 
@@ -956,12 +980,18 @@ c^\dag_n = \p{\prod_{i=1}^{n-1} \s^x_i} \s^+_n,\qquad c_n &= \p{\prod_{i=1}^{n-1
 \ee 
 which now satisfy canonical anticommutation relations
 \be
+\label{eq:anticommut}
 \{c^\dag_n,c_m\} = \de_{nm},\qquad \{c_n,c_m\}=\{c_n^\dag,c_m^\dag\} = 0.
 \ee
 These new creation and annihilation operators are {\it nonlocal} on the spin chain. We can think of them as creating and destroying fermionic solitons.
 
+\begin{exercise}
+Verify the anticommutation relations (\ref{eq:anticommut}).
+\end{exercise}
+
 It's perhaps not surprising that we can write nonlocal variables that behave like fermions. The surprise is that the Hamiltonian in these new variables is still local, and actually quite simple
 \be
+\label{eq:jordanwignerhamiltonian}
 H &= \sum_{n=1}^{M-1} (c_n^\dag+c_n)(c_{n+1}^\dag-c_{n+1})-P(c_{M}^\dag+c_{M})(c_{1}^\dag-c_{1})+g\sum_{n=1}^{M}(2c_n^\dag c_n -1)
 \ee
 where $P = \prod_{n=1}^{M}\s_n^x=(-1)^F$ is the parity operator.  Within each parity eigenspace, the Hamiltonian becomes simply
@@ -970,7 +1000,8 @@ H &= \sum_{n=1}^{N} (c_n^\dag+c_n)(c_{n+1}^\dag-c_{n+1})+g\sum_{n=1}^{N}(2c_n^\d
 \ee
 where when $P=-1$ we must impose periodic boundary conditions $c_{M+1}=c_1$, and when $P=1$ we must impose antiperiodic boundary conditions $c_{M+1}=-c_1$.\footnote{The choice of which eigenspace $P=\pm 1$ to consider is equivalent to a choice of spin structure. The TFIM is a bosonic theory and can be formulated without choosing a spin structure. However, once we introduce fermions, we are required to choose a spin structure.}  Our Hamiltonian is now translationally invariant and quadratic in creation and annihilation operators, so it can be diagonalized via a Fourier transform and Bogoliubov transformation:
 \be
-H &= \sum_k \left[{-(2\cos k-2g)c_k^\dag c_k-i\sin k\p{c^\dag_{-k}c_k^\dag+c_{-k}c_k}}\right]-Lg\\
+\label{eq:afterfourier}
+H &= \sum_k \left[{-(2\cos k-2g)c_k^\dag c_k-i\sin k\p{c^\dag_{-k}c_k^\dag+c_{-k}c_k}}\right]-Mg\\
 &= \sum_k \e(k)\p{b_k^\dag b_k-\frac 1 2}\label{eq:diagonalizedhamiltonian},
 \ee
 where $b_k^\dag$ and $b_k$ are new canonically normalized creation and annihilation operators, and
@@ -989,6 +1020,12 @@ k=
 \ee
 for $m=0,1,\dots,M-1$.
 
+\draftnote{Write out the Bogoliubov transformation in more detail.}
+
+\begin{exercise}
+Derive expressions (\ref{eq:jordanwignerhamiltonian}), (\ref{eq:afterfourier}), and (\ref{eq:diagonalizedhamiltonian}).
+\end{exercise}
+
 In the continuum limit $M\to \oo$, $k$ becomes continuous. Correlation functions are dominated by the smallest values of $\e(k)$, which (assuming $g>0$) occur near $k=0$. Expanding around this point, we have
 \be
 \e(k)^2 &= 4(1-g)^2+ 4g k^2 + O(k^4).
@@ -1001,6 +1038,8 @@ Thus, the mass gap is given by $m_\mathrm{gap}=|1-g|$. At the special point $g=g
 To summarize, in the continuum limit, at the critical coupling, and at long distances, the quantum TFIM becomes a free relativistic fermion. This is yet another example of IR equivalence/duality. The IR theory has an emergent $\SO(1,1)$ Lorentz symmetry that was not present in the original spin system. (In fact, it is also conformally-invariant, as we will see later.)
 
 The fact that the critical point of the 1+1d quantum TFIM (and consequently other theories in the same universality class, like the 2d Ising lattice model) is equivalent to a free theory is very special to 2-dimensions. Our derivation relied in a fundamental way on the Jordan-Wigner transformation and does not work, for example in 2+1d.\footnote{There are newly discovered versions of the Jordan-Wigner transformation in higher dimensions (\arXiv{1711.00515}), but they do not relate the 2+1d TFIM to a free theory.}
+
+\hfill\draftnote{\it End of lecture 5}
 
 \section{CFTs in perturbation theory}
 
