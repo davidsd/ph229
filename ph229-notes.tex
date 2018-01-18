@@ -75,6 +75,7 @@
 \newcommand\z\zeta
 \renewcommand\hat[1]{\widehat{#1}}
 \newcommand\bs{\mathbf{s}}
+\newcommand\draftnote[1]{{\color{blue} #1}}
 
 \newtheorem{exercise}{Exercise}[section]
 \let\Exercisefont\itshape
@@ -340,6 +341,8 @@ Water and other liquid-vapor transitions have precisely the same critical expone
 \end{claim}
 We say that liquid-vapor transitions are in the same ``universality class" as uni-axial magnets.
 
+\hfill \draftnote{\it End of lecture 1}
+
 \subsubsection{The Ising model}
 
 The Ising model is a simplified model of a magnet that is still rich enough to capture its critical behavior. Its degrees of freedom are classical spins taking values $\pm 1$, with one spin for each site on a cubic lattice\footnote{The Ising model can also be formulated on other lattices, and in many cases these models lie in the same universality class.}
@@ -514,29 +517,31 @@ In quantum mechanical language, the state with the largest eigenvalue of $\hat T
 m_\mathrm{gap} &\equiv - \frac 1 {\Delta \tau} \log (\l_-/\l_+).
 \ee
 
+\hfill \draftnote{\it End of lecture 2}
+
 We can also use the transfer matrix to compute correlation functions. For example, consider the two-point function $\<s_{i_1} s_{i_2}\>_{\Z_M}$ where the subscript $M$ indicates that we are on a periodic lattice with length $M$. Suppose $i_1>i_2$. We have
 \be
 \<s_{i_1} s_{i_2} \>_{\Z_M} &= \frac 1 {Z_1} \sum_{\{s_i\}} \<s_M|\hat{T}|s_{M-1}\> \cdots \<s_{i_1+1}|\hat{T}|s_{i_1}\> s_{i_1} \<s_{i_1}|\hat{T}|s_{i_1-1}\>\cdots \nn\\
 & \qquad \x\cdots\<s_{i_2+1}|\hat{T}|s_{i_2}\> s_{i_2} \<s_{i_2}|\hat{T}|s_{i_2-1}\>\cdots \<s_1|\hat{T}|s_M\> \nn\\
-&= \frac{1}{Z_1}\Tr(\hat{T}^{M-i_1} \hat{\s}^z \hat{T}^{i_1 - i_2}\hat \s^z \hat T^{i_2}) \qquad (i_1 > i_2).
+&= \frac{1}{Z_1}\Tr(\hat{T}^{M-i_1} \hat{\s}^z \hat{T}^{i_1 - i_2}\s^z \hat T^{i_2}) \qquad (i_1 > i_2).
 \label{eq:correlatorastrace}
 \ee
-Here, we introduced the Pauli spin operator $\hat \s^z$ that measures the spin of a state
+Here, we introduced the Pauli spin operator $\s^z$ that measures the spin of a state
 \be
-\hat \s^z|s\> &= s|s\>.
+\s^z|s\> &= s|s\>.
 \ee
 It is easy to compute the correlation function (\ref{eq:correlatorastrace}) by expressing $\hat s$ in the eigenbasis of $\hat T$.
 \begin{exercise}
-Show that in the limit of large $M$ and large ``distance" $i_1-i_2$, the correlator factorizes into a product of expectation values $\<0|\hat \s^z|0\>$, plus exponential corrections from the excited state
+Show that in the limit of large $M$ and large ``distance" $i_1-i_2$, the correlator factorizes into a product of expectation values $\<0|\s^z|0\>$, plus exponential corrections from the excited state
 \be
-\<s_{i_1} s_{i_2}\>_{\Z_M} &= \<0|\hat \s^z|0\>^2 + O(e^{-m_\mathrm{gap} \tau}, e^{- m_\mathrm{gap}(L-\tau)}),
+\<s_{i_1} s_{i_2}\>_{\Z_M} &= \<0|\s^z|0\>^2 + O(e^{-m_\mathrm{gap} \tau}, e^{- m_\mathrm{gap}(L-\tau)}),
 \ee
 where $\tau\equiv (i_1-i_2)\Delta\tau$, $L\equiv M\Delta\tau$.
 \end{exercise}
 
 Let us write (\ref{eq:correlatorastrace}) in a slightly different way by introducing ``Heisenberg picture" operators
 \be
-\hat s(i) &= \hat T^{-i} \hat \s^z \hat T^i.
+\hat s(i) &= \hat T^{-i} \s^z \hat T^i.
 \ee
 Equation~(\ref{eq:correlatorastrace}) is equivalent to
 \be
@@ -695,6 +700,8 @@ Finally, in the limit $\b\to \oo$, the factor $e^{-\b \hat H}$ projects onto the
 \ee
 This is the continuum analog of (\ref{eq:fulllattice}).
 
+\hfill \draftnote{\it End of lecture 3}
+
 \subsection{The 2d Ising model}
 
 Let us now consider a slightly more complicated case: the 2d Ising model. This will be a good toy example for how cutting, gluing, and quantization work in a general QFT. For simplicity, we set $h=0$. We consider the partition function on the doubly-periodic lattice $\Z_{M} \x \Z_{N}$ and label spins $s_{i,j}$ by a pair $(i,j) \in \Z_{M} \x \Z_{N}$.
@@ -727,25 +734,25 @@ where $\mathcal{H}_i$ is a 1-qubit Hilbert space for each site $i$. $\mathcal{H}
 
 The transfer matrix between successive time slices is a $2^{M} \x 2^{M}$ matrix with entries
 \be
-\<\bs'|\hat T|\bs\> &= e^{L(\bs',\bs)}.
+\<\bs'|\hat T|\bs\> &= e^{-L(\bs',\bs)}.
 \ee
 The partition function on $\Z_{M} \x \Z_{N}$ is then
 \be
 \label{eq:partitionfunctionastracetwod}
 Z(\Z_{M} \x \Z_{N}) &= \Tr_{\mathcal{H}_{M}}(\hat T^{N}).
 \ee
-To compute correlation functions, we need an operator that measures the spin at site $i$. This is simply the Pauli spin matrix $\hat \s^z_i$ associated with the $i$-th site
+To compute correlation functions, we need an operator that measures the spin at site $i$. This is simply the Pauli spin matrix $\s^z_i$ associated with the $i$-th site
 \be
-\hat \s^z_i |s_1,\dots,s_j,\dots,s_{M_1}\> &= s_i |s_1,\dots,s_i,\dots,s_{M_1}\>.
+\s^z_i |s_1,\dots,s_j,\dots,s_{M}\> &= s_i |s_1,\dots,s_i,\dots,s_{M}\>.
 \ee
 We also have Heisenberg picture operators
 \be
 \label{eq:oldspinop}
-\hat s_{i,j} &= \hat T^{-j} \hat \s_i^z \hat T^j.
+\hat s_{i,j} &= \hat T^{-j} \s_i^z \hat T^j.
 \ee
 Correlation functions become traces of time-ordered products, e.g.
 \be
-\<s_{i_1,j_1} s_{i_2,j_2}\> &= \Tr_{\mathcal{H}_{M}}(\hat T^{N+j_2-j_1} \hat \s_{i_1}^z \hat T_2^{j_1-j_2} \hat \s_{i_2}^z) \th (j_1-j_2) + (1\leftrightarrow 2) \nn\\
+\<s_{i_1,j_1} s_{i_2,j_2}\> &= \Tr_{\mathcal{H}_{M}}(\hat T^{N+j_2-j_1} \s_{i_1}^z \hat T_2^{j_1-j_2} \s_{i_2}^z) \th (j_1-j_2) + (1\leftrightarrow 2) \nn\\
 &= \Tr_{\mathcal{H}_M}(T\{\hat s_{i_1,j_1} \hat s_{i_2,j_2}\} \hat T^{N}).
 \ee
 
@@ -756,7 +763,7 @@ Z(\Z_M\x\Z_N) &= \Tr_{\mathcal{H}_N}(\hat T'^M) = \Tr_{\mathcal{H}_M}(\hat T^N).
 In this new quantization, an insertion of $s_{i,j}$ in the path integral becomes an insertion of
 \be
 \label{eq:newspinop}
-s_{i,j} &\to \hat T'^{-i} \hat \s_j^z \hat T'^i
+s_{i,j} &\to \hat T'^{-i} \s_j^z \hat T'^i
 \ee
 in a time-ordered product of quantum operators.
 Let us emphasize that the operators (\ref{eq:oldspinop}) and (\ref{eq:newspinop}) truly are different, even though they represent the same path integral variable. They even act on different-dimensional Hilbert spaces ($2^M$ vs.\ $2^N$)! Furthermore, even the notion of ``time"-ordering is different in this different quantization.
@@ -792,7 +799,7 @@ We are now ready to understand some axioms of continuum QFT. We will simultaneou
 \label{eq:scalarfieldhilbertspace}
 \mathcal{H}_N &= \mathrm{Span}\{|\f_b\> : \f_b\in C(N,\R)\}.
 \ee
-with inner product $\<\f_{b1}|\f_{b2}\> = \de(\f_{b1}-\f_{b2})$ (a functional $\de$-function).
+with inner product $\<\f_{b1}|\f_{b2}\> = \de(\f_{b1}-\f_{b2})$ (a functional $\de$-function).\footnote{Note that the Hilbert space $\mathcal{H}_N$ is not the same as the space of functions $C(N,\R)$. In particular, the inner product of field eigenstates states $\<\f_{b1}|\f_{b2}\>$ has nothing to do with any inner product structure on $C(N,\R)$. For example, in quantum mechanics, we have $N=\bullet$ (a point), $C(\bullet,\R)=\R$, and $\mathcal{H}_\bullet = L^2(\R)$. The pairing $\<x_1|x_2\>=\de(x_1-x_2)$ has nothing to do with the product $x_1 x_2$.}
 Here $C(N,\R)$ is a space of real-valued functions on $N$.\footnote{We are being deliberately vague about {\it which\/} space of functions on $N$, e.g.\ $C^1(N)$, $C^\oo(N)$, etc.. In reality, the path integral is defined by introducing a regulator and taking a limit as the regulator is removed. Different regulators will result in different spaces of functions, and we prefer to be agnostic about which regulator is being used.} This is the analog of the Hilbert spaces (\ref{eq:qmhilberspace}) and (\ref{eq:twodisinghilbert}) for quantum mechanics and the 2d Ising model.
 
 \item The space of states on a disconnected union is a tensor product
@@ -846,6 +853,8 @@ In the notation (\ref{eq:transitionmatrixelement}), we have simply inserted a co
 
 Although we have given explicit prescriptions in the case of a continuum theory, each of these axioms has obvious analogs in the case of the 2d Ising model. It is not hard to imagine how the continuum axioms might arise in the continuum limit of the Ising model, at least in the case where the ``manifolds" $M,N,\dots$ are regions of flat space.
 
+\hfill \draftnote{\it End of lecture 4}
+
 \subsection{Quantization in continuum QFT}
 
 Let us use the above axioms to describe the quantization procedure one more time, now in continuum QFT.
@@ -891,9 +900,111 @@ For a QFT in $\R^d$, we can quantize the theory in many different ways by choosi
 \ee
 However, in different quantizations, the objects appearing on the right-hand side are different. The Hilbert spaces are different (though isomorphic if the theory is $\SO(d)$-invariant), the ground states $|0\>$ are different, the quantum operators $\hat\f(x)$ are different, and the time-ordering symbols means different things. However, because they originate from a single path integral, the resulting expectation values are the same. It is sometimes useful to think of expressions like the RHS above as ``interpretations" of one underlying path integral.
 
-\subsection{The transverse-field quantum Ising model}
+\subsection{The quantum transverse-field Ising model}
 
-After a lot of abstract nonsense, let's return to more concrete things and try to understand the critical point of the 2d Ising model.
+After all this abstract nonsense, let's return to more concrete things and try to understand the critical point of the 2d Ising model. The transfer matrix $\hat T$ of the 2d Ising lattice model was diagonalized in 1944 by Onsager. Unfortunately, we won't have time to describe his solution. Instead, we will study a closely related model in the same universality class as the lattice model.
+
+Recall that the transfer matrix has matrix elements $\<\bs'|\hat T|\bs\> = e^{-L(\bs',\bs)}$. Let us write $\hat T$ in a more familiar way as an operator on a spin chain. First split $L$ into contributions from horizontal and vertical bonds
+\be
+L(\bs',\bs) &= L_h(\bs')+L_h(\bs) + L_v(\bs',\bs). \nn\\
+L_h(\bs) &= -\frac 1 2 K \sum_i \bs_{i+1} \bs_i, \nn\\
+L_v(\bs',\bs) &= \sum_i \frac 1 2 K(\bs_i'-\bs_i)^2.
+\ee
+Note that
+\be
+e^{\frac 1 2 K \sum_i \s^z_i \s^z_{i+1}}|\bs\> &= e^{-L_h(\bs)}|\bs\>.
+\ee
+Meanwhile, $L_v$ only involves spins at a single site, so let us imagine that we have only one site. Note that
+\be
+\<s'|(1+e^{-2K}\s^x)|s\> &= e^{-\frac 1 2 K (s'-s)^2}
+\ee
+We also have
+\be
+1+e^{-2K} \s^x &= e^{A+K' \s^x},\qquad\textrm{where} \nn\\
+\tanh K' &= e^{-2K},\nn\\
+e^A &= \sqrt{1-e^{-4K}}.
+\ee
+Thus,
+\be
+e^{AM}\<\bs'|e^{K' \sum_i \s^x_i}|\bs\> &= e^{-L_v(\bs',\bs)}.
+\ee
+The constant $e^{AM}$ will cancel in correlation functions, so we will ignore it. Putting everything together, we have
+\be
+\hat T &\propto \exp\p{\frac 1 2 K \sum_i \s^z_i \s^z_{i+1}} \exp\p{K' \sum_i \s^x_i} \exp\p{\frac 1 2 K \sum_i \s^z_i \s^z_{i+1}}
+\ee
+In a quantum-mechanical interpretation, we would write $\hat T=e^{-\De\tau \hat H}$, but the resulting $\hat H$ would be quite complicated.
+
+To get the theory we'll actually study, we first allow $K',K$ to be independent parameters, and then take a limit where $K,K'$ become small with fixed ratio $K'/K=g$. These modifications may seem somewhat drastic, but it turns out at the critical point they can be compensated by simply rescaling the time coordinate. (We will not prove this, unfortunately.) This results in
+\be
+\hat T &\to e^{-\Delta \tau \hat H},
+\ee
+where $\Delta\tau$ is small and the Hamiltonian $\hat H$ is relatively simple,
+\be
+\hat H &= \sum_i \s_i ^z \s_{i+1}^z + g \sum_i \s_i^x.
+\ee
+This is the Hamiltonian of the ``quantum transverse-field Ising model" (TFIM). It describes a 1-dimensional chain of quantum spins with a nearest-neighbor interaction in the $z$-direction and an applied ``transverse" magnetic field in the $x$-direction.\footnote{Don't confuse the transverse field in the quantum Ising model with the applied magnetic field $h$ in the thermodynamic Ising model. At the beginning of this discussion, we set $h=0$.}${}^{,}$\footnote{A similar procedure starting from the $d$-dimensional classical Ising model gives the quantum TFIM on a $(d-1)$-dimensional spatial lattice, in the same universality class.}
+
+\subsubsection{Solution via the Jordan-Wigner transformation}
+
+In the remainder of this section, let us solve the TFIM by diagonalizing $\hat H$. Since our Hilbert space is a tensor product of two possible states for each site, it's tempting to think of it as a fermionic Fock space, with creation and annihilation operators
+\be
+\s^\pm_n &\equiv \frac 1 2 (\s^y_n \pm i \s_n^z).
+\ee
+This is not correct, since these operators commute rather than anticommute at different sites. However, this can be fixed with a classic trick called the Jordan-Wigner transformation. We define fermionic creation and annihilation operators
+\be
+c^\dag_n = \p{\prod_{i=1}^{n-1} \s^x_i} \s^+_n,\qquad c_n &= \p{\prod_{i=1}^{n-1} \s^x_i }\s_n^-,
+\ee 
+which now satisfy canonical anticommutation relations
+\be
+\{c^\dag_n,c_m\} = \de_{nm},\qquad \{c_n,c_m\}=\{c_n^\dag,c_m^\dag\} = 0.
+\ee
+These new creation and annihilation operators are {\it nonlocal} on the spin chain. We can think of them as creating and destroying fermionic solitons.
+
+It's perhaps not surprising that we can write nonlocal variables that behave like fermions. The surprise is that the Hamiltonian in these new variables is still local, and actually quite simple
+\be
+H &= \sum_{n=1}^{M-1} (c_n^\dag+c_n)(c_{n+1}^\dag-c_{n+1})-P(c_{M}^\dag+c_{M})(c_{1}^\dag-c_{1})+g\sum_{n=1}^{M}(2c_n^\dag c_n -1)
+\ee
+where $P = \prod_{n=1}^{M}\s_n^x=(-1)^F$ is the parity operator.  Within each parity eigenspace, the Hamiltonian becomes simply
+\be
+H &= \sum_{n=1}^{N} (c_n^\dag+c_n)(c_{n+1}^\dag-c_{n+1})+g\sum_{n=1}^{N}(2c_n^\dag c_n -1),
+\ee
+where when $P=-1$ we must impose periodic boundary conditions $c_{M+1}=c_1$, and when $P=1$ we must impose antiperiodic boundary conditions $c_{M+1}=-c_1$.\footnote{The choice of which eigenspace $P=\pm 1$ to consider is equivalent to a choice of spin structure. The TFIM is a bosonic theory and can be formulated without choosing a spin structure. However, once we introduce fermions, we are required to choose a spin structure.}  Our Hamiltonian is now translationally invariant and quadratic in creation and annihilation operators, so it can be diagonalized via a Fourier transform and Bogoliubov transformation:
+\be
+H &= \sum_k \left[{-(2\cos k-2g)c_k^\dag c_k-i\sin k\p{c^\dag_{-k}c_k^\dag+c_{-k}c_k}}\right]-Lg\\
+&= \sum_k \e(k)\p{b_k^\dag b_k-\frac 1 2}\label{eq:diagonalizedhamiltonian},
+\ee
+where $b_k^\dag$ and $b_k$ are new canonically normalized creation and annihilation operators, and
+\be
+\label{eq:dispersionrelation}
+\e(k)&= 2\sqrt{g^2-2g\cos(k)+1}
+\ee
+is the dispersion relation for the free fermionic quasiparticles created by $b^\dag_k$.  Because of the boundary conditions imposed by parity, the quasimomenta must take the values
+\be
+\label{eq:circularchainquantization}
+k=
+\begin{cases}
+\frac{2m\pi}{M} & P=-1,\\
+\frac{(2m+1)\pi}{M} & P=1.
+\end{cases}
+\ee
+for $m=0,1,\dots,M-1$.
+
+In the continuum limit $M\to \oo$, $k$ becomes continuous. Correlation functions are dominated by the smallest values of $\e(k)$, which (assuming $g>0$) occur near $k=0$. Expanding around this point, we have
+\be
+\e(k)^2 &= 4(1-g)^2+ 4g k^2 + O(k^4).
+\ee
+Thus, the mass gap is given by $m_\mathrm{gap}=|1-g|$. At the special point $g=g_c=1$, the mass gap goes to zero and we have a critical point. Long-distance correlation functions are dominated by states with arbitrarily low energy, which requires $k\to 0$. Fur such states, we can drop the $O(k^4)$ term, and we obtain a relativistic dispersion relation
+\be
+\e(k)^2 &= 4 k^2 \qquad(g=g_c,\ k\ll 1).
+\ee
+
+To summarize, in the continuum limit, at the critical coupling, and at long distances, the quantum TFIM becomes a free relativistic fermion. This is yet another example of IR equivalence/duality. The IR theory has an emergent $\SO(1,1)$ Lorentz symmetry that was not present in the original spin system. (In fact, it is also conformally-invariant, as we will see later.)
+
+The fact that the critical point of the 1+1d quantum TFIM (and consequently other theories in the same universality class, like the 2d Ising lattice model) is equivalent to a free theory is very special to 2-dimensions. Our derivation relied in a fundamental way on the Jordan-Wigner transformation and does not work, for example in 2+1d.\footnote{There are newly discovered versions of the Jordan-Wigner transformation in higher dimensions (\arXiv{1711.00515}), but they do not relate the 2+1d TFIM to a free theory.}
+
+\section{CFTs in perturbation theory}
+
+
 
 \begin{appendix}
 \end{appendix}
