@@ -130,7 +130,7 @@ Notes for Physics 229, 2017-2018. These notes are in progress. They were last up
 
 \subsection*{Resources}
 
-These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/} and John McGreevy's lectures on QFT \cite{}.
+These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/}, and John McGreevy's lectures on QFT \cite{}.
 
 \subsection{QFT and emergent symmetry}
 
@@ -1068,7 +1068,7 @@ In the quantum TFIM, we found $m_\mathrm{gap}=|g-g_c|$, which means that the cor
 
 Consider a microscopic system that has a long-distance description in terms of a quantum field theory QFT$_\mathrm{IR}$. We will think of QFT$_\mathrm{IR}$ in the language of effective field theory: it has a length cutoff $a$ and a set of coupling constants $g_A$ determined by running and matching. 
 \begin{enumerate}
-\item[] {\bf Matching:} First, we choose a cutoff $a$ near the characteristic length scales of the microscopic theory. We fix the coupling constants $g_A(a)$ at this scale by computing physical observables in both the UV and IR theories at distances $x\gtrsim a$ and demanding that they agree term-by-term in a power series in $a/x$. To match more terms, we must adjust more coupling constants.
+\item[] {\bf Matching:} First, we choose a cutoff $a\sim a_\mathrm{UV}$ near the characteristic length scales of the microscopic theory. We fix the coupling constants $g_A(a)$ at this scale by computing physical observables in both the UV and IR theories at distances $x\gtrsim a$ and demanding that they agree term-by-term in a power series in $a/x$. To match more terms, we must adjust more coupling constants.
 \\
 \\
 An important point is that this matching procedure is analytic in the UV parameters. Specifically, if the action of the UV theory has a parameter $t$, then $g_A(a)$ will generically have a regular power-series expansion in $t$
@@ -1113,6 +1113,7 @@ Very close to a fixed point, $\b_A$ takes the form
 \ee
 where $u=g-g_*$. Redefining the $u_A$ to diagonalize $Y_{AB}$,\footnote{It is possible to have situations where $Y_{AB}$ cannot be diagonalized, but rather has a nontrivial Jordan block form. This occurs, for example in logarithmic CFTs, which we may discuss briefly later. However, logarithmic CFTs are not unitary. We will prove later that in unitary CFTs, the matrix $Y_{AB}$ is diagonalizable. For now, let us assume it.} we have
 \be
+\label{eq:linearapprox}
 \b_A \approx - y_A u_A,
 \ee
 which integrates to
@@ -1142,7 +1143,7 @@ In the action, scaling variables $u_A$ multiply local operators $\Phi_A$ that tr
 \be
 S &= S_0 + \int \frac{d^d x}{a^d} \sum_A u_A \Phi_A(x).
 \ee
-Here factors of the length-cutoff $a^{-d}$ are needed to make $S$ dimensionless. For example, if the UV theory is a lattice model, $a^{-d}$ comes from writing the sum over lattice sites as an integral over space
+Here, factors of the length-cutoff $a^{-d}$ are needed to make $S$ dimensionless. For example, if the UV theory is a lattice model, $a^{-d}$ comes from writing the sum over lattice sites as an integral over space
 \be
 \sum_{i\in \Z^d} \to \int \frac{d^d x}{a^d}.
 \ee
@@ -1161,7 +1162,7 @@ y_A + \De_A = d.
 \ee
 The number $\De_A$ is called the ``scaling dimension" of $\Phi_A$.
 
-At a fixed-point, our coarse-graining rules fix the two-point function
+At the fixed-point $u_A=0$, our coarse-graining rules fix the two-point function
 \be
 \label{eq:coarsegrainingtwopt}
 \<\Phi_A(x_1) \Phi_A(x_2)\> &\propto \frac{a^{2\De_A}}{|x_1-x_2|^{2\De_A}}.
@@ -1174,115 +1175,132 @@ We can simplify this argument by introducing a version of dimensional analysis s
 \cO_A &= a^{-\De_A} \Phi_A, \nn\\
 \l_A &= a^{-y_A} u_A = a^{\De_A - d} u_A.
 \ee
-These combinations are invariant under the transformation (\ref{eq:coarsegrainingtransf}). Thus, invariance under coarse-graining means that correlators in terms of $\cO_A,\l_A$ are independent of the cutoff $a$. The tradeoff is that correlators must now also be consistent with dimensional analysis under which $\cO_A$ has length-dimension $-\De_A$ and $\l_A$ has length-dimension $-y_A = \De_A-d$. For example, at the fixed-point $\l_A=0$, a two-point function of $\cO_A$ must be given by
+These combinations are invariant under the transformation (\ref{eq:coarsegrainingtransf}). Invariance under coarse-graining then means that correlators of $\cO_A$'s can be functions of $\l_A$ (and kinematic variables like distances), but are independent of $a$. The tradeoff is that correlators must now also be consistent with dimensional analysis under which $\cO_A$ has length-dimension $-\De_A$ and $\l_A$ has length-dimension $-y_A = \De_A-d$.
+
+For example, at the fixed-point $\l_A=0$, a two-point function of $\cO_A$ must be given by
 \be
+\label{eq:twoptfunctionscaling}
 \<\cO_A(x_1) \cO_A(x_2)\> &\propto \frac{1}{|x_1-x_2|^{2\De_A}}.
 \ee
-The right-hand side is the only quantity consistent with Poincare symmetry and dimensional analysis. (Of course, it also follows trivially from (\ref{eq:coarsegrainingtwopt}) and (\ref{eq:redefineops}).)
+The right-hand side is the only quantity consistent with Poincare symmetry and dimensional analysis. (Of course, it also follows trivially from (\ref{eq:coarsegrainingtwopt}) and (\ref{eq:redefineops}).)\footnote{Note that (\ref{eq:twoptfunctionscaling}) determines the critical exponent
+$\eta = 2\De_h +2 - d$.}
 
 We can now analyze the action using this specially-adapted version of dimensional analysis. We have
 \be
+\label{eq:deformedaction}
 S &= S_0 + \int d^d x \sum_{A} \l_A \cO_A(x).
 \ee
-Let us split the sum into relevant and irrelevant contributions
+Let us split the sum into relevant and irrelevant contributions,
 \be
-S &= \p{S_0 + \int d^d x \sum_{\De_A < d} \l_A \cO_A(x)} + \int d^d x \sum_{\De_A > d} \l_A \cO_A(x)
+S &= \p{S_0 + \int d^d x \sum_{\De_A < d} \l_A \cO_A(x)} + \int d^d x \sum_{\De_A > d} \l_A \cO_A(x).
 \ee
-(for simplicity we assume there are no marginal operators).
+(For simplicity we assume there are no marginal operators.)
 The irrelevant interactions scale towards the fixed-point, so at low energies we will assume they can be treated as small perturbations of the action in parentheses.\footnote{This assumption is not always correct --- it can happen that the effects of an irrelevant interaction initially decrease near the fixed-point, but begin to grow when the effect of relevant interactions gets strong. This is called a ``dangerously-irrelevant" operator.}
 
-For concreteness, let us focus on the Ising model. We first set the irrelevant $\l_A$'s to zero so we can later treat them as small perturbations. Let us also tune parameters in the UV so that $\l_h=0$ (in the case of a magnet, we switch off the external field). There is now exactly one relevant parameter turned on, namely $\l_t$. We can associate a mass scale to it given by
+For concreteness, consider the Ising model. Let us set the irrelevant $\l$'s to zero and also tune $\l_h=0$. There is now exactly one nonzero dimensionful quantity, namely $\l_t$. We can associate a mass scale to it given by
 \be
 m_t &= |\l_t|^{1/y_t} = |u_t|^{1/y_t} a^{-1}.
 \ee
-By dimensional analysis, any other dimensionful quantity must be proportional to this mass scale. For example, the mass gap of the theory in the IR must be
+By dimensional analysis, any other dimensionful quantity must be proportional to $m_t$ to the appropriate power. (Remember that we cannot use the UV cutoff anymore because it is not invariant under coarse-graining transformations.) For example, the mass gap of the theory in the IR must be
 \be
 \label{eq:massgapeq}
 m_\mathrm{gap} &\propto m_t \propto |u_t|^{1/y_t} \propto |t|^{1/y_t}.
 \ee
-This determines the critical exponent 
+This determines the critical exponent\footnote{Our calculation of $\nu$ in the 2d Ising model shows that $\De_t=1$ for that theory. The corresponding $\cO_t$ is the mass of a 2d free fermion, which indeed has dimension $1$.}
 \be
 \nu=\frac{1}{y_t} = \frac{1}{d-\De_t}.
 \ee
 
-Note that the constant of proportionality in (\ref{eq:massgapeq}) can depend on the sign of $t$. The reason is that, depending on the sign of $t$, the theory may flow to different theories in the IR (figure~\ref{}). For example, in the Ising model, when $t>0$ the theory flows to a gapped phase where $\Z_2$ is unbroken, whereas when $t<0$, the theory flows to a gapped phase that spontaneously breaks $\Z_2$. No matter where the theory flows, $m_t$ is still the only mass-scale around, so $m_\mathrm{gap}$ must be proportional to $m_t$. However, the actual dynamics that determines $m_\mathrm{gap}$ can be arbitrarily complicated and generally depends in a nontrivial way on the actual IR theory. 
+
+Note that the constant of proportionality in (\ref{eq:massgapeq}) can depend on the sign of $t$. The reason is that, depending on the sign of $t$, the theory may flow to different theories in the IR (figure~\ref{}). For example, in the Ising model, when $t>0$ the theory flows to a gapped phase where $\Z_2$ is unbroken, while when $t<0$, the theory flows to a gapped phase that spontaneously breaks $\Z_2$. No matter where the theory flows, $m_t$ is still the only mass-scale around, so $m_\mathrm{gap}$ must be proportional to it. However, the actual dynamics that determines $m_\mathrm{gap}$ can be arbitrarily complicated and generally depends in a nontrivial way on the actual IR theory. 
 
 \hfill \draftnote{\it End of lecture 6}
 
+\subsubsection{The cosmological constant}
+
+An important observable is the free energy density, defined by
+\be
+f &= - \lim_{V\to \oo}\frac{1}{V} \log Z_{M_V},
+\ee
+where $Z_{M_V}$ is the partition function in a space of volume $V$ (for example a $d$-torus with side lengths $V^{1/d}$). 
+Understanding $f$ involves an extra subtlety that we glossed over in the previous discussion.
+
+An additional operator that is always present in our effective field theory is the unit operator $\mathbf 1$.  This corresponds to a ``cosmological constant" term in the action
+\be
+S &\supset \int d^d x\, \l_\mathbf{1}.
+\ee
+The coefficient $\l_\mathbf{1}$ must be matched to the UV theory just like all the others. It is a ``local counterterm" that is not captured by the effective field theory and encodes the effects of UV degrees of freedom.
+
+Strictly speaking $\l_\mathbf{1}$ is another relevant coupling. However, we have ignored it so far because its only physical effect is to shift the free energy density --- it cancels out of all correlation functions.
+
+For concreteness, consider again the Ising model with no irrelevant couplings and with $\l_h$ set to zero. The only mass scale besides $\l_\mathbf{1}$ is $m_t$. Thus, by dimensional analysis, the free-energy density must take the form
+\be
+\label{eq:freeenergydensity}
+f &= \l_\mathbf{1} + A_{\mathrm{sign}(t)} m_t^{d},
+\ee
+where $A_{\mathrm{sign}(t)}$ is a constant depending only on the sign of $t$ (i.e.\ which IR theory we flow to). We cannot have a more complicated combination of $\l_\mathbf{1}$ and $\l_t$ because shifting $\l_\mathbf{1}$ can only shift $f$. Thus, only the {\it singular\/} part of the free energy density displays homogeneous scaling behavior,
+\be
+\label{eq:singularpart}
+f_\mathrm{singular} & = A_{\mathrm{sign}(t)} m_t^{d} \propto |t|^{d/y_t}.
+\ee
+
+\subsubsection{Other critical exponents}
+
+We are now ready to compute more critical exponents.
+\begin{itemize}
+\item $\a$: The value of $\a$ follows immediately from (\ref{eq:freeenergydensity}, \ref{eq:singularpart}):
+\be
+C \propto \frac{\ptl^2 f}{\ptl t^2} \propto |t|^{d/y_t - 2} = |t|^{-\a}.
+\ee
+Thus,
+\be
+\a = 2-\frac d {y_t} = \frac{d-2 \De_t}{d-\De_t}.
+\ee
+
+\item $\b$: The magnetization is proportional to $\pdr{f}{h}\propto \pdr{f}{\l_h}$. By dimensional analysis, this must be
+\be
+M \propto \pdr{f}{\l_h} \propto m_t^{d-y_h} \propto |t|^\frac{d-y_h}{y_t} = |t|^\b.
+\ee
+Thus,
+\be
+\b &= \frac{d-y_h}{y_t} = \frac{\De_h}{d-\De_t}.
+\ee
+This is a clear case where the constant of proportionality depends on the sign of $t$. When $t$ is positive, the theory is in the $\Z_2$-unbroken phase, so the constant of proportionality is zero. When $t$ is negative, $\Z_2$ is broken and the constant of proportionality is nonzero.
+
+\item $\gamma$: The zero-field susceptibility involves an additional derivative
+\be
+\chi \propto \pdr{{}^2f}{\l_h^2} \propto m_t^{d-2y_h} \propto |t|^{\frac{d-2y_h}{y_t}} = |t|^{-\g}.
+\ee
+Thus
+\be
+\g &= \frac{2y_h - d}{y_t} = \frac{d-2\De_h}{d-\De_t}.
+\ee
+
+\item $\de$: To compute the magnetization at $T=T_c$, we must consider the case $\l_t=0$ and $\l_h\neq 0$. Once again, there is only one mass scale given by
+\be
+m_h &= |\l_h|^{1/y_h} \propto |h|^{1/y_h}.
+\ee
+This time, dimensional analysis gives
+\be
+\pdr{f}{\l_h} \propto m_h^{d-y_h} \propto |h|^\frac{d-y_h}{y_h} = |h|^{1/\de}.
+\ee
+Thus
+\be
+\de &= \frac{y_h}{d-y_h} = \frac{d-\De_h}{\De_h}.
+\ee
+
+\end{itemize}
+
+Because all of these exponents depend only on two quantities $\De_h,\De_t$ (or $y_h,y_t$), they satisfy various ``scaling relations." For example, 
+\be
+\a + 2\b + \g &= 2\nn\\
+\a + \b(1+\de) &= 2.
+\ee
+Historically, these scaling relations played an important role in verifying the above picture of the renormalization group.
+
+\subsection{The Wilson-Fisher theory}
 
 
-%Consider an RG flow between a microscopic theory QFT$_\mathrm{UV}$ with some length cutoff $a$ and some SFT$_\mathrm{IR}$ at long distances. For the present purposes, scale-invariance means that there exists a transformation that rescales space $x\to bx$ and local operators $\cO_i \to b^{\De_i} \cO_i$, such that correlation functions in the SFT$_\mathrm{IR}$ are invariant,
-%\be
-%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= b^{\sum_i \De_i} \<\cO_1(b x_1)\cdots \cO_n(b x_n)\>.
-%\ee
-%The existence of this symmetry means that we can do dimensional analysis where we treat $\cO_i$ as having length-dimension $-\De_i$. 
-%
-%Now consider perturbing the action of the UV theory by some operator $\cO_\mathrm{UV}$ with a small coupling-constant $g$,
-%\be
-%\label{eq:uvdeformation}
-%S_\mathrm{UV} &\to S_\mathrm{UV} + g\int d^d x\, a^{\Delta_\mathrm{UV} - d} \cO_\mathrm{UV}(x).
-%\ee
-%Here we have included factors of the length cutoff to make $g$ dimensionless.\footnote{In the case of a lattice model like the Ising model, all UV operators are dimensionless $\De_\mathrm{UV}=0$, because they're just products of classical dimensionless variables (e.g.\ spins $s_i$). The factor of $a^{-d}$ in (\ref{eq:uvdeformation}) comes from writing the sum over lattice sites $i\in \Z^d$ as an integral over space $\sum_{i\in \Z^d} \to \int \frac{d^d x}{a^d}$.} As long as the coupling $g$ is small, the perturbed theory should still be describable within the IR effective theory, with an action
-%\be
-%S_{\mathrm{SFT}_\mathrm{IR}} + \int d^d x \sum_i c_i(g) a^{\De_i - d} \cO_i(x).
-%\ee
-%Because $\mathrm{SFT}_\mathrm{IR}$ has no intrinsic scale, the only thing we can insert to make the action dimensionless are powers of the UV length cutoff. The dimensionless coefficients $c_i(g)$ are determined by performing a matching computation in the sense of effective field theory --- i.e.\ we compute observables in both theories and systematically match expansions in $a/x$. This matching computation will give $c_i(g)$ that are analytic in $g$,
-%\be
-%c_i(g) &= c_{i0} + c_{i1} g + c_{i2} g^2 + \dots.
-%\ee
-%
-%
-%
-%
-%effective theory QFT$_\mathrm{IR}$ at long distances. For example, QFT$_\mathrm{UV}$ could be a discrete lattice model with lattice spacing $a$ and QFT$_\mathrm{IR}$ could be some continuum theory.
-%
-%In general, given such an RG flow, we have a linear map between local operators in the UV theory and local operators in the IR theory, given by simply reinterpreting the UV insertion in terms of IR degrees of freedom. Specifically, given $\cO_\mathrm{UV}(x)$, we can insert it in the path integral and consider correlation functions where all distances are large compared to the UV cutoff $x\gg a$. Such correlators are described by the IR theory, so we must have an operator equation
-%\be
-%\label{eq:uvirmap}
-%\cO_\mathrm{UV} &= \sum_i d_i \cO_i.
-%\ee
-% Here, $i$ runs over local operators of the IR theory and $d_i$ are coefficients that depend on the details of the RG flow.
-%Equation (\ref{eq:uvirmap}) is valid when all other operators are far from $\cO_\mathrm{UV}$.
-%
-%Now suppose that the IR theory is a scale-invariant QFT (SFT). For the present purposes, scale-invariance means that there exists a transformation that rescales space $x\to bx$ and local operators $\cO_i \to b^{\De_i} \cO_i$, such that correlation functions in the SFT$_\mathrm{IR}$ are invariant,
-%\be
-%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= b^{\sum_i \De_i} \<\cO_1(b x_1)\cdots \cO_n(b x_n)\>.
-%\ee
-%The existence of this symmetry means that we can do dimensional analysis where we treat $\cO_i$ as having length-dimension $-\De_i$.  By dimensional analysis, the map (\ref{eq:uvirmap}) must take the form
-%\be
-%\label{eq:sftreinterpmap}
-%\cO_\mathrm{UV} &= \sum_i c_i a^{\De_i - \De_\mathrm{UV}} \cO_i,
-%\ee
-%where $\De_\mathrm{UV}$ is the mass-dimension of $\cO_\mathrm{UV}$ in the UV theory. The reason $a$ appears is that the IR theory has no intrinsic scale, so the only possibility is the characteristic scale of the UV theory. The $c_i$ are now dimensionless.
-%
-%Finally, consider adding $\cO_\mathrm{UV}$ as a small perturbation to the action of the UV theory
-%\be
-%\label{eq:uvdeformation}
-%S_\mathrm{UV} &\to S_\mathrm{UV} + g\int \frac{d^d x}{a^d}\, a^{\De_\mathrm{UV}}\cO_{UV}(x).
-%\ee
-%Here, we have included factors of the length cutoff to make the action dimensionless.\footnote{In the case of a lattice model like the Ising model, all UV operators are dimensionless $\De_\mathrm{UV}=0$, because they're just products of classical dimensionless variables (e.g.\ spins $s_i$). The factor of $a^{-d}$ in (\ref{eq:uvdeformation}) comes from writing the sum over lattice sites $i\in \Z^d$ as an integral over space $\sum_{i\in \Z^d} \to \int \frac{d^d x}{a^d}$.}  In the IR theory, this corresponds to
-%\be
-%\label{eq:irdeformation}
-%S_\mathrm{IR} &\to S_\mathrm{IR} + g\int d^d x \sum_i c_i a^{\De_i-d} \cO_i(x) \\
-%&= S_\mathrm{IR} + \int d^d x \sum_i \frac{\cO_i(x)}{m_i^{\De_i - d}},
-%\ee
-%where
-%\be
-%m_i=(g c_i)^{\frac{1}{d-\De_i}} a^{-1}
-%\ee
-%is the mass scale associated with the operator $\cO_i$.\footnote{Here, we have glossed over an important subtlety. The operator equation (\ref{eq:sftreinterpmap}) is only valid when insertions of $\cO_\mathrm{UV}$ are far apart. However, when we add $\cO_\mathrm{UV}$ to the action, we are including configurations where UV operators are on top of each other (e.g.\ in perturbation theory). Coincidences between operators result in divergences in the IR theory which must be regularized by introducing a cutoff and adding counterterms. There will be precisely one choice of counterterms that matches the UV perturbation (\ref{eq:uvdeformation}). Consequently, the $c_i$ in (\ref{eq:irdeformation}) depend on the regularization scheme of the IR theory and are not necessarily the same as the $c_i$ in (\ref{eq:sftreinterpmap}). However, dimensional analysis is still correct.} Finally, let us split the sum over IR operators into relevant and irrelevant contributions (for simplicity, we will assume that no IR operators are marginal $\De_i=d$),
-%\be
-%\label{eq:splitiraction}
-%\p{S_\mathrm{IR} + \int d^d x \sum_{\De_i < d} m_i^{d-\De_i} \cO(x)} + \sum_{\De_i > d} \frac{\cO_i(x)}{m_i^{\De_i - d}}.
-%\ee
-%
-%
-%We will be interested in the limit of very small perturbations $g\ll 1$. As $g\to 0$, the irrelevant mass scales increase, and consequently the irrelevant contributions in (\ref{eq:splitiraction}) can be treated as small perturbations to the action in parentheses.
-%
-%The action in parentheses describes an SFT deformed by a finite number of relevant operators.\footnote{In a CFT, we will prove that the number of relevant operators is finite in section~\ref{}.} For simplicity, consider the case where 
-%
-%
-%The significance of the mass scales $m_i$ depends on whether $\cO_i$ is relevant, marginal, or irrelevant, i.e.\ whether $d-\De_i$ is positive, zero, or negative. 
 
 \begin{appendix}
 \end{appendix}
