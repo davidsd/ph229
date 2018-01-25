@@ -1229,7 +1229,7 @@ An additional operator that is always present in our effective field theory is t
 \be
 S &\supset \int d^d x\, \l_\mathbf{1}.
 \ee
-The coefficient $\l_\mathbf{1}$ must be matched to the UV theory just like all the others. It is a ``local counterterm" that is not captured by the effective field theory and encodes the effects of UV degrees of freedom.
+The coefficient $\l_\mathbf{1}$ must be matched to the UV theory just like all the others. It encodes contributions to the free energy from UV degrees of freedom not included in the IR effective field theory.
 
 Strictly speaking $\l_\mathbf{1}$ is another relevant coupling. However, we have ignored it so far because its only physical effect is to shift the free energy density --- it cancels out of all correlation functions.
 
@@ -1267,7 +1267,7 @@ Thus,
 \ee
 This is a clear case where the constant of proportionality depends on the sign of $t$. When $t$ is positive, the theory is in the $\Z_2$-unbroken phase, so the constant of proportionality is zero. When $t$ is negative, $\Z_2$ is broken and the constant of proportionality is nonzero.
 
-\item $\gamma$: The zero-field susceptibility involves an additional derivative
+\item $\gamma$: The zero-field susceptibility involves an additional derivative with respect to $\l_h$,
 \be
 \chi \propto \pdr{{}^2f}{\l_h^2} \propto m_t^{d-2y_h} \propto |t|^{\frac{d-2y_h}{y_t}} = |t|^{-\g}.
 \ee
@@ -1296,11 +1296,114 @@ Because all of these exponents depend only on two quantities $\De_h,\De_t$ (or $
 \a + 2\b + \g &= 2\nn\\
 \a + \b(1+\de) &= 2.
 \ee
-Historically, these scaling relations played an important role in verifying the above picture of the renormalization group.
+Historically, these scaling relations played an important role in verifying the above picture of the renormalization group. For us, the important point is that scaling behavior follows from the underlying assumption of having a fixed-point of the renormalization group, and the various critical exponents are determined in terms of the more fundamental operator dimensions $\De_A$.
 
-\subsection{The Wilson-Fisher theory}
+\subsection{The Wilson-Fisher theory and the $\e$-expansion}
 
+As we discussed in section~\ref{}, the 3d Ising model arises as the long-distance limit of $\f^4$-theory in 3-dimensions (suitably tuned to reach a critical point). Unfortunately the corresponding fixed-point is strongly-coupled, so it is difficult to explore the above ideas or do calculations.
 
+However, we can obtain a related, weakly-coupled fixed-point by instead considering $\f^4$-theory in $(4-\e)$-dimensions with $\e\ll 1$. This is the Wilson-Fisher (WF) theory. Observables in the WF theory can be calculated in a systematic perturbative expansion in $\e$. In principle, the 3d Ising model is obtained by resumming the $\e$-expansion and taking $\e\to 1$.
+
+There are several issues with this idea, such as
+\begin{itemize}
+\item Does it even make sense to have a QFT in non-integer-dimensions?
+\item Does it matter that the theory is necessarily non-unitary if $d$ is not an integer (\arXiv{})?
+\item The perturbative expansion in $\e$ is generally only asymptotic. Can one compute all the nonperturbative corrections needed to go from an asymptotic expansion in $\e$ to an actual function of $\e$?
+\end{itemize}
+(I'm sure you can think of more.) However, none of these issues will prevent us from doing perturbation theory. Furthermore, amazingly, if we simply set $\e=1$ in the resulting perturbative series, truncated to low orders, we find results that aren't terrible! For these reasons, the $\e$-expansion has been one of the most popular tools for studying the 3d Ising model, even though it is on conceptually shaky ground. For us, it is useful because it illustrates many of the ideas of scaling and renormalization in a perturbative setting.
+
+So let us study $\f^4$-theory in $d$-dimensions. The theory has length-cutoff $a$ and action
+\be
+\label{eq:WFaction}
+S &= \int \frac{d^d x}{a^d} \p{\frac 1 2 a^2 \ptl_\mu \f \ptl^\mu \f + g_1 \f + \frac 1 2 g_2 \f^2 + \frac 1 {4!} g_4 \f^4 }.
+\ee
+(A cubic term can be removed by a field-redefinition $\f\to \f+c$.)
+Here, we are departing from the usual textbook conventions and assuming that $\f,g_i$ are classically dimensionless. The textbook conventions will follow by analyzing RG transformations near the Gaussian fixed point $g_i=0$. However, there will also be another fixed-point and this starting point is more democratic between the two.
+
+To find scaling dimensions at the Gaussian fixed-point, we should consider infinitesimal $g_i$, so that loop effects are highly suppressed. Thus, we can treat the interactions classically and simply find a coarse-graining transformation that leaves (\ref{eq:WFaction}) invariant. This is
+\be
+a &\to ba, \nn\\
+\f &\to b^{\frac {d-2}{2}} \f, \nn\\
+g_1 &\to b^{\frac{d}{2}+1} g_1, \nn\\
+g_2 &\to b^2 g_2, \nn\\
+g_4 &\to b^{4-d} g_4.
+\ee
+It follows that
+\be
+y_1 &= \frac{d}{2} + 1  \ \ > 0\qquad(\textrm{relevant}) \nn\\
+y_2 &= 2\ \ \ \ \  \ \ \ > 0 \qquad(\textrm{relevant}) \nn\\
+y_4 &= 4-d \begin{cases}
+>0 & (d<4)\quad(\textrm{relevant}) \\
+=0 & (d=4)\quad(\textrm{marginal}) \\
+<0 & (d>4)\quad(\textrm{irrelevant}).
+\end{cases}
+\ee
+Thus, when $d<4$, the quartic coupling is relevant and causes the theory to flow away from the Gaussian fixed-point. When $d=4$, the quartic coupling is marginal. A more careful calculation (done in any QFT textbook) shows that in $d=4$, $g_4$ flows logarithmically to zero in the infrared (we say $g_4$ is ``marginally irrelevant"). Finally, when $d>4$, the quartic coupling is irrelevant and the theory flows back to the Gaussian fixed-point in the IR. It turns out that the Ising model in $d>4$ is not described by the Gaussian fixed-point, so we will focus on the case $d<4$.
+
+To understand what happens further from the Gaussian fixed-point, we need the $\b$-function. To quadratic order in the coupling-constants, this is given by
+\be
+\label{eq:betafns}
+a \frac{dg_1}{da} &= -\b_1(g) = \frac{d+2}{2} g_1 - \frac{g_1 g_2}{d-2} + \dots \nn\\
+a \frac{dg_2}{da} &= -\b_2(g) = 2g_2 - S_d g_1^2 - \frac{g_2^2}{d-2} - \frac{g_2 g_4}{2(d-2)^2 S_d} - \frac {g_4^2} {6(d-2)^3 S_d^2} + \dots \nn\\
+a \frac{dg_4}{da} &= -\b_4(g) = (4-d) g_4 - 3 S_d g_2^2 - \frac{4 g_2 g_4}{d-2} - \frac{3 g_4^2}{2(d-2)^2 S_d} + \dots,
+\ee
+where
+\be
+S_d &= \frac{2\pi^{d/2}}{\Gamma(d/2)}
+\ee
+is the volume of the unit sphere in $d$-dimensions.\footnote{$\b$-functions themselves are not physical observables --- they depend on a choice of {\it scheme\/}, which consists of a regulator and a definition of coupling constants. The $\b$-function here comes from using conformal perturbation theory with a cutoff regulator. We will derive it later in the course. The general formula in this scheme is
+\be
+a\frac{ dg_A}{da} &= (d-\De_A)g_A - \frac{S_d}{2} \sum_{B,C}f_{BCA} g_{B} g_{A},
+\ee
+where $f_{BCA}$ is the OPE coefficient in $\cO_B \cO_C \sim f_{BCA} \cO_A$ and $\De_A$ is the scaling dimension of $\cO_A$ at the fixed-point we are perturbing around. Here we are doing conformal perturbation theory around the Gaussian fixed-point.
+}
+Let us make some observations. Firstly, note that $g_1=g_2=g_4=0$ is indeed a fixed-point of these equations. The $\b$-functions above are good close to this fixed-point. Note also that the linear terms follow from scaling at the Gaussian fixed-point, i.e.\ the linear term in $-\b_i$ is $y_i g_i$.
+
+Note that when $\e=4-d$ is small, the linear term in $\b_4$ is small, and it's possible for it to be balanced against the quadratic terms while still staying within the regime of validity of perturbation theory. This gives another fixed-point:
+\be
+g_{1*}=0,\quad g_{2*} = 0,\quad g_{4*} = \frac{16\pi^2}{3} \e + O(\e^2)
+\ee
+This is the fixed-point of the Wilson-Fisher theory.
+The above approximation for $g_*$ is well-controlled because the fixed-point occurs at small values of the couplings, where we can trust the $\b$-functions (\ref{eq:betafns}). An RG flow diagram is shown in figure~\ref{}.
+
+Linearizing the $\b$-functions around the Wilson-Fisher point, we find
+\be
+a\frac{dg_1}{da} &= \p{\frac{6-\e}{2} + O(\e^2)} g_1 + \dots \nn\\
+a\frac{dg_2}{da} &= \p{2-\frac{\e}{3} + O(\e^2)} g_2 + \dots \nn\\
+a \frac{dg_4}{da} &= -\e\p{g_4-\frac{16\pi^2}{3}\e+O(\e^2)}+\dots
+\ee
+Thus, at the Wilson-Fisher point we have
+\be
+y_1 = \frac{6-\e}{2}+O(\e^2),\quad y_2=2-\frac \e 3+O(\e^2),\quad y_4 = -\e+O(\e^2) \nn\\
+\De_{\phi} = 1-\frac \e 2+O(\e^2),\quad \De_{\phi^2} = 2-\frac{2\e}{3} + O(\e^2),\quad \De_{\phi^4} = 4+O(\e^2).
+\ee
+Note in particular that while $\f^4$ is relevant at the Gaussian fixed-point, it becomes irrelevant at the Wilson-Fisher point. Thus the Wilson-Fisher point has two relevant parameters, which is consistent with experimental observations of the Ising universality class. Plugging in $\e=1$, we find $\De_\f\sim 0.5$ and $\De_{\f^2}\sim 1.33$ in 3d, which is not too far from the correct answers $\De_\f\sim 0.518, \De_{\f^2}\sim 1.412$. This is nice, but not very rigorous.
+
+Finally, let us discuss scaling variables and mass scales in this context. Consider the flow between the Gaussian point and the Wilson-Fisher point, where $g_1=g_2=0$ and $g_4=g(a)$ is a function of $a$. The $\b$-function equation is (ignoring cubic and higher terms in $g_4$)
+\be
+a \frac{dg}{da} = \e g (1-g/g_*),
+\ee
+where $g_* = \frac{16\pi^2}{3} \e$. The solution is
+\be
+g(a) &= \frac{1}{\frac 1 {g_*} + \p{\frac{a_0}{a}}^\e}
+\ee
+for some dimensionful integration constant $a_0$. When $a$ is small, this behaves like $g(a)\sim a^{\e} = a^{y_4^\mathrm{Gauss}}$, as expected. We can define an RG-invariant dimensionful coupling associated with the Gaussian fixed-point by
+\be
+\l_4^\mathrm{Gauss} = \left. a^{-y_4^\mathrm{Gauss}} g(a) \right|_{a\to 0} = \frac{1}{a_0^\e}.
+\ee
+Thus, $a_0=|\l_4^\mathrm{Gauss}|^{-1/\e}$ represents the UV distance scale at which the flow starts.
+
+Meanwhile, when $a$ is large, the solution behaves as $g(a)-g_* \sim a^{-\e} = a^{y_4^\mathrm{WF}}$. The RG-invariant dimensionful coupling associated to the Wilson-Fisher point is given by
+\be
+\l_4^\mathrm{WF} = \left. a^{-y_4^\mathrm{WF}} (g(a)-g_*)\right|_{a\to\oo} = -g_*^2 a_0^{\e}.
+\ee
+%The associated length scale is
+%\be
+%|\l_4^\mathrm{WF}|^{1/\e} &=  g_*^{2/\e} a_0.
+%\ee
+%When $\e$ is small, this is exponentially smaller than $a_0$, which means that the effects of the irrelevant operator $\f^4$ are highly suppressed at long distances compared to other effects associated with the UV scale. In more generic theories, we expect the distances/masses associated with dimensionful couplings in the UV and IR to be comparable.
+
+\subsection{$O(N)$-models and the large-$N$ expansion}
 
 \begin{appendix}
 \end{appendix}
