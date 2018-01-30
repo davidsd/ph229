@@ -78,6 +78,15 @@
 \newcommand\draftnote[1]{{\color{blue} #1}}
 \newcommand\C{\mathbb{C}}
 
+\newcommand\stoplecture{
+\stepcounter{LectureCounter}
+\hfill \draftnote{\it End of lecture \theLectureCounter}
+}
+
+\newcounter{LectureCounter}
+
+
+
 \newtheorem{exercise}{Exercise}[section]
 \let\Exercisefont\itshape
 \def\Exerciseheadfont{\bfseries}
@@ -130,7 +139,7 @@ Notes for Physics 229, 2017-2018. These notes are in progress. They were last up
 
 \subsection*{Resources}
 
-These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/}, and John McGreevy's lectures on QFT \cite{}.
+These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/}, Slava Rychkov's EPFL lectures on CFT \cite{}, and John McGreevy's lectures on QFT \cite{}.
 
 \subsection{QFT and emergent symmetry}
 
@@ -343,7 +352,7 @@ Water and other liquid-vapor transitions have precisely the same critical expone
 \end{claim}
 We say that liquid-vapor transitions are in the same ``universality class" as uni-axial magnets.
 
-\hfill \draftnote{\it End of lecture 1}
+\stoplecture
 
 \subsubsection{The Ising model}
 
@@ -521,7 +530,7 @@ In quantum mechanical language, the state with the largest eigenvalue of $\hat T
 m_\mathrm{gap} &\equiv - \frac 1 {\Delta \tau} \log (\l_-/\l_+).
 \ee
 
-\hfill \draftnote{\it End of lecture 2}
+\stoplecture
 
 We can also use the transfer matrix to compute correlation functions. For example, consider the two-point function $\<s_{i_1} s_{i_2}\>_{\Z_M}$ where the subscript $M$ indicates that we are on a periodic lattice with length $M$. Suppose $i_1>i_2$. We have
 \be
@@ -704,7 +713,7 @@ Finally, in the limit $\b\to \oo$, the factor $e^{-\b \hat H}$ projects onto the
 \ee
 This is the continuum analog of (\ref{eq:fulllattice}).
 
-\hfill \draftnote{\it End of lecture 3}
+\stoplecture
 
 \subsection{The 2d Ising model}
 
@@ -891,8 +900,7 @@ In the notation (\ref{eq:transitionmatrixelement}), we have simply inserted a co
 
 Although we have given explicit prescriptions in the case of a continuum theory, all of these axioms have analogs in the case of the 2d Ising model. It is not hard to imagine how the continuum axioms might arise in the continuum limit of the Ising model, at least in the case where the ``manifolds" $M,N,\dots$ are regions of flat space.
 
-
-\hfill \draftnote{\it End of lecture 4}
+\stoplecture
 
 \subsection{Quantization in continuum QFT}
 
@@ -1058,7 +1066,7 @@ To summarize, in the continuum limit, at the critical coupling, and at long dist
 
 The fact that the critical point of the 1+1d quantum TFIM (and consequently other theories in the same universality class, like the 2d Ising lattice model) is equivalent to a free theory is very special to 2-dimensions. Our derivation relied in a fundamental way on the Jordan-Wigner transformation and does not work, for example in 2+1d.\footnote{There are newly-discovered versions of the Jordan-Wigner transformation in higher dimensions (\arXiv{1711.00515} --- one of your classmates is a coauthor!), but they do not relate the 2+1d TFIM to a free theory.}
 
-\hfill\draftnote{\it End of lecture 5}
+\stoplecture
 
 \section{CFTs in perturbation theory}
 
@@ -1197,11 +1205,11 @@ S &= \p{S_0 + \int d^d x \sum_{\De_A < d} \l_A \cO_A(x)} + \int d^d x \sum_{\De_
 (For simplicity we assume there are no marginal operators.)
 The irrelevant interactions scale towards the fixed-point, so at low energies we will assume they can be treated as small perturbations of the action in parentheses.\footnote{This assumption is not always correct --- it can happen that the effects of an irrelevant interaction initially decrease near the fixed-point, but begin to grow when the effect of relevant interactions gets strong. This is called a ``dangerously-irrelevant" operator.}
 
-For concreteness, consider the Ising model. Let us set the irrelevant $\l$'s to zero and also tune $\l_h=0$. There is now exactly one nonzero dimensionful quantity, namely $\l_t$. We can associate a mass scale to it given by
+For concreteness, consider the Ising model. Let us set the irrelevant $\l$'s to zero and tune $\l_h=0$ as well. There is now exactly one nonzero RG-invariant dimensionful quantity, namely $\l_t$. We can associate a mass scale to it given by
 \be
 m_t &= |\l_t|^{1/y_t} = |u_t|^{1/y_t} a^{-1}.
 \ee
-By dimensional analysis, any other dimensionful quantity must be proportional to $m_t$ to the appropriate power. (Remember that we cannot use the UV cutoff anymore because it is not invariant under coarse-graining transformations.) For example, the mass gap of the theory in the IR must be
+By dimensional analysis, any other dimensionful quantity must be proportional to $m_t$ to the appropriate power. (Remember that we cannot use the UV cutoff anymore because it is not RG-invariant.) For example, the mass gap of the theory in the IR must be
 \be
 \label{eq:massgapeq}
 m_\mathrm{gap} &\propto m_t \propto |u_t|^{1/y_t} \propto |t|^{1/y_t}.
@@ -1214,7 +1222,7 @@ This determines the critical exponent\footnote{Our calculation of $\nu$ in the 2
 
 Note that the constant of proportionality in (\ref{eq:massgapeq}) can depend on the sign of $t$. The reason is that, depending on the sign of $t$, the theory may flow to different theories in the IR (figure~\ref{}). For example, in the Ising model, when $t>0$ the theory flows to a gapped phase where $\Z_2$ is unbroken, while when $t<0$, the theory flows to a gapped phase that spontaneously breaks $\Z_2$. No matter where the theory flows, $m_t$ is still the only mass-scale around, so $m_\mathrm{gap}$ must be proportional to it. However, the actual dynamics that determines $m_\mathrm{gap}$ can be arbitrarily complicated and generally depends in a nontrivial way on the actual IR theory. 
 
-\hfill \draftnote{\it End of lecture 6}
+\stoplecture
 
 \subsubsection{The cosmological constant}
 
@@ -1318,9 +1326,9 @@ So let us study $\f^4$-theory in $d$-dimensions. The theory has length-cutoff $a
 S &= \int \frac{d^d x}{a^d} \p{\frac 1 2 a^2 \ptl_\mu \f \ptl^\mu \f + g_1 \f + \frac 1 2 g_2 \f^2 + \frac 1 {4!} g_4 \f^4 }.
 \ee
 (A cubic term can be removed by a field-redefinition $\f\to \f+c$.)
-Here, we are departing from the usual textbook conventions and assuming that $\f,g_i$ are classically dimensionless. The textbook conventions will follow by analyzing RG transformations near the Gaussian fixed point $g_i=0$. However, there will also be another fixed-point and this starting point is more democratic between the two.
+Here, we are departing from the usual textbook conventions and assuming that $\f,g_i$ are classically dimensionless. The textbook conventions will follow by analyzing RG transformations near the Gaussian fixed point $g_i=0$. However, there will also be another fixed-point and our starting point is more democratic between the two.
 
-To find scaling dimensions at the Gaussian fixed-point, we should consider infinitesimal $g_i$, so that loop effects are highly suppressed. Thus, we can treat the interactions classically and simply find a coarse-graining transformation that leaves (\ref{eq:WFaction}) invariant. This is
+To find scaling dimensions at the Gaussian fixed-point, we should consider infinitesimal $g_i$, so that loop effects are highly suppressed. Thus, we can treat the interactions classically and simply find a coarse-graining transformation that leaves (\ref{eq:WFaction}) invariant. This is\footnote{It may look unfamiliar that coupling constants like $g_2$ depend on RG scale. This is because they differ from the usual textbook conventions by explicit powers of $a$. We can define an RG-invariant dimensionful coupling by $\l_2^\mathrm{Gaussian} = a^{-2} g_2$. This is what is usually denoted as $m^2$ in textbooks.}
 \be
 a &\to ba, \nn\\
 \f &\to b^{\frac {d-2}{2}} \f, \nn\\
@@ -1359,7 +1367,7 @@ where $f_{BCA}$ is the OPE coefficient in $\cO_B \cO_C \sim f_{BCA} \cO_A$ and $
 }
 Let us make some observations. Firstly, note that $g_1=g_2=g_4=0$ is indeed a fixed-point of these equations. The $\b$-functions above are good close to this fixed-point. Note also that the linear terms follow from scaling at the Gaussian fixed-point, i.e.\ the linear term in $-\b_i$ is $y_i g_i$.
 
-Note that when $\e=4-d$ is small, the linear term in $\b_4$ is small, and it's possible for it to be balanced against the quadratic terms while still staying within the regime of validity of perturbation theory. This gives another fixed-point:
+When $\e=4-d$ is small, the linear term in $\b_4$ is small, and it's possible for it to be balanced against the quadratic terms while still staying within the regime of validity of perturbation theory. This gives another fixed-point:
 \be
 g_{1*}=0,\quad g_{2*} = 0,\quad g_{4*} = \frac{16\pi^2}{3} \e + O(\e^2)
 \ee
@@ -1368,42 +1376,222 @@ The above approximation for $g_*$ is well-controlled because the fixed-point occ
 
 Linearizing the $\b$-functions around the Wilson-Fisher point, we find
 \be
-a\frac{dg_1}{da} &= \p{\frac{6-\e}{2} + O(\e^2)} g_1 + \dots \nn\\
-a\frac{dg_2}{da} &= \p{2-\frac{\e}{3} + O(\e^2)} g_2 + \dots \nn\\
-a \frac{dg_4}{da} &= -\e\p{g_4-\frac{16\pi^2}{3}\e+O(\e^2)}+\dots
+a\frac{dg_1}{da} &= \p{3-\frac{\e}{2}} g_1 + \dots \nn\\
+a\frac{dg_2}{da} &= \p{2-\frac{\e}{3}} g_2 + \dots \nn\\
+a \frac{dg_4}{da} &= -\e\p{g_4-g_{4*}}+\dots,
 \ee
+where we have dropped terms of higher order in the couplings and in $\e$.
 Thus, at the Wilson-Fisher point we have
 \be
-y_1 = \frac{6-\e}{2}+O(\e^2),\quad y_2=2-\frac \e 3+O(\e^2),\quad y_4 = -\e+O(\e^2) \nn\\
+y_1 = 3-\frac{\e}{2}+O(\e^2),\quad y_2=2-\frac \e 3+O(\e^2),\quad y_4 = -\e+O(\e^2) \nn\\
 \De_{\phi} = 1-\frac \e 2+O(\e^2),\quad \De_{\phi^2} = 2-\frac{2\e}{3} + O(\e^2),\quad \De_{\phi^4} = 4+O(\e^2).
 \ee
 Note in particular that while $\f^4$ is relevant at the Gaussian fixed-point, it becomes irrelevant at the Wilson-Fisher point. Thus the Wilson-Fisher point has two relevant parameters, which is consistent with experimental observations of the Ising universality class. Plugging in $\e=1$, we find $\De_\f\sim 0.5$ and $\De_{\f^2}\sim 1.33$ in 3d, which is not too far from the correct answers $\De_\f\sim 0.518, \De_{\f^2}\sim 1.412$. This is nice, but not very rigorous.
 
-Finally, let us discuss scaling variables and mass scales in this context. Consider the flow between the Gaussian point and the Wilson-Fisher point, where $g_1=g_2=0$ and $g_4=g(a)$ is a function of $a$. The $\b$-function equation is (ignoring cubic and higher terms in $g_4$)
+Finally, let us discuss scaling variables and dimensionful couplings in this context. Consider the flow between the Gaussian point and the Wilson-Fisher point, where $g_1=g_2=0$ and $g_4=g(a)$ is a function of $a$. The $\b$-function equation is (ignoring cubic and higher terms in $g_4$)
 \be
 a \frac{dg}{da} = \e g (1-g/g_*),
 \ee
-where $g_* = \frac{16\pi^2}{3} \e$. The solution is
+which has solution
 \be
+\label{eq:wfflowsoln}
 g(a) &= \frac{1}{\frac 1 {g_*} + \p{\frac{a_0}{a}}^\e}
 \ee
-for some dimensionful integration constant $a_0$. When $a$ is small, this behaves like $g(a)\sim a^{\e} = a^{y_4^\mathrm{Gauss}}$, as expected. We can define an RG-invariant dimensionful coupling associated with the Gaussian fixed-point by
+with some dimensionful integration constant $a_0$.
+
+When $a$ is small, (\ref{eq:wfflowsoln}) behaves like $g(a)\sim a^{\e} = a^{y_4^\mathrm{Gauss}}$, as expected. We can define an RG-invariant dimensionful coupling associated with the Gaussian fixed-point by
 \be
 \l_4^\mathrm{Gauss} = \left. a^{-y_4^\mathrm{Gauss}} g(a) \right|_{a\to 0} = \frac{1}{a_0^\e}.
 \ee
-Thus, $a_0=|\l_4^\mathrm{Gauss}|^{-1/\e}$ represents the UV distance scale at which the flow starts.
+Thus, $|\l_4^\mathrm{Gauss}|^{-1/\e}=a_0$ represents the distance scale at which the flow starts in the UV.
 
-Meanwhile, when $a$ is large, the solution behaves as $g(a)-g_* \sim a^{-\e} = a^{y_4^\mathrm{WF}}$. The RG-invariant dimensionful coupling associated to the Wilson-Fisher point is given by
+When $a$ is large, the solution behaves as $g(a)-g_* \sim a^{-\e} = a^{y_4^\mathrm{WF}}$. The RG-invariant dimensionful coupling associated to the Wilson-Fisher point is then given by
 \be
 \l_4^\mathrm{WF} = \left. a^{-y_4^\mathrm{WF}} (g(a)-g_*)\right|_{a\to\oo} = -g_*^2 a_0^{\e}.
 \ee
-%The associated length scale is
-%\be
-%|\l_4^\mathrm{WF}|^{1/\e} &=  g_*^{2/\e} a_0.
-%\ee
-%When $\e$ is small, this is exponentially smaller than $a_0$, which means that the effects of the irrelevant operator $\f^4$ are highly suppressed at long distances compared to other effects associated with the UV scale. In more generic theories, we expect the distances/masses associated with dimensionful couplings in the UV and IR to be comparable.
+From the point of an IR observer looking upwards in energy from the WF point, $\l_4$ encodes the leading effect of UV physics.
+Note that $\l_4^\mathrm{WF}$ is suppressed by powers of the coupling compared to $1/\l_4^\mathrm{Gauss}$. This parametric separation comes from the fact that we are considering a weakly coupled flow that moves slowly as we descend in energy. In generic strongly-coupled theories, we expect scales of relevant operators in the UV and scales of irrelevant operators in the IR to be related by $O(1)$ constants.
 
-\subsection{$O(N)$-models and the large-$N$ expansion}
+\stoplecture
+
+\subsection{The $O(N)$-model and the large-$N$ expansion}
+
+
+
+The Wilson-Fisher theory is one way to replace the Ising model with a related theory that has a small parameter. Another modification that is physically interesting in its own right is a generalization of the Ising model to include $N$ scalars with an $O(N)$ symmetry. The resulting theory, called the $O(N)$-model, has action
+\be
+\label{eq:onmodel}
+S &= \int d^d x \p{\frac 1 2 \sum_{i=1}^N \ptl_\mu \f_i\ptl^\mu \f_i + \frac 1 2 m^2 \sum_{i=1}^N \f_i^2 + u \p{\sum_{i=1}^N \f_i^2}^2}
+\ee
+In this lecture, we will return to textbook conventions where we associate Gaussian scaling dimensions to the coupling constants and fields. Specifically $m^2$ has mass-dimension $2$ and $u$ has mass-dimension $4-d$.
+
+Note that the $O(1)$ model is the Ising model. As discussed in the introduction, the $O(2)$ model describes XY magnets, and the $O(3)$ model describes Heisenberg magnets (among many other systems).
+
+Here are some properties of the $O(N)$-model:
+\begin{itemize}
+\item It has a Gaussian fixed-point at $u=0$, $m^2=0$. At the Gaussian fixed-point, $\f_i$ has scaling dimension $\De_{\f_i} = \frac{d-2}{2}$, and the dimensions of other operators are determined by naive dimensional analysis. For example, $\De_{\f^2} = d-2$.
+
+\item In $d<4$, the theory has another fixed-point generalizing the Wilson-Fisher fixed-point in the case $N=1$. When $d=4-\e$ with $\e\ll 1$, this fixed-point can be studied in an expansion in $\e$ for any $N$. For example, the critical coupling occurs at
+\be
+u_* &= \frac{2\pi^2 \e}{N+8} + O(\e^2).
+\ee
+
+\item At large $N\gg 1$, the theory can be solved in any $d$ in an expansion in $1/N$. In particular, it can be solved directly in $d=3$. One can then try to recover information about the cases $N=1,2,3$ by extrapolating to small-$N$.  This extrapolation is sometimes successful quantitatively, but it can also help build further intuition about the spectrum of the small-$N$ theories.\footnote{Another important feature of the $O(N)$ models is that at large-$N$, they have a known holographic dual in AdS$_4$. The dual theory is due to Vasiliev and the duality was discovered by Klebanov and Polyakov \arXiv{}.}
+
+\end{itemize}
+
+In the rest of this lecture we will set $d=3$ and study the $O(N)$ model in an expansion in $1/N$.
+
+The large-$N$ theory is solvable because it is in some sense close to the Gaussian theory. In particular, all $O(N)$-non-singlet operators have scaling dimensions equal to their dimensions at the Gaussian fixed point, plus corrections of $O(1/N)$. For example
+\be
+\De_{\f_i} &= \frac 1 2 + O(1/N).
+\ee
+However, $O(N)$ singlet operators can have dimensions very different form their Gaussian values. For example
+\be
+\De_{\f^2} = 2 + O(1/N),
+\ee
+whereas $\De_{\f^2}^\mathrm{Gaussian} = 1$. (Here, $\f^2=\sum_i \f_i \f_i$.)
+
+It is instructive to see how the dimension of $\f^2$ changes during the flow from the Gaussian point to the nontrivial critical point. One way is to study the two-point function
+\be
+F(x) &= \<\f^2(x) \f^2(0)\>,
+\ee
+as a function of $x$ at nonzero coupling $u$. We would like to show that
+\be
+\label{eq:conditionsonFx}
+F(x) &\sim \frac{1}{|x|^2} \qquad (x \to 0), \nn\\
+F(x) &\sim \frac{1}{|x|^4} \qquad (x \to \oo).
+\ee
+Here, the $x\to 0$ limit probes the UV where the theory is described by the Gaussian fixed-point, while $x\to \oo$ probes the IR where the theory is described by the nontrivial critical point.
+
+We will compute $F(x)$ by summing Feynman diagrams, and this is much easier in momentum space. In momentum space, the conditions (\ref{eq:conditionsonFx}) become
+\be
+\label{eq:expectedscalingmomentum}
+F(p) &\sim \frac{1}{|p|} \qquad (p\to \oo), \nn\\
+F(p) & \sim |p| \qquad (p\to 0),
+\ee
+where
+\be
+F(p) &= \int d^3 x\, e^{ip\.x} F(x).
+\ee
+The reason we can use Feynman diagrams to describe the large-$N$ theory is that only a small subclass of diagrams will be important in the large-$N$ limit.
+
+In general to reach the critical point, we must tune $m^2$. In the scheme we will use, the critical value is $m^2=0$, so let us set $m^2=0$ from the beginning. The propagator is
+\be
+\<\f_i(x) \f_j(0)\> &= \de_{ij} G(x),
+\ee
+where
+\be
+G(p) = \frac{1}{p^2} \quad\implies\quad
+G(x) = \frac{1}{4\pi |x|}.
+\ee
+
+The simplest contribution to $F(x)$ comes from a bubble diagram
+\be
+\<\f^2(x)\f^2(0)\> &\supset 2N G(x)^2.
+\ee
+The factor $N$ comes from summing over $i$ indices for the two propagators. These must be equal because of the contractions in $\f^2$, so we get a single sum over $N$. In Fourier-space, the bubble diagram becomes
+\be
+2N G(x)^2 = \frac{2N}{16\pi^2 |x|^2} &\to \frac{1}{2} \frac{N}{2|p|}.
+\ee
+Another contribution to $F(x)$ comes from a pair of bubbles connected by an interaction vertex. This gives
+\be
+\frac 1 2 u \p{\frac{N}{2|p|}}^2.
+\ee
+Similarly, a chain of $k$ bubbles contributes
+\be
+\frac 1 2 u^{k-1} \p{\frac{N}{2|p|}}^k.
+\ee
+
+We will be interested in a limit where $N\to \oo$ with the product $uN$ held fixed. In this limit, chains of bubbles are the only diagrams that contribute. Any other diagram we might draw requires reconnecting different $O(N)$ indices in a way that lowers the resulting powers of $N$. Thus, in this limit, we simply have to sum bubble diagrams, which form a geometric series
+\be
+F(p) &= \frac 1 2 \p{\frac{N}{2|p|} + u \p{\frac{N}{2|p|}}^2 + u^2 \p{\frac{N}{2|p|}}^3 + \dots} \nn\\
+&= \frac 1 2 \frac{N}{2|p|} \frac{1}{1-\frac{uN}{2|p|}}.
+\ee
+
+Let us check that this satisfies the expected conditions (\ref{eq:expectedscalingmomentum}). When $p$ is large, the result is indeed the same as in the Gaussian theory. When $p$ is small, we have
+\be
+\label{eq:fatsmallp}
+F(p) &\approx -\frac 1 2 - \frac{|p|}{u^2 N} + O(p^2) \qquad (p\textrm{ small}).
+\ee
+At first, this looks like the wrong result. However, note that the Fourier transform of a constant is $\de(x)$, which is zero at nonzero separation $x\neq 0$. We call $\de(x)$ a ``contact term" because it is only nonzero when the points in the two-point function coincide. In general, contact terms are not captured by a low-energy effective theory.\footnote{An exception is when they are fixed by Ward identities, as we will discuss later.} Their coefficients are determined by UV physics, and we should not expect to be able to predict them from knowledge of IR scaling-dimensions alone.
+
+The next term in (\ref{eq:fatsmallp}) is non-analytic in $p$, so its Fourier-transform is nonzero at separated points. Indeed, it has the form we expect, so that $F(x)$ behaves like $\frac{1}{|x|^4}$ for large $x$.
+
+For higher-order computations, we can write a set of effective Feynman rules that summarize the result we found. We have a $\f_i\f_j$ propagator of the usual form $\frac{\de_{ij}}{p^2}$, and a dotted line that represents a geometric series of bubble diagrams that behaves like $|p|$.
+
+\subsubsection{The Hubbard-Stratonovich trick}
+
+The Hubbard-Stratonovich trick is a more sophisticated approach that lets us re-derive the above results and systematically proceed to higher orders in $1/N$. Let us start with the partition function
+\be
+\label{eq:originalpartition}
+Z &= \int D\f_i e^{-\int d^3 x \p{\frac 1 2 \ptl_\mu \f\. \ptl^\mu \f + u(\f\.\f)^2}}
+\ee
+We can simplify the theory by introducing an auxiliary field $\s$
+\be
+\label{eq:hsaction}
+&= \int D\f_i D\s e^{-\int d^3 x \p{\frac 1 2 \ptl_\mu \f\. \ptl^\mu \f + \frac 1 2 i \s \f\.\f + \frac{\s^2}{16 u}}}.
+\ee
+The $\s$ integral is Gaussian, so it can be performed by completing the square
+\be
+\frac{1}{16 u} (\s + 4i u \f\.\f)^2 + u(\f\.\f)^2
+\ee
+and dropping the quadratic term in $\s$. This gives back the original action (\ref{eq:originalpartition}).
+
+The equation of motion for $\s$ is
+\be
+\label{eq:eomforsigma}
+\s &= - 4iu\, \f\.\f,
+\ee
+so $\s$ is like $\f\.\f$. To take the IR limit of $F(p)$, we looked at small $p$. However, we could have equivalently looked at large $u$. Note that at large-$u$, the two-point function $\<\s(x) \s(0)\>$ becomes $u$-independent (unlike $\<\f^2(x)\f^2(0)\>$), so $\s$ is a better degree of freedom for describing this limit. In fact, the large-$u$, or equivalently low-energy, limit of the action (\ref{eq:hsaction}) is extremely simple:
+\be
+\label{eq:iraction}
+Z|_\mathrm{IR} &= \int D\f_i D\s e^{-\int d^3 x \p{\frac 1 2 \ptl_\mu \f\. \ptl^\mu \f + \frac 1 2 i \s \f\.\f}}.
+\ee
+
+We can now reinterpret the fate of the $\f^2$ operator in the long-distance limit. The field $\s$ becomes a Lagrange multiplier that naively sets $\f^2=0$, removing it from the theory. However $\s$ remains, and because of the equation of motion (\ref{eq:eomforsigma}), it takes over for $\f^2$. The scaling dimension of $\s$ at large-$N$ can be determined by dimensional analysis from the action (\ref{eq:iraction}). We obtain $\De_\f=\frac 1 2$, $\De_\s=2$.
+
+In more precise language, the IR theory (\ref{eq:iraction}) can be analyzed as follows. Note that the integral over $\f$ is Gaussian and can be done exactly
+\be
+\label{eq:integrateoutscalars}
+Z|_\mathrm{IR} &= \int D\s e^{-\frac{N}{2} \Tr\log(-\ptl^2 + i \s)}
+\ee
+The factor of $N$ in the exponent comes from the fact that we have $N$ fields and each one gives a determinant of the effective kinetic term $-\ptl^2 + i\s$. So far, the manipulations we've done have been valid at any value of $N$. For generic values of $N$, the resulting theory (\ref{eq:integrateoutscalars}) is quite complicated and its not clear how to proceed. However, at large $N$ the path integral over $\s$ can be done via a saddle-point approximation. Expanding out the action to quadratic order in $\s$, we obtain a kinetic term that gives a $\s$-propagator proportional to $|p|$. From our earlier work, we know that this propagator represents an infinite series of bubble diagrams in the original theory.
+
+The end result of this analysis is a perturbative expansion for various observables, for example\footnote{The large-$N$ expansion for $\De_\f$ is known to order $1/N^3$ \cite{} and the expansion for $\De_\s$ is known to order $1/N^2$ \cite{}.}
+\be
+\De_\f &= \frac 1 2 + \frac{4}{3\pi^2 N} + O(1/N^2) \nn\\
+\De_\s &= 2 - \frac{32}{3\pi^2 N} + O(1/N^2).
+\ee
+(In practice, these are not as good as the $\e$-expansion for estimating the scaling dimensions of the Ising model.)
+
+\subsection{Banks-Zaks fixed-points}
+
+To close this section, let us discuss some very different examples of RG fixed-points that are not related to the Ising universality class (at least not in a simple way). These fixed-points arise in 4d gauge theories with particular matter content. For concreteness, consider a 4d gauge theory with gauge group $\SU(N_c)$ and $N_f$ massless Dirac fermions transforming in the fundamental representation of $\SU(N_c)$. The Lagrangian is
+\be
+\cL &= -\frac 1 {4g^2} F^a_{\mu\nu} F^{a\mu\nu} + \bar\psi (i\,\slash\!\!\!\! D) \psi.
+\ee
+The $\b$-function is
+\be
+\label{eq:betafn}
+\b(g) &= - \b_0 \frac{g^3}{(4\pi)^2} + \b_1 \frac{g^5}{(4\pi)^4} + O(g^7) \nn\\
+\b_0 &= \frac{11}{3}N_c - \frac 2 3 N_f,\qquad \b_1 \sim O(N_c^2,N_c N_f).
+\ee
+
+This theory exhibits very different behavior, depending on $N_f$ and $N_c$. Famously, when $N_f=0$, the coupling $g$ becomes large in the IR and the theory is expected to confine (meaning that asymptotic states do not carry global $\SU(N_c)$ charge). Confinement is similarly expected to happen for nonzero $N_f$ as long as $N_f$ is not too large. By contrast, if $\b_0>0$, the coupling becomes smaller in the IR and the theory is described by free particles with global $\SU(N_c)$ charge.
+
+However, it is also clear from the $\b$-function (\ref{eq:betafn}) that the theory can exhibit very different behavior in the IR. Let us choose $N_f,N_c\gg 1$ such that $\b_0\sim O(1)>0$. The $\b$-function takes the form
+\be
+\label{eq:betarewrite}
+\b(g) &\propto -\frac{g^3}{(4\pi)^2} \p{1- \frac{\b_1}{\b_0} \frac{g^2}{(4\pi)^2} + \dots}.
+\ee
+This makes it clear that there is a zero at $g=g_*$ with $g_*^2/(4\pi)^2 = O(1/N_c^2)$. The perturbative expansion can be organized in terms of the 't Hooft coupling
+\be
+\l_* &= \frac{N_c g_*^2}{(4\pi)^2},
+\ee
+which is small in the parameter range we are studying. Thus, we are justified in ignoring higher-order terms in (\ref{eq:betarewrite}), and our calculations are under perturbative control. This fixed-point is called a ``Banks-Zaks" fixed-point after the physicists who first understood that it defines a nontrivial conformal field theory.
+
+We performed the above analysis assuming $N_f,N_c\gg 1$ with $\b_0=O(1)$ in order to ensure perturbative control over the resulting fixed-point. However, like the Wilson-Fisher theory, the Banks-Zaks fixed-point is expected to persist at least some distance outside of the perturbative regime. In supersymmetric versions of QCD, we can actually compute nonperturbatively the allowed range of $N_f,N_c$ for a conformal fixed-point --- the so-called ``conformal window." For example, with $\mathcal{N}=1$ SUSY, the conformal window is $\frac 3 2 N_c \leq N_f \leq 3 N_c$, where $N_f$ counts the number of chiral multiplets in the fundamental representation of $\SU(N_c)$. In non-supersymmetric gauge theories, the complete conditions defining the conformal window are unknown. The upper end of the conformal window $N_f < \frac{11}{2}N_c$ follows from the requirement that the theory not be IR free. However, the lower end cannot be computed perturbatively and is a topic of heated debate.\footnote{Currently, the lattice QCD community is divided over whether the lower end of the conformal window for $N_c=3$ is $N_f=12$, $N_f=11$, or perhaps somewhat lower.}
 
 \begin{appendix}
 \end{appendix}
