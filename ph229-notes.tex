@@ -107,7 +107,7 @@ Conformal Field Theory
 dsd@caltech.edu}
 
 \begin{abstract}
-Notes for Physics 229, 2017-2018. These notes are in progress. They were last updated on \today. In a few places, there are reminders \draftnote{in blue} to the author to add additional discussion/comments. There may also be empty citations and missing figures.
+Notes for Physics 229, 2017-2018. These notes are in progress. They were last updated on \today. In a few places, there are reminders \draftnote{in blue} to the author to add additional discussion/comments. There may also be empty citations and missing figures. Some of the discussion is not original and is borrowed from various sources. I have tried to indicate with a footnote when a section closely follows a particular reference.
 \end{abstract}
 \body
 
@@ -135,11 +135,12 @@ Notes for Physics 229, 2017-2018. These notes are in progress. They were last up
 \fi
 
 
+\section*{Resources}
+
+These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{Pufu2017}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/} \cite{Cardy:1996xt}, Slava Rychkov's EPFL lectures on CFT \cite{Rychkov:2016iqz}, and John McGreevy's lectures on QFT \cite{McGreevy2017}.
+
+
 \section{Introduction}
-
-\subsection*{Resources}
-
-These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/}, Slava Rychkov's EPFL lectures on CFT \cite{}, and John McGreevy's lectures on QFT \cite{}.
 
 \subsection{QFT and emergent symmetry}
 
@@ -238,7 +239,8 @@ Here is some rough intuition for why critical points display conformal symmetry.
 
 QFTs that are invariant under conformal symmetry are called conformal field theories (CFTs). To summarize, CFTs describe critical points where $m_\mathrm{gap}=0$. One can also understand the neighborhood of a critical point where $m_\mathrm{gap}$ is nonzero (but still $m_\mathrm{gap} \ll \Lambda_{UV}$) by studying perturbations of the associated CFT.
 
-\subsection{Examples of critical points}
+\subsection[Examples of critical points]{Examples of critical points\footnote{Sources for this section: Pufu \cite{Pufu2017}, Cardy \cite{Cardy:1996xt}.}}
+
 
 So far our discussion has been very abstract, so let us introduce some examples. 
 %Through examples, we will try to explain
@@ -252,7 +254,7 @@ One of our goals will be to infer from examples a set of axioms that CFTs should
 
 \subsubsection{Magnets}
 
-Our first examples of critical points occur in magnets. The discussion in this section borrows heavily from Cardy \cite{}. Given a magnet with temperature $T$, we can apply a magnetic field $\vec{H}$ and measure the magnetization $\vec{M}$. There are three main types of magnets in 3-dimensions, which are distinguished by their symmetries:\footnote{Here, we mean non-spacetime symmetries, usually called ``global" or ``flavor" symmetries. The emergent spacetime symmetry group is still the Poincare group, or the conformal group at the critical point.}
+Our first examples of critical points occur in magnets.  Given a magnet with temperature $T$, we can apply a magnetic field $\vec{H}$ and measure the magnetization $\vec{M}$. There are three main types of magnets in 3-dimensions, which are distinguished by their symmetries:\footnote{Here, we mean non-spacetime symmetries, usually called ``global" or ``flavor" symmetries. The emergent spacetime symmetry group is still the Poincare group, or the conformal group at the critical point.}
 \begin{itemize}
 \item {\it Uni-axial magnet}: individual magnetic moments $\vec\mu$ are confined to lie along a fixed axis. Uni-axial magnets have an $O(1)=\Z_2$ symmetry under which $\vec H \to -\vec H$ and $\vec M \to -\vec M$.
 
@@ -440,9 +442,9 @@ XY magnets are in the same universality class of the $O(2)$ model and Heisenberg
 
 But this is just the tip of the iceberg --- there is a huge zoo of different types of critical points that we can construct in a variety of ways. One of our goals will be to better understand this zoo.
 
-\section{Path integrals, quantization, and the quantum-classical correspondence}
+\section[Path integrals, quantization, and the quantum-classical correspondence]{Path integrals, quantization, and the quantum-classical correspondence\footnote{Sources for this section: McGreevy \cite{McGreevy2017}.}}
 
-In this section, we explain in more detail why classical statistical systems are described by Euclidean quantum field theory, and also how they are related to quantum condensed-matter systems via Wick rotation. Along the way, we will introduce some important technical concepts in QFT, like cutting-and-gluing rules for path integrals and the idea of quantization. This section is heavily based on John McGreevy's lectures \cite{}.
+In this section, we explain in more detail why classical statistical systems are described by Euclidean quantum field theory, and also how they are related to quantum condensed-matter systems via Wick rotation. Along the way, we will introduce some important technical concepts in QFT, like cutting-and-gluing rules for path integrals and the idea of quantization.
 
 \subsection{The 1d Ising model and the transfer matrix}
 
@@ -1070,7 +1072,7 @@ The fact that the critical point of the 1+1d quantum TFIM (and consequently othe
 
 \section{CFTs in perturbation theory}
 
-\subsection{Scaling and renormalization}
+\subsection[Scaling and renormalization]{Scaling and renormalization\footnote{Sources for this section: Pufu \cite{Pufu2017}, Cardy \cite{Cardy:1996xt}.}}
 
 In the quantum TFIM, we found $m_\mathrm{gap}=|g-g_c|$, which means that the correlation length critical exponent $\nu$ (defined in equation~(\ref{eq:correlationlengthexponent})) is $\nu=1$ for this theory. In this section, we explain how critical exponents are related to operator dimensions in the scale-invariant QFT (SFT) that describes the critical point.
 
@@ -1306,7 +1308,7 @@ Because all of these exponents depend only on two quantities $\De_h,\De_t$ (or $
 \ee
 Historically, these scaling relations played an important role in verifying the above picture of the renormalization group. For us, the important point is that scaling behavior follows from the underlying assumption of having a fixed-point of the renormalization group, and the various critical exponents are determined in terms of the more fundamental operator dimensions $\De_A$.
 
-\subsection{The Wilson-Fisher theory and the $\e$-expansion}
+\subsection[The Wilson-Fisher theory and the $\e$-expansion]{The Wilson-Fisher theory and the $\e$-expansion\footnote{Sources for this section: Pufu \cite{Pufu2017}.}}
 
 As we discussed in section~\ref{}, the 3d Ising model arises as the long-distance limit of $\f^4$-theory in 3-dimensions (suitably tuned to reach a critical point). Unfortunately the corresponding fixed-point is strongly-coupled, so it is difficult to explore the above ideas or do calculations.
 
@@ -1414,9 +1416,7 @@ Note that $\l_4^\mathrm{WF}$ is suppressed by powers of the coupling compared to
 
 \stoplecture
 
-\subsection{The $O(N)$-model and the large-$N$ expansion}
-
-
+\subsection[The $O(N)$-model and the large-$N$ expansion]{The $O(N)$-model and the large-$N$ expansion\footnote{Sources for this section: Pufu \cite{Pufu2017}.}}
 
 The Wilson-Fisher theory is one way to replace the Ising model with a related theory that has a small parameter. Another modification that is physically interesting in its own right is a generalization of the Ising model to include $N$ scalars with an $O(N)$ symmetry. The resulting theory, called the $O(N)$-model, has action
 \be
@@ -1446,13 +1446,13 @@ The large-$N$ theory is solvable because it is in some sense close to the Gaussi
 \be
 \De_{\f_i} &= \frac 1 2 + O(1/N).
 \ee
-However, $O(N)$ singlet operators can have dimensions very different form their Gaussian values. For example
+However, $O(N)$-singlet operators can have dimensions very different form their Gaussian values. For example
 \be
 \De_{\f^2} = 2 + O(1/N),
 \ee
 whereas $\De_{\f^2}^\mathrm{Gaussian} = 1$. (Here, $\f^2=\sum_i \f_i \f_i$.)
 
-It is instructive to see how the dimension of $\f^2$ changes during the flow from the Gaussian point to the nontrivial critical point. One way is to study the two-point function
+It is instructive to see how the dimension of $\f^2$ can be different at the two fixed-points. One way is to study the two-point function
 \be
 F(x) &= \<\f^2(x) \f^2(0)\>,
 \ee
@@ -1486,11 +1486,13 @@ G(p) = \frac{1}{p^2} \quad\implies\quad
 G(x) = \frac{1}{4\pi |x|}.
 \ee
 
-The simplest contribution to $F(x)$ comes from a bubble diagram
+\draftnote{Draw diagrams for the following discussion}
+
+The simplest contribution to $F(x)$ comes from a bubble diagram\footnote{An even simpler possibility is to draw two disconnected loops, where we contract the two $\f$'s in $\f^2(x)$, and separately contract the two $\f$'s in $\f^2(0)$. These diagrams are divergent, and the divergence comes from the fact that we have taken two operators on top of each other. The correct procedure is to carefully define the $\f^2(x)$ operator by subtracting divergences. For example, in this case we can define it using point-splitting as $\f^2(x) = \lim_{\de x\to 0}[\f(x)\f(x+\de x) - \<\f(x)\f(x+\de x)\>]$. Ambiguities in the regularization procedure can be removed by demanding that our operator is an eigenvector under rescaling. We will make this notion more precise in a few lectures.}
 \be
 \<\f^2(x)\f^2(0)\> &\supset 2N G(x)^2.
 \ee
-The factor $N$ comes from summing over $i$ indices for the two propagators. These must be equal because of the contractions in $\f^2$, so we get a single sum over $N$. In Fourier-space, the bubble diagram becomes
+The overall factor of $N$ comes from summing over $i$ indices for the two propagators. These must be equal because of the contractions in $\f^2$, so we get a single sum over $N$. In Fourier-space, the bubble diagram becomes
 \be
 2N G(x)^2 = \frac{2N}{16\pi^2 |x|^2} &\to \frac{1}{2} \frac{N}{2|p|}.
 \ee
@@ -1503,7 +1505,7 @@ Similarly, a chain of $k$ bubbles contributes
 \frac 1 2 u^{k-1} \p{\frac{N}{2|p|}}^k.
 \ee
 
-We will be interested in a limit where $N\to \oo$ with the product $uN$ held fixed. In this limit, chains of bubbles are the only diagrams that contribute. Any other diagram we might draw requires reconnecting different $O(N)$ indices in a way that lowers the resulting powers of $N$. Thus, in this limit, we simply have to sum bubble diagrams, which form a geometric series
+We will be interested in a limit $N\to \oo$, with the product $uN$ held fixed. In this limit, chains of bubbles are the only diagrams that contribute. Any other diagram requires reconnecting different $O(N)$ indices in a way that lowers the resulting powers of $N$ relative to the number of vertices. Thus, in this limit, we only need to sum bubble diagrams, which form a geometric series
 \be
 F(p) &= \frac 1 2 \p{\frac{N}{2|p|} + u \p{\frac{N}{2|p|}}^2 + u^2 \p{\frac{N}{2|p|}}^3 + \dots} \nn\\
 &= \frac 1 2 \frac{N}{2|p|} \frac{1}{1-\frac{uN}{2|p|}}.
@@ -1518,14 +1520,14 @@ At first, this looks like the wrong result. However, note that the Fourier trans
 
 The next term in (\ref{eq:fatsmallp}) is non-analytic in $p$, so its Fourier-transform is nonzero at separated points. Indeed, it has the form we expect, so that $F(x)$ behaves like $\frac{1}{|x|^4}$ for large $x$.
 
-For higher-order computations, we can write a set of effective Feynman rules that summarize the result we found. We have a $\f_i\f_j$ propagator of the usual form $\frac{\de_{ij}}{p^2}$, and a dotted line that represents a geometric series of bubble diagrams that behaves like $|p|$.
+For higher-order computations, we can write a set of effective Feynman rules that summarize our result. We have a $\f_i$-$\f_j$ propagator of the usual form $\frac{\de_{ij}}{p^2}$, and a dotted line that represents a geometric series of bubble diagrams that behaves like $|p|$.
 
 \subsubsection{The Hubbard-Stratonovich trick}
 
 The Hubbard-Stratonovich trick is a more sophisticated approach that lets us re-derive the above results and systematically proceed to higher orders in $1/N$. Let us start with the partition function
 \be
 \label{eq:originalpartition}
-Z &= \int D\f_i e^{-\int d^3 x \p{\frac 1 2 \ptl_\mu \f\. \ptl^\mu \f + u(\f\.\f)^2}}
+Z &= \int D\f_i e^{-\int d^3 x \p{\frac 1 2 \ptl_\mu \f\. \ptl^\mu \f + u(\f\.\f)^2}}.
 \ee
 We can simplify the theory by introducing an auxiliary field $\s$
 \be
@@ -1565,7 +1567,7 @@ The end result of this analysis is a perturbative expansion for various observab
 \ee
 (In practice, these are not as good as the $\e$-expansion for estimating the scaling dimensions of the Ising model.)
 
-\subsection{Banks-Zaks fixed-points}
+\subsection[Banks-Zaks fixed-points]{Banks-Zaks fixed-points\footnote{Sources for this section: Rychkov \cite{Rychkov:2016iqz}.}}
 
 To close this section, let us discuss some very different examples of RG fixed-points that are not related to the Ising universality class (at least not in a simple way). These fixed-points arise in 4d gauge theories with particular matter content. For concreteness, consider a 4d gauge theory with gauge group $\SU(N_c)$ and $N_f$ massless Dirac fermions transforming in the fundamental representation of $\SU(N_c)$. The Lagrangian is
 \be
@@ -1593,11 +1595,317 @@ which is small in the parameter range we are studying. Thus, we are justified in
 
 We performed the above analysis assuming $N_f,N_c\gg 1$ with $\b_0=O(1)$ in order to ensure perturbative control over the resulting fixed-point. However, like the Wilson-Fisher theory, the Banks-Zaks fixed-point is expected to persist at least some distance outside of the perturbative regime. In supersymmetric versions of QCD, we can actually compute nonperturbatively the allowed range of $N_f,N_c$ for a conformal fixed-point --- the so-called ``conformal window." For example, with $\mathcal{N}=1$ SUSY, the conformal window is $\frac 3 2 N_c \leq N_f \leq 3 N_c$, where $N_f$ counts the number of chiral multiplets in the fundamental representation of $\SU(N_c)$. In non-supersymmetric gauge theories, the complete conditions defining the conformal window are unknown. The upper end of the conformal window $N_f < \frac{11}{2}N_c$ follows from the requirement that the theory not be IR free. However, the lower end cannot be computed perturbatively and is a topic of heated debate.\footnote{Currently, the lattice QCD community is divided over whether the lower end of the conformal window for $N_c=3$ is $N_f=12$, $N_f=11$, or perhaps somewhat lower.}
 
+\stoplecture
+
+\section*{Summary so far}
+
+This concludes the first part of the course. We have seen why QFT is the correct language for both quantum and statistical systems, how critical points arise in several concrete examples, and how observables like critical exponents are related to scaling dimensions of operators. We have also studied these concepts in a perturbative setting. However, our main interest will be in nonperturbative theories. To describe these we will need a new set of tools. (The new tools will also help us better understand perturbative theories.)\footnote{For the next several sections, the course will closely follow my TASI Lectures \cite{}. The text below is a lightly edited version of those notes, possibly with a few examples and explicit calculations thrown in. If you want a more compact presentation, you can refer to the original set of lectures.}
+
+Our approach for the next part of the course is based on the idea of the {\it conformal bootstrap\/}. The conformal bootstrap philosophy is to:
+\begin{enumerate}
+\item[0.] focus on the CFT itself and not a specific microscopic realization,
+\item[1.] determine the full consequences of symmetries,
+\item[2.] impose consistency conditions,
+\item[3.] combine (1) and (2) to constrain or even solve the theory.
+\end{enumerate}
+
+This strategy was first articulated by Ferrara, Gatto, and Grillo~\cite{Ferrara:1973yt} and Polyakov~\cite{Polyakov:1974gs} in the 70's.  Importantly, it only uses nonperturbative structures, and thus has a hope of working for strongly-coupled theories.  Its effectiveness for studying the Ising model will become clear during this course.  In addition, sometimes bootstrapping is the {\it only\/} known strategy for understanding the full dynamics of a theory. An example is the 6d $\mathcal{N}=(2,0)$ supersymmetric CFT describing the IR limit of a stack of M5 branes in M-theory.  This theory has no known Lagrangian description, but is amenable to bootstrap analysis \cite{Beem:2015aoa}.\footnote{At large central charge, this theory is solved by the AdS/CFT correspondence \cite{Maldacena:1997re}. Supersymmetry also lets one compute a variety of protected quantities (at any central charge).  However, the bootstrap is currently the only known tool for studying non-protected quantities at small central charge.}
+
+A beautiful and ambitious goal of the bootstrap program is to eventually provide a fully nonperturbative  formulation of quantum field theory, removing the need for a Lagrangian. % We are not there yet, but you can help!
+
+
+
+\section{QFT Basics}
+
+The first step of the conformal bootstrap is to determine the full consequences of symmetries.  In this section, we review symmetries in quantum field theory, phrasing the discussion in language that will be useful later.  We work in Euclidean signature throughout.
+
+\subsection{The Stress Tensor}
+
+A local quantum field theory has a conserved stress tensor,
+\be
+\label{eq:conservationofT}
+\ptl_\mu T^{\mu\nu}(x) &= 0 \qquad \textrm{(operator equation)}.
+\ee
+This holds as an ``operator equation," meaning it is true away from other operator insertions.  In the presence of other operators, (\ref{eq:conservationofT}) gets modified to include contact terms on the right-hand side,
+\be
+\label{eq:wardidentity}
+\partial_\mu \< T^{\mu\nu}(x) \cO_1(x_1)\dots \cO_n(x_n)\> &= -\sum_i \de(x-x_i)\ptl_i^\nu\<\cO_1(x_1)\dots \cO_n(x_n)\> \nn\\
+&\qquad + \frac{\ptl}{\ptl x^\rho} \p{\textrm{other contact terms}}^\rho .\nn\\
+\ee
+This is called a ``Ward identity."\footnote{Unlike the contact term discussed in the $O(N)$-model section, contact terms in Ward identities are fixed by symmetries and do not depend on details of UV physics.}
+
+In practice, the contact terms come about because correlators have singularities as $T^{\mu\nu}$ approaches other operators of the form\footnote{There may be other singularities present, but they don't contribute to nontrivial contact terms.}
+\be
+\label{eq:examplesingularity}
+\<T^{\mu\nu}(x) \cO(y)\cdots\> &\sim \ptl_x^\mu \ptl_x^\nu \frac{1}{(x-y)^{d-2}} \<\cO(y) \cdots\> + \dots.
+\ee
+Taking the divergence $\frac{\ptl}{\ptl x^\mu}$ on the right-hand side we get
+\be
+\ptl_x^\nu \ptl_x^2 \frac{1}{(x-y)^{d-2}} &\propto \ptl_x^\nu \de^d(x-y).
+\ee
+
+Let us prove the Ward identity for a Lagrangian theory with a scalar field $\f$ and action $S[\phi]$.
+%A correlation function is given by the path integral
+%\be
+%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int D\f\, \cO_1(x_1)\cdots \cO_n(x_n) e^{-S[\f]}.
+%\ee
+The stress tensor is the Noether current for translation symmetry, so we can obtain it from the Noether procedure. We consider an infinitesimal position-dependent translation parameterized by a vector field $\e_\mu(x)$. It acts on $\f$ as
+\be
+\label{eq:fieldtransform}
+\f(x) &\to \f(x+\e(x)) = \f(x) + \de_\e \f(x), \nn\\
+\de_\e \f &= \e^\mu \ptl_\mu \f(x).
+\ee
+Because $S[\f]$ must be invariant when $\e$ is constant, the shift in $S[\f]$ must be the integral of $\e$ times a total derivative
+\be
+\de_\e S[\f] &= -\int d^d x\, \e_\nu(x) \ptl_\mu T^{\mu\nu}(x),
+\ee
+for some operator $T^{\mu\nu}(x)$ --- the stress tensor.
+
+For example, consider the free scalar theory in $d$-dimensions. The action is given by
+\be
+S_\mathrm{free} &= \int d^d x \frac 1 2 (\ptl \f)^2.
+\ee
+Plugging in the transformation (\ref{eq:fieldtransform}), we find
+\be
+\de_\e S_\mathrm{free} &= \int d^d x \ptl_\mu(\e_\nu \ptl^\nu \f) \ptl^\mu \f \nn\\
+&= \int d^d x \p{\ptl_\mu \e_\nu \ptl^\nu \f \ptl^\mu \f + \e_\nu \ptl^\nu\p{\frac 1 2 (\ptl \f)^2}} \nn\\
+&= -\int d^d x \, \e_\nu \ptl_\mu \p{\ptl^\nu \f \ptl^\mu \f -\frac 1 2 (\ptl \f)^2 \de^{\mu\nu}},
+\ee
+where we integrated by parts to get the last line. We might be tempted to identify the quantity in parentheses as the stress tensor, but the Noether procedure is actually ambiguous: it only determines the stress tensor up to a manifestly conserved term called an ``improvement term"\footnote{We can also add more complicated improvement terms, for example $\ptl_\rho B^{\rho \mu \nu}$ where $B$ is antisymmetric in $\rho\leftrightarrow \mu$. We will remark briefly on such terms in a moment.}
+\be
+\label{eq:improv}
+T^{\mu \nu}_\mathrm{free} &= \ptl^\nu \f \ptl^\mu \f - \frac 1 2 (\ptl \f)^2 \de^{\mu\nu}  + \underbrace{(\ptl^\mu \ptl^\nu - \de^{\mu\nu} \ptl^2) \Phi}_{\textrm{improvement term}}.
+\ee
+Here, $\Phi$ can be any scalar (possibly composite) operator. Later, we will impose a physical principle that will pick out a particular $\Phi$. But for now any $\Phi$ will do.
+
+Having determined the symmetry current $T^{\mu\nu}$, we can derive the Ward identity. Consider a correlation function of local operators
+\be
+\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int D\f\, \cO_1(x_1)\cdots \cO_n(x_n) e^{-S[\f]}.
+\ee
+We can think of $\f\to \f+\de_\e \f$ as a change of variables in the path integral, and this change of variables should leave the integral invariant. In other words
+\be
+0 &= \int D\f\, \de_\e\p{\cO_1(x_1)\cdots \cO_n(x_n) e^{-S[\f]}} \nn\\
+ &= \sum_i \<\cO_1(x_1) \cdots \de_\e \cO_i(x_i) \cdots \cO_n(x_n)\>\nn\\
+ &\qquad + \<\cO_1(x_1) \cdots \cO_n(x_n) \int d^d x\, \e_\nu(x) \ptl_\mu T^{\mu\nu}(x)\>.
+ \label{eq:changeofvariables}
+\ee
+Now note that
+\be
+\de_\e(\cO_i(x_i)) &= \e_\nu(x_i) \ptl_i^\nu \cO_i(x_i) + (\ptl \e)(\dots) + (\ptl^2 \e)(\dots) + \dots,
+\ee
+where the first term is proportional to $\e$ and remaining terms are proportional to derivatives of $\e$ at $x_i$.\footnote{Terms depending on derivatives of $\e$ would come about if $\cO_i$ depended on derivatives of $\f$, for example.} The Ward identity (\ref{eq:wardidentity}) then follows from taking a functional derivative of (\ref{eq:changeofvariables}) with respect to $\e(x)$.
+
+
+There is an alternative formalism that deals more elegantly with improvement terms and ambiguities in the Noether procedure. This is to imagine coupling our QFT to a background metric in a diffeomorphism-invariant way. (Note that without diffeomorphism invariance, the theory would depend on more than just a metric, but also a choice of local coordinates.) The Ward identity can be derived in this formalism as follows.
+\begin{exercise}
+Consider a QFT coupled to a background metric $g$. For concreteness, suppose correlators are given by the path integral
+\be
+\<\cO_1(x_1)\dots\cO_n(x_n)\>_g &= \int D\phi\,\cO_1(x_1)\dots\cO_n(x_n)\, e^{-S[g,\f]}.
+\ee
+A stress tensor insertion is the response to a small metric perturbation,\footnote{This definition  of the stress tensor works in a continuum field theory. If the UV is a lattice model, we must assume (or prove) that a stress tensor emerges in the IR.}
+\be
+\label{eq:definitionofstresstensor}
+\<T^{\mu\nu}(x)\cO_1(x_1)\dots\cO_n(x_n)\>_g &= \frac{2}{\sqrt g}\frac{\de}{\de g_{\mu\nu}(x)}\<\cO_1(x_1)\dots\cO_n(x_n)\>_g.
+\ee
+Derive (\ref{eq:wardidentity}) by demanding that $S[g,\phi]$ be diffeomorphism invariant near flat space.  Find how to modify (\ref{eq:wardidentity}) when the $\cO_i$ have spin.
+\end{exercise}
+
+The nice thing about this formalism is that there are no ambiguities in the definition of the stress tensor: it is always the response of the theory to a metric perturbation. However, now we must make an explicit choice of how to couple our theory to a background metric. In particular, there can be new couplings in the action that aren't present in flat space. For example, the action for a free-scalar in curved space admits a new curvature-dependent mass term
+\be
+\label{eq:freecurvedspace}
+S_\mathrm{free}[g,\f] &= \int d^d x \sqrt{g} \p{\frac 1 2 g^{\mu\nu} \ptl_\mu \f \ptl_\nu \f + \frac 1 2 \xi R \f^2}
+\ee
+\begin{exercise}
+Using the definition $T^{\mu\nu} = -\frac{2}{\sqrt g}\frac{\de S}{\de g_{\mu\nu}}$, show that the stress tensor in the theory (\ref{eq:freecurvedspace}), evaluated in flat space, is
+\be
+T^{\mu\nu} &= \ptl^\mu \f \ptl^\nu \f - \frac 1 2 g^{\mu\nu} (\ptl \f)^2 + \a (\ptl^\mu \ptl^\nu -  g^{\mu\nu}\ptl^2) \f^2,
+\ee
+for some $\a$. Determine $\a$ in terms of $\xi$. In other words, $\xi$ determines the improvement term in (\ref{eq:improv}).
+\end{exercise}
+
+A related complication that this formalism avoids is that the Noether procedure doesn't automatically give a symmetric stress tensor (it does for the free scalar, but that was luck), and one must find an improvement term that fixes this. In the background metric formalism, the stress tensor is automatically symmetric.
+
+A disadvantage of the background metric approach is that it might not be obvious how to couple a given UV system (e.g.\ a lattice model) to a nontrivial metric. For the Ising CFT, we can take advantage of the fact that there exists a continuum field theory (i.e.\ $\f^4$ theory) in its universality class, which manifestly can be coupled to curved space. However, for more general CFTs, the assumption that they can be coupled  to a background metric is nontrivial.\footnote{In fact, some theories have local gravitational anomalies that mean they are not precisely diffeomorphism invariant. However, this is a very mild breaking of diffeomorphism invariance and doesn't affect the analysis that we will do.}
+
+\subsubsection{Topological surface defects}
+
+Consider the integral of $T^{\mu\nu}$ over a closed surface $\Sigma$,\footnote{The word ``surface" usually refers to a 2-manifold, but we will abuse terminology and use it to refer to a codimension-1 manifold.}${}^,$\footnote{Our definition of $P^\nu$ differs from the usual one by a factor of $i$.  This convention is much nicer for Euclidean field theories, but it has the effect of modifying some familiar formulae, and also changing the properties of symmetry generators under Hermitian conjugation. More on this in section~\ref{sec:reflectionpositivity}.}
+\be
+P^\nu(\Sigma) &\equiv -\int_\Sigma dS_\mu T^{\mu\nu}(x).
+\ee
+The Ward identity (\ref{eq:wardidentity}) implies that a correlator of $P^\nu(\Sigma)$ with other operators is unchanged as we move $\Sigma$, as long as $\Sigma$ doesn't cross any operator insertions (figure~\ref{fig:topologicalsurfaces}).
+We say that $P^\nu(\Sigma)$ is a ``topological surface operator."
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.45\textwidth]{topologicalsurfaces.jpg}
+\end{center}
+\caption{A surface $\Sigma$ supporting the operator $P^\mu(\Sigma)$ can be freely deformed $\Sigma\to\Sigma'$ without changing the correlation function, as long as it doesn't cross any operator insertions.
+\label{fig:topologicalsurfaces} }
+\end{figure}
+
+Let $\Sigma=\ptl B$ be the boundary of a ball $B$ containing $x$ and no other insertions. Integrating (\ref{eq:wardidentity}) over $B$ gives
+\be
+\label{eq:integratedwardidentity}
+\<P^\mu(\Sigma)\cO(x)\dots\> &= \ptl^\mu\<\cO(x)\dots\>.
+\ee
+In other words, surrounding $\cO(x)$ with the topological surface operator $P^\mu$ is equivalent to taking a derivative (figure~\ref{fig:surroundoperator}).
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{surroundoperator.jpg}
+\end{center}
+\caption{\label{fig:surroundoperator} Surrounding $\cO(x)$ with $P^\mu$ gives a derivative.}
+\end{figure}
+
+In quantum field theory, having a topological codimension-1 operator is the same as having a symmetry.\footnote{Topological operators with support on other types of manifolds give ``generalized symmetries" \cite{Gaiotto:2014kfa}.}${}^,$\footnote{More precisely, to have a symmetry we usually require the topological codimension-1 operators to be invertible. If they are group-like, this means they have a multiplicative inverse, and if they are algebra-like, they have an additive inverse.}  This may be unfamiliar language, so to connect to something more familiar, let us revisit the relation between the path integral and Hamiltonian formalisms.
+
+%
+%\subsection{Quantization}
+%\label{sec:quantization}
+%
+%A single path integral can be interpreted in terms of different time evolutions in different Hilbert spaces.  For example, in a rotationally-invariant Euclidean theory on $\R^d$, we can choose any direction as ``time" and think of states living on slices orthogonal to the time direction (figure~\ref{fig:differentquantizations}).  We call each interpretation a ``quantization" of the theory.
+
+
+%
+%To specify a quantization, we foliate spacetime by slices related by an isometry $\ptl_t$. A slice has an associated Hilbert space of states.  A correlation function $\<\cO_1(x_1)\cdots\cO_n(x_2)\>$ gets interpreted as a time-ordered expectation value
+%\be
+%\label{eq:timeordered}
+%\<\cO_1(x_1)\cdots\cO_n(x_n)\> &= \<0|T\{\widehat \cO_1(t_1,\bx_1)\cdots \widehat \cO_n(t_n,\bx_n)\}|0\>.
+%\ee
+%Here, the time ordering $T\{\dots\}$ is with respect to our foliation, $|0\>$ is the vacuum in the Hilbert space $\cH$ living on a spatial slice,\footnote{Other choices of initial and final state correspond to different boundary conditions for the path integral.} and $\widehat\cO_i(x):\cH\to \cH$ are quantum operators corresponding to the path integral insertions $\cO_i(x)$.
+  
+%A different quantization of the theory would give a completely different Hilbert space $\cH'$, a completely different time-ordering, and completely different quantum operators $\widehat \cO_i'$.  However, some equations satisfied by these new operators on this new Hilbert space would be unchanged.  For example, if we arrange the operators as shown on the right-hand side of (\ref{eq:timeordered}), we always get the correlator on the left-hand side.
+%
+%We demonstrate these ideas explicitly in appendix~\ref{app:latticequantization}, where we show how to (discretely) quantize the lattice Ising model in different ways.
+
+\subsection{Topological Operators and Symmetries}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.65\textwidth]{differentquantizations.jpg}
+\end{center}
+\caption{\label{fig:differentquantizations} In a rotationally invariant Euclidean theory, we can choose any direction as time.  States live on slices orthogonal to the time direction.}
+\end{figure}
+
+Recall that the path integral can be interpreted in terms of different quantizations. To specify a quantization, we foliate spacetime by slices related by an isometry $\ptl_t$ (figure~\ref{fig:differentquantizations}). A slice has an associated Hilbert space of states.  A correlation function $\<\cO_1(x_1)\cdots\cO_n(x_2)\>$ gets interpreted as a time-ordered expectation value
+\be
+\label{eq:timeordered}
+\<\cO_1(x_1)\cdots\cO_n(x_n)\> &= \<0|T\{\widehat \cO_1(t_1,\bx_1)\cdots \widehat \cO_n(t_n,\bx_n)\}|0\>.
+\ee
+Here, the time ordering $T\{\dots\}$ is with respect to our foliation, $|0\>$ is the vacuum in the Hilbert space $\cH$ living on a spatial slice,\footnote{Other choices of initial and final state correspond to different boundary conditions for the path integral.} and $\widehat\cO_i(x):\cH\to \cH$ are quantum operators corresponding to the path integral insertions $\cO_i(x)$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{slidingcharges.jpg}
+\end{center}
+\caption{\label{fig:slidingcharges} The charge $P^\mu(\Sigma_t)$ can be moved from one time to another $t\to t'$ without changing the correlation function.}
+\end{figure}
+
+Let $\Sigma_t$ be a spatial slice at time $t$ and consider the operator $P^\mu(\Sigma_t)$.  Because $P^\mu(\Sigma)$ is topological, we are free to move it forward or backward in time from one spatial slice to another as long as it doesn't cross any operator insertions (figure~\ref{fig:slidingcharges}). In fact, we  often neglect to specify the surface $\Sigma_t$ and just write $P^\mu$ (though we should keep in mind where the surface lives with respect to other operators). We call $P^\mu$ ``momentum," and the fact that it's topological is the path integral version of the statement that momentum is conserved.
+
+Let us understand what happens when we move $P^\mu$ past an operator insertion. Consider a local operator $\cO(x)$ at time $t$. If $\Sigma_1$, $\Sigma_2$ are spatial surfaces at times $t_1<t<t_2$, then when we quantize our theory, the difference $P^\mu(\Sigma_{2})-P^\mu(\Sigma_{1})$ becomes a commutator because of time ordering,
+\be
+\<(P^\mu(\Sigma_{2})-P^\mu(\Sigma_{1}))\cO(x)\dots\>=\<0|T\{[\widehat P^\mu,\widehat \cO(x)]\dots\}|0\>.
+\ee
+(We assume that the other insertions ``$\dots$" are not between times $t_1$ and $t_2$.)
+Because $P^\mu$ is topological, we can deform $\Sigma_2-\Sigma_1$ to a sphere $S$ surrounding $\cO(x)$, as in figure~\ref{fig:deformingcharges}.  Then using the Ward identity (\ref{eq:integratedwardidentity}), we find
+\be
+\<0|T\{[\widehat P^\mu, \widehat \cO(x)]\dots\}|0\>&=\<(P^\mu(\Sigma_2)-P^\mu(\Sigma_1))\cO(x)\dots\>\nn\\
+&=\<P^\mu(S)\cO(x)\dots\>\nn\\
+&= \ptl^\mu\<\cO(x)\dots\>\nn\\
+&= \ptl^\mu\<0|T\{\widehat \cO(x)\dots\}|0\>,
+\ee
+in other words,
+\be
+[\widehat P^\mu, \widehat \cO(x)] &= \ptl^\mu\widehat \cO(x).
+\ee
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{deformingcharges.jpg}
+\end{center}
+\caption{\label{fig:deformingcharges} For any charge $Q(\Sigma)$, we can deform $Q(\Sigma_2)-Q(\Sigma_1)=Q(\Sigma_2-\Sigma_1)$ to an insertion of $Q(S)$. Here, arrows indicate the orientation of the surface.}
+\end{figure}
+
+Figure~\ref{fig:deformingcharges} makes it clear that this result is independent of how we quantize our theory, since we always obtain a sphere surrounding $\cO(x)$ no matter which direction we choose as ``time."  Thus, we often write
+\be
+\label{commutator}
+[P^\mu,\cO(x)] &= \ptl^\mu\cO(x),
+\ee
+without specifying a quantization.  In fact, from now on, we will no longer distinguish between path integral insertions $\cO(x)$ and quantum operators $\widehat \cO(x)$.
+The expression $[Q,\cO(x)]$ can be interpreted as either an actual commutator $[\widehat Q,\widehat \cO(x)]$ in any quantization of the theory, or in path-integral language as surrounding $\cO(x)$ with a topological surface operator $Q(S)$.
+
+Figure~\ref{fig:deformingcharges} also explains why the commutator $[Q,\cO(x)]$ of a charge $Q$ with a local operator $\cO(x)$ is local, even though $Q$ is nonlocal (it is the integral of a current). The reason is that the support of $Q$ can be deformed to an arbitrarily small sphere $S$ around $x$, so that the insertion $Q(S)\cO(x)$ only affects the path integral in an infinitesimal neighborhood of $x$.  In general, the way local operators transform under symmetry is always insensitive to IR details like spontaneous symmetry breaking or finite temperature.  This is because commutators with conserved charges can be computed at short distances.
+
+Equation (\ref{commutator}) integrates to
+\be
+\label{eq:integratedtranslations}
+\cO(x) &= e^{x\.P}\cO(0)e^{-x\.P}.
+\ee
+This statement is also true in any quantization of the theory.  In path integral language, $e^{x\.P}(\Sigma)$ is another type of topological surface operator.  When we surround $\cO(0)$ with $e^{x\.P}(\Sigma)$, it becomes conjugation $e^{x\.P}(\Sigma)\cO(0)\to e^{\widehat P\. x}\widehat\cO(0)e^{- \widehat P\. x}$ in any quantization.
+
+Consider the time-ordered correlator (\ref{eq:timeordered}) with $t_n>\cdots>t_1$.  Using (\ref{eq:integratedtranslations}), it becomes
+\begin{align}
+&\<\cO_1(x_1)\cdots\cO_n(x_n)\>\nonumber\\
+&= \<0|e^{t_n P^0}\cO_n(0,\bx_n)e^{-t_n P^0}\cdots e^{t_1 P^0}\cO_1(0,\bx_1)e^{-t_1P^0}|0\>\nonumber\\
+&=\<0|\cO_n(0,\bx_n)e^{-(t_n-t_{n-1})P^0}\cdots e^{-(t_2-t_1)P^0}\cO_1(0,\bx_1)|0\>.
+\end{align}
+In other words, the path integral between spatial slices separated by time $t$ computes the time evolution operator $U(t)=e^{-tP^0}$.  In unitary theories (defined in more detail in section~\ref{sec:reflectionpositivity}), $P^0$ has a positive real spectrum, so $U(t)$ causes damping at large time separations.
+
+\subsection{More Symmetries}
+
+Given a conserved current $\ptl_\mu J^\mu=0$ (operator equation), we can always define a topological surface operator by integration.\footnote{It is an interesting question whether the converse is true. When a theory has a Lagrangian description, the Noether procedure gives a conserved current for any continuous symmetry (that is manifest in the Lagrangian).  Proving Noether's theorem without a Lagrangian is an open problem.} For $P^\nu$, the corresponding currents are $T^{\mu\nu}(x)$.  More generally, given a vector field $\e=\e^\mu(x)\ptl_\mu$, the charge
+\be
+Q_\e(\Sigma) &= -\int_\Sigma dS_\mu \e_\nu(x) T^{\mu\nu}(x)
+\ee
+will be conserved whenever
+\be
+0&=\ptl_\mu(\e_\nu T^{\mu\nu}) \nn\\
+&=
+ \ptl_\mu \e_\nu T^{\mu\nu}+\e_\nu \ptl_\mu T^{\mu\nu}\nn\\
+&= \frac 1 2(\ptl_\mu \e_\nu+\ptl_\nu \e_\mu) T^{\mu\nu},
+\ee
+or
+\be
+\label{eq:killingvector}
+\ptl_\mu\e_\nu+\ptl_\nu\e_\mu &= 0.
+\ee
+This is the Killing equation. In flat space, it has solutions
+\begin{align}
+\label{eq:poincaregenerators}
+p_\mu &= \ptl_\mu &&\textrm{(translations)},\nn\\
+m_{\mu\nu} &= x_\nu\ptl_\mu - x_\mu\ptl_\nu && \textrm{(rotations)}.
+\end{align}
+The corresponding charges
+are momentum $P_\mu=Q_{p_\mu}$ and angular momentum $M_{\mu\nu}=Q_{m_{\mu\nu}}$.
+
+%\section{Conformal Symmetry}
+%
+%In a conformal theory, the stress tensor satisfies an additional condition: it is traceless,
+%\be
+%T_\mu^\mu(x) &= 0 \qquad\textrm{(operator equation)}.
+%\ee
+%This is equivalent to the statement that the theory is insensitive to position-dependent rescalings of the metric $\de g_{\mu\nu}=\omega(x) g_{\mu\nu}$ near flat space.\footnote{In curved space, there can by Weyl anomalies.} When the stress tensor is traceless, we can relax the requirement (\ref{eq:killingvector}) further to
+%\be
+%\label{eq:conformalkilling}
+%\ptl_\mu\e_\nu + \ptl_\nu \e_\mu = c(x)\de_{\mu\nu},
+%\ee
+%where $c(x)$ is a scalar function.  Contracting both sides with $\de^{\mu\nu}$ gives $c(x)=\frac{2}{d}\ptl\.\e(x)$.  Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation.  It has two additional types of solutions in $\R^d$,
+%\begin{align}
+%\label{eq:extraconformalgenerators}
+%d &= x^\mu \ptl_\mu &&\textrm{(dilatations)},\nn\\
+%k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &&\textrm{(special conformal transformations)}.
+%\end{align}
+%The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$.\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.  This is an extremely interesting subject that we unfortunately won't have time for in this course.}
+%
+%
+
 \begin{appendix}
 \end{appendix}
 
 \bibliographystyle{ws-rv-van}
-\bibliography{TASI-bootstrap-chapter}
+\bibliography{ph229-notes}
 \ifarxivsubmission
 \else
   \blankpage
