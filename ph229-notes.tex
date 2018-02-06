@@ -114,7 +114,7 @@ Notes for Physics 229, 2017-2018. These notes are in progress. They were last up
 \makeatletter
 \newalphalph{\alphmult}[mult]{\@alph}{26}
 \makeatother
-\renewcommand{\thefootnote}{\alphmult{\value{footnote}}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
 
 \ifarxivsubmission
   \thispagestyle{empty}
@@ -178,6 +178,7 @@ where $E_0,E_1$ are the energies of the ground state and first excited state, re
 
 To understand why $m_\mathrm{gap}$ is important, let us study a two-point function of a scalar local operator $\f(x)=\f(x^0,\mathbf{x})$. We  demand that $\f(0)$ have vanishing vacuum expectation value by subtracting off an appropriate multiple of the unit operator. By Poincare invariance, it suffices to consider $\<0|\f(x^0,\mathbf{0}) \f(0)|0\>$ with $x^0>0$. The two-point function is then given by
 \be
+\label{eq:completeset}
 \<0|\f(x^0,\mathbf{0})\f(0)|0\> &= \<0|\f(0) e^{-H x^0} \f(0)|0\> \nn\\
 &= \sum_\psi |\<0|\f(0)|\psi\>|^2 e^{-E_\psi x^0}.
 \ee
@@ -804,6 +805,7 @@ Show how to quantize the 2d Ising model in yet another way, using $i+j$ as the t
 %In the special case where we cut the path integral into pieces related by a translation symmetry, we can introduce a transfer matrix and interpret correlators in terms of time-ordered products of quantum operators.
 
 \subsection{Atiyah-Segal axioms}
+\label{sec:asaxioms}
 
 We are now ready to understand some axioms of continuum QFT. We will simultaneously state them and give examples in a Lagrangian theory of a real scalar field $\f$. A version of these axioms in TQFTs is due to Atiyah and a version in 2d CFTs is due to Segal. We will be interested in QFTs that depend on the geometry of the space in which they live, so when we say ``manifold" below, we mean ``Riemannian manifold with metric."
 
@@ -1597,7 +1599,7 @@ We performed the above analysis assuming $N_f,N_c\gg 1$ with $\b_0=O(1)$ in orde
 
 \stoplecture
 
-\section*{Summary so far}
+\section{The bootstrap approach}
 
 This concludes the first part of the course. We have seen why QFT is the correct language for both quantum and statistical systems, how critical points arise in several concrete examples, and how observables like critical exponents are related to scaling dimensions of operators. We have also studied these concepts in a perturbative setting. However, our main interest will be in nonperturbative theories. To describe these we will need a new set of tools. (The new tools will also help us better understand perturbative theories.)\footnote{For the next several sections, the course will closely follow my TASI Lectures \cite{}. The text below is a lightly edited version of those notes, possibly with a few examples and explicit calculations thrown in. If you want a more compact presentation, you can refer to the original set of lectures.}
 
@@ -1615,7 +1617,7 @@ A beautiful and ambitious goal of the bootstrap program is to eventually provide
 
 
 
-\section{QFT Basics}
+\section{Symmetries in quantum field theory}
 
 The first step of the conformal bootstrap is to determine the full consequences of symmetries.  In this section, we review symmetries in quantum field theory, phrasing the discussion in language that will be useful later.  We work in Euclidean signature throughout.
 
@@ -1632,7 +1634,7 @@ This holds as an ``operator equation," meaning it is true away from other operat
 \partial_\mu \< T^{\mu\nu}(x) \cO_1(x_1)\dots \cO_n(x_n)\> &= -\sum_i \de(x-x_i)\ptl_i^\nu\<\cO_1(x_1)\dots \cO_n(x_n)\> \nn\\
 &\qquad + \frac{\ptl}{\ptl x^\rho} \p{\textrm{other contact terms}}^\rho .\nn\\
 \ee
-This is called a ``Ward identity."\footnote{Unlike the contact term discussed in the $O(N)$-model section, contact terms in Ward identities are fixed by symmetries and do not depend on details of UV physics.}
+This modified conservation equation is called a ``Ward identity."\footnote{Unlike the contact term discussed in the $O(N)$-model section, contact terms in Ward identities are fixed by symmetries and do not depend on details of UV physics.}
 
 In practice, the contact terms come about because correlators have singularities as $T^{\mu\nu}$ approaches other operators of the form\footnote{There may be other singularities present, but they don't contribute to nontrivial contact terms.}
 \be
@@ -1643,6 +1645,8 @@ Taking the divergence $\frac{\ptl}{\ptl x^\mu}$ on the right-hand side we get
 \be
 \ptl_x^\nu \ptl_x^2 \frac{1}{(x-y)^{d-2}} &\propto \ptl_x^\nu \de^d(x-y).
 \ee
+
+A stress tensor is always present in a continuum QFT. However, in a lattice model, a stress tensor must be emergent (if it exists).
 
 Let us prove the Ward identity for a Lagrangian theory with a scalar field $\f$ and action $S[\phi]$.
 %A correlation function is given by the path integral
@@ -1702,13 +1706,19 @@ Consider a QFT coupled to a background metric $g$. For concreteness, suppose cor
 \be
 \<\cO_1(x_1)\dots\cO_n(x_n)\>_g &= \int D\phi\,\cO_1(x_1)\dots\cO_n(x_n)\, e^{-S[g,\f]}.
 \ee
-A stress tensor insertion is the response to a small metric perturbation,\footnote{This definition  of the stress tensor works in a continuum field theory. If the UV is a lattice model, we must assume (or prove) that a stress tensor emerges in the IR.}
+A stress tensor insertion is the response to a small metric perturbation,
 \be
 \label{eq:definitionofstresstensor}
 \<T^{\mu\nu}(x)\cO_1(x_1)\dots\cO_n(x_n)\>_g &= \frac{2}{\sqrt g}\frac{\de}{\de g_{\mu\nu}(x)}\<\cO_1(x_1)\dots\cO_n(x_n)\>_g.
 \ee
-Derive (\ref{eq:wardidentity}) by demanding that $S[g,\phi]$ be diffeomorphism invariant near flat space.  Find how to modify (\ref{eq:wardidentity}) when the $\cO_i$ have spin.
+Derive the Ward identity\footnote{Note that this version of the Ward identity doesn't include terms proportional to $\ptl \e$, unlike (\ref{eq:wardidentity}). This is because in defining the $\cO_i$ so that they transform like scalars under diffeomorphisms, we must include factors of $g^{\mu\nu}$. For example, $(\ptl \f)^2 = g^{\mu\nu}\ptl_\mu \f \ptl_\nu \f$. The variation of these factors cancels terms proportional to $\ptl \e$. Equivalently, the definition (\ref{eq:definitionofstresstensor}) has the effect of adding contact terms to $T_{\mu\nu}$ that simplify the Ward identity.}
+\be
+\label{eq:wardidentitysimpl}
+\partial_\mu \< T^{\mu\nu}(x) \cO_1(x_1)\dots \cO_n(x_n)\> &= -\sum_i \de(x-x_i)\ptl_i^\nu\<\cO_1(x_1)\dots \cO_n(x_n)\>
+\ee
+by demanding that $S[g,\phi]$ be diffeomorphism invariant near flat space. Assume that the $\cO_i$ are defined so that they transform like scalars under diffeomorphisms. Find how to modify (\ref{eq:wardidentity}) when the $\cO_i$ have spin.
 \end{exercise}
+
 
 The nice thing about this formalism is that there are no ambiguities in the definition of the stress tensor: it is always the response of the theory to a metric perturbation. However, now we must make an explicit choice of how to couple our theory to a background metric. In particular, there can be new couplings in the action that aren't present in flat space. For example, the action for a free-scalar in curved space admits a new curvature-dependent mass term
 \be
@@ -1718,16 +1728,16 @@ S_\mathrm{free}[g,\f] &= \int d^d x \sqrt{g} \p{\frac 1 2 g^{\mu\nu} \ptl_\mu \f
 \begin{exercise}
 Using the definition $T^{\mu\nu} = -\frac{2}{\sqrt g}\frac{\de S}{\de g_{\mu\nu}}$, show that the stress tensor in the theory (\ref{eq:freecurvedspace}), evaluated in flat space, is
 \be
-T^{\mu\nu} &= \ptl^\mu \f \ptl^\nu \f - \frac 1 2 g^{\mu\nu} (\ptl \f)^2 + \a (\ptl^\mu \ptl^\nu -  g^{\mu\nu}\ptl^2) \f^2,
+T^{\mu\nu} &= \ptl^\mu \f \ptl^\nu \f - \frac 1 2 g^{\mu\nu} (\ptl \f)^2 - \xi (\ptl^\mu \ptl^\nu -  g^{\mu\nu}\ptl^2) \f^2.
 \ee
-for some $\a$. Determine $\a$ in terms of $\xi$. In other words, $\xi$ determines the improvement term in (\ref{eq:improv}).
+In other words, $\xi$ determines a choice of improvement term in (\ref{eq:improv}).
 \end{exercise}
 
 A related complication that this formalism avoids is that the Noether procedure doesn't automatically give a symmetric stress tensor (it does for the free scalar, but that was luck), and one must find an improvement term that fixes this. In the background metric formalism, the stress tensor is automatically symmetric.
 
-A disadvantage of the background metric approach is that it might not be obvious how to couple a given UV system (e.g.\ a lattice model) to a nontrivial metric. For the Ising CFT, we can take advantage of the fact that there exists a continuum field theory (i.e.\ $\f^4$ theory) in its universality class, which manifestly can be coupled to curved space. However, for more general CFTs, the assumption that they can be coupled  to a background metric is nontrivial.\footnote{In fact, some theories have local gravitational anomalies that mean they are not precisely diffeomorphism invariant. However, this is a very mild breaking of diffeomorphism invariance and doesn't affect the analysis that we will do.}
+A disadvantage of the background metric approach is that it might not be obvious how to couple a given UV system (e.g.\ a lattice model) to a nontrivial metric. For the Ising CFT, we can take advantage of the fact that there exists a continuum field theory (i.e.\ $\f^4$ theory) in its universality class, which manifestly can be coupled to curved space. However, for more general CFTs, the assumption that they can be coupled  to a background metric is nontrivial.\footnote{In fact, some theories have local gravitational anomalies that mean they are not precisely diffeomorphism invariant. However, this is a very mild breaking of diffeomorphism invariance and doesn't affect our analysis.}
 
-\subsubsection{Topological surface defects}
+\subsection{Topological operators and symmetries}
 
 Consider the integral of $T^{\mu\nu}$ over a closed surface $\Sigma$,\footnote{The word ``surface" usually refers to a 2-manifold, but we will abuse terminology and use it to refer to a codimension-1 manifold.}${}^,$\footnote{Our definition of $P^\nu$ differs from the usual one by a factor of $i$.  This convention is much nicer for Euclidean field theories, but it has the effect of modifying some familiar formulae, and also changing the properties of symmetry generators under Hermitian conjugation. More on this in section~\ref{sec:reflectionpositivity}.}
 \be
@@ -1779,7 +1789,6 @@ In quantum field theory, having a topological codimension-1 operator is the same
 %
 %We demonstrate these ideas explicitly in appendix~\ref{app:latticequantization}, where we show how to (discretely) quantize the lattice Ising model in different ways.
 
-\subsection{Topological Operators and Symmetries}
 
 \begin{figure}
 \begin{center}
@@ -1838,6 +1847,8 @@ The expression $[Q,\cO(x)]$ can be interpreted as either an actual commutator $[
 
 Figure~\ref{fig:deformingcharges} also explains why the commutator $[Q,\cO(x)]$ of a charge $Q$ with a local operator $\cO(x)$ is local, even though $Q$ is nonlocal (it is the integral of a current). The reason is that the support of $Q$ can be deformed to an arbitrarily small sphere $S$ around $x$, so that the insertion $Q(S)\cO(x)$ only affects the path integral in an infinitesimal neighborhood of $x$.  In general, the way local operators transform under symmetry is always insensitive to IR details like spontaneous symmetry breaking or finite temperature.  This is because commutators with conserved charges can be computed at short distances.
 
+\stoplecture
+
 Equation (\ref{commutator}) integrates to
 \be
 \label{eq:integratedtranslations}
@@ -1853,9 +1864,52 @@ Consider the time-ordered correlator (\ref{eq:timeordered}) with $t_n>\cdots>t_1
 \end{align}
 In other words, the path integral between spatial slices separated by time $t$ computes the time evolution operator $U(t)=e^{-tP^0}$.  In unitary theories (defined in more detail in section~\ref{sec:reflectionpositivity}), $P^0$ has a positive real spectrum, so $U(t)$ causes damping at large time separations.
 
-\subsection{More Symmetries}
+\subsection{A topological surface operator on the lattice}
 
-Given a conserved current $\ptl_\mu J^\mu=0$ (operator equation), we can always define a topological surface operator by integration.\footnote{It is an interesting question whether the converse is true. When a theory has a Lagrangian description, the Noether procedure gives a conserved current for any continuous symmetry (that is manifest in the Lagrangian).  Proving Noether's theorem without a Lagrangian is an open problem.} For $P^\nu$, the corresponding currents are $T^{\mu\nu}(x)$.  More generally, given a vector field $\e=\e^\mu(x)\ptl_\mu$, the charge
+Let us give an example of a topological surface operator that is not the integral of a current (or the  exponential of the integral of a current). We will again see that it should be thought of as a symmetry.
+
+Consider the lattice Ising model in $d$-dimensions with zero applied magnetic field, $h=0$. The operator $U_{\Z_2}(\Sigma)$ is defined by flipping the signs of all nearest-neighbor bonds that cross the surface $\Sigma$. More precisely, let $\Sigma$ be a closed surface that does not intersect any of the lattice points. For each pair of nearest neighbor sites $\<ij\>$, define the sign\footnote{Being more careful to allow for very wiggly surfaces, we should define $p_\Sigma(i,j)$ as $(-1)^n$, where $n$ is the number of times $\Sigma$ intersects the edge $\<ij\>$.}
+\be
+p_{i,j}(\Sigma) &= \begin{cases}
+-1 & \textrm{if the edge from $i$ to $j$ intersects $\Sigma$,} \nn\\
++1 & \textrm{otherwise}.
+\end{cases}
+\ee
+An insertion of $U_{\Z_2}(\Sigma)$ is defined by
+\be
+\label{eq:pathintegralwithUinserted}
+\<U_{\Z_2}(\Sigma) \cO_1\cdots \cO_n \> &\equiv \sum_{\{s_i\}}  \cO_1\cdots \cO_n e^{K\sum_{\<ij\>} p_{i,j}(\Sigma) s_i s_j}.
+\ee
+
+Why is the operator $U_{\Z_2}(\Sigma)$ topological? Consider a deformation $\Sigma\to \Sigma'$. We can transform $U_{\Z_2}(\Sigma)$ into $U_{\Z_2}(\Sigma')$ by doing a change of variables $s_i\to -s_i$ for all spins between $\Sigma$ and $\Sigma'$ in the path integral (\ref{eq:pathintegralwithUinserted}).
+
+When we flip the spins between $\Sigma$ and $\Sigma'$, any $\Z_2$-odd operator in that region will also flip sign. Thus, $U_{\Z_2}(\Sigma)$ can be deformed freely, but when we move it past an operator, we pick up a factor of the $\Z_2$ charge of that operator. For example, if $B$ is a ball containing an operator $\cO$ (and no other operators), we have
+\be
+\label{eq:ztsphere}
+\<U_{\Z_2}(\ptl B) \cO \cdots\> &= q_\cO\< \cO\cdots\>,\qquad q_\cO=\pm 1.
+\ee
+This equation is exactly analogous to (\ref{eq:integratedwardidentity}).
+
+Consider inserting $U_{\mathbb{Z}_2}$ on a spatial slice $\Sigma_t$ at fixed time $t$.\footnote{Since we are on a lattice, $t$ is discrete. As usual, we are free to choose any lattice direction as time.} After quantization, $U_{\mathbb{Z}_2}(\Sigma_t)$ becomes an operator $\hat U_{\mathbb{Z}_2}$ that is independent of $t$ --- in other words it is conserved --- because $U_{\mathbb{Z}_2}$ is topological. The only effect of $t$ is to determine the ordering of quantum operators. For example, assuming $t_3>t_2>t_1$, we have
+\be
+\<\cO_3(t_3) U_{\Z_2}(\Sigma_{t_2}) \cO_1(t_1)\> &= \<0|\hat \cO_3(t_3) \hat U_{\mathbb{Z}_2} \hat \cO_1(t_1)|0\>.
+\ee
+Here $\hat \cO_i(t_i)$ are Heisenberg-picture operators as in, e.g.\ (\ref{eq:oldspinop}). The statement (\ref{eq:ztsphere}) is equivalent to
+\be
+\label{eq:commutatordiscrete}
+\hat U_{\mathbb{Z}_2} \hat \cO \hat U_{\mathbb{Z}_2}^{-1} &= q_\cO \hat \cO.
+\ee
+Concretely, the operator $\hat U_{\mathbb{Z}_2}$ is given by
+\be
+\hat U_{\mathbb{Z}_2} = \prod_{i=1}^M \s^x_i,\qquad \hat U_{\mathbb{Z}_2}|\bs\> = |-\bs\>.
+\ee
+where $\bs=(s_1,\cdots, s_M)$ are the spins on a spatial slice.
+
+By now it should be clear that $\hat U_{\mathbb{Z}_2}$ is the generator of a $\mathbb{Z}_2$ global symmetry acting on the Hilbert space. The path integral perspective shows that we can consider $U_{\mathbb{Z}_2}$ on surfaces other than just spatial slices.% This often makes symmetries more manifest.% For example from the definition (\ref{eq:uassigmaxs}), it is not clear why (\ref{eq:commutatordiscrete}) should be a local operator. However, this is obvious from the fact that $U_{\mathbb{Z}_2}(\Sigma)$ is topological, since we can take $\Sigma$ to be a very small sphere surrounding $\cO$.
+
+\subsection{More spacetime symmetries}
+
+Let us return to symmetries built from the stress tensor. Given a conserved current $\ptl_\mu J^\mu=0$ (as an operator equation), we can always define a topological surface operator by integration.\footnote{It is an interesting question whether the converse is true. When a theory has a Lagrangian description, the Noether procedure gives a conserved current for any continuous symmetry (that is manifest in the Lagrangian).  Proving Noether's theorem without a Lagrangian is an open problem.} For $P^\nu$, the corresponding currents are $T^{\mu\nu}(x)$.  More generally, given a vector field $\e=\e^\mu(x)\ptl_\mu$, the charge
 \be
 Q_\e(\Sigma) &= -\int_\Sigma dS_\mu \e_\nu(x) T^{\mu\nu}(x)
 \ee
@@ -1880,26 +1934,115 @@ m_{\mu\nu} &= x_\nu\ptl_\mu - x_\mu\ptl_\nu && \textrm{(rotations)}.
 The corresponding charges
 are momentum $P_\mu=Q_{p_\mu}$ and angular momentum $M_{\mu\nu}=Q_{m_{\mu\nu}}$.
 
-%\section{Conformal Symmetry}
-%
-%In a conformal theory, the stress tensor satisfies an additional condition: it is traceless,
-%\be
-%T_\mu^\mu(x) &= 0 \qquad\textrm{(operator equation)}.
-%\ee
-%This is equivalent to the statement that the theory is insensitive to position-dependent rescalings of the metric $\de g_{\mu\nu}=\omega(x) g_{\mu\nu}$ near flat space.\footnote{In curved space, there can by Weyl anomalies.} When the stress tensor is traceless, we can relax the requirement (\ref{eq:killingvector}) further to
-%\be
-%\label{eq:conformalkilling}
-%\ptl_\mu\e_\nu + \ptl_\nu \e_\mu = c(x)\de_{\mu\nu},
-%\ee
-%where $c(x)$ is a scalar function.  Contracting both sides with $\de^{\mu\nu}$ gives $c(x)=\frac{2}{d}\ptl\.\e(x)$.  Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation.  It has two additional types of solutions in $\R^d$,
-%\begin{align}
-%\label{eq:extraconformalgenerators}
-%d &= x^\mu \ptl_\mu &&\textrm{(dilatations)},\nn\\
-%k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &&\textrm{(special conformal transformations)}.
-%\end{align}
-%The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$.\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.  This is an extremely interesting subject that we unfortunately won't have time for in this course.}
-%
-%
+\section{Conformal Symmetry}
+
+In a conformal theory, the stress tensor satisfies an additional condition: it is traceless,
+\be
+T_\mu^\mu(x) &= 0 \qquad\textrm{(operator equation)}.
+\ee
+This is equivalent to the statement that the theory is insensitive to position-dependent rescalings of the metric $\de g_{\mu\nu}=2\omega(x) g_{\mu\nu}$ near flat space.\footnote{In curved space, there can by Weyl anomalies, which we discuss in section~\ref{}.} Tracelessness of $T_{\mu\nu}$ is our final CFT axiom:
+\begin{definition}
+A conformal field theory (CFT) is a QFT satisfying the Atiyah-Segal axioms discussed in section~\ref{sec:asaxioms}, and possessing a conserved, symmetric, traceless stress tensor.
+\end{definition}
+
+\subsection{Scale implies conformal invariance in 2d}
+
+We have seen that critical points exhibit scale invariance at long distances, but it is not obvious why this implies tracelessness of the stress tensor. In general spacetime dimensions, proving that scale invariance implies $T^\mu_\mu=0$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, the proof is straightforward in 2d, so let us give it.
+
+In a 2d scale-invariant theory, the stress tensor is a spin-2 operator with scaling dimension $2$. The most general two-point function consistent with these properties, together with Poincare-invariance and permutation symmetry is
+\be
+\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{1}{x^8} \left(A_1 \de_{\mu\nu}\de_{\rho \s} x^4 + A_2 (\de_{\mu\rho} \de_{\nu\s}+ \de_{\mu\s}\de_{\nu\rho}) x^4\right.\nn\\
+&\qquad\quad \left.+ A_3 (\de_{\mu\nu} x_\rho x_\s + \de_{\rho\s}x_\mu x_\nu)x^2 + A_4 x_\mu x_\nu x_\rho x_\s)\right),
+\ee
+where the $A_i$'s are constants.
+Conservation then implies
+\be
+\ptl^\mu\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= -\frac{1}{x^8} \left(3(A_4+2A_3)x_\nu x_\rho x_\s + (4A_1+3A_3)\de_{\rho\s} x_\nu x^2\right.\nn\\
+&\qquad\qquad \left.+ (4A_2-A_3)(\de_{\rho\nu} x_\s + \de_{\nu\s}x_\rho)\right),
+\ee
+which means $A_1,A_2,A_3,A_4$ are determined in terms of a single constant
+\be
+A_1 = 3A,\quad A_2 = -A,\quad A_3 = -4A,\quad A_4=8A.
+\ee
+The two-point function becomes
+\be
+\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{A}{x^8} \left((3 \de_{\mu\nu}\de_{\rho\s} - \de_{\mu\rho}\de_{\nu\s} - \de_{\mu\s}\de_{\nu\rho}) x^4 \right.\nn\\
+&\qquad\quad \left.-4x^2(\de_{\mu\nu}x_\rho x_\s + \de_{\rho\s} x_\mu x_\nu) + 8x_\mu x_\nu x_\rho x_\s\right).
+\ee
+Taking the trace, we find
+\be
+\<T(x) T(0)\> &= 0,
+\ee
+where $T(x)\equiv T^\mu_\mu(x)$.
+
+In a {\it unitary} quantum field theory,\footnote{Roughly-speaking, unitary means a theory that can be quantized in such a way that the space of states has a positive-definite inner product and the Hamiltonian is Hermitian and bounded from below. We will discuss unitarity in more detail later.} if the two point function of an operator vanishes identically, the operator itself must vanish. The argument is as follows. Remember that a two-point function can be written as a sum over states with positive coefficients (\ref{eq:completeset})
+\be
+\<T(x^0,\mathbf{ 0})T(0)\> &= \sum_\psi |\<0|T(0)|\psi\>|^2 e^{-E_\psi x^0}.
+\ee
+If the two-point function vanishes, then each coefficient must vanish: $\<0|T(0)|\psi\>=0$ for all $\psi$. Now consider a general correlation function including $T(x)$,
+\be
+\<T(x) \cO_1(x_1)\cdots \cO_n(x_n)\>.
+\ee
+Using $\<0|T(0)|\psi\>=0$, this correlator vanishes if $x$ is in the past or future of all the other $x_i$. However, correlation functions are analytic in their arguments, and the analytic continuation of zero is zero. Thus all correlators of $T(x)$ vanish, and $T(x)$ vanishes as an operator.
+
+\subsection{Symmetries from tracelessness}
+
+Recall that the charge $Q_\e(\Sigma)$ will be conserved if
+\be
+ \frac 1 2(\ptl_\mu \e_\nu+\ptl_\nu \e_\mu) T^{\mu\nu} &= 0.
+ \ee
+ When the stress tensor is traceless, this condition is solved by a less constraining version of the Killing equation (\ref{eq:killingvector}),
+\be
+\label{eq:conformalkillingfirst}
+\ptl_\mu\e_\nu + \ptl_\nu \e_\mu = c(x)\de_{\mu\nu},
+\ee
+where $c(x)$ is any scalar function.  Contracting both sides with $\de^{\mu\nu}$ determines $c$ in terms of $\e$,
+\be
+\label{eq:conformalkilling}
+\ptl_\mu\e_\nu + \ptl_\nu \e_\mu = \frac{2}{d}(\ptl \. \e)\de_{\mu\nu}.
+\ee
+
+Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation. Let us find its solutions on $\R^d$. Taking $\ptl^\nu\ptl^\mu$ of both sides, we find
+\be
+\p{2-\frac 2 d} \ptl^2(\ptl\.\e) = 0\quad \implies \quad \ptl^2 (\ptl \. \e)=0,
+\ee
+where we have assumed that $d\neq 1$. Now taking $\ptl^\nu\ptl_\rho$ and symmetrizing in $(\rho\mu)$, we find
+\be
+\p{1-\frac{2}{d}}\ptl_\rho\ptl_\mu(\ptl \. \e)=0 \quad\implies\quad \ptl_\rho \ptl_\mu(\ptl\.\e) = 0\textrm{ or $d=2$}.
+\label{eq:equationaboutdivergence}
+\ee
+For the moment, let us focus on the case $d\neq 2$. Taking two derivatives of the conformal Killing equation and using (\ref{eq:equationaboutdivergence}), we find
+\be
+\ptl_\a(\ptl_\b \ptl_\g \e_\de + \ptl_\b \ptl_\de \e_\g) &= 0,\nn\\
+\ptl_\a(\ptl_\g \ptl_\b \e_\de + \ptl_\g \ptl_\de \e_\b) &= 0,\nn\\
+\ptl_\a(\ptl_\de \ptl_\g \e_\b + \ptl_\de \ptl_\b \e_\g) &= 0.
+\ee
+These are three equations for three unknowns, so it follows that
+\be
+\ptl_\a\ptl_\b \ptl_\g \e_\de &= 0.
+\ee
+Thus $\e_\mu$ is at most a quadratic polynomial in $x$.
+
+From here the analysis is straightforward. Together with $p_\mu,m_{\mu\nu}$, the space of solutions is spanned by
+\begin{align}
+\label{eq:extraconformalgenerators}
+d &= x^\mu \ptl_\mu &&\textrm{(dilatations)},\nn\\
+k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &&\textrm{(special conformal transformations)}.
+\end{align}
+The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$.
+
+Let us now return to the case $d=2$. It is natural to write the conformal Killing equation in terms of holomorphic and antiholomorphic coordinates $\e = \e \ptl_z + \bar \e \ptl_{\bar z}$, where it becomes
+\be
+\ptl_z \bar \e = 0,\quad \ptl_{\bar z} \e = 0.
+\ee
+(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) Thus, we can solve the conformal Killing equation by choosing $\e$ ($\bar\e$) to be any holomorphic (antiholomorphic) function,
+\be
+\e &= \e(z) \ptl_z + \bar \e(\bar z) \ptl_{\bar z}.
+\ee
+Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against any holomorphic or antiholomorphic vector field. These infinite symmetries will play an important role later when we discuss the conformal bootstrap in 2d.
+%\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.}
+
+
 
 \begin{appendix}
 \end{appendix}
