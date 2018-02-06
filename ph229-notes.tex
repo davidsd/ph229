@@ -1890,7 +1890,7 @@ When we flip the spins between $\Sigma$ and $\Sigma'$, any $\Z_2$-odd operator i
 \ee
 This equation is exactly analogous to (\ref{eq:integratedwardidentity}).
 
-Consider inserting $U_{\mathbb{Z}_2}$ on a spatial slice $\Sigma_t$ at fixed time $t$.\footnote{Since we are on a lattice, $t$ is discrete. As usual, we are free to choose any lattice direction as time.} After quantization, $U_{\mathbb{Z}_2}(\Sigma_t)$ becomes an operator $\hat U_{\mathbb{Z}_2}$ that is independent of $t$ --- in other words it is conserved --- because $U_{\mathbb{Z}_2}$ is topological. The only effect of $t$ is to determine the ordering of quantum operators. For example, assuming $t_3>t_2>t_1$, we have
+Consider inserting $U_{\mathbb{Z}_2}$ on a spatial slice $\Sigma_t$ at fixed time $t$.\footnote{Since we are on a lattice, $t$ is discrete. As usual, we are free to choose any lattice direction as time.} After quantization, $U_{\mathbb{Z}_2}(\Sigma_t)$ becomes an operator $\hat U_{\mathbb{Z}_2}$ that is independent of $t$ --- in other words it is conserved --- because $U_{\mathbb{Z}_2}$ is topological. The only effect of $t$ is to determine the ordering of quantum operators. For example, assuming $t_3>t_2>t_1$, we have\footnote{When $\Sigma$ is inserted between two rows of spins, we evolve from one row to the next using either $\hat T \hat U_{\mathbb{Z}_2}$ or $ \hat U_{\mathbb{Z}_2}\hat T$, where $\hat T$ is the transfer matrix. The two choices are the same because $\hat U_{\mathbb{Z}_2}$ commutes with $\hat T$. This is one way of saying that $\hat U_{\mathbb{Z}_2}$ is conserved.}
 \be
 \<\cO_3(t_3) U_{\Z_2}(\Sigma_{t_2}) \cO_1(t_1)\> &= \<0|\hat \cO_3(t_3) \hat U_{\mathbb{Z}_2} \hat \cO_1(t_1)|0\>.
 \ee
@@ -1906,6 +1906,47 @@ Concretely, the operator $\hat U_{\mathbb{Z}_2}$ is given by
 where $\bs=(s_1,\cdots, s_M)$ are the spins on a spatial slice.
 
 By now it should be clear that $\hat U_{\mathbb{Z}_2}$ is the generator of a $\mathbb{Z}_2$ global symmetry acting on the Hilbert space. The path integral perspective shows that we can consider $U_{\mathbb{Z}_2}$ on surfaces other than just spatial slices.% This often makes symmetries more manifest.% For example from the definition (\ref{eq:uassigmaxs}), it is not clear why (\ref{eq:commutatordiscrete}) should be a local operator. However, this is obvious from the fact that $U_{\mathbb{Z}_2}(\Sigma)$ is topological, since we can take $\Sigma$ to be a very small sphere surrounding $\cO$.
+
+\subsubsection{Implementation in the continuum}
+
+The operator $U_{\mathbb{Z}_2}$ can also be defined in continuum $\f^4$ theory as follows. Given a surface $\Sigma$, let us cover it with small open balls $B_i$ such that $\Sigma$ splits each ball into two pieces $B_i^\mathrm{left}\cup B_i^\mathrm{right}$. We do this so we don't have to  worry about the global structure of $\Sigma$. The action without an insertion of $U_{\mathbb{Z}_2}(\Sigma)$ is the integral of a Lagrangian density
+\be
+S[\phi] &= \sum_{i} \int_{B_i} d^d x \cL[\f](x),\nn\\
+\cL[\phi](x) &= \frac 1 2 (\ptl \f)^2 + \dots.
+\ee
+Note that $S[\phi]$ favors configurations where $\f$ is slowly-varying.
+
+To insert $U_{\mathbb{Z}_2}(\Sigma)$, we would like to instead favor configurations where $\f$ flips sign as it crosses $\Sigma$. Let 
+\be
+\f_i'(x) &= \begin{cases} 
+\f(x) & x\in B_i^\mathrm{right} \nn\\
+-\f(x) & x\in B_i^\mathrm{left}
+\end{cases}.
+\ee
+The modified action is given by
+\be
+S'[\phi] &= \sum_i\int_{B_i} d^d x \cL[\f'_i](x).
+\ee
+Inserting $U_{\mathbb{Z}_2}(\Sigma)$ means performing the path integral with the modified action $S'$,
+\be
+\<U_{\mathbb{Z}_2}(\Sigma) \cO_1\cdots \cO_n\> &= \int D\f\, \cO_1\cdots \cO_n e^{-S'[\f]}.
+\ee
+This is the continuum version of flipping the bonds that cross $\Sigma$. 
+
+In practice, it is difficult to work with $S'[\f]$ because it has funny $\de$-functions coming from  derivatives of $\f'$. If $\Sigma=\ptl B$ is the boundary of a region $B$, we can make a change of variables $\f\to -\f$ inside $B$ to get rid of $U_{\mathbb{Z}_2}(\Sigma)$. When we do this, any $\Z_2$-odd operator inside $B$ will pick up a sign. This gives the same result (\ref{eq:ztsphere}) that we found on the lattice.
+
+However, if $\Sigma$ is not the boundary of a region, we cannot make a change of variables to remove $U_{\mathbb{Z}_2}(\Sigma)$. As an example, consider the theory on a torus $T^d$ with $U_{\mathbb{Z}_2}$ inserted on a spatial slice $T^{d-1}\subset T^d$. This slice is homologically nontrivial, so no change of variables will remove $U_{\mathbb{Z}_2}$. However, we can simplify the action by defining $\f$ to flip sign as we cross $\Sigma$,
+\be
+\f(t_\mathrm{below}) = -\f(t_\mathrm{above}).
+\ee
+This turns $S'$ back into $S$, but with the cost of introducing ``twisted" boundary conditions for the field $\f$
+\be
+\label{eq:antiperiodicity}
+\f(t+\b) &= -\f(t),
+\ee
+where $\b$ is the length of the time circle. The path integral with twisted boundary conditions is often more straightforward to evaluate.
+
+One effect of inserting $U_{\mathbb{Z}_2}$ on a spatial slice $T^{d-1}\subset T^d$ is that correlators of $\Z_2$-odd operators in the presence of $U_{\mathbb{Z}_2}(T^{d-1})$ become antiperiodic in the time direction. This is because to move them around the time circle, we must cross $U_{\mathbb{Z}_2}$, and doing so introduces a sign. This can also be understood in terms of twisted boundary conditions: any operator made of an odd number of $\f$'s will also satisfy the antiperiodicity condition (\ref{eq:antiperiodicity}).
 
 \subsection{More spacetime symmetries}
 
@@ -1934,64 +1975,109 @@ m_{\mu\nu} &= x_\nu\ptl_\mu - x_\mu\ptl_\nu && \textrm{(rotations)}.
 The corresponding charges
 are momentum $P_\mu=Q_{p_\mu}$ and angular momentum $M_{\mu\nu}=Q_{m_{\mu\nu}}$.
 
-\section{Conformal Symmetry}
+\stoplecture
 
-In a conformal theory, the stress tensor satisfies an additional condition: it is traceless,
+\section{Conformal symmetry}
+
+In a conformal field theory, the stress tensor satisfies an additional condition: it is traceless,
 \be
 T_\mu^\mu(x) &= 0 \qquad\textrm{(operator equation)}.
 \ee
-This is equivalent to the statement that the theory is insensitive to position-dependent rescalings of the metric $\de g_{\mu\nu}=2\omega(x) g_{\mu\nu}$ near flat space.\footnote{In curved space, there can by Weyl anomalies, which we discuss in section~\ref{}.} Tracelessness of $T_{\mu\nu}$ is our final CFT axiom:
-\begin{definition}
-A conformal field theory (CFT) is a QFT satisfying the Atiyah-Segal axioms discussed in section~\ref{sec:asaxioms}, and possessing a conserved, symmetric, traceless stress tensor.
-\end{definition}
+This is equivalent to the statement that the theory is insensitive to position-dependent rescalings of the metric $\de g_{\mu\nu}=2\omega(x) g_{\mu\nu}$ near flat space.\footnote{In curved space, there can by Weyl anomalies, which we discuss in section~\ref{}.} %Tracelessness of $T_{\mu\nu}$ is our final CFT axiom:
+%\begin{definition}
+%A conformal field theory (CFT) is a QFT satisfying the Atiyah-Segal axioms discussed in section~\ref{sec:asaxioms}, and possessing a conserved, symmetric, traceless stress tensor.
+%\end{definition}
 
 \subsection{Scale implies conformal invariance in 2d}
 
-We have seen that critical points exhibit scale invariance at long distances, but it is not obvious why this implies tracelessness of the stress tensor. In general spacetime dimensions, proving that scale invariance implies $T^\mu_\mu=0$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, the proof is straightforward in 2d, so let us give it.
+We have seen that critical points exhibit scale-invariance, but it is not obvious why this should imply tracelessness of the stress tensor. Proving that scale-invariance implies $T_\mu^\mu=0$ for general $d$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, proving it for $d=2$ is straightforward.\footnote{This argument is from Zohar Komargodski's notes \cite{KomargodskiNotes}. See \cite{YellowPages} for a similar proof in position-space.}
 
-In a 2d scale-invariant theory, the stress tensor is a spin-2 operator with scaling dimension $2$. The most general two-point function consistent with these properties, together with Poincare-invariance and permutation symmetry is
+Consider the two-point function of the stress tensor in momentum space (this will make it easy to study conservation). Symmetry and conservation require it to take the form
 \be
-\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{1}{x^8} \left(A_1 \de_{\mu\nu}\de_{\rho \s} x^4 + A_2 (\de_{\mu\rho} \de_{\nu\s}+ \de_{\mu\s}\de_{\nu\rho}) x^4\right.\nn\\
-&\qquad\quad \left.+ A_3 (\de_{\mu\nu} x_\rho x_\s + \de_{\rho\s}x_\mu x_\nu)x^2 + A_4 x_\mu x_\nu x_\rho x_\s)\right),
+\label{eq:momentumspacetwopt}
+\<T_{\mu\nu}(q) T_{\rho \s}(-q)\> &= \frac 1 2 ((q_\mu q_\rho - q^2 \de_{\mu \rho})(q_\nu q_\s - q^2 \de_{\nu\s}) + \rho \leftrightarrow \s) f(q^2)\nn\\
+&\qquad + (q_\mu q_\nu - q^2 \de_{\mu\nu})(q_\rho q_\s - q^2 \de_{\rho \s}) g(q^2),
 \ee
-where the $A_i$'s are constants.
-Conservation then implies
+where $f(q^2)$, $g(q^2)$ are general functions of $q^2$. Here, we have Fourier transformed the two operators with momenta $p,q$, and stripped off an overall momentum-conserving $\de^d(p+q)$.
+
+The form (\ref{eq:momentumspacetwopt}) holds in any $d$. However in $d=2$, something special happens: the two structures above are linearly-dependent.
+\begin{exercise}
+Let $d=2$, and consider $\tl q_\mu = \e_{\mu\nu} q^\nu$, where $\e_{\mu\nu}$ is the totally antisymmetric symbol:
 \be
-\ptl^\mu\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= -\frac{1}{x^8} \left(3(A_4+2A_3)x_\nu x_\rho x_\s + (4A_1+3A_3)\de_{\rho\s} x_\nu x^2\right.\nn\\
-&\qquad\qquad \left.+ (4A_2-A_3)(\de_{\rho\nu} x_\s + \de_{\nu\s}x_\rho)\right),
+\e_{01} = 1,\quad \e_{10}=-1,\quad \e_{00}=\e_{11}=0.
 \ee
-which means $A_1,A_2,A_3,A_4$ are determined in terms of a single constant
+Simplify the product
 \be
-A_1 = 3A,\quad A_2 = -A,\quad A_3 = -4A,\quad A_4=8A.
+\tl q_{\mu} \tl q_\nu \tl q_\rho \tl q_\s
 \ee
-The two-point function becomes
+in two different ways to obtain the structures multiplying $f(q^2)$ and $g(q^2)$.
+\end{exercise}
+
+Thus, in two dimensions, we have simply
 \be
-\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{A}{x^8} \left((3 \de_{\mu\nu}\de_{\rho\s} - \de_{\mu\rho}\de_{\nu\s} - \de_{\mu\s}\de_{\nu\rho}) x^4 \right.\nn\\
-&\qquad\quad \left.-4x^2(\de_{\mu\nu}x_\rho x_\s + \de_{\rho\s} x_\mu x_\nu) + 8x_\mu x_\nu x_\rho x_\s\right).
+\label{eq:twoptmomentum2d}
+\<T_{\mu\nu}(q) T_{\rho \s}(-q)\> &=(q_\mu q_\nu - q^2 \de_{\mu\nu})(q_\rho q_\s - q^2 \de_{\rho \s}) h(q^2)
 \ee
+for a single function $h(q^2)$.
+Now suppose that the theory is also scale-invariant. This implies that $h(q^2)$ should be a pure power of $q$,\footnote{Nontrivial scale-dependence is allowed in correlation functions if it multiplies a contact term (i.e.\ the violation of scaling is invisible at separated points). In momentum space, this means we can have terms proportional to $\log(q^2/\mu^2)$, provided they multiply an analytic function of $q$ (whose Fourier transform is a contact term). In the case of $h(q^2)$, something like $q^{-2} \log(q^2/\mu^2)$ is disallowed because $\mu\frac{d}{d\mu} q^{-2} \log(q^2/\mu^2)$ is not analytic in $q$.}
+\be
+h(q^2) &= \frac{b}{q^2}.
+\ee
+The dimension of $h(q^2)$ comes from the fact that $T_{\mu\nu}(q)$ is dimensionless (it is the $d$-dimensional Fourier transform of a quantity with dimension $d$), but we have also stripped off a dimensionful $\de^d(p+q)$ to define (\ref{eq:twoptmomentum2d}).
 Taking the trace, we find
 \be
-\<T(x) T(0)\> &= 0,
+\<T(q) T(-q)\> &= b q^2,
 \ee
-where $T(x)\equiv T^\mu_\mu(x)$.
+where $T\equiv T^\mu_\mu$.
+In position-space, this becomes a contact term
+\be
+\<T(x) T(y)\> &\propto b\ptl^2 \de^2(x-y).
+\ee
 
-In a {\it unitary} quantum field theory,\footnote{Roughly-speaking, unitary means a theory that can be quantized in such a way that the space of states has a positive-definite inner product and the Hamiltonian is Hermitian and bounded from below. We will discuss unitarity in more detail later.} if the two point function of an operator vanishes identically, the operator itself must vanish. The argument is as follows. Remember that a two-point function can be written as a sum over states with positive coefficients (\ref{eq:completeset})
+%In a 2d scale-invariant theory, the stress tensor is a spin-2 operator with scaling dimension $2$. The most general two-point function consistent with these properties, together with Poincare-invariance and permutation symmetry is
+%\be
+%\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{1}{x^8} \left(A_1 \de_{\mu\nu}\de_{\rho \s} x^4 + A_2 (\de_{\mu\rho} \de_{\nu\s}+ \de_{\mu\s}\de_{\nu\rho}) x^4\right.\nn\\
+%&\qquad\quad \left.+ A_3 (\de_{\mu\nu} x_\rho x_\s + \de_{\rho\s}x_\mu x_\nu)x^2 + A_4 x_\mu x_\nu x_\rho x_\s)\right),
+%\ee
+%where the $A_i$'s are constants.
+%Conservation then implies
+%\be
+%\ptl^\mu\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= -\frac{1}{x^8} \left(3(A_4+2A_3)x_\nu x_\rho x_\s + (4A_1+3A_3)\de_{\rho\s} x_\nu x^2\right.\nn\\
+%&\qquad\qquad \left.+ (4A_2-A_3)(\de_{\rho\nu} x_\s + \de_{\nu\s}x_\rho)\right),
+%\ee
+%which means $A_1,A_2,A_3,A_4$ are determined in terms of a single constant
+%\be
+%A_1 = 3A,\quad A_2 = -A,\quad A_3 = -4A,\quad A_4=8A.
+%\ee
+%The two-point function becomes
+%\be
+%\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= \frac{A}{x^8} \left((3 \de_{\mu\nu}\de_{\rho\s} - \de_{\mu\rho}\de_{\nu\s} - \de_{\mu\s}\de_{\nu\rho}) x^4 \right.\nn\\
+%&\qquad\quad \left.-4x^2(\de_{\mu\nu}x_\rho x_\s + \de_{\rho\s} x_\mu x_\nu) + 8x_\mu x_\nu x_\rho x_\s\right).
+%\ee
+%Taking the trace, we find
+%\be
+%\<T(x) T(0)\> &= 0,
+%\ee
+%where $T(x)\equiv T^\mu_\mu(x)$.
+
+In a unitary quantum field theory,\footnote{Roughly-speaking, unitary means a theory that can be quantized in such a way that the space of states has a positive-definite inner product and the Hamiltonian is Hermitian and bounded from below. We will discuss unitarity in more detail later.} if the two point function of an operator vanishes at separated points, {\it any\/} correlator involving that operator vanishes at separated points. The argument is as follows. Remember we can insert a complete set of states to write a two-point function as a sum of positive terms (\ref{eq:completeset})
 \be
 \<T(x^0,\mathbf{ 0})T(0)\> &= \sum_\psi |\<0|T(0)|\psi\>|^2 e^{-E_\psi x^0}.
 \ee
-If the two-point function vanishes, then each coefficient must vanish: $\<0|T(0)|\psi\>=0$ for all $\psi$. Now consider a general correlation function including $T(x)$,
+If the left-hand side vanishes, each term on the right-hand side must vanish as well: $\<0|T(0)|\psi\>=0$, in other words $T(x)$ must annihilate the vacuum. Now consider a general correlation function of $T(x)$ with other operators,
 \be
+\label{eq:correlatorofTwithstuff}
 \<T(x) \cO_1(x_1)\cdots \cO_n(x_n)\>.
 \ee
-Using $\<0|T(0)|\psi\>=0$, this correlator vanishes if $x$ is in the past or future of all the other $x_i$. However, correlation functions are analytic in their arguments, and the analytic continuation of zero is zero. Thus all correlators of $T(x)$ vanish, and $T(x)$ vanishes as an operator.
+This correlator vanishes if $x$ is in the past or future of all the other $x_i$, since then $T(x)$ acts on the vacuum on either the right or left. However, correlation functions in QFT are analytic in their arguments, and the analytic continuation of zero is zero. Thus, the entire correlator (\ref{eq:correlatorofTwithstuff}) vanishes.
 
 \subsection{Symmetries from tracelessness}
 
-Recall that the charge $Q_\e(\Sigma)$ will be conserved if
+Recall that the charge $Q_\e(\Sigma)$ is conserved if
 \be
  \frac 1 2(\ptl_\mu \e_\nu+\ptl_\nu \e_\mu) T^{\mu\nu} &= 0.
  \ee
- When the stress tensor is traceless, this condition is solved by a less constraining version of the Killing equation (\ref{eq:killingvector}),
+ When the stress tensor is traceless, this condition can be solved by demanding a less constraining version of the Killing equation (\ref{eq:killingvector}),
 \be
 \label{eq:conformalkillingfirst}
 \ptl_\mu\e_\nu + \ptl_\nu \e_\mu = c(x)\de_{\mu\nu},
@@ -2002,16 +2088,16 @@ where $c(x)$ is any scalar function.  Contracting both sides with $\de^{\mu\nu}$
 \ptl_\mu\e_\nu + \ptl_\nu \e_\mu = \frac{2}{d}(\ptl \. \e)\de_{\mu\nu}.
 \ee
 
-Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation. Let us find its solutions on $\R^d$. Taking $\ptl^\nu\ptl^\mu$ of both sides, we find
+Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation. Let us find its solutions in $\R^d$. Taking $\ptl^\nu\ptl^\mu$ of both sides, we find
 \be
 \p{2-\frac 2 d} \ptl^2(\ptl\.\e) = 0\quad \implies \quad \ptl^2 (\ptl \. \e)=0,
 \ee
 where we have assumed that $d\neq 1$. Now taking $\ptl^\nu\ptl_\rho$ and symmetrizing in $(\rho\mu)$, we find
 \be
-\p{1-\frac{2}{d}}\ptl_\rho\ptl_\mu(\ptl \. \e)=0 \quad\implies\quad \ptl_\rho \ptl_\mu(\ptl\.\e) = 0\textrm{ or $d=2$}.
+\p{1-\frac{2}{d}}\ptl_\rho\ptl_\mu(\ptl \. \e)=0 %\quad\implies\quad \ptl_\rho \ptl_\mu(\ptl\.\e) = 0\textrm{ or $d=2$}.
 \label{eq:equationaboutdivergence}
 \ee
-For the moment, let us focus on the case $d\neq 2$. Taking two derivatives of the conformal Killing equation and using (\ref{eq:equationaboutdivergence}), we find
+For the moment, let us focus on $d\neq 2$, which means $\ptl_\rho \ptl_\mu(\ptl\.\e)=0$. Taking two derivatives of the conformal Killing equation and using (\ref{eq:equationaboutdivergence}), we find
 \be
 \ptl_\a(\ptl_\b \ptl_\g \e_\de + \ptl_\b \ptl_\de \e_\g) &= 0,\nn\\
 \ptl_\a(\ptl_\g \ptl_\b \e_\de + \ptl_\g \ptl_\de \e_\b) &= 0,\nn\\
@@ -2021,7 +2107,7 @@ These are three equations for three unknowns, so it follows that
 \be
 \ptl_\a\ptl_\b \ptl_\g \e_\de &= 0.
 \ee
-Thus $\e_\mu$ is at most a quadratic polynomial in $x$.
+Thus $\e_\de$ is at most a quadratic polynomial in $x$.
 
 From here the analysis is straightforward. Together with $p_\mu,m_{\mu\nu}$, the space of solutions is spanned by
 \begin{align}
@@ -2029,18 +2115,400 @@ From here the analysis is straightforward. Together with $p_\mu,m_{\mu\nu}$, the
 d &= x^\mu \ptl_\mu &&\textrm{(dilatations)},\nn\\
 k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &&\textrm{(special conformal transformations)}.
 \end{align}
-The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$.
+The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$. Overall, there are
+\be
+\underbrace{d}_{p_\mu} + \underbrace{\frac{d(d-1)}{2}}_{m_{\mu\nu}} + \underbrace{1}_d + \underbrace{d}_{k_\mu} &= \frac{(d+2)(d+1)}{2}
+\ee
+solutions to the conformal Killing equation in $d>2$, each with an associated conserved charge.
 
 Let us now return to the case $d=2$. It is natural to write the conformal Killing equation in terms of holomorphic and antiholomorphic coordinates $\e = \e \ptl_z + \bar \e \ptl_{\bar z}$, where it becomes
 \be
 \ptl_z \bar \e = 0,\quad \ptl_{\bar z} \e = 0.
 \ee
-(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) Thus, we can solve the conformal Killing equation by choosing $\e$ ($\bar\e$) to be any holomorphic (antiholomorphic) function,
+(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) A general solution is given by choosing $\e$ ($\bar\e$) to be any purely holomorphic (antiholomorphic) function,
 \be
 \e &= \e(z) \ptl_z + \bar \e(\bar z) \ptl_{\bar z}.
 \ee
-Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against any holomorphic or antiholomorphic vector field. These infinite symmetries will play an important role later when we discuss the conformal bootstrap in 2d.
+Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against a holomorphic or antiholomorphic vector field.
 %\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.}
+
+
+\subsection{Finite conformal transformations}
+
+Before discussing the charges $P_\mu,M_{\mu\nu},D,K$, let us take a moment to understand the geometrical meaning of the conformal Killing vectors (\ref{eq:poincaregenerators}) and (\ref{eq:extraconformalgenerators}).  Consider an infinitesimal transformation $x^\mu\to x'^\mu=x^\mu+\e^\mu(x)$.  If $\e^\mu$ satisfies the conformal Killing equation, then
+\be
+\label{eq:conformalinfinitesimal}
+\pdr{x'^\mu}{x^\nu} &= \de^{\mu}_\nu+\ptl_\nu\e^\mu
+=\p{1+\frac 1 d (\ptl\.\e)}\p{\de^\mu_\nu + \frac 1 2\p{\ptl_\nu \e^\mu - \ptl^\mu \e_\nu}}.
+\ee
+The right-hand side is an infinitesimal rescaling times an infinitesimal rotation.  Exponentiating gives a coordinate transformation $x\to x'$ such that
+\be
+\label{eq:conformalfinite}
+\pdr{x'^\mu}{x^\nu} &= \Omega(x)R^\mu{}_\nu{}(x),\qquad R^TR=I_{d\x d},
+\ee
+where $\Omega(x)$ and $R^\mu{}_\nu{}(x)$ are finite position-dependent rescalings and rotations.
+Equivalently, the transformation $x\to x'$ rescales the metric by a scalar factor,
+\be
+\delta_{\mu\nu}\pdr{x'^\mu}{x^\alpha}\pdr{x'^\nu}{x^\beta} &= \Omega(x)^2\de_{\alpha\beta}.
+\ee
+Such transformations are called {\it conformal}. They comprise the conformal group, a finite-dimensional subgroup of the diffeomorphism group of $\R^d$.
+
+The exponentials of $p_\mu$ and $m_{\mu\nu}$ are translations and rotations. Exponentiating $d$ gives a scale transformation $x\to \lambda x$.  
+We can understand the exponential of $k_\mu$ by first considering an inversion
+\be
+I:x^\mu \to \frac{x^\mu}{x^2}.
+\ee
+$I$ is a conformal transformation, but it is not continuously connected to the identity, so it can't be obtained by exponentiating a conformal Killing vector. This means that a CFT need not have $I$ as a symmetry.
+\begin{exercise}
+Show that $I$ is continuously connected to a reflection $x^0\to -x^0$.  Conclude that a CFT is invariant under $I$ if and only if it is invariant under reflections.
+\end{exercise}
+
+\begin{exercise}
+Show that $k_\mu = -I p_\mu I$. Conclude that $e^{a\.k}$ implements the transformation
+\be
+\label{eq:finitespecialconformal}
+x &\to x'(x)=\frac{x^\mu-a^\mu x^2}{1-2(a\.x)+a^2 x^2}.
+\ee
+\end{exercise}
+We can think of $k_\mu$ as a ``translation that moves infinity and fixes the origin" in the same sense that the usual translations move the origin and fix infinity, see figure~\ref{fig:translationnearinfinity}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{translationnearinfinity.jpg}
+\end{center}
+\caption{\label{fig:translationnearinfinity} $k_\mu$ is analogous to $p_\mu$, with the origin and the point at infinity swapped by an inversion.}
+\end{figure}
+
+\subsection{The conformal algebra}
+
+The charges $Q_\e$ give a representation of the conformal algebra
+\be
+\label{eq:conformalalgebra}
+[Q_{\e_1},Q_{\e_2}] &= Q_{-[\e_1,\e_2]},
+\ee
+where $[\e_1,\e_2]$ is a commutator of vector fields.\footnote{The minus sign in (\ref{eq:conformalalgebra}) comes from the fact that when charges $Q_i$ are represented by differential operators $\cD_i$, repeated action reverses the order $[Q_1,[Q_2,\cO]]=\cD_2 \cD_1 \cO$.  Alternatively, we could have introduced an extra minus sign in the $Q$'s so that $[Q,\cO]=-\cD$ and then $Q,\cD$ would have the same commutation relations.}  This is not obvious and deserves proof. In fact, it is {\it not true\/} in 2-dimensional CFTs, where the algebra of charges is a central extension of the the algebra of conformal killing vectors.
+
+\begin{exercise}
+Show that in $d\geq 3$,
+\be
+\label{eq:conformaltransfofT}
+[Q_\e,T^{\mu\nu}] &= \e^\rho\ptl_\rho T^{\mu\nu}+(\ptl\.\e)T^{\mu\nu}-\ptl_\rho \e^\mu T^{\rho\nu}+\ptl^\nu\e_\rho T^{\rho\mu}.
+\ee
+Argue as follows. Assume that only the stress tensor appears on the right-hand side.\footnote{Bonus exercise: can other operators appear?} Using linearity in $\e$, dimensional analysis, and the conformal Killing equation, show that (\ref{eq:conformaltransfofT}) contains all terms that could possibly appear.\footnote{The terms on the right-hand side are local in $\e$ because we can evaluate $[Q_{\e},T^{\mu\nu}(x)]$ in an arbitrarily small neighborhood of $x$. Assuming the singularity as two $T^{\mu\nu}$'s coincide is bounded, we can then replace $\e$ by its Taylor expansion around $x$.}  Fix the relative coefficients using conservation, tracelessness, and symmetry under $\mu\leftrightarrow \nu$. Fix the overall coefficient by matching with (\ref{commutator}).
+\end{exercise}
+
+\begin{exercise}
+Using (\ref{eq:conformaltransfofT}), prove the commutation relation (\ref{eq:conformalalgebra}).
+\end{exercise}
+
+\begin{exercise}
+When $d=2$, it's possible to add an extra term in (\ref{eq:conformaltransfofT}) proportional to the unit operator that is consistent with dimensional analysis, conservation, and tracelessness.  Find this term (up to an overall coefficient),\footnote{The coefficient can be fixed by comparing with the OPE, see e.g. \cite{Polchinski:1998rq}. It is proportional to the central charge $c$.} and show how it modifies the commutation relations (\ref{eq:conformalalgebra}). This is the Virasoro algebra!
+\end{exercise}
+
+As usual, (\ref{eq:conformalalgebra}) is true in any quantization of the theory.  In path integral language, it tells us how to move the topological surface operators $Q_{\e}(\Sigma)$ through each other.
+
+\begin{exercise} Show that
+\be
+\,[M_{\mu\nu},P_\rho] &= \de_{\nu\rho}P_\mu - \de_{\mu\rho}P_\nu,\\
+\,[M_{\mu\nu},K_\rho] &= \de_{\nu\rho}K_\mu - \de_{\mu\rho}K_\nu,\\
+\,[M_{\mu\nu},M_{\rho\s}] &= \de_{\nu\rho}M_{\mu\s}-\de_{\mu\rho}M_{\nu\s}+\de_{\nu\s}M_{\rho\mu}-\de_{\mu\s}M_{\rho\nu},\label{eq:mmcommutator}\\
+\label{eq:dpcommutator}
+\,[D,P_\mu]&=P_\mu,\\
+\label{eq:dkcommutator}
+\,[D,K_\mu]&=-K_\mu,\\
+\,[K_\mu,P_\nu]&=2\de_{\mu\nu}D-2M_{\mu\nu},
+\ee
+and all other commutators vanish.
+\end{exercise}
+The first three commutation relations say that $M_{\mu\nu}$ generates the algebra of Euclidean rotations $\SO(d)$ and that $P_\mu,K_\mu$ transform as vectors.  The last three are more interesting.  Equations~(\ref{eq:dpcommutator}) and (\ref{eq:dkcommutator}) say that $P_\mu$ and $K_\mu$ can be thought of as raising and lowering operators for $D$. We will return to this idea shortly.
+
+\begin{exercise} Define the generators
+\be
+\label{eq:conformalgeneratorssodplus11}
+L_{\mu\nu}&=M_{\mu\nu},\nn\\
+L_{-1,0} &= D,\nn\\
+L_{0,\mu} &= \frac 1 2 (P_\mu+K_\mu),\nn\\
+L_{-1,\mu}&= \frac 1 2 (P_\mu-K_\mu),
+\ee
+where $L_{ab}=-L_{ba}$ and $a,b\in \{-1,0,1,\dots,d\}$.  Show that $L_{ab}$ satisfy the commutation relations of $\SO(d+1,1)$.
+\end{exercise}
+The fact that the conformal algebra is $\SO(d+1,1)$ suggests that it might be good to think about its action in terms of $\R^{d+1,1}$ instead of $\R^d$.  This is the idea behind the ``embedding space formalism" \cite{Dirac:1936fq,Mack:1969rr,Boulware:1970ty,Ferrara:1973eg,Weinberg:2010fx,Costa:2011mg}, which provides a simple and powerful way to understand the constraints of conformal invariance. We will be more pedestrian in this course, but I recommend reading about the embedding space formalism in the lecture notes by Penedones \cite{Joao} or Rychkov \cite{Rychkov:2016iqz}.
+
+\section{Primaries and descendants}
+
+Now that we have our conserved charges, we can classify operators into representations of those charges.  We do this in steps. First we classify operators into Poincare representations, then scale+Poincare representations, and finally conformal representations.
+
+\subsection{Poincare Representations}
+
+In a rotationally-invariant QFT, local operators at the origin transform in irreducible representations of the rotation group $\SO(d)$,
+\be
+\label{eq:rotationatorigin}
+[M_{\mu\nu},\cO^a(0)]&= (\cS_{\mu\nu}){}_b{}^a\cO^b(0),
+\ee
+where $\cS_{\mu\nu}$ are matrices satisfying the same algebra as $M_{\mu\nu}$, and $a,b$ are indices for the $\SO(d)$ representation of $\cO$.\footnote{The funny index contractions in (\ref{eq:rotationatorigin}) ensure that $M_{\mu\nu}$ and $\cS_{\mu\nu}$ have the same commutation relations (exercise!).}\footnote{Because our commutation relations (\ref{eq:mmcommutator}) for $\SO(d)$ differ from the usual conventions by a factor of $i$, the generators $\cS_{\mu\nu}$ will be {\it anti-}hermitian, $\cS^\dag=-\cS$.}  We often suppress spin indices and write the right-hand side as simply $\cS_{\mu\nu}\cO(0)$. The action (\ref{eq:rotationatorigin}), together with the commutation relations of the Poincare group, determines how rotations act away from the origin.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{commutatorissurround.jpg}
+\includegraphics[width=0.5\textwidth]{surroundmany.jpg}
+\end{center}
+\caption{The shorthand notation $Q\cO$ stands for surrounding $\cO$ with a surface operator $Q(\Sigma)$. Equivalently, it stands for $[Q,\cO]$ in any quantization of the theory. \label{fig:commutatorissurround}}
+\end{figure}
+
+To see this, it is convenient to adopt shorthand notation where commutators of charges with local operators are implicit, $[Q,\cO] \to Q \cO$, see figure~\ref{fig:commutatorissurround}.  This notation is valid because of the Jacobi identity (more formally, the fact that adjoint action gives a representation of a Lie algebra).  In path integral language, $Q_n\cdots Q_1 \cO(x)$ means surrounding $\cO(x)$ with topological surface operators where $Q_n$ is the outermost surface and $Q_1$ is the innermost.  The conformal commutation relations tell us how to re-order these surfaces.
+
+Acting with a rotation on $\cO(x)$, we have
+\be
+M_{\mu\nu}\cO(x) &= M_{\mu\nu}e^{x\.P}\cO(0) \nn\\
+&= e^{x\.P}(e^{-x\.P} M_{\mu\nu} e^{x\.P})\cO(0)\nn\\
+&= e^{x\.P}(-x_\mu P_\nu + x_\nu P_\mu+M_{\mu\nu})\cO(0)\nn\\
+&= (x_\nu \ptl_\mu - x_\mu\ptl_\nu+\cS_{\mu\nu})e^{x\.P}\cO(0)\nn\\
+&= (m_{\mu\nu}+\cS_{\mu\nu})\cO(x).\label{eq:actionbyrotation}
+\ee
+In the third line, we've used the Poincare algebra and the Hausdorff formula
+\be
+e^{A}Be^{-A} = e^{[A,\.]}B
+= B+[A,B]+\frac 1 {2!}[A,[A,B]]+\dots.
+\ee
+
+\subsection{Scale+Poincare representations}
+
+In a scale-invariant theory, it's also natural to diagonalize the dilatation operator acting on operators at the origin,
+\be
+\label{eq:dilatationcondition}
+[D,\cO(0)]&=\Delta \cO(0).
+\ee
+The eigenvalue $\Delta$ is the {\it dimension\/} of $\cO$.
+\begin{exercise}
+Mimic the computation (\ref{eq:actionbyrotation}) to derive the action of dilatation on $\cO(x)$ away from the origin,
+\be
+\label{eq:dilatationaction}
+[D,\cO(x)] &= (x^\mu\ptl_\mu + \Delta)\cO(x).
+\ee
+\end{exercise}
+
+Equation (\ref{eq:dilatationaction}) is constraining enough to fix two-point functions of scalars up to a constant.  Firstly, by rotation and translation invariance, we must have
+\be
+\<\cO_1(x)\cO_2(y)\>&=f(|x-y|),
+\ee
+for some function $f$.
+
+In a scale-invariant theory with scale-invariant boundary conditions, the simultaneous action of $D$ on all operators in a correlator must vanish, as illustrated in figure~\ref{fig:wardidentityford}.  Moving $D$ to the boundary gives zero.\footnote{It is also interesting to consider non-scale-invariant boundary conditions. These can be interpreted as having a nontrivial operator at $\oo$.}  On the other hand, shrinking $D$ to the interior gives the sum of its actions on the individual operators.  By the Ward identity (\ref{eq:dilatationaction}), this is
+\be
+\label{eq:wardidentityforcorrelator}
+0 &= \p{x^\mu\ptl_\mu + \Delta_1+y^\mu\ptl_\mu+\Delta_2}f(|x-y|).
+\ee
+We could alternatively derive (\ref{eq:wardidentityforcorrelator}) by working in some quantization, where it follows from trivial algebra and the fact that $D|0\> = 0$,
+\be
+0 &= \<0|[D,\cO_1(x)\cO_2(y)]|0\>\nn\\
+&= \<0|[D,\cO_1(x)]\cO_2(y)+\cO_1(x)[D,\cO_2(y)]|0\>\nn\\
+&= \p{x^\mu\ptl_\mu + \Delta_1+y^\mu\ptl_\mu+\Delta_2}\<0|\cO_1(x)\cO_2(y)|0\>.
+\ee
+Either way, the solution is
+\be
+f(|x-y|) &= \frac{C}{|x-y|^{\Delta_1+\Delta_2}}.
+\ee
+
+
+If we had an operator with negative scaling dimension, then its correlators would grow with distance, violating cluster decomposition. This is unphysical, so we expect dimensions $\De$ to be positive. Shortly, we will prove this fact for unitary conformal theories (and derive even stronger constraints on $\De$).
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{wardidentityford.jpg}
+\end{center}
+\caption{The Ward identity for scale invariance of a two-point function. \label{fig:wardidentityford}}
+\end{figure}
+
+
+\subsection{Conformal representations}
+
+Note that $K_\mu$ is a lowering operator for dimension,
+\be
+D K_\mu \cO(0) &= ([D,K_\mu] + K_\mu D)\cO(0)\nn\\
+&= (\De-1)K_\mu \cO(0).
+\ee
+(Again, we're using shorthand notation $[Q,\cO]\to Q\cO$.)  Thus, given an operator $\cO(0)$, we can repeatedly act with $K_\mu$ to obtain operators $K_{\mu_1}\dots K_{\mu_n}\cO(0)$ with arbitrarily low dimension.  Because dimensions are bounded from below in physically sensible theories, this process must eventually terminate.  That is, there must exist operators such that
+\be
+\label{eq:primarycondition}
+[K_\mu,\cO(0)] &= 0\qquad\textrm{(primary operator)}.
+\ee
+Such operators are called ``primary."  Given a primary, we can construct operators of higher dimension, called ``descendants," by acting with momentum generators, which act like raising operators for dimension,
+\be
+\cO(0) &\to P_{\mu_1}\cdots P_{\mu_n}\cO(0)\qquad\textrm{(descendant operators)}\nn\\
+\De &\to \De+n.
+\ee
+For example, $\cO(x)=e^{x\.P}\cO(0)$ is an (infinite) linear combination of descendant operators.
+The conditions (\ref{eq:rotationatorigin},~\ref{eq:dilatationcondition},~\ref{eq:primarycondition}) are enough to determine how $K_\mu$ acts on any descendant using the conformal algebra.  For example,
+\begin{exercise}
+Let $\cO(0)$ be a primary operator with rotation representation matrices $\cS_{\mu\nu}$ and dimension $\Delta$.  Using the conformal algebra, show
+\be
+[K_\mu, \cO(x)] &= (k_\mu + 2\De x_\mu - 2x^\nu \cS_{\mu\nu})\cO(x),
+\label{eq:actionofK}
+\ee
+where $k_\mu$ is the conformal Killing vector defined in~(\ref{eq:extraconformalgenerators}). 
+\end{exercise}
+
+To summarize, a primary operator satisfies
+\be
+\label{eq:isotropyaction}
+\,[D,\cO(0)] &= \De\cO(0)\nn\\
+\,[M_{\mu\nu},\cO(0)] &= \cS_{\mu\nu}\cO(0)\nn\\
+\,[K_\mu,\cO(0)] &= 0.
+\ee
+From these conditions, we can construct a representation of the conformal algebra out of 
+$\cO(0)$ and its descendants,
+\be
+\label{eq:conformalrepresentation}
+\begin{array}{c|c}
+\textrm{operator} & \textrm{dimension}
+\\
+\hline
+\vdots & \\
+P_{\mu_1}P_{\mu_2}\cO(0) & \De+2\\
+\uparrow & \\
+P_{\mu_1} \cO(0) & \De+1\\
+\uparrow &\\
+\cO(0) & \De.
+\end{array}
+\ee
+The action of conformal generators on each state follows from the conformal algebra.  This should remind you of the construction of irreducible representations of $\SU(2)$ starting from a highest-weight state.  In this case, our primary is a {\it lowest-weight\/} state of $D$, but the representation is built in an analogous way.\footnote{Generically, the representation (\ref{eq:conformalrepresentation}) is an {\it induced representation} $\mathrm{Ind}^G_H(R_H)$, where $H$ is the subgroup of the conformal group generated by $D,M_{\mu\nu},K_\mu$ (called the isotropy subgroup), $R_H$ is the finite-dimensional representation of $H$ defined by (\ref{eq:isotropyaction}), and $G$ is the full conformal group. It is also called a parabolic Verma module.  Sometimes the operator $\cO$ satisfies ``shortening conditions" where a linear combination of descendants vanishes. (A conserved current is an example.)  In this case, the Verma module is reducible and the actual conformal multiplet of $\cO$ is one of the irreducible components.}  It turns out that any local operator in a unitary CFT is a linear combination of primaries and descendants. We will prove this in section~\ref{sec:onlyprimariesanddescendants}.
+
+\begin{exercise}
+Show that (\ref{commutator}), (\ref{eq:actionbyrotation}), (\ref{eq:dilatationaction}), and (\ref{eq:actionofK}) can be summarized as
+\be
+\label{eq:generatorsummary}
+[Q_\e,\cO(x)] &= \p{\e\.\ptl + \frac{\De}{d}(\ptl\.\e) - \frac 1 2 (\ptl^\mu \e^\nu)\cS_{\mu\nu}}\cO(x).
+\ee
+\end{exercise}
+
+\begin{exercise}
+Deduce that $T^{\mu\nu}$ is primary by comparing (\ref{eq:generatorsummary}) with (\ref{eq:conformaltransfofT}). 
+\end{exercise}
+
+\subsection{Finite Conformal Transformations}
+
+An exponentiated charge $U=e^{Q_\e}$ implements a finite conformal transformation.  Denote the corresponding diffeomorphism $e^{\e}$ by $x\mapsto x'(x)$. By comparing with (\ref{eq:conformalinfinitesimal}) and (\ref{eq:conformalfinite}), we find that (\ref{eq:generatorsummary}) exponentiates to
+\be
+\label{eq:finiteprimarytransformation}
+U \cO^a(x) U^{-1} &= \Omega(x')^\De D(R(x'))_b{}^a\cO^b(x'),
+\ee
+where as before
+\be
+\pdr{x'^\mu}{x^\nu} &= \Omega(x')R^\mu{}_\nu(x'),\qquad R^\mu{}_\nu(x')\in\SO(d).
+\ee
+Here, $D(R)_b{}^a$ is a matrix implementing the action of $R$ in the $\SO(d)$ representation of $\cO$, for example
+\begin{align}
+D(R) &= 1 && \textrm{(scalar representation)},\nn\\
+D(R)_\mu{}^\nu &= R_\mu{}^\nu && \textrm{(vector representation)},\label{eq:vectorrep}\nn\\
+ &\cdots&& \cdots
+\end{align}
+and so on.
+
+We could have started the whole course by taking (\ref{eq:finiteprimarytransformation}) as the definition of a primary operator. But the connection to the underlying conformal algebra will be crucial in what follows, so we have chosen to derive it.
+
+\begin{exercise}
+Show that the transformation (\ref{eq:finiteprimarytransformation}) composes correctly to give a representation of the conformal group.  That is, show
+\be
+U_{g_1}U_{g_2}\cO^a(x) U_{g_2}^{-1} U_{g_1}^{-1} &= U_{g_1g_2}\cO^a(x)U_{g_1g_2}^{-1}
+\ee
+where $x\mapsto g_{i}(x)$ are conformal transformations, $g_1g_2$ denotes composition $x\mapsto g_1(g_2(x))$, and $U_{g}$ is the unitary operator associated to $g$.
+\end{exercise}
+
+\section{Conformal correlators}
+
+\subsection{Scalar operators}
+\label{sec:conformalcorrelatorsscalars}
+
+We have already seen that scale invariance fixes two-point functions of scalars up to a constant
+\be
+\label{eq:scaletwoptfunction}
+\<\cO_1(x_1)\cO_2(x_2)\> &= \frac{C}{|x_1-x_2|^{\De_1+\De_2}} \qquad\textrm{(SFT)}.
+\ee
+
+For primary scalars in a CFT, the correlators must satisfy a stronger Ward identity,
+\be
+\label{eq:scalarconformalcorrelator}
+\<\cO_1(x_1)\dots\cO_n(x_n)\> &= \<(U\cO_1(x_1)U^{-1}) \cdots (U\cO_n(x_n)U^{-1})\>\nn\\
+ &= \Omega(x_1')^{\De_1}\cdots\Omega(x_n')^{\De_n}\<\cO_1(x_n')\cdots \cO_n(x_n')\>.
+\ee
+Let us check whether this holds for (\ref{eq:scaletwoptfunction}).
+
+\begin{exercise}
+Show that for a conformal transformation,
+\be
+\label{eq:conformaltransformationofdistance}
+(x-y)^2 &= \frac{(x'-y')^2}{\Omega(x')\Omega(y')}.
+\ee
+Hint: This is obviously true for translations, rotations, and scale transformations. It suffices to check it for inversions $I:x\to\frac{x}{x^2}$ (why?).
+\end{exercise}
+Using (\ref{eq:conformaltransformationofdistance}), we find
+\be
+\frac{C}{|x_1-x_2|^{\De_1+\De_2}} &= \Omega(x_1')^{\frac{\De_1+\De_2}{2}}\Omega(x_2')^{\frac{\De_1+\De_2}{2}}\frac{C}{|x_1'-x_2'|^{\De_1+\De_2}}.
+\ee
+Consistency with (\ref{eq:scalarconformalcorrelator}) then requires $\De_1=\De_2$ or $C=0$.  In other words,
+\be
+\<\cO_1(x_1)\cO_2(x_2)\> &= \frac{C\de_{\De_1\De_2}}{x_{12}^{2\De_1}}\qquad\textrm{(CFT, primary operators)},
+\ee
+where $x_{12}\equiv x_1-x_2$.
+\begin{exercise}
+Recover the same result using the Ward identity for $K_\mu$
+\be
+\<[K_\mu,\cO_1(x_1)]\cO_2(x_2)\>+\<\cO_1(x_1)[K_\mu,\cO_2(x_2)]\> &= 0.
+\ee
+\end{exercise}
+
+Conformal invariance is also powerful enough to fix a three-point function of primary scalars, up to an overall coefficient.  Using (\ref{eq:conformaltransformationofdistance}), it's easy to check that the famous formula \cite{Polyakov:1970xd}
+\be
+\label{eq:conformalthreeptfunction}
+\<\cO_1(x_1)\cO_2(x_2)\cO_3(x_3)\> &= \frac{f_{123}}{x_{12}^{\De_1+\De_2-\De_3}x_{23}^{\De_2+\De_3-\De_1}x_{31}^{\De_3+\De_1-\De_2}},
+\ee
+with $f_{123}$ constant, satisfies the Ward identity (\ref{eq:scalarconformalcorrelator}).
+
+With four points, there are nontrivial conformally invariant combinations of the points called ``conformal cross-ratios,"
+\be
+\label{eq:definitionofcrossratios}
+u = \frac{x_{12}^2 x_{34}^2}{x_{13}^2 x_{24}^2},\qquad
+v = \frac{x_{23}^2 x_{14}^2}{x_{13}^2 x_{24}^2}.
+\ee
+The reason that there are exactly two independent cross-ratios can be understood as follows.
+\begin{itemize}
+\item Using special conformal transformations, we can move $x_4$ to infinity.
+\item Using translations, we can move $x_1$ to zero.
+\item Using rotations and dilatations, we can move $x_3$ to $(1,0,\dots,0)$.
+\item Using rotations that fix $x_3$, we can move $x_2$ to $(x,y,0,\dots,0)$.
+\end{itemize}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{fig-z}
+\end{center}
+\caption{\label{fig:zplane} Using conformal transformations, we can place four points on a plane in the configuration shown above (figure from \cite{Hogervorst:2013sma}).}
+\end{figure}
+
+This procedure leaves exactly two undetermined quantities $x,y$, giving two independent conformal invariants. Evaluating $u$ and $v$ for this special configuration of points (figure~\ref{fig:zplane}) gives
+\be
+u=z\bar z,\qquad v=(1-z)(1-\bar z),
+\ee
+where $z\equiv x+iy$.
+
+Four-point functions can depend nontrivially on the cross-ratios.  For a scalar $\f$ with dimension $\De_\phi$, the formula
+\be
+\label{eq:fourptfunctionofprimaries}
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \frac{g(u,v)}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}}
+\ee
+satisfies the Ward identity (\ref{eq:scalarconformalcorrelator}) for any function $g(u,v)$. 
+\begin{exercise}
+Generalize (\ref{eq:fourptfunctionofprimaries}) to the case of non-identical scalars $\f_i(x)$ with dimensions $\De_i$.
+\end{exercise}
+
+The left-hand side of (\ref{eq:fourptfunctionofprimaries}) is manifestly invariant under permutations of the points $x_i$.  This leads to consistency conditions on $g(u,v)$,
+\begin{align}
+\label{eq:trivialcrossing}
+g(u,v) &= g(u/v,1/v) && \textrm{(from swapping $1\leftrightarrow 2$ or $3\leftrightarrow 4$)},\\
+\label{eq:crossingsymmetry}
+g(u,v) &= \p{\frac{u}{v}}^{\De_\f} g(v,u) && \textrm{(from swapping $1\leftrightarrow 3$ or $2\leftrightarrow 4$)}.
+\end{align}
+All other permutations can be generated from the ones above.  We will see shortly that $g(u,v)$ is  actually determined in terms of the dimensions $\De_i$ and three-point coefficients $f_{ijk}$ of the theory.  Equation~(\ref{eq:trivialcrossing}) will be satisfied for trivial reasons.  However (\ref{eq:crossingsymmetry}) will lead to powerful constraints on the $\De_i, f_{ijk}$.
 
 
 
