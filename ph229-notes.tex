@@ -1862,7 +1862,7 @@ Consider the time-ordered correlator (\ref{eq:timeordered}) with $t_n>\cdots>t_1
 &= \<0|e^{t_n P^0}\cO_n(0,\bx_n)e^{-t_n P^0}\cdots e^{t_1 P^0}\cO_1(0,\bx_1)e^{-t_1P^0}|0\>\nonumber\\
 &=\<0|\cO_n(0,\bx_n)e^{-(t_n-t_{n-1})P^0}\cdots e^{-(t_2-t_1)P^0}\cO_1(0,\bx_1)|0\>.
 \end{align}
-In other words, the path integral between spatial slices separated by time $t$ computes the time evolution operator $U(t)=e^{-tP^0}$.  In unitary theories (defined in more detail in section~\ref{sec:reflectionpositivity}), $P^0$ has a positive real spectrum, so $U(t)$ causes damping at large time separations.
+In other words, the path integral between spatial slices separated by time $t$ computes a time evolution operator $U(t)=e^{-tP^0}$. In particular, $P^0$ is the Hamiltonian, as expected.  %In unitary theories (defined in more detail in section~\ref{sec:reflectionpositivity}), $P^0$ has a positive real spectrum, so $U(t)$ causes damping at large time separations.
 
 \subsection{A topological surface operator on the lattice}
 
@@ -1950,7 +1950,7 @@ One effect of inserting $U_{\mathbb{Z}_2}$ on a spatial slice $T^{d-1}\subset T^
 
 \subsection{More spacetime symmetries}
 
-Let us return to symmetries built from the stress tensor. Given a conserved current $\ptl_\mu J^\mu=0$ (as an operator equation), we can always define a topological surface operator by integration.\footnote{It is an interesting question whether the converse is true. When a theory has a Lagrangian description, the Noether procedure gives a conserved current for any continuous symmetry (that is manifest in the Lagrangian).  Proving Noether's theorem without a Lagrangian is an open problem.} For $P^\nu$, the corresponding currents are $T^{\mu\nu}(x)$.  More generally, given a vector field $\e=\e^\mu(x)\ptl_\mu$, the charge
+Let us return to discussing symmetries built from the stress tensor. Given a conserved current $\ptl_\mu J^\mu=0$ (as an operator equation), we can always define a topological surface operator by integration.\footnote{It is an interesting question whether the converse is true. When a theory has a Lagrangian description, the Noether procedure gives a conserved current for any continuous symmetry (that is manifest in the Lagrangian).  Proving Noether's theorem without a Lagrangian is an open problem.} For $P^\nu$, the corresponding currents are $T^{\mu\nu}(x)$.  More generally, given a vector field $\e=\e^\mu(x)\ptl_\mu$, the charge
 \be
 Q_\e(\Sigma) &= -\int_\Sigma dS_\mu \e_\nu(x) T^{\mu\nu}(x)
 \ee
@@ -1966,7 +1966,7 @@ or
 \label{eq:killingvector}
 \ptl_\mu\e_\nu+\ptl_\nu\e_\mu &= 0.
 \ee
-This is the Killing equation. In flat space, it has solutions
+This is the Killing equation. It is equivalent to the statement that $\e$ generates an isometry of the flat metric on $\R^d$. It has solutions
 \begin{align}
 \label{eq:poincaregenerators}
 p_\mu &= \ptl_\mu &&\textrm{(translations)},\nn\\
@@ -1990,7 +1990,7 @@ This is equivalent to the statement that the theory is insensitive to position-d
 
 \subsection{Scale implies conformal invariance in 2d}
 
-We have seen that critical points exhibit scale-invariance, but it is not obvious why this should imply tracelessness of the stress tensor. Proving that scale-invariance implies $T_\mu^\mu=0$ for general $d$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, proving it for $d=2$ is straightforward.\footnote{This argument is from Zohar Komargodski's notes \cite{KomargodskiNotes}. See \cite{YellowPages} for a similar proof in position-space.}
+We have seen that critical points exhibit scale-invariance, but it might not be obvious why they should have a traceless stress tensor. Proving that scale-invariance implies $T_\mu^\mu=0$ for general $d$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, proving it for $d=2$ is straightforward.\footnote{This argument is from Zohar Komargodski's notes \cite{KomargodskiNotes}. See \cite{YellowPages} for a similar proof in position-space.}
 
 Consider the two-point function of the stress tensor in momentum space (this will make it easy to study conservation). Symmetry and conservation require it to take the form
 \be
@@ -2097,13 +2097,13 @@ where we have assumed that $d\neq 1$. Now taking $\ptl^\nu\ptl_\rho$ and symmetr
 \p{1-\frac{2}{d}}\ptl_\rho\ptl_\mu(\ptl \. \e)=0 %\quad\implies\quad \ptl_\rho \ptl_\mu(\ptl\.\e) = 0\textrm{ or $d=2$}.
 \label{eq:equationaboutdivergence}
 \ee
-For the moment, let us focus on $d\neq 2$, which means $\ptl_\rho \ptl_\mu(\ptl\.\e)=0$. Taking two derivatives of the conformal Killing equation and using (\ref{eq:equationaboutdivergence}), we find
+For the moment, let us focus on the case $d\neq 2$, so we can conclude that $\ptl_\rho \ptl_\mu(\ptl\.\e)=0$. Taking two derivatives of the conformal Killing equation and using (\ref{eq:equationaboutdivergence}), we find
 \be
 \ptl_\a(\ptl_\b \ptl_\g \e_\de + \ptl_\b \ptl_\de \e_\g) &= 0,\nn\\
 \ptl_\a(\ptl_\g \ptl_\b \e_\de + \ptl_\g \ptl_\de \e_\b) &= 0,\nn\\
 \ptl_\a(\ptl_\de \ptl_\g \e_\b + \ptl_\de \ptl_\b \e_\g) &= 0.
 \ee
-These are three equations for three unknowns, so it follows that
+These are three equations for three unknowns, and they imply
 \be
 \ptl_\a\ptl_\b \ptl_\g \e_\de &= 0.
 \ee
@@ -2121,15 +2121,16 @@ The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$. Overall, t
 \ee
 solutions to the conformal Killing equation in $d>2$, each with an associated conserved charge.
 
-Let us now return to the case $d=2$. It is natural to write the conformal Killing equation in terms of holomorphic and antiholomorphic coordinates $\e = \e \ptl_z + \bar \e \ptl_{\bar z}$, where it becomes
+Now let us return to the case $d=2$. It is natural to write the conformal Killing equation in terms of holomorphic and antiholomorphic coordinates $\e = \e \ptl_z + \bar \e \ptl_{\bar z}$, where $\e,\bar \e$ are initially independent functions of both $z$ and $\bar z$. In this language, the conformal Killing equation becomes
 \be
 \ptl_z \bar \e = 0,\quad \ptl_{\bar z} \e = 0.
 \ee
-(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) A general solution is given by choosing $\e$ ($\bar\e$) to be any purely holomorphic (antiholomorphic) function,
+(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) A general solution is given by choosing $\e$ to be a function of $z$ alone, and $\bar \e$ to be a function of $\bar z$ alone,
 \be
 \e &= \e(z) \ptl_z + \bar \e(\bar z) \ptl_{\bar z}.
 \ee
-Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against a holomorphic or antiholomorphic vector field.
+Note that this includes the solutions $p_\mu,m_{\mu\nu},k_\mu,d$ along with many others.
+Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against a holomorphic or antiholomorphic vector field. We will study the implications of this infinite set of charges in section~\ref{}. For now we focus on the charges that are present in any $d$.
 %\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.}
 
 
