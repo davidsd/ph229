@@ -1988,7 +1988,8 @@ This is equivalent to the statement that the theory is insensitive to position-d
 %A conformal field theory (CFT) is a QFT satisfying the Atiyah-Segal axioms discussed in section~\ref{sec:asaxioms}, and possessing a conserved, symmetric, traceless stress tensor.
 %\end{definition}
 
-\subsection{Scale implies conformal invariance in 2d}
+\subsection{Scale-invariance plus unitarity implies conformal invariance in 2d}
+\label{sec:scaleimpliesconformal}
 
 We have seen that critical points exhibit scale-invariance, but it might not be obvious why they should have a traceless stress tensor. Proving that scale-invariance implies $T_\mu^\mu=0$ for general $d$ is an open problem.\footnote{An almost-complete argument exists in 4-dimensions \cite{}. Part of the challenge is identifying the appropriate assumptions to make. There exist boring/pathological counterexamples in 3d (for example free electromagnetism), and the right formulation of the theorem should exclude these cases.} However, proving it for $d=2$ is straightforward.\footnote{This argument is from Zohar Komargodski's notes \cite{KomargodskiNotes}. See \cite{YellowPages} for a similar proof in position-space.}
 
@@ -2060,8 +2061,11 @@ In position-space, this becomes a contact term
 %\ee
 %where $T(x)\equiv T^\mu_\mu(x)$.
 
-In a unitary quantum field theory,\footnote{Roughly-speaking, unitary means a theory that can be quantized in such a way that the space of states has a positive-definite inner product and the Hamiltonian is Hermitian and bounded from below. We will discuss unitarity in more detail later.} if the two point function of an operator vanishes at separated points, {\it any\/} correlator involving that operator vanishes at separated points. The argument is as follows. Remember we can insert a complete set of states to write a two-point function as a sum of positive terms (\ref{eq:completeset})
+In a unitary quantum field theory, if the two point function of an operator vanishes at separated points, {\it any\/} correlator involving that operator vanishes at separated points. Roughly-speaking, unitary means the theory that can be quantized in such a way that the space of states has a positive-definite inner product and the Hamiltonian is Hermitian and bounded from below. In a Euclidean theory, a more correct term is ``reflection positivity." We will discuss unitarity/reflection positivity in more detail later.
+
+The argument for vanishing of $T(x)$ is as follows. As we discussed in the introduction, in a unitary theory, inserting a complete set of states into a two-point function gives a sum of positive terms (see equation~(\ref{eq:completeset}))
 \be
+\label{eq:positivesumforttwopt}
 \<T(x^0,\mathbf{ 0})T(0)\> &= \sum_\psi |\<0|T(0)|\psi\>|^2 e^{-E_\psi x^0}.
 \ee
 If the left-hand side vanishes, each term on the right-hand side must vanish as well: $\<0|T(0)|\psi\>=0$, in other words $T(x)$ must annihilate the vacuum. Now consider a general correlation function of $T(x)$ with other operators,
@@ -2070,6 +2074,25 @@ If the left-hand side vanishes, each term on the right-hand side must vanish as 
 \<T(x) \cO_1(x_1)\cdots \cO_n(x_n)\>.
 \ee
 This correlator vanishes if $x$ is in the past or future of all the other $x_i$, since then $T(x)$ acts on the vacuum on either the right or left. However, correlation functions in QFT are analytic in their arguments, and the analytic continuation of zero is zero. Thus, the entire correlator (\ref{eq:correlatorofTwithstuff}) vanishes.
+
+\subsubsection{Scale without conformal invariance}
+
+Scale without conformal invariance is possible in nonunitary theories. Perhaps the simplest example is the theory of elasticity in 2-dimensions \cite{Riva:2005gd}. This is the theory of a vector $u_\mu$ with action
+\be
+\label{eq:theoryofelasticity}
+S &= \int d^2 x \p{g u_{\mu\nu} u^{\mu\nu} + \frac k 2 (u_\mu{}^\mu)^2},
+\ee
+where $u_{\mu\nu}=\frac 1 2 (\ptl_\mu u_\nu + \ptl_\nu u_\mu)$. The field $u_\mu$ is called the ``displacement field" and $u_{\mu\nu}$ is called the ``strain tensor." The coefficient $g$ represents the shear modulus, and $k+g$ is the bulk modulus of the described material.
+
+The action (\ref{eq:theoryofelasticity}) is quadratic in $u$, so this theory is easy to quantize. Note that $u_\mu$ describes a massless vector field without a gauge redundancy. Thus, there are negative-norm states, and the theory is nonunitary. Concretely, one can define a conserved stress tensor $T^{\mu\nu}$ that satisfies the correct Ward identities, and such that $\<T_\mu^\mu T_\nu^\nu\>=0$, but $T_\mu^\mu$ is not zero. For example, it has non-vanishing correlation functions with other operators:
+\be
+\<T_\mu^\mu(z) :\!\ptl u \ptl u\!:\!(0)\> &= -\frac{k+g}{2\pi^2 g(k+2g)} \frac{1}{z^4}.
+\ee
+(Here, we use complex coordinates $z=x+iy$ and $u=u_1-i u_2$.)
+
+This example shows that the positive sum (\ref{eq:positivesumforttwopt}) for $\<TT\>$ is crucial for completing the argument in section~\ref{sec:scaleimpliesconformal}. The proof that scale implies conformal invariance in 4d \cite{} also uses unitarity in a fundamental way. However, though unitarity may be a sufficient condition for conformal invariance, it is not necessary. We will encounter some interesting nonunitary CFTs (like the Lee-Yang theory) later in the course.
+
+\draftnote{Discuss virial current?}
 
 \subsection{Symmetries from tracelessness}
 
