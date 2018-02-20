@@ -2157,6 +2157,10 @@ Consequently, 2d CFTs have an infinite set of conserved charges given by the int
 %\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.}
 
 
+\draftnote{Discuss 1 dimension}
+
+\stoplecture
+
 \subsection{Finite conformal transformations}
 
 Before discussing the charges $P_\mu,M_{\mu\nu},D,K$, let us take a moment to understand the geometrical meaning of the conformal Killing vectors (\ref{eq:poincaregenerators}) and (\ref{eq:extraconformalgenerators}).  Consider an infinitesimal transformation $x^\mu\to x'^\mu=x^\mu+\e^\mu(x)$.  If $\e^\mu$ satisfies the conformal Killing equation, then
@@ -2229,6 +2233,8 @@ Using (\ref{eq:conformaltransfofT}), prove the commutation relation (\ref{eq:con
 When $d=2$, it's possible to add an extra term in (\ref{eq:conformaltransfofT}) proportional to the unit operator that is consistent with dimensional analysis, conservation, and tracelessness.  Find this term (up to an overall coefficient),\footnote{The coefficient can be fixed by comparing with the OPE, see e.g. \cite{Polchinski:1998rq}. It is proportional to the central charge $c$.} and show how it modifies the commutation relations (\ref{eq:conformalalgebra}). This is the Virasoro algebra!
 \end{exercise}
 
+\draftnote{Write out more of this in detail.}
+
 As usual, (\ref{eq:conformalalgebra}) is true in any quantization of the theory.  In path integral language, it tells us how to move the topological surface operators $Q_{\e}(\Sigma)$ through each other.
 
 \begin{exercise} Show that
@@ -2257,6 +2263,8 @@ L_{-1,\mu}&= \frac 1 2 (P_\mu-K_\mu),
 where $L_{ab}=-L_{ba}$ and $a,b\in \{-1,0,1,\dots,d\}$.  Show that $L_{ab}$ satisfy the commutation relations of $\SO(d+1,1)$.
 \end{exercise}
 The fact that the conformal algebra is $\SO(d+1,1)$ suggests that it might be good to think about its action in terms of $\R^{d+1,1}$ instead of $\R^d$.  This is the idea behind the ``embedding space formalism" \cite{Dirac:1936fq,Mack:1969rr,Boulware:1970ty,Ferrara:1973eg,Weinberg:2010fx,Costa:2011mg}, which provides a simple and powerful way to understand the constraints of conformal invariance. We will be more pedestrian in this course, but I recommend reading about the embedding space formalism in the lecture notes by Penedones \cite{Joao} or Rychkov \cite{Rychkov:2016iqz}.
+
+\stoplecture
 
 \section{Primaries and descendants}
 
@@ -2414,16 +2422,16 @@ Deduce that $T^{\mu\nu}$ is primary by comparing (\ref{eq:generatorsummary}) wit
 An exponentiated charge $U=e^{Q_\e}$ implements a finite conformal transformation.  Denote the corresponding diffeomorphism $e^{\e}$ by $x\mapsto x'(x)$. By comparing with (\ref{eq:conformalinfinitesimal}) and (\ref{eq:conformalfinite}), we find that (\ref{eq:generatorsummary}) exponentiates to
 \be
 \label{eq:finiteprimarytransformation}
-U \cO^a(x) U^{-1} &= \Omega(x')^\De D(R(x'))_b{}^a\cO^b(x'),
+U \cO^a(x) U^{-1} &= \Omega(x')^\De \rho^a{}_b(R(x')^{-1})\cO^b(x'),
 \ee
 where as before
 \be
 \pdr{x'^\mu}{x^\nu} &= \Omega(x')R^\mu{}_\nu(x'),\qquad R^\mu{}_\nu(x')\in\SO(d).
 \ee
-Here, $D(R)_b{}^a$ is a matrix implementing the action of $R$ in the $\SO(d)$ representation of $\cO$, for example
+Here, $\rho^a{}_b(R)$ is a matrix implementing the action of $R$ in the $\SO(d)$ representation $\rho$ of $\cO$, for example
 \begin{align}
-D(R) &= 1 && \textrm{(scalar representation)},\nn\\
-D(R)_\mu{}^\nu &= R_\mu{}^\nu && \textrm{(vector representation)},\label{eq:vectorrep}\nn\\
+\rho(R) &= 1 && \textrm{(scalar representation)},\nn\\
+\rho^\mu{}_\nu(R) &= R^\mu{}_\nu && \textrm{(vector representation)},\label{eq:vectorrep}\nn\\
  &\cdots&& \cdots
 \end{align}
 and so on.
@@ -2437,6 +2445,8 @@ U_{g_1}U_{g_2}\cO^a(x) U_{g_2}^{-1} U_{g_1}^{-1} &= U_{g_1g_2}\cO^a(x)U_{g_1g_2}
 \ee
 where $x\mapsto g_{i}(x)$ are conformal transformations, $g_1g_2$ denotes composition $x\mapsto g_1(g_2(x))$, and $U_{g}$ is the unitary operator associated to $g$.
 \end{exercise}
+
+\stoplecture
 
 \section{Conformal correlators}
 
@@ -2486,7 +2496,7 @@ Conformal invariance is also powerful enough to fix a three-point function of pr
 \label{eq:conformalthreeptfunction}
 \<\cO_1(x_1)\cO_2(x_2)\cO_3(x_3)\> &= \frac{f_{123}}{x_{12}^{\De_1+\De_2-\De_3}x_{23}^{\De_2+\De_3-\De_1}x_{31}^{\De_3+\De_1-\De_2}},
 \ee
-with $f_{123}$ constant, satisfies the Ward identity (\ref{eq:scalarconformalcorrelator}).
+with $f_{123}$ constant, satisfies the Ward identity (\ref{eq:scalarconformalcorrelator}). Here, we use the notation $x_{ij}\equiv x_i-x_j$ and $x^a=(x^2)^{a/2}$.
 
 With four points, there are nontrivial conformally invariant combinations of the points called ``conformal cross-ratios,"
 \be
@@ -2534,6 +2544,489 @@ g(u,v) &= \p{\frac{u}{v}}^{\De_\f} g(v,u) && \textrm{(from swapping $1\leftright
 \end{align}
 All other permutations can be generated from the ones above.  We will see shortly that $g(u,v)$ is  actually determined in terms of the dimensions $\De_i$ and three-point coefficients $f_{ijk}$ of the theory.  Equation~(\ref{eq:trivialcrossing}) will be satisfied for trivial reasons.  However (\ref{eq:crossingsymmetry}) will lead to powerful constraints on the $\De_i, f_{ijk}$.
 
+\subsection{Spinning operators: the conformal frame approach}
+
+For operators with spin, the solutions to the conformal Ward identities are more interesting. We will discuss two different approaches, both with advantages and disadvantages. The first approach is to relate operators at arbitrary positions to some standard configuration (``conformal frame"), where the Ward identities are easier to solve. This is the same type of argument we used above to show that a four-point function can depend on two conformal cross-ratios.
+
+\subsubsection{Two-point functions}
+
+Consider a two-point function of primary operators $\cO_1^a, \cO_2^b$ transforming in representations $\rho_1,\rho_2$ of $\SO(d)$, with dimensions $\De_1,\De_2$. Here, $a,b$ are indices for $\rho_1,\rho_2$, respectively. The Ward identity (\ref{eq:finiteprimarytransformation}) implies
+\be
+&\<\cO_1^a(x_1) \cO_2^b(x_2)\>\nn\\
+&=\<U\cO_1^a(x_1)U^{-1} U \cO_2^b(x_2) U^{-1}\>\nn\\
+&= \Omega(x_1')^{\De_1} \Omega(x_2')^{\De_2}\, (\rho_1)^a{}_c(R(x_1')^{-1})\, (\rho_2)^b{}_d(R(x_2')^{-1}) \,\<\cO_1^c(x_1')\cO_2^d(x_2')\>.
+\label{eq:specializedtwoptward}
+\ee
+Using translations, we have
+\be
+\<\cO_1^a(x_1) \cO_2^b(x_2)\> &= \<\cO_1^a(0) \cO_2^b(x_2-x_1)\>.
+\ee
+Using the Ward identity for rescaling, we have
+\be
+\label{eq:rescalingward}
+\<\cO_1^a(0) \cO_2^b(x)\> &= \frac{1}{|x|^{\De_1+\De_2}} \<\cO_1^a(0) \cO_2^b(\hat x)\>,\quad\hat x \equiv \frac{x}{|x|}.
+\ee
+Now fix a unit vector $e$, and let $Q^{\mu}{}_\nu(\hat x)$ be any rotation that takes $e$ to $\hat x$. ($Q(\hat x)$ is not unique, but this won't matter.) Using the Ward identity for rotations, we can relate the correlator at $\hat x$ to the correlator at $e$,
+\be
+\label{eq:rotationward}
+\<\cO_1^a(0) \cO_2^b(\hat x)\> &= (\rho_1)^a{}_c(Q(\hat x)) (\rho_2)^b{}_d(Q(\hat x))\<\cO_1^c(0) \cO_2^d(e)\>.
+\ee
+Thus, once we know the two-point function for the points $0,e$, we know it everywhere.
+
+We cannot specialize the points any further.  However, the correlator $\<\cO_1^c(0) \cO_2^d(e)\>$ satisfies more constraints because there are conformal transformations that leave the points $0,e$ invariant but act nontrivially on the correlator. The subgroup of $\SO(d+1,1)$ that leaves a set of points invariant is called the ``stabilizer group" of those points, and our claim is that the stabilizer group of two points is nontrivial.
+
+We can construct the stabilizer group as follows. Consider an inversion $I:x\mapsto \frac{x}{x^2}$. This fixes $e$, but moves the origin to $\oo$. Now, we can perform an arbitrary rescaling and rotation around $e$ without moving either $e$ or $\oo$:
+\be
+x^\mu &\mapsto e^\mu + \l^{-1} h^\mu{}_\nu (x - e)^\nu,\qquad \l\in\R^+,\ h\in \SO(d).
+\ee
+Finally, we can invert again to map infinity back to the origin. Overall, we have constructed the map
+\be
+\label{eq:mapdefinition}
+x\mapsto x'(x) = I(e + \l^{-1} h(I(x) - e)),\qquad I(x) = \frac{x}{x^2},
+\ee
+parameterized by $\l,h$. Note that because we have used $I$ twice, this map is in the connected component of the identity of $\SO(d+1,1)$, and is thus always a symmetry in a CFT. We have found that the stabilizer group of two points is $\R^+ \x \SO(d) \subset \SO(d+1,1)$.
+
+Let us study the behavior of (\ref{eq:mapdefinition}) near the fixed-points $0,e$. An important object will be the derivative of an inversion
+\be
+\pdr{I(x)^\mu}{x^\nu} &= \frac 1 {x^2}\p{\de^\mu_\nu - \frac{2x^\mu x_\nu}{x^2}} \equiv \frac{1}{x^2} I^\mu{}_\nu(x).
+\ee
+Here we have expressed it as an overall rescaling factor $\frac{1}{x^2}$, times an orthogonal matrix $I^\mu{}_\nu(x)$ that represents a reflection in the $x$ direction.\footnote{It is not an element of $\SO(d)$ because $i$ is not an element of $\SO(d+1,1)$. Instead, $i\in O(d+1,1)$ and consequently $I(x)\in O(d)$.}
+Near the point $e$, the map $x'(x)$ first reflects in the $e$ direction, then rescales and rotates, then reflects back. Thus, we have
+\be
+x'(x) &\sim e^\mu + \l^{-1} (I_ehI_e)^\mu{}_\nu (x-e)^\nu + O((x-e)^2),
+\ee
+where we're using the shorthand notation $(I_e)^\mu{}_\nu=I^\mu{}_\nu(e)$.
+This looks locally like a rescaling by $\l^{-1}$ and a rotation by $\tl h = I_ehI_e^{-1}$ (note that $I_e=I_e^{-1}$ because it is a reflection).
+Near the point $0$, we have
+\be
+x'(x) &\sim \l h^\mu{}_\nu x^\nu + O(x^2),
+\ee
+which looks locally like a rescaling by $\l$ and a rotation by $h$.
+
+Thus, the Ward identity (\ref{eq:specializedtwoptward}) implies
+\be
+\label{eq:fancytwoptWardidentity}
+\<\cO_1^a(0) \cO_2^b(e)\> &= \l^{\De_1-\De_2} (\rho_1)^a{}_c(h^{-1}) (\rho_2)^b{}_d(\tl h^{-1}) \<\cO_1^c(0) \cO_2^d(0)\>.
+\ee
+This must hold for all $\l$, which immediately means $\De_1=\De_2$, as we concluded before.
+
+To understand the $h$-dependent part, consider vector operators,
+\be
+\<V_1^\mu(0) V_2^\nu(e)\>\equiv Y^{\mu\nu}.
+\ee
+Our Ward identity says (replacing $h\to h^{-1}$ for simplicity),
+\be
+h^\mu{}_\rho (I_e h I_e)^\nu{}_\s Y^{\rho \s} &= Y^{\rho \s},
+\ee
+or in matrix notation
+\be
+h Y I_e h^T I_e = Y\quad \implies \quad h (YI_e) h^T = (YI_e).
+\ee
+In other words, $YI_e$ must be invariant under conjugation by an arbitrary $\SO(d)$ transformation, which means $Y\propto I_e$. Thus we have
+\be
+\<V_1^\mu(0) V_2^\nu(e)\> &= c_{12} I^{\mu\nu}(e) = c_{12}(\de^{\mu\nu} - 2e^\mu e^\nu),
+\ee
+for some constant $c_{12}$.
+Applying (\ref{eq:rescalingward}) and (\ref{eq:rotationward}),\footnote{Note that the exact definition of $Q(\hat x)$ doesn't matter, since we only needed $Q(\hat x)e=\hat x$.}
+\be
+\label{eq:finalresultforVV}
+\<V_1^\mu(0) V_2^\nu(x)\> &= c_{12}\frac{I^{\mu\nu}(x)}{x^{2\De}} = c_{12}\frac{\de^{\mu\nu}-\frac{2x^\mu x^\nu}{x^2}}{x^{2\De}}.
+\ee
+Note that conformal invariance fixes the relative factor between $\de^{\mu\nu}$ and $\frac{x^\mu x^\nu}{x^2}$ (which is not possible with scale invariance alone).\footnote{One can give a much simpler derivation of (\ref{eq:finalresultforVV}) by anticipating the fact that it is actually invariant under an inversion $I$, and not just elements of $\SO(d+1,1)$.  However, $I$ is only guaranteed to be a symmetry in parity-invariant theories (exercise~\ref{}). The derivation here assumes only $\SO(d+1,1)$-invariance.}
+
+For traceless symmetric tensor operators $\cO_1^{\mu_1\cdots\mu_\ell}$ and $\cO_2^{\mu_1\cdots\mu_{\ell'}}$, it's not hard to show that the two-point function can only be nonvanishing if the spins are equal $\ell=\ell'$. In that case, the two-point function takes the form
+\be
+\label{eq:symmetrictensortwopt}
+\<\cO_1^{\mu_1\cdots\mu_\ell}(0) \cO_{2,\nu_1\cdots\nu_\ell}(x)\> &= c_{12}\frac{I^{(\mu_1}{}_{(\nu_1}(x) \cdots I^{\mu_\ell)}{}_{\nu_\ell)}(x) - \textrm{traces}}{x^{2\De}}.
+\ee
+Here, parentheses $(\mu_1\cdots\mu_\ell)$ mean we symmetrize the given indices,\footnote{it is only necessary to symmetrize in either $\mu$ or $\nu$, but we symmetrize both for clarity} and ``$-\textrm{traces}$" means we subtract terms proportional to $\de^{\mu_i\mu_j}$ and $\de_{\nu_i\nu_j}$ to make the result traceless. For example, for spin-2 operators,
+\be
+&\<\cO_1^{\mu_1\mu_2}(0) \cO_{2,\nu_1\nu_2}(x)\>\nn\\
+&=
+c_{12} \frac{\frac{1}{2}(I^{\mu_1}{}_{\nu_1}(x)I^{\mu_2}{}_{\nu_2}(x) + I^{\mu_2}{}_{\nu_1}(x)I^{\mu_1}{}_{\nu_2}(x)) - \frac{1}{d} \de^{\mu_1\mu_2} \de_{\nu_1\nu_2}}{x^{2\De}}.
+\ee
+One way to think about (\ref{eq:symmetrictensortwopt}) is that once we've identified a conformally-invariant two-point function for vectors (\ref{eq:finalresultforVV}), we can take tensor products of it (symmetrized in the appropriate way) to get conformally-invariant two-point functions for other operators.
+
+Here is a more formal way to understand the rotation part of the Ward identity (\ref{eq:fancytwoptWardidentity}). Given a representation $\rho$ of $\SO(d)$, let us define the reflected representation $\rho^R$ by
+\be
+\label{eq:reflectedrep}
+\rho^R(h) &\equiv \rho(I_ehI_e^{-1}),\qquad h\in \SO(d).
+\ee
+Note that $I_e h I_e^{-1}\in \SO(d)$, even though $I_e$ is not in $\SO(d)$ (it is a reflection). Thus, the definition (\ref{eq:reflectedrep}) makes sense.
+Note also that a different choice of $e$ would lead to an equivalent representation because $I_{e'}=kI_e$ for $k\in \SO(d)$, so
+\be
+\rho(I_{e'}hI_{e'}^{-1}) = \rho(k)\rho(I_ehI_e^{-1}) \rho(k)^{-1}.
+\ee
+If two representations differ by conjugation by a matrix (in this case $\rho(k)$), they are equivalent.\footnote{The definition (\ref{eq:reflectedrep}) is an example of how the outer automorphisms $\mathrm{Out}(G)$ of a group $G$ act on the ring of $G$-representations. Here, conjugation by $I_e$ is an outer automorphism of $\SO(d)$.}
+
+\begin{exercise}
+\label{eq:reflectedreps}
+Show that in four dimensions, the reflection of a left-handed spinor $\psi_\a$ is a right-handed spinor $\bar\psi_{\dot\a}$, and the reflection of a self-dual two-form $F_{\a\b}$ is an anti-self-dual two-form $F_{\dot\a\dot\b}$.
+\end{exercise}
+
+The Ward identity (\ref{eq:fancytwoptWardidentity}) can be written
+\be
+\<\cO_1^a(0) \cO_2^b(e)\> &= (\rho_1)^a{}_c(h) (\rho_2^R)^b{}_d(h) \<\cO_1^c(0) \cO_2^d(0)\>.
+\ee
+In other words, $\<\cO_1^a(0) \cO_2^b(e)\>$ is an invariant-tensor transforming in the tensor product $\rho_1 \otimes \rho_2^R$.  If $\rho_1,\rho_2$ are irreducible, then such an invariant exists only if $\rho_1 = (\rho_2^R)^*$, where ${\rho}^*$ denotes the dual of $\rho$. Furthermore, if it exists it is unique.
+
+As an example, traceless symmetric tensors are equivalent to their dual reflected representations, so we have recovered the statement that a two-point function of spin-$\ell$ and spin-$\ell'$ operators can be nonzero only if $\ell=\ell'$. As another example, by exercise~(\ref{eq:reflectedreps}) a left-handed spinor $\psi_\a$ in 4d can only have a nonvanishing two-point function with a right-handed spinor $\bar\psi_{\dot\a}$.
+
+\begin{exercise}
+Find this two-point function of spinors in 4d. Hint:
+$\<\psi_\a(0)\bar\psi_{\dot\a}(e)\>$
+must have the correct indices and be invariant under rotations that fix $e$.
+\end{exercise}
+
+\subsubsection{Three-point functions}
+
+To study a three-point function, we can use the same strategy: we use conformal transformations to fix the three points, and then study the Ward identities of the stabilizer group. For simplicity, consider the case where two of the operators $\f_1,\f_2$ are scalars and the third $\cO_3$ transforms in a nontrivial representation $\rho$ of $\SO(d)$,
+\be
+\<\f_1(x_1) \f_2(x_2) \cO^a_3(x_3)\>.
+\ee
+Now, use conformal transformations to place the three operators at $0,e,\oo$ for some fixed unit vector $e$.\footnote{As before, we would like to use inversion an even number of times, so that our transformation is in $\SO(d+1,1)$.}
+
+To simplify the discussion, we can use a trick. Let us divide by the standard three-point structure (\ref{eq:conformalthreeptfunction}) for scalars with dimensions $\De_1,\De_2,\De_3$,
+\be
+\label{eq:omegatrick}
+t^a(x_1,x_2,x_3) &\equiv \<\f_1(x_1) \f_2(x_2) \cO_3^a(x_3)\>x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}.
+\ee
+The result $t^a(x_1,x_2,x_3)$ will behave like a three-point function of dimension-0 operators. We are not claiming that dimension-0 operators actually exist. This is just a trick so that we don't have to worry about $\Omega(x)$ factors when we use the Ward identities.
+
+Let us send $x_3\mapsto\oo$ with an inversion, then translate $x_2$ to the origin and invert again to send $x_2\mapsto \oo$ and $x_3\mapsto 0$. Finally, we rescale so that $x_1$ gets mapped to a unit vector. Overall, we have
+\be
+x'^\mu(x) &= \frac{I(I(x-x_3)-I(x_2-x_3))^\mu}{|I(I(x_1-x_3)-I(x_2-x_3))|}.
+\ee
+Near the point $x_3$, this is proportional to $I(I(x-x_3))=x-x_3$, so $R(x_3')^{\mu}{}_\nu$ is trivial for this transformation (which is why we chose it). Because of our trick (\ref{eq:omegatrick}), we don't need to keep track of rescaling factors. Thus, we have
+\be
+t^a(x_1,x_2,x_3) &= t^a(x'(x_1),\oo,0) = t^a\p{\hat Z_3,\oo,0}, \nn\\
+Z_3 &\equiv \frac{x_{13}}{x_{13}^2} - \frac{x_{23}}{x_{23}^2},\qquad \hat Z_3 = \frac{Z_3}{|Z_3|}.
+\ee
+Finally, let us use an orthogonal transformation $Q(\hat Z_3)$ to relate this to a standard configuration\footnote{In the case where all three operators are scalars, this verifies that there are no other solutions to the conformal Ward identities besides (\ref{eq:conformalthreeptfunction}), since $t(x_1,x_2,x_3)=t(e,\oo,0)$ is just a constant.}
+\be
+\label{eq:relatetostandard}
+t^a(x_1,x_2,x_3) &= \rho^a{}_b(Q(\hat Z_3)) t^b(e,\oo,0).
+\ee
+
+
+
+We have fixed the three points using the conformal group. As before, the correlator is still constrained because the stabilizer group of the three points is nontrivial. It consists of $\SO(d-1)$ rotations that fix the line passing through $0,e,\oo$. The Ward identities say that
+\be
+t^a(e,\oo,0) &= \rho^a{}_b(h) t^b(e,\oo,0),\qquad h\in \SO(d-1).
+\ee
+which means that $t^a$ must live in the $\SO(d-1)$-invariant subspace of $\rho$.
+
+As an example, consider a vector operator $V^\mu$. In this case, $t^\mu(e,\oo,0)$ carries a single vector index and must be invariant under rotations that fix $e$. The only possibility is
+\be
+t^\mu(e,\oo,0) = f_{123} e^\mu,
+\ee
+for some constant $f_{123}$. Using (\ref{eq:relatetostandard}) and (\ref{eq:omegatrick}), we find
+\be
+\<\f_1(x_1)\f_2(x_2)V^\mu_3(x_3)\> &= \frac{f_{123}\hat Z_3^\mu}{x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}} .
+\ee
+Similarly, for traceless symmetric tensor operators $\cO_3^{\mu_1\cdots\mu_\ell}$, the only possibility is
+\be
+t^{\mu_1\cdots\mu_\ell}(e,\oo,0) &= f_{123} (e^{\mu_1}\cdots e^{\mu_\ell} - \textrm{traces}),
+\ee
+which leads to
+\be
+\<\f_1(x_1)\f_2(x_2)\cO^{\mu_1\cdots\mu_\ell}_3(x_3)\> &= \frac{f_{123}(\hat Z_3^{\mu_1}\cdots \hat Z_3^{\mu_\ell} - \textrm{traces})}{x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}} .
+\ee
+
+For any other $\SO(d)$-representation $\rho$, it's not possible to find a nonvanishing $t^a$. The mathematical reason is that only traceless symmetric tensors have an $\SO(d-1)$-invariant subspace (and that subspace is one-dimensional). More prosaically, $e^\mu$ and $\de^{\mu\nu}$ are the only $\SO(d-1)$-invariant objects we can use to build $t^a(e,\oo,0)$. If we demand irreducibility, at least one term should not contain a $\de^{\mu\nu}$ (otherwise we'd have a nonzero trace). Thus, we can only build traceless symmetric tensors.
+
+Note that $\hat Z_3^\mu$ is odd under $x_1\leftrightarrow x_2$. Consequently, if $\f_1=\f_2$ are identical operators, the correlator $\<\f_1\f_1 \cO^{\mu_1\cdots\mu_\ell}\>$ can only be nonzero if $\ell$ is even. This fact will play an important role later.
+
+When all three operators have nontrivial $\SO(d)$ representations $\rho_1,\rho_2,\rho_3$, the solution of the  Ward identities is similar. We again use the conformal group to place all three operators on a line. (However, the relationship between the correlator at $x_1,x_2,x_3$ and the correlator on the line is more complicated because we must keep track of all three rotations.) We then study the Ward identities for the stabilizer group $\SO(d-1)$ in this ``collinear" configuration. The solution is given by the $\SO(d-1)$-invariant subspace of the tensor product of the $\rho_i$,
+\be
+(\rho_1\otimes \rho_2\otimes \rho_3)^{\SO(d-1)} = \otimes_{i=1}^3 \mathrm{Res}^{\SO(d)}_{\SO(d-1)} \rho_i.
+\ee
+(Here, $\rho^H$ denotes the $H$-invariant subspace of $\rho$, and $\mathrm{Res}^G_H\rho$ denotes the restriction of $\rho$ from a $G$-representation to an $H$-representation for $H\subseteq G$.) This means that there can be multiple three-point structures when more than one operator has spin.
+
+For example, consider a three-point function of two vectors and a scalar $\<V_1^\mu V_2^\nu f_3\>$. In the collinear configuration, the correlator must be $\SO(d-1)$-invariant. The only possibilities are
+\be
+\<V_1^\mu(e) V_2^\nu(\oo) f_3(0)\> &= f_{123}^{(1)} e^\mu e^\nu + f_{123}^{(2)} \de^{\mu\nu},
+\ee
+where $f_{123}^{(1)},f_{123}^{(2)}$ are constants. Abstractly, we can see that there are two structures by counting
+\be
+(\Box \otimes \Box \otimes \mathbf{1})^{\SO(d-1)} &= (\mathbf{1} \oplus \Box)\otimes (\mathbf{1} \oplus \Box) \otimes \mathbf{1} \nn\\
+&= 2\mathbf{1} \oplus \dots.
+\ee
+We could compute the correlator in a general configuration using the Ward identities. Tracing everything through, we would find
+\be
+\<V_1^\mu(x_1) V_2^\nu(x_2) f_3(x_3)\> &= \frac{a\hat Z_1^\mu \hat Z_2^\nu + b I^{\mu\nu}(x_{12})}{x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}},
+\ee
+where $a,b$, are linear combinations of $f_{123}^{(1)},f_{123}^{(2)}$. Here $\hat Z_1,\hat Z_2$ are analogs of $\hat Z_3$ with the points permuted. This result is suggestive that we can think about building conformally-invariant correlators by putting together simple building blocks. The embedding space formalism, which we discuss next, makes this easy to do.
+
+\subsection{The embedding space}
+
+The action of the conformal group on $\R^d$ is nonlinear, so it takes some work to solve the conformal Ward identities. The embedding space is a way of realizing the conformal group so that it acts {\it linearly}, which makes it much simpler to solve the conformal Ward identities.
+
+The central observation is that the conformal group is the same as $\SO(d+1,1)$ (exercise~\ref{}), which acts simply by matrix multiplication on $\R^{d+1,1}$
+\be
+X &\mapsto g X,\qquad X\in \R^{d+1,1},\ g\in \SO(d+1,1).
+\ee
+We will use coordinates $X=(X^+,X^-,X^1,\dots,X^d)$ on $\R^{d+1,1}$, with metric
+\be
+X^2 &= -X^+ X^- + \sum_{\mu=1}^d X_\mu X^\mu.
+\ee
+$\R^{d+1,1}$ is a $d+2$-dimensional space, and we would like our theory to live in $d$ dimensions. 
+ We can remove one dimension in a conformally-invariant way by restricting to the null cone
+\be
+X^2 = 0\qquad (\textrm{null cone}).
+\ee
+The null cone is preserved by $\SO(d+1,1)$, so we have a $d+1$-dimensional space on which the conformal group acts. To finally get to $d$-dimensions, we can projectivize: we mod out by rescalings,
+\be
+\textrm{projective null cone} = \frac{\{X:X^2 = 0\}}{X\sim \l X\ \ (\l\in \R)}.
+\ee
+
+In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. The most important gauge fixing for us will be $X^+=1$, which defines the ``Poincare section" of the null cone. Given a null vector $X=(X^+,X^1,X^\mu)$, we can rescale by $1/X^+$ to obtain an equivalent vector $(1,X^-/X^+,X^\mu/X^+)$ on the Poincare section. (The only case in which this doesn't work is when $X^+=0$, so that $X$ is equivalent to $(0,1,0)$. We will return to this case in a moment.)
+
+Every null vector on the Poincare section can be written
+\be
+X &= (1,x^2, x^\mu),
+\ee
+where $x\in \R^d$ and $x^2=x_\mu x^\mu$. Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is not on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
+\be
+X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu)
+\ee
+Following this chain gives a map $x\to x'$ from $\R^d$ to itself. We claim that this is exactly the usual action of the conformal group.
+
+To see this, let us consider some examples. One type of element of $\SO(d+1,1)$ are simply $\SO(d)$ transformations acting on the coordinates $X^\mu$,
+\be
+g=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & h^\mu{}_\nu
+\end{pmatrix},\qquad h^\mu{}_\nu\in \SO(d).
+\ee
+These transformations don't take us off the Poincare section, so they give $x'^\mu = h^\mu{}_\nu x^\nu$, which is simply an $\SO(d)$ rotation.
+
+%\subsection{Spinning Operators}
+%
+%The story is similar for operators with spin.  For brevity, we give the answers without doing any computations.  The embedding space formalism provides a transparent and practical way to derive all of these results \cite{Costa:2011mg}, so it's not worth dwelling on them here.
+%
+%Two-point functions of spinning operators are fixed by conformal invariance.  They are nonzero only if the operators have identical dimensions and spins.  For example, a two-point function of spin-1 operators with dimension $\Delta$ is given by
+%\be
+%\label{eq:twoptfunctionofspin1}
+%\<J^\mu(x)J_\nu(y)\> &= C_J \frac{I^\mu{}_{\nu}(x-y)}{(x-y)^{2\De}},\\
+% I^{\mu}{}_{\nu}(x)&\equiv \de^\mu_\nu-2\frac{x^\mu x_\nu}{x^2},
+% \label{eq:Itensor}
+%\ee
+%where $C_J$ is a constant. Note that $I^\mu{}_{\nu}(x)$ is the orthogonal matrix associated with an inversion, $\pdr{x'^\mu}{x^\nu}=\Omega(x) I^\mu{}_\nu(x)$.
+%\begin{exercise}
+%Check that (\ref{eq:twoptfunctionofspin1}) is consistent with conformal symmetry.  Hint: it is enough to check inversions.
+%\end{exercise}
+%
+%Two-point functions of operators in more general spin representations can be constructed from the above.  For spin-$\ell$ traceless symmetric tensors,
+%\be
+%\label{eq:twopointfunctionofspinL}
+%\<J^{\mu_1\dots\mu_\ell}(x)J_{\nu_1\dots\nu_\ell}(0)\> &= C_J \p{\frac{I^{(\mu_1}{}_{\nu_1}(x)\cdots I^{\mu_\ell)}{}_{\nu_\ell}(x)}{x^{2\De}} - \mathrm{traces}},
+%\ee
+%where we can symmetrize either the $\mu$'s or $\nu$'s (or both).  Subtracting traces means adding terms proportional to $\de^{\mu_i\mu_j}$ and $\de_{\nu_i\nu_j}$ so that the result is separately traceless in the $\mu$ indices and the $\nu$ indices (not necessarily under $\mu$-$\nu$ contractions).
+%
+%It is sometimes conventional to normalize $J$ so that $C_J=1$ in (\ref{eq:twoptfunctionofspin1}), (\ref{eq:twopointfunctionofspinL}).  An exception is if $J$ already has a natural normalization.  For example, the normalization of the stress tensor is fixed by demanding that $T^{\mu\nu}$ satisfy the appropriate Ward identities.  In this case, $C_T$ is physically meaningful.
+%
+%Three-point functions are fixed up to a finite number of coefficients.  For example, a three-point function of scalars $\phi_{1}$, $\phi_2$ and a spin-$\ell$ operator $J_{\mu_1\dots\mu_\ell}$ is determined up to a single coefficient $f_{\f_1\f_2 J}$,
+%\be
+%\label{eq:scalarscalarspinL}
+%\<\f_1(x_1)\f_2(x_2)J^{\mu_1\dots\mu_\ell}(x_3)\> &= \frac{f_{\f_1\f_2 J}(Z^{\mu_1}\cdots Z^{\mu_\ell} - \mathrm{traces})}{x_{12}^{\De_1+\De_2-\De_3+\ell}x_{23}^{\De_2+\De_3-\De_1-\ell}x_{31}^{\De_3+\De_1-\De_2-\ell}},\nn\\
+%Z^\mu &\equiv \frac{x_{13}^\mu}{x_{13}^2}-\frac{x_{23}^\mu}{x_{23}^2}.
+%\ee
+%When multiple operators have spin, there can be more than one linearly independent structure consistent with conformal invariance.
+%
+%Formula (\ref{eq:scalarscalarspinL}) applies when $J^{\mu\nu}$ is the stress tensor.  In that case, the coefficient $f_{\phi_1\phi_2 T}$ is fixed by demanding that integrals of $T^{\mu\nu}$ give the correct action of the conformal charges $Q_\e$ (see the exercise in Jo\~ao Penedones' notes \cite{Joao}). The result is 
+%\be
+%\label{eq:stresstensorward}
+%f_{\phi_1\phi_2 T} &= -\frac{d\De_1}{d-1}\frac 1 {S_d} C_{12},
+%\ee
+%where $S_d$ is the volume of the unit sphere $S^{d-1}$ and $C_{12}$ is the coefficient in the two-point function $\<\phi_1(x)\phi_2(0)\>=C_{12}x^{-2\De_1}$ (note $C_{12}$ vanishes unless $\Delta_1=\Delta_2$). The coefficient $f_{\phi_1\phi_2 J}$ is fixed by Ward identities whenever $J$ is a conserved current.
+%
+%\section{Radial Quantization and the State-Operator Correspondence}
+%
+%
+%So far, we've written lots of commutation relations, and carefully pointed out that they are true in any quantization of the theory. Now we'll really put that idea to use.  In general, we should to choose quantizations that respect symmetries.  In a scale-invariant theory, it's natural to foliate spacetime with spheres around the origin and consider evolving states from smaller spheres to larger spheres using the dilatation operator (figure~\ref{fig:radialquantization}).  This is called ``radial quantization." The sphere $S^{d-1}$ has an associated Hilbert space $\cH$. We can act on $\cH$ by inserting operators on the surface of the sphere. For example, to act with a symmetry generator $Q$, we insert the surface operator $Q(S^{d-1})$ into the path integral (figure~\ref{fig:chargeactionradialquantization}).
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.35\textwidth]{radialquantization.jpg}
+%\end{center}
+%\caption{In radial quantization, states live on spheres, and we evolve from one state to another with the dilatation operator. \label{fig:radialquantization}}
+%\end{figure}
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.35\textwidth]{chargeactionradialquantization.jpg}
+%\end{center}
+%\caption{We act with a charge in radial quantization by inserting $Q(S^{d-1})$ just outside the sphere on which the state is defined. \label{fig:chargeactionradialquantization}}
+%\end{figure}
+%
+%In radial quantization, a correlation function gets interpreted as a radially ordered product,
+%\be
+%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \<0|\mathcal{R}\{ \cO_1(x_1)\cdots \cO_n(x_n)\}|0\>\nn\\
+%&\equiv  \theta(|x_n|-|x_{n-1})\cdots \theta(|x_2|-|x_1|) \<0|\cO(x_n)\cdots\cO(x_1)|0\>\nn\\
+%&+\mathrm{permutations}.
+%\ee
+%Of course, we can perform radial quantization around different points.  The same correlation function then gets interpreted as an expectation value of differently ordered operators acting on different states in different (but isomorphic) Hilbert spaces (figure~\ref{fig:radialquantdifferentpoints}).  This is completely analogous to changing reference frames in Lorentz invariant theories.  The radial ordering prescription is consistent because operators at the same radius but different angles on the sphere commute, just as spacelike-separated operators commute in the usual quantization.
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.75\textwidth]{radialquantdifferentpoints.jpg}
+%\end{center}
+%\caption{When we perform radial quantization around different points, the same correlator gets interpreted as a product of operators with different orderings.  \label{fig:radialquantdifferentpoints}}
+%\end{figure}
+%
+%\subsection{Operator $\Longrightarrow$ State}
+%\label{sec:operatorimpliesstate}
+%
+%The simplest way to prepare a state in radial quantization is to perform the path integral over the interior $B$ of the sphere, with no operator insertions inside $B$.  This gives the vacuum state $|0\>$ on the boundary $\ptl B$ (figure~\ref{fig:radialvacuum.jpg}).  It's easy to see that $|0\>$ is invariant under all symmetries because a topological surface on the boundary of $B$ can be shrunk to zero inside $B$ (figure~\ref{fig:vacuuminvariant}).
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.3\textwidth]{radialvacuum.jpg}
+%\end{center}
+%\caption{The vacuum in radial quantization is given by the path integral over the interior of the sphere, with no operator insertions.  \label{fig:radialvacuum.jpg}}
+%\end{figure}
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.7\textwidth]{vacuuminvariant.jpg}
+%\end{center}
+%\caption{The vacuum is automatically invariant under all symmetries.  \label{fig:vacuuminvariant}}
+%\end{figure}
+%
+%To be explicit, suppose our CFT is given by the path integral over a scalar field $\phi$.  The Hilbert space in radial quantization is spanned by ``field eigenstates" $|\phi_b\>$, where $\phi_b(\bn)$ is a field configuration on the sphere $\bn\in \ptl B$.  The subscript ``$b$" indicates that $\phi_b$ is defined only on the boundary $\ptl B$ and not in the interior.  A general state is a linear combination of field eigenstates
+%\be
+%|\psi\> &\equiv \int D\phi_b |\phi_b\>\<\phi_b|\psi\>.
+%\ee
+%Here, $\int D\phi_b$ represents a $d-1$-dimensional path integral over fields on $\ptl B$.
+%
+%For the vacuum, the coefficients $\<\phi_b|0\>$ are given by the path integral over the interior with boundary conditions $\phi_b$ and no operator insertions,
+%\be
+%\<\phi_b |0\> &=  \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) e^{-S[\phi]}.
+%\ee
+%
+%A more exciting possibility is to insert an operator $\cO(x)$ inside $B$ and then perform the path integral,
+%\be
+%\<\phi_b|\cO(x)|0\> &= \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) \cO(x) e^{-S[\phi]}.
+%\ee
+%This defines a state called $\cO(x)|0\>$, see figure~\ref{fig:radialexcited}.
+%By inserting different operators inside $B$, we can prepare a variety of states on the boundary $\ptl B$. In this language, $|0\>$ is prepared by inserting the unit operator.
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.4\textwidth]{radialexcited.jpg}
+%\end{center}
+%\caption{The state $\cO(x)|0\>$ is given by inserting $\cO(x)$ inside the sphere and performing the path integral over the interior.  \label{fig:radialexcited}}
+%\end{figure}
+%
+%\subsection{Operator $\Longleftarrow$ State}
+%
+%This construction also works backwards. Let $|\cO_i\>$ be eigenstates of the dilatation operator
+%\be
+%D |\cO_i\> &= \De_i |\cO_i\>.
+%\ee
+%%  Given a state $|\psi\>$ in radial quantization, let us decompose it into eigenstates of the dilatation operator,
+%%\be
+%%|\psi\> &= |\cO_1\>+|\cO_2\>+\dots\\
+%%D|\psi\> &= \De_1|\cO_1\>+\De_2|\cO_2\>+\dots.
+%%\ee
+%The $|\cO_i\>$ can themselves be used as operators: we cut spherical holes $B_i$ out of the path integral centered around positions $x_i$ and glue in the states $|\cO_i\>$ at the boundary of the holes, as in figure~\ref{fig:correlatorofstates}.
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.7\textwidth]{correlatorofstates.jpg}
+%\end{center}
+%\caption{A correlator of states is defined by cutting holes out of the path integral and gluing states into the holes.  \label{fig:correlatorofstates}}
+%\end{figure}
+%This gives a quantity that behaves exactly like a correlator of local operators.
+%In the scalar field example, the gluing procedure gives
+%\be
+%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int \prod_i D\phi_{bi} \<\phi_{bi}|\cO_i\> \int_{\substack{\phi_{\ptl i}=\phi_{bi}\\ x \notin B_i }} D\phi(x)\, e^{-S},
+%\ee
+%where the path integral $D\phi(x)$ is performed over the region outside the balls $B_i$, and the integrals $D\phi_{bi}$ are over field configurations on the boundaries $\ptl B_i$. Here, $\phi_{\ptl i}$ denotes the restriction of the bulk field $\phi(x)$ to the $i$-th boundary $\ptl B_i$.
+%
+%This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap.  If they're too close together, we can use
+%\be
+%\<\cO(x_1)\cdots \cO(x_n)\> &= \lambda^{\sum_i \Delta_i}\<\cO_1(\lambda x_1)\cdots \cO_n(\lambda x_n)\>,
+%\ee
+%with $\l$ sufficiently large to define the correlator.  Since the $x_i$ can now be arbitrarily close together, we have defined local operators.\footnote{A more careful construction of the state $\implies$ operator map that doesn't require this rescaling trick is given in Polchinski \cite{Polchinski:1998rq} volume 1, chapter 2.}
+%
+%\subsection{Operator $\Longleftrightarrow$ State}
+%
+%So far I've been vague about what I mean by a local operator.  But now, we can give a rigorous definition: we will simply {\it define\/} a local operator to be an eigenstate of $D$ in radial quantization.\footnote{The dilatation operator is diagonalizable in unitary (reflection positive) CFTs.  However, there exist interesting non-unitary theories where $D$ has a nontrivial Jordan block decomposition.  In these cases, we define a local operator as a finite-dimensional representation of $D$.} With this definition, the two constructions above are inverse to each other, with the identification
+%\be
+%\cO(0)\quad &\longleftrightarrow& \quad \cO(0)|0\>\equiv |\cO\>.
+%\ee
+%This is the ``state-operator correspondence."
+%
+%It is straightforward to see how the conformal group acts on states in radial quantization.  A primary operator creates a state that is killed by $K_\mu$ and transforms in a finite-dimensional representation of $D$ and $M_{\mu\nu}$,
+%\begin{align}
+%\label{eq:operatortostateconditionK}
+%\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow && K_\mu|\cO\>&=0,\\
+%\label{eq:operatortostateconditionD}
+%\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow&& D|\cO\>&=\De|\cO\>,\\
+%\label{eq:operatortostateconditionM}
+%\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow&& M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
+%\end{align}
+%This follows by acting on $|0\>$ with the operator equations above and using the fact that $|0\>$ is killed by $K,D,$ and $M$.
+%
+%A conformal multiplet in radial quantization is given by acting with momentum generators on a primary state
+%\be
+%|\cO\>, P_\mu|\cO\>, P_\mu P_\nu|\cO\>, \dots \qquad\textrm{(conformal multiplet)}.
+%\ee
+%This is equivalent to acting with derivatives of $\cO(x)$ at the origin, for example
+%\be
+%\ptl_\mu\cO(x)|_{x=0}|0\> &= [P_\mu,\cO(0)]|0\>\ \ =\ \ P_\mu|\cO\>.
+%\ee
+%The operator $\cO(x)$ creates an infinite linear combination of descendants,
+%\be
+%\cO(x)|0\>\ =\  e^{x\.P}\cO(0)e^{-x\.P}|0\>\ =\ e^{x\.P}|\cO\>\ =\ \sum_{n=0}^\oo \frac{1}{n!}(x\.P)^n|\cO\>.\quad
+%\ee
+%
+%As with the classification of operators, the action of the conformal algebra on a multiplet in radial quantization is determined by the commutation relations of the algebra. In fact the required computations look {\it exactly identical\/} to the computations we did to determine the action of conformal generators on operators (\ref{eq:actionbyrotation}, \ref{eq:dilatationaction}, \ref{eq:actionofK}).  This is because by surrounding operators with charges supported on spheres, we were secretly doing radial quantization all along!
+%
+%
+%\subsection{Another View of Radial Quantization}
+%
+%To study a conformal Killing vector $\e$, it is often helpful to perform a Weyl rescaling of the metric $g\to \Omega(x)^2 g$ so that $\e$ becomes a regular Killing vector, i.e.\ an isometry.  We can turn a dilatation into an isometry by performing a Weyl rescaling from $\R^d$ to the cylinder $\R\x S^{d-1}$,
+%\be
+%ds_{\R^d}^2 &= dr^2 + r^2 ds_{S^{d-1}}^2\nn\\
+%&= r^2\p{\frac{dr^2}{r^2} + ds_{S^{d-1}}^2}\nn\\
+%&= e^{2\tau}(d\tau^2 + ds_{S^{d-1}}^2) = e^{2\tau} ds_{\R\x S^{d-1}}^2,
+%\ee
+%where $r=e^\tau$.
+%
+%Dilatations $r\to\l r$ become shifts of radial time $\tau\to\tau+\log \l$.  Radial quantization in flat space is equivalent to the usual quantization on the cylinder.  States live on spheres and time evolution is generated by acting with $e^{-D\tau}$.  While the development of radial quantization in the previous sections relied only on scale invariance, the cylinder picture relies on conformal invariance because we have performed a nontrivial Weyl rescaling.
+%
+%Let us build a more detailed dictionary between the two pictures.  Under a Weyl rescaling, correlation functions of local operators transform as\footnote{In even dimensions, the partition function itself can transform with a Weyl anomaly $\<1\>_g=\<1\>_{\Omega^2 g}e^{S_\mathrm{Weyl}[g]}$.  This will not be important for our discussion, so we have divided through by the partition function.}
+%\be
+%\label{eq:weyltransformation}
+%\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_g}{\<1\>_g} &= \p{\prod_i \Omega(x_i)^{\De_i}}\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_{\Omega^2g}}{\<1\>_{\Omega^2 g}}.
+%\ee
+%This is a nontrivial claim --- if we implement the Ising model in flat space, compute expectation values and take the continuum limit, it's not obvious that the answer should be simply related to the same lattice theory on the cylinder.\footnote{Comparing the flat and cylindrical Ising models is relatively easy in 2d, but harder in 3d since $S^2$ is curved. See \cite{Brower:2014gsa} for a recent attempt.}    In general it isn't, but at the critical value of the coupling when the theory becomes conformal, tracelessness of the stress tensor implies insensitivity to Weyl rescalings, and the answers become related.
+%
+%\begin{exercise}
+%By integrating by parts in (\ref{eq:dilatationaction}), show that 
+%\be
+%\label{eq:tracetcontact}
+%T_\mu^\mu(x) \cO(y) &= \De \de(x-y)\cO(y).
+%\ee
+%An insertion of $T_\mu^\mu$ is the response of the theory to an infinitesimal Weyl transformation $g\to e^{2\de\omega} g$. Derive (\ref{eq:weyltransformation}) by exponentiation.\footnote{We cheated here by only deriving (\ref{eq:tracetcontact}) in flat space.  In curved space there is an additional contribution to $T_\mu^\mu$ coming from the Weyl anomaly.  This factor cancels in (\ref{eq:weyltransformation}). There could also be modifications to the contact term (\ref{eq:tracetcontact}). However, in a conformally flat metric, we can simply define the curved space operator $\cO(x)$ so that it satisfies (\ref{eq:tracetcontact}). For instance, we may modify the Weyl factor so that it is constant in a tiny neighborhood of $\cO(x)$ and the flat-space calculation applies. This definition might not be consistent with other independent definitions. For instance, if $\cO(x)$ is the stress tensor, it gives a different answer from the canonical definition (\ref{eq:definitionofstresstensor}) because of the Weyl anomaly.}
+%\end{exercise}
+%
+%Thus, given an operator $\cO(x)$ in $\R^d$, it is natural to define a cylinder operator
+%\be
+%\label{eq:definitionofcylinderop}
+%\cO_\mathrm{cyl.}(\tau,\bn) &\equiv e^{\De \tau} \cO_\mathrm{flat}(x=e^\tau \bn).
+%\ee
+%We often omit the subscripts ``cyl." and ``flat," relying on the coordinates to indicate which type of operator we're discussing.
+%\begin{exercise}
+%Using (\ref{eq:weyltransformation}), compute a two-point function of cylinder operators
+%\be
+%\<\cO(\tau_1,\bn_1)\cO(\tau_2,\bn_2)\>.
+%\ee
+%Verify that it is time-translationally invariant on the cylinder. Show that in the limit of large time separation $\tau=\tau_2-\tau_1 \gg 1$, the two-point function has an expansion in terms of the form $e^{-(\De+n)\tau}$ with integer $n\geq 0$.  Interpret these as coming from the exchange of states in the conformal multiplet of $\cO$.
+%\end{exercise}
 
 
 \begin{appendix}
