@@ -2177,6 +2177,7 @@ The right-hand side is an infinitesimal rescaling times an infinitesimal rotatio
 where $\Omega(x)$ and $R^\mu{}_\nu{}(x)$ are finite position-dependent rescalings and rotations.
 Equivalently, the transformation $x\to x'$ rescales the metric by a scalar factor,
 \be
+\label{eq:waytogetomega}
 \delta_{\mu\nu}\pdr{x'^\mu}{x^\alpha}\pdr{x'^\nu}{x^\beta} &= \Omega(x)^2\de_{\alpha\beta}.
 \ee
 Such transformations are called {\it conformal}. They comprise the conformal group, a finite-dimensional subgroup of the diffeomorphism group of $\R^d$.
@@ -2253,6 +2254,7 @@ and all other commutators vanish.
 The first three commutation relations say that $M_{\mu\nu}$ generates the algebra of Euclidean rotations $\SO(d)$ and that $P_\mu,K_\mu$ transform as vectors.  The last three are more interesting.  Equations~(\ref{eq:dpcommutator}) and (\ref{eq:dkcommutator}) say that $P_\mu$ and $K_\mu$ can be thought of as raising and lowering operators for $D$. We will return to this idea shortly.
 
 \begin{exercise} Define the generators
+\label{eq:conformalgeneratorssodplus}
 \be
 \label{eq:conformalgeneratorssodplus11}
 L_{\mu\nu}&=M_{\mu\nu},\nn\\
@@ -2481,7 +2483,7 @@ Using (\ref{eq:conformaltransformationofdistance}), we find
 \ee
 Consistency with (\ref{eq:scalarconformalcorrelator}) then requires $\De_1=\De_2$ or $C=0$.  In other words,
 \be
-\<\cO_1(x_1)\cO_2(x_2)\> &= \frac{C\de_{\De_1\De_2}}{x_{12}^{2\De_1}}\qquad\textrm{(CFT, primary operators)},
+\<\cO_1(x_1)\cO_2(x_2)\> &= \frac{C\de_{\De_1\De_2}}{x_{12}^{2\De_1}}\qquad\textrm{(CFT, primary scalars)},
 \ee
 where $x_{12}\equiv x_1-x_2$.
 \begin{exercise}
@@ -2546,7 +2548,7 @@ All other permutations can be generated from the ones above.  We will see shortl
 
 \subsection{Spinning operators: the conformal frame approach}
 
-For operators with spin, the solutions to the conformal Ward identities are more interesting. We will discuss two different approaches, both with advantages and disadvantages. The first approach is to relate operators at arbitrary positions to some standard configuration (``conformal frame"), where the Ward identities are easier to solve. This is the same type of argument we used above to show that a four-point function can depend on two conformal cross-ratios.
+For operators with spin, the solutions to the conformal Ward identities are more complicated. We will discuss two different approaches, both with advantages and disadvantages. The first approach is to relate an arbitrary configuration of points to some standard configuration (``conformal frame"), where the Ward identities are easier to solve. This is the same type of argument we used above to show that a four-point function can depend on two conformal cross-ratios.
 
 \subsubsection{Two-point functions}
 
@@ -2575,16 +2577,18 @@ Thus, once we know the two-point function for the points $0,e$, we know it every
 
 We cannot specialize the points any further.  However, the correlator $\<\cO_1^c(0) \cO_2^d(e)\>$ satisfies more constraints because there are conformal transformations that leave the points $0,e$ invariant but act nontrivially on the correlator. The subgroup of $\SO(d+1,1)$ that leaves a set of points invariant is called the ``stabilizer group" of those points, and our claim is that the stabilizer group of two points is nontrivial.
 
-We can construct the stabilizer group as follows. Consider an inversion $I:x\mapsto \frac{x}{x^2}$. This fixes $e$, but moves the origin to $\oo$. Now, we can perform an arbitrary rescaling and rotation around $e$ without moving either $e$ or $\oo$:
+The easiest stabilizer group to analyze is when the two points are $0,\oo$. In this case, we can apply any rotation and dilatation, so the stabilizer group is $\R^+\x \SO(d)$. It's useful to imagine $0,\oo$ as the south and north pole of the sphere via stereographic projection. From this point of view, it's clear that dilatations and rotations act in different ways near each point. A dilatation $x\mapsto\l x$ with $\l>1$ moves points away from 0 and towards $\oo$. A rotation around the origin gets reflected near $\oo$.
+
+To construct the stabilizer group of $0,e$, we can conjugate the stabilizer group of $0,\oo$ by a transformation that maps between the two configurations. In particular, the stabilizer group of any pair of points is $\R^+\x\SO(d)$. Consider an inversion $I:x\mapsto \frac{x}{x^2}$. This fixes $e$, but moves the origin to $\oo$. Now, we can perform an arbitrary rescaling and rotation around $e$ without moving either $e$ or $\oo$:
 \be
 x^\mu &\mapsto e^\mu + \l^{-1} h^\mu{}_\nu (x - e)^\nu,\qquad \l\in\R^+,\ h\in \SO(d).
 \ee
-Finally, we can invert again to map infinity back to the origin. Overall, we have constructed the map
+Finally, we can invert again to map infinity back to the origin. Overall, we have constructed
 \be
 \label{eq:mapdefinition}
 x\mapsto x'(x) = I(e + \l^{-1} h(I(x) - e)),\qquad I(x) = \frac{x}{x^2},
 \ee
-parameterized by $\l,h$. Note that because we have used $I$ twice, this map is in the connected component of the identity of $\SO(d+1,1)$, and is thus always a symmetry in a CFT. We have found that the stabilizer group of two points is $\R^+ \x \SO(d) \subset \SO(d+1,1)$.
+parameterized by $\l,h$. Note that because we used $I$ twice, this map is in the connected component of the identity of $\SO(d+1,1)$, and is thus always a symmetry in a CFT. %We have found that the stabilizer group of two points is $\R^+ \x \SO(d) \subset \SO(d+1,1)$.
 
 Let us study the behavior of (\ref{eq:mapdefinition}) near the fixed-points $0,e$. An important object will be the derivative of an inversion
 \be
@@ -2601,9 +2605,9 @@ Near the point $0$, we have
 \be
 x'(x) &\sim \l h^\mu{}_\nu x^\nu + O(x^2),
 \ee
-which looks locally like a rescaling by $\l$ and a rotation by $h$.
+which looks locally like a rescaling by $\l$ and a rotation by $h$. This is consistent with what we saw on the sphere: dilatations move between the two fixed points, and rotations get reflected when we go from one fixed-point to another.
 
-Thus, the Ward identity (\ref{eq:specializedtwoptward}) implies
+The Ward identity (\ref{eq:specializedtwoptward}) implies
 \be
 \label{eq:fancytwoptWardidentity}
 \<\cO_1^a(0) \cO_2^b(e)\> &= \l^{\De_1-\De_2} (\rho_1)^a{}_c(h^{-1}) (\rho_2)^b{}_d(\tl h^{-1}) \<\cO_1^c(0) \cO_2^d(0)\>.
@@ -2634,7 +2638,11 @@ Applying (\ref{eq:rescalingward}) and (\ref{eq:rotationward}),\footnote{Note tha
 \ee
 Note that conformal invariance fixes the relative factor between $\de^{\mu\nu}$ and $\frac{x^\mu x^\nu}{x^2}$ (which is not possible with scale invariance alone).\footnote{One can give a much simpler derivation of (\ref{eq:finalresultforVV}) by anticipating the fact that it is actually invariant under an inversion $I$, and not just elements of $\SO(d+1,1)$.  However, $I$ is only guaranteed to be a symmetry in parity-invariant theories (exercise~\ref{}). The derivation here assumes only $\SO(d+1,1)$-invariance.}
 
-For traceless symmetric tensor operators $\cO_1^{\mu_1\cdots\mu_\ell}$ and $\cO_2^{\mu_1\cdots\mu_{\ell'}}$, it's not hard to show that the two-point function can only be nonvanishing if the spins are equal $\ell=\ell'$. In that case, the two-point function takes the form
+Here, we see why the choice of $Q(\hat x)$ doesn't matter: the correlator $\<V_1(0)V_2(e)\>$ is invariant under rotations that fix $e$ (this is a subgroup of the stabilizer group $\SO(d-1)\subset \R^+\x \SO(d)$), and two different $Q(\hat x)$'s will differ by an $\SO(d-1)$ rotation. More concretely, $\<V_1(0)V_2(e)\>$ depends only on $\de^{\mu\nu}$ and $e^\mu$, so the effect of $Q(\hat x)$ is just to replace $e\to \hat x$.
+
+\stoplecture
+
+For traceless symmetric tensor operators $\cO_1^{\mu_1\cdots\mu_\ell}$ and $\cO_2^{\mu_1\cdots\mu_{\ell'}}$, the two-point function can only be nonvanishing if the spins are equal $\ell=\ell'$. In that case, the two-point function takes the form
 \be
 \label{eq:symmetrictensortwopt}
 \<\cO_1^{\mu_1\cdots\mu_\ell}(0) \cO_{2,\nu_1\cdots\nu_\ell}(x)\> &= c_{12}\frac{I^{(\mu_1}{}_{(\nu_1}(x) \cdots I^{\mu_\ell)}{}_{\nu_\ell)}(x) - \textrm{traces}}{x^{2\De}}.
@@ -2762,12 +2770,13 @@ where $a,b$, are linear combinations of $f_{123}^{(1)},f_{123}^{(2)}$. Here $\ha
 
 The action of the conformal group on $\R^d$ is nonlinear, so it takes some work to solve the conformal Ward identities. The embedding space is a way of realizing the conformal group so that it acts {\it linearly}, which makes it much simpler to solve the conformal Ward identities.
 
-The central observation is that the conformal group is the same as $\SO(d+1,1)$ (exercise~\ref{}), which acts simply by matrix multiplication on $\R^{d+1,1}$
+The central observation is that the conformal group is the same as $\SO(d+1,1)$ (exercise~\ref{eq:conformalgeneratorssodplus}), which acts simply by matrix multiplication on $\R^{d+1,1}$
 \be
 X &\mapsto g X,\qquad X\in \R^{d+1,1},\ g\in \SO(d+1,1).
 \ee
 We will use coordinates $X=(X^+,X^-,X^1,\dots,X^d)$ on $\R^{d+1,1}$, with metric
 \be
+\label{eq:embeddingmetric}
 X^2 &= -X^+ X^- + \sum_{\mu=1}^d X_\mu X^\mu.
 \ee
 $\R^{d+1,1}$ is a $d+2$-dimensional space, and we would like our theory to live in $d$ dimensions. 
@@ -2780,13 +2789,13 @@ The null cone is preserved by $\SO(d+1,1)$, so we have a $d+1$-dimensional space
 \textrm{projective null cone} = \frac{\{X:X^2 = 0\}}{X\sim \l X\ \ (\l\in \R)}.
 \ee
 
-In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. The most important gauge fixing for us will be $X^+=1$, which defines the ``Poincare section" of the null cone. Given a null vector $X=(X^+,X^1,X^\mu)$, we can rescale by $1/X^+$ to obtain an equivalent vector $(1,X^-/X^+,X^\mu/X^+)$ on the Poincare section. (The only case in which this doesn't work is when $X^+=0$, so that $X$ is equivalent to $(0,1,0)$. We will return to this case in a moment.)
+In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. The most important gauge fixing for us will be $X^+=1$, which defines the ``Poincare section" of the null cone. Given a null vector $X=(X^+,X^-,X^\mu)$, we can rescale by $1/X^+$ to obtain an equivalent vector $(1,X^-/X^+,X^\mu/X^+)$ on the Poincare section. The only case in which this doesn't work is when $X^+=0$, so that $X$ is equivalent to $(0,1,0)$. This corresponds to the point at infinity.
 
 Every null vector on the Poincare section can be written
 \be
 X &= (1,x^2, x^\mu),
 \ee
-where $x\in \R^d$ and $x^2=x_\mu x^\mu$. Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is not on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
+where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is not on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
 \be
 X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu)
 \ee
@@ -2794,13 +2803,92 @@ Following this chain gives a map $x\to x'$ from $\R^d$ to itself. We claim that 
 
 To see this, let us consider some examples. One type of element of $\SO(d+1,1)$ are simply $\SO(d)$ transformations acting on the coordinates $X^\mu$,
 \be
-g=\begin{pmatrix}
+g_h &=\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & h^\mu{}_\nu
-\end{pmatrix},\qquad h^\mu{}_\nu\in \SO(d).
+\end{pmatrix},\qquad h^\mu{}_\nu\in \SO(d)\nn\\
+g_h X &= (1,x^2,h^\mu{}_\nu x^\nu)
 \ee
 These transformations don't take us off the Poincare section, so they give $x'^\mu = h^\mu{}_\nu x^\nu$, which is simply an $\SO(d)$ rotation.
+
+Another type of $\SO(d+1,1)$ transformation is
+\be
+g_a&=\begin{pmatrix}
+1 & 0 & 0 \\
+a^2 & 1 & 2a_\nu \\
+a^\mu & 0 & \de^\mu{}_\nu
+\end{pmatrix},\qquad a^\mu \in \R^d \nn\\
+g_a X &= (1,x^2+2x\.a+a^2,x^\mu+a^\nu).
+\ee
+Note that we are writing matrices in $(X^+,X^-,X^\mu)$ coordinates.
+It may not be immediately obvious that $g_a$ preserves the metric (\ref{eq:embeddingmetric}), but it's easy to check that $g_a X$ is null, which implies that it does. Note that $g_a$ also does not take us off the Poincare section, so it just gives the transformation $x^\mu \mapsto x^\mu + a^\mu$, which is a translation.
+
+A more interesting example is
+\be
+g_\l &= \begin{pmatrix}
+\l^{-1} & 0 & 0 \\
+0 & \l & 0 \\
+0 & 0 & \de^\mu{}_\nu
+\end{pmatrix},\qquad \l\in \R^+ \nn\\
+g_\l X &= (\l^{-1}, \l x^2, x^\mu).
+\ee
+This takes us off the Poincare section, so to restore our gauge choice, we need to divide by $(g_\l X)^+ = \l^{-1}$. This gives
+\be
+(g_\l X)/(g_\l X)^+ = (1, \l^2 x^2, \l x^\mu).
+\ee
+Thus, $g_\l$ implements a dilatation.
+
+Finally, consider the matrix
+\be
+g_b &= \begin{pmatrix}
+1 & b^2 & -2b_\nu \\
+0 & 1 & 0 \\
+0 & -b^\mu & 1
+\end{pmatrix},\qquad b^\mu \in \R^d\nn\\
+g_b X &= (1-2b\.x+b^2 x^2,x^2,x^\mu - b^\mu x^2).
+\ee
+Again, we must divide by $(g_b X)^+$ to restore our gauge-choice, giving
+\be
+(g_b X)/(g_b X)^+ &= \p{1,\frac{x^2}{1-2b\.x+b^2 x^2},\frac{x^\mu - b^\mu x^2}{1-2b\.x+b^2 x^2}}.
+\ee
+This is a special conformal transformation.
+
+Note that for a dilatation $x\mapsto \l x$, we have $\Omega(x')=\l$, where $\Omega(x')$ is the scale factor defined by (\ref{eq:conformalfinite}) or (\ref{eq:waytogetomega}). For a special-conformal transformation, it's easy to compute 
+\be
+\Omega(x')=\frac{1}{1-2b\.x+b^2 x^2}\qquad (\textrm{special conformal}).
+\ee
+Note that in both cases, we have 
+\be
+\Omega(x')^{-1}=(g X)^+
+\ee
+Since this is also trivially true for translations and rotations, it is true for all $g\in \SO(d+1,1)$.
+
+\subsubsection{Scalars in the embedding space}
+
+The Ward identity for scalar primary operators is
+\be
+\label{eq:scalarwardid}
+U_g \f(x) U_{g}^{-1} &= \Omega(x')^\De \f(x'),
+\ee
+where $\De$ is the dimension of $\f$.
+From our discussion in the previous section, we have $\Omega(x')=1/(gX)^+$ and $x'^\mu=(gX)^\mu/(gX)^+$. Thus, we can introduce the object
+\be
+\Phi(X) &\equiv (X^+)^{-\De} \phi(X^\mu/X^+),
+\ee
+and write the Ward identity (\ref{eq:scalarwardid}) as
+\be
+U_g\Phi(X) U_g^{-1} &= \Phi(gX).
+\ee
+
+The key point is that conformal transformations now act linearly on the coordinates of $\Phi$. Note that $\Phi(X)$ is just a repackaging of the underlying operator $\f(x)$. It is defined only on the null cone $X^2=0$. Furthermore, by construction, $\Phi$ is homogeneous in $X$ with degree $-\De$, where $\De$ is the scaling dimension of $\phi$,
+\be
+\Phi(\l X) &= \l^{-\De} \Phi(X).
+\ee
+Together, these conditions (defined on the null cone, homogeneous) ensure that $\Phi(X)$ only depends nontrivially on $d$ coordinates (instead of $d+2$ coordinates), as we should expect from the fact that it is encoding a $d$-dimensional operator.
+
+
+
 
 %\subsection{Spinning Operators}
 %
