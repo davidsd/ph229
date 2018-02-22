@@ -2795,11 +2795,11 @@ Every null vector on the Poincare section can be written
 \be
 X &= (1,x^2, x^\mu),
 \ee
-where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is not on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
+where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is may not be on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
 \be
-X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu)
+(1,x^2,x) = X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu)
 \ee
-Following this chain gives a map $x\to x'$ from $\R^d$ to itself. We claim that this is exactly the usual action of the conformal group.
+Following this chain gives a nonlinear map $x\to x'$. We claim that this is exactly the usual action of the conformal group.
 
 To see this, let us consider some examples. One type of element of $\SO(d+1,1)$ are simply $\SO(d)$ transformations acting on the coordinates $X^\mu$,
 \be
@@ -2808,7 +2808,7 @@ g_h &=\begin{pmatrix}
 0 & 1 & 0 \\
 0 & 0 & h^\mu{}_\nu
 \end{pmatrix},\qquad h^\mu{}_\nu\in \SO(d)\nn\\
-g_h X &= (1,x^2,h^\mu{}_\nu x^\nu)
+g_h X &= (1,x^2,h^\mu{}_\nu x^\nu).
 \ee
 These transformations don't take us off the Poincare section, so they give $x'^\mu = h^\mu{}_\nu x^\nu$, which is simply an $\SO(d)$ rotation.
 
@@ -2822,7 +2822,7 @@ a^\mu & 0 & \de^\mu{}_\nu
 g_a X &= (1,x^2+2x\.a+a^2,x^\mu+a^\nu).
 \ee
 Note that we are writing matrices in $(X^+,X^-,X^\mu)$ coordinates.
-It may not be immediately obvious that $g_a$ preserves the metric (\ref{eq:embeddingmetric}), but it's easy to check that $g_a X$ is null, which implies that it does. Note that $g_a$ also does not take us off the Poincare section, so it just gives the transformation $x^\mu \mapsto x^\mu + a^\mu$, which is a translation.
+It may not be immediately obvious that $g_a$ preserves the metric (\ref{eq:embeddingmetric}), but it's easy to check that $g_a X$ is null, which implies that $g_a\in \SO(d+1,1)$. Note that $g_a$ also does not take us off the Poincare section, so it just gives the transformation $x^\mu \mapsto x^\mu + a^\mu$, which is a translation.
 
 A more interesting example is
 \be
@@ -2844,7 +2844,7 @@ Finally, consider the matrix
 g_b &= \begin{pmatrix}
 1 & b^2 & -2b_\nu \\
 0 & 1 & 0 \\
-0 & -b^\mu & 1
+0 & -b^\mu & \de^\mu{}_\nu
 \end{pmatrix},\qquad b^\mu \in \R^d\nn\\
 g_b X &= (1-2b\.x+b^2 x^2,x^2,x^\mu - b^\mu x^2).
 \ee
@@ -2858,11 +2858,22 @@ Note that for a dilatation $x\mapsto \l x$, we have $\Omega(x')=\l$, where $\Ome
 \be
 \Omega(x')=\frac{1}{1-2b\.x+b^2 x^2}\qquad (\textrm{special conformal}).
 \ee
-Note that in both cases, we have 
+In both cases, we have 
 \be
 \Omega(x')^{-1}=(g X)^+
 \ee
-Since this is also trivially true for translations and rotations, it is true for all $g\in \SO(d+1,1)$.
+Since this is also trivially true for translations and rotations, it is true for any $g\in \SO(d+1,1)$.
+
+Inversions are also easy to understand in this setting. They are given by the matrix
+\be
+g_I &= \begin{pmatrix}
+0 & 1 & 0 \nn\\
+1 & 0 & 0 \nn\\
+0 & 0 & \de^\mu{}_\nu
+\end{pmatrix}\nn\\
+g_I X &= (x^2,1,x^\mu) \to (1,1/x^2,x^\mu/x^2).
+\ee
+Note that $\det g_I = -1$, so $g_I$ is not an element of $\SO(d+1,1)$, but is instead in $\mathrm{O}(d+1,1)$.
 
 \subsubsection{Scalars in the embedding space}
 
