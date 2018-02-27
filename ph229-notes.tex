@@ -4,6 +4,8 @@
 \usepackage{simplewick}
 \usepackage{relsize}
 \usepackage{alphalph}
+\usepackage[vcentermath]{youngtab}
+\newcommand{\myng}[1]{\,{\tiny\yng #1}\,}
 
 \newif\ifarxivsubmission
 
@@ -2709,6 +2711,7 @@ Near the point $x_3$, this is proportional to $I(I(x-x_3))=x-x_3$, so $R(x_3')^{
 \be
 t^a(x_1,x_2,x_3) &= t^a(x'(x_1),\oo,0) = t^a\p{\hat Z_3,\oo,0}, \nn\\
 Z_3 &\equiv \frac{x_{13}}{x_{13}^2} - \frac{x_{23}}{x_{23}^2},\qquad \hat Z_3 = \frac{Z_3}{|Z_3|}.
+\label{eq:defofz3}
 \ee
 Finally, let us use an orthogonal transformation $Q(\hat Z_3)$ to relate this to a standard configuration\footnote{In the case where all three operators are scalars, this verifies that there are no other solutions to the conformal Ward identities besides (\ref{eq:conformalthreeptfunction}), since $t(x_1,x_2,x_3)=t(e,\oo,0)$ is just a constant.}
 \be
@@ -2753,14 +2756,17 @@ When all three operators have nontrivial $\SO(d)$ representations $\rho_1,\rho_2
 
 For example, consider a three-point function of two vectors and a scalar $\<V_1^\mu V_2^\nu f_3\>$. In the collinear configuration, the correlator must be $\SO(d-1)$-invariant. The only possibilities are
 \be
+\label{eq:vvterms}
 \<V_1^\mu(e) V_2^\nu(\oo) f_3(0)\> &= f_{123}^{(1)} e^\mu e^\nu + f_{123}^{(2)} \de^{\mu\nu},
 \ee
 where $f_{123}^{(1)},f_{123}^{(2)}$ are constants. Abstractly, we can see that there are two structures by counting
 \be
-(\Box \otimes \Box \otimes \mathbf{1})^{\SO(d-1)} &= (\mathbf{1} \oplus \Box)\otimes (\mathbf{1} \oplus \Box) \otimes \mathbf{1} \nn\\
-&= 2\mathbf{1} \oplus \dots.
+(\myng{(1)} \otimes \myng{(1)} \otimes \mathbf{1})^{\SO(d-1)} &= (\mathbf{1} \oplus \myng{(1)})\otimes (\mathbf{1} \oplus \myng{(1)}) \otimes \mathbf{1} \nn\\
+&= 2\mathbf{1}\oplus 2 \myng{(1)} \oplus \myng{(2)}  \oplus \myng{(1,1)},
 \ee
-We could compute the correlator in a general configuration using the Ward identities. Tracing everything through, we would find
+where we've used $\mathrm{Res}^{\SO(d)}_{\SO(d-1)}\myng{(1)} = \mathbf{1} \oplus \myng{(1)}$. This calculation reveals an additional wrinkle: notice that $\myng{(1,1)}$ is the trivial representation in $d=2$, so there are actually three structures in that case. Indeed, in $d=2$ there is another term we can include in (\ref{eq:vvterms}) proportional to $\e^{\mu\nu}$.
+
+We can compute the correlator in a general configuration using the Ward identities. Tracing everything through, we find
 \be
 \<V_1^\mu(x_1) V_2^\nu(x_2) f_3(x_3)\> &= \frac{a\hat Z_1^\mu \hat Z_2^\nu + b I^{\mu\nu}(x_{12})}{x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}},
 \ee
@@ -2784,24 +2790,29 @@ $\R^{d+1,1}$ is a $d+2$-dimensional space, and we would like our theory to live 
 \be
 X^2 = 0\qquad (\textrm{null cone}).
 \ee
-The null cone is preserved by $\SO(d+1,1)$, so we have a $d+1$-dimensional space on which the conformal group acts. To finally get to $d$-dimensions, we can projectivize: we mod out by rescalings,
+The null cone is preserved by $\SO(d+1,1)$, so we have a $d+1$-dimensional space on which the conformal group acts. To finally get to $d$-dimensions, we can projectivize, i.e.\ mod out by rescalings:
 \be
 \textrm{projective null cone} = \frac{\{X:X^2 = 0\}}{X\sim \l X\ \ (\l\in \R)}.
 \ee
+\stoplecture
 
-In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. The most important gauge fixing for us will be $X^+=1$, which defines the ``Poincare section" of the null cone. Given a null vector $X=(X^+,X^-,X^\mu)$, we can rescale by $1/X^+$ to obtain an equivalent vector $(1,X^-/X^+,X^\mu/X^+)$ on the Poincare section. The only case in which this doesn't work is when $X^+=0$, so that $X$ is equivalent to $(0,1,0)$. This corresponds to the point at infinity.
+In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." Geometrically, we the projective null cone is the space of lines contained in the null cone, and the conformal group maps one line to another. 
+
+To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. One simple gauge-fixing is $X^++X^-=1$, which is equivalent to cutting the null cone with a plane, with intersection locus $S^d$. This shows that the projective null cone is topologically equivalent to $S^d$, which we should think of as $\R^d$ plus the point at infinity. $S^d$ is called the ``conformal compactification" of $\R^d$.
+
+The most important gauge fixing for us will be $X^+=1$, which defines the ``Poincare section" of the null cone. Given a null vector $X=(X^+,X^-,X^\mu)$, we can rescale by $1/X^+$ to obtain an equivalent vector $(1,X^-/X^+,X^\mu/X^+)$ on the Poincare section. The only case in which this doesn't work is when $X^+=0$, so that $X$ is equivalent to $(0,1,0)$. This corresponds to the point at infinity.
 
 Every null vector on the Poincare section can be written
 \be
 X &= (1,x^2, x^\mu),
 \ee
-where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group on $X$. We have $X \mapsto g X$. However, $gX$ is may not be on the Poincare section in general, so we must rescale by $(gX)^+$ to restore our gauge choice
+where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group, $X \mapsto g X$. Now $gX$ may not be on the Poincare section anymore, so we must rescale by $(gX)^+$ to restore our gauge choice
 \be
-(1,x^2,x) = X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu)
+(1,x^2,x) = X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu).
 \ee
 Following this chain gives a nonlinear map $x\to x'$. We claim that this is exactly the usual action of the conformal group.
 
-To see this, let us consider some examples. One type of element of $\SO(d+1,1)$ are simply $\SO(d)$ transformations acting on the coordinates $X^\mu$,
+To see this, consider some examples. One type of element of $\SO(d+1,1)$ are simply $\SO(d)$ transformations acting on the coordinates $X^\mu$,
 \be
 g_h &=\begin{pmatrix}
 1 & 0 & 0 \\
@@ -2860,7 +2871,7 @@ Note that for a dilatation $x\mapsto \l x$, we have $\Omega(x')=\l$, where $\Ome
 \ee
 In both cases, we have 
 \be
-\Omega(x')^{-1}=(g X)^+
+\Omega(x')=1/(g X)^+.
 \ee
 Since this is also trivially true for translations and rotations, it is true for any $g\in \SO(d+1,1)$.
 
@@ -2873,7 +2884,7 @@ g_I &= \begin{pmatrix}
 \end{pmatrix}\nn\\
 g_I X &= (x^2,1,x^\mu) \to (1,1/x^2,x^\mu/x^2).
 \ee
-Note that $\det g_I = -1$, so $g_I$ is not an element of $\SO(d+1,1)$, but is instead in $\mathrm{O}(d+1,1)$.
+Note that $\det g_I = -1$, so $g_I$ is not an element of $\SO(d+1,1)$, but is instead an element of $\mathrm{O}(d+1,1)$.
 
 \subsubsection{Scalars in the embedding space}
 
@@ -2896,9 +2907,160 @@ The key point is that conformal transformations now act linearly on the coordina
 \be
 \Phi(\l X) &= \l^{-\De} \Phi(X).
 \ee
-Together, these conditions (defined on the null cone, homogeneous) ensure that $\Phi(X)$ only depends nontrivially on $d$ coordinates (instead of $d+2$ coordinates), as we should expect from the fact that it is encoding a $d$-dimensional operator.
+Together, these conditions (defined on the null cone and homogeneous) ensure that $\Phi(X)$ only depends nontrivially on $d$ coordinates (instead of $d+2$ coordinates), as we should expect from the fact that it is encoding a $d$-dimensional operator.
+
+The original scalar $\f(x)$ can be recovered from $\Phi(X)$ by evaluating it on the Poincare section
+\be
+\f(x) &= \Phi((1,x^2,x)).
+\ee
+
+\subsubsection{Scalar correlators in the embedding space}
+
+Let us now consider a two-point function of scalars $\<\Phi_1(X_1)\Phi_2(X_2)\>$ with dimensions $\De_1,\De_2$, lifted to the null cone in the embedding space. The two-point function
+\begin{itemize}
+\item must be $\SO(d+1,1)$-invariant
+\be
+\<\Phi_1(X_1)\Phi_2(X_2)\> &= \<U_g(\Phi_1(X_1)\Phi_2(X_2))U_g^{-1}\> = \<\Phi_1(gX_1)\Phi_2(gX_2)\>,
+\ee
+which means it can only depend on dot-products $X_1^2,X_2^2,X_1\.X_2$;
+\item is defined on the null cones $X_1^2=X_2^2=0$, so it actually only can depend on $X_1\.X_2$;
+\item is homogeneous in $X_i$ of degree $-\De_i$.
+\end{itemize}
+The only possibility consistent with these conditions is
+\be
+\<\Phi_1(X_1) \Phi_2(X_2)\> = \frac{C\de_{\De_1\De_2}}{(-2X_1\.X_2)^{\De_1}},
+\ee
+where $C$ is a constant (we have inserted the factor of $-2$ in the denominator for convenience). Let us now specialize to the Poincare section to find the correlator in $\R^d$,
+\be
+-2X_1\.X_2 &= -2 \p{-\tfrac 1 2 X_1^+ X_2^- - \tfrac 1 2 X_1^- X_2^+ + X_1^\mu X_{2\mu}} \nn\\
+&= -2\p{-\tfrac 1 2 x_1^2 - \tfrac 1 2 x_2^2 + x_1\.x_2}\nn\\
+&= (x_1-x_2)^2\qquad (\textrm{Poincare section}).
+\ee
+Thus, we find
+\be
+\<\f_1(x_1)\f_2(x_2)\> &= \frac{C\de_{\De_1\De_2}}{(x_1-x_2)^{2\De_1}},
+\ee
+in agreement with (\ref{}).
+
+For a three-point function $\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\>$, the analysis is similar. The only nontrivial $\SO(d+1,1)$-invariant objects are $X_1\.X_2,X_2\.X_3$, and $X_3\.X_1$. The correlator must have homogeneity $-\De_i$ in $X_i$, and the only possibility is
+\be
+\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\> &= \frac{f_{123}}{X_{12}^{\De_1+\De_2-\De_3} X_{23}^{\De_2+\De_3-\De_1} X_{31}^{\De_3+\De_1-\De_2}},
+\ee
+where $X_{ij}\equiv -2 X_i\.X_j$. Specializing to the Poincare section $X_{ij}\to (x_i-x_j)^2$, we recover (\ref{}).
+
+\subsubsection{Vector operators in the embedding space}
+
+To describe more complicated operators, instead of starting with the conformal Ward identities, let us try to guess what they lift to.
+Scalar operators lift to scalars on the null cone, so it's natural to guess that a vector $V^\mu(x)$ on $\R^d$ lifts to a vector $\mathcal{V}^A$ ($A=+,-,1,\dots,d$) in the embedding space,
+\be
+V^\mu(x) &\to \mathcal{V}^A(X).
+\ee
+However $\mathcal{V}^A(X)$ carries $d+2$ degrees of freedom, whereas $V^\mu$ only has $d$ degrees of freedom. Thus, we would like to remove two degrees of freedom from $\mathcal{V}^A$ in an $\SO(d+1,1)$-invariant way.
+
+The solution to this problem is familiar from first-semester QFT: we can impose a transverseness condition and a gauge-redundancy
+\be
+X_A \mathcal{V}^A(X) &= 0 \nn\\
+\mathcal{V}^A(X) &\sim \mathcal{V}^A(X) + X^A \l(X),
+\ee
+where $\l(X)$ is any scalar function defined on the null cone. Note that the transverseness condition and gauge-redundancy are only consistent if $X^2=0$.
+Equivalence classes of $\mathcal{V}^A(X)$ then carry $d$ degrees of freedom and transform in a simple way under $\SO(d+1,1)$,
+\be
+\label{eq:embeddingtransfV}
+\mathcal{V}^A(X) &\to (g^{-1})^A{}_B \mathcal{V}^B(g X),\qquad g\in \SO(d+1,1).
+\ee
+
+To translate from the embedding space back to $\R^d$, we have the following dictionary
+\be
+\label{eq:embeddingtoflatspace}
+V_\mu(x) &= \pdr{X_A(x)}{x^\mu} \mathcal{V}^A(X)|_{X=(1,x^2,x)} \nn\\
+&= -x_\mu \mathcal{V}^+(X) + \mathcal{V}_\mu(X)|_{X=(1,x^2,x)}.
+\ee
+Note that
+\be
+\label{eq:dotxz}
+\pdr{X_A}{x}X^A = \frac 1 2\pdr{(X^2)}{x} = 0,
+\ee
+which means that $V_\mu(x)$ is invariant under the gauge redundancy $\mathcal{V}^A\sim \mathcal{V}^A+\l X^A$.
+
+What other conditions should we impose on $\mathcal{V}$?
+Recall that a dilatation acts via the matrix $\mathrm{diag}(\l^{-1},\l,1,\dots,1)$. In particular, acting on the Poincare section, we have
+\be
+(1,x^2,x)\to \l^{-1}(1,x'^2,x'),\quad x'=\l x.
+\ee
+Under this transformation, the vector $V_\mu(x)$ becomes\footnote{The term $\l \mathcal{V}^+$ comes because the index of $\mathcal{V}$ transforms under the inverse matrix $g^{-1}$ in (\ref{eq:embeddingtransfV}).}
+\be
+V_\mu(x) &\to -x_\mu(\l \mathcal{V}^+(\l^{-1} X(x')) + \mathcal{V}_\mu(\l^{-1} X(x')).
+\ee
+Thus, if we demand that $\mathcal{V}^A(X)$ have homogeneity $-\De$,
+\be
+\mathcal{V}^A(\l X) &= \l^{-\De} \mathcal{V}^A(X),
+\ee
+then we obtain
+\be
+V_\mu(x) &\to \l^{\De} V_\mu(x'),
+\ee
+which is consistent with the Ward identity under dilatation for a vector operator with dimension $\De$.
+
+This suggests we should try to lift a vector $V_\mu(x)$ in a CFT to an embedding space object like $\mathcal{V}^A(X)$ satisfying transverseness, gauge-redundancy, and homogeneity. Such a lift, which is an inverse to (\ref{eq:embeddingtoflatspace}), is given by
+\be
+\label{eq:flattoembedding}
+\mathcal{V}(X) &= (X^+)^{-\De}\p{0,-2\frac{X^\nu}{X^+} V_\nu\p{\frac{X^\mu}{X^+}},V^\mu\p{\frac{X^\mu}{X^+}}}.
+\ee
+Note that this choice of lift is only defined up to gauge redundancy. Here, we have used our gauge freedom to choose $\mathcal{V}^+=0$. By construction, the above object is homogeneous of degree $-\De$, and satisfies the transverseness condition $X\.\mathcal{V}=0$. We claim that $V^\mu(x)$ satisfies the conformal Ward identities for a primary vector operator if and only if $\mathcal{V}(X)$ defined by (\ref{eq:flattoembedding}) satisfies
+\be
+U_g \mathcal{V}^a(X) U_g^{-1} &= (g^{-1})^A{}_B \mathcal{V}^B(g X),\qquad g\in\SO(d+1,1)
+\ee
+(up to gauge redundancy).
+We have already verified this for dilatations. It is also easy to see for rotations.
+
+\begin{exercise}
+Establish this claim by checking the transformation rule for translations and special conformal transformations. Hint: it suffices to check translations and to prove that $\mathcal{V}^A(X)$ is primary (i.e.\ zero up to gauge redundancy under an infinitesimal special conformal transformation).
+\end{exercise}
 
 
+\subsubsection{Correlators of vectors}
+
+Let us now compute a two-point function $\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\>$ using this technology. It must be homogeneous of degree $-\De_i$ in $X_i$. In addition to depending on $X_1\.X_2$, it must also carry two vector indices under the conformal group. The most general such object is
+\be
+\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\> &= \frac{a \de^{AB}X_1\.X_2 + b X_1^A X_2^B + c X_2^A X_1^B}{X_{12}^{\De_1+1}}
+\ee
+Using gauge redundancy, we are free to set the term proportional to $b$ to zero. Another way to say this is that when we use the dictionary (\ref{eq:embeddingtoflatspace}), this term will give zero because of (\ref{eq:dotxz}). Thus, let us choose $b=0$.
+
+Finally, we must impose transverseness,
+\be
+0 &= X_{1A}(a\de^{AB}X_1\.X_2 + c X_2^A X_1^B) = (a+c)X_1^B (X_1\.X_2),
+\ee
+which implies $a=-c$. (Transverseness in $X_2$ gives the same condition.) Thus, we find
+\be
+\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\> &= c \frac{X_2^A X_1^B - \de^{AB} X_1\.X_2}{X_{12}^{\De_1+1}}.
+\ee
+To translate to $\R^d$, note that
+\be
+\pdr{X_1}{x_1^\mu} \. X_2 &= (0,2x_{1\mu},\de_{\mu\nu})\.(1,x_2^2,x_2^\nu) = x_{2\mu}-x_{1\mu}\nn\\
+\pdr{X_1}{x_1^\mu} \pdr{X_2}{x_2^\nu} &= (0,2x_{1\mu},\de_{\mu\nu})\.(0,2x_{2}^\rho,\de_{\nu}^\rho) = \de_{\mu\nu}.
+\ee
+Thus our dictionary (\ref{eq:embeddingtoflatspace}) gives
+\be
+\<V_1^\mu(x_1) V_2^\nu(x_2)\> &= c \frac{(x_2-x_1)^\mu (x_1-x_2)^\nu + \frac 1 2\de^{\mu\nu}(x_1-x_2)^2}{(x_1-x_2)^{2\De_1+2}} \nn\\
+&= \frac c 2\frac{I^{\mu\nu}(x_1-x_2)}{(x_1-x_2)^{2\De_1}},
+\ee
+in agreement with (\ref{eq:finalresultforVV}).
+
+Consider now a three-point function of two scalars $\f_1,\f_2$, and a vector $\mathcal{V}$,
+\be
+\<\f_1(X_1)\f_2(X_2) \mathcal{V}^A(X_3)\> &= \frac{f_{123}\mathcal{Z}(X_1,X_2,X_3)^A}{X_{12}^{\De_1+\De_2-\De_3} X_{23}^{\De_2+\De_3-\De_1} X_{31}^{\De_3+\De_1-\De_2}}.
+\ee
+The numerator should be homogeneous of degree $0$ in the $X_i$ and transverse with respect to $X_3$. Because of gauge-redundancy, we can throw away any term proportional to $X_3^A$. The only possibility (up to a constant) is
+\be
+\mathcal{Z}(X_1,X_2,X_3)^A &= \frac{X_2^A X_{13} - X_1^A X_{23}}{\sqrt{X_{12}X_{23}X_{31}}}.
+\ee
+Applying our dictionary, we have
+\be
+\left.\pdr{X_{3A}}{x_\mu} \mathcal{Z}(X_1,X_2,X_3)^A\right|_{X_i=(1,x_i^2,x_i)} &= \p{\frac{x^\mu_{32}}{x_{32}^2}-\frac{x_{31}^\mu}{x_{31}^2}}\frac{|x_{13}||x_{23}|}{|x_{12}|}=\hat Z_3^\mu,
+\ee
+where $\hat Z_3$ is defined in (\ref{eq:defofz3}). Thus, we've managed to solve the conformal Ward identities for two and three-point functions without worrying about writing down specially-designed conformal transformations.
+
+To deal with more complicated correlators, it's extremely useful to use ``index-free" notation. Together with the embedding space, this gives a powerful algebraic approach to studying conformal correlators. Versions of this formalism can describe other types of tensors, spinors, superfields, and more in various dimensions. We will not have time to discuss these methods here, but you can read more about them in \cite{}.
 
 
 %\subsection{Spinning Operators}
@@ -2941,191 +3103,191 @@ Together, these conditions (defined on the null cone, homogeneous) ensure that $
 %\ee
 %where $S_d$ is the volume of the unit sphere $S^{d-1}$ and $C_{12}$ is the coefficient in the two-point function $\<\phi_1(x)\phi_2(0)\>=C_{12}x^{-2\De_1}$ (note $C_{12}$ vanishes unless $\Delta_1=\Delta_2$). The coefficient $f_{\phi_1\phi_2 J}$ is fixed by Ward identities whenever $J$ is a conserved current.
 %
-%\section{Radial Quantization and the State-Operator Correspondence}
-%
-%
-%So far, we've written lots of commutation relations, and carefully pointed out that they are true in any quantization of the theory. Now we'll really put that idea to use.  In general, we should to choose quantizations that respect symmetries.  In a scale-invariant theory, it's natural to foliate spacetime with spheres around the origin and consider evolving states from smaller spheres to larger spheres using the dilatation operator (figure~\ref{fig:radialquantization}).  This is called ``radial quantization." The sphere $S^{d-1}$ has an associated Hilbert space $\cH$. We can act on $\cH$ by inserting operators on the surface of the sphere. For example, to act with a symmetry generator $Q$, we insert the surface operator $Q(S^{d-1})$ into the path integral (figure~\ref{fig:chargeactionradialquantization}).
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.35\textwidth]{radialquantization.jpg}
-%\end{center}
-%\caption{In radial quantization, states live on spheres, and we evolve from one state to another with the dilatation operator. \label{fig:radialquantization}}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.35\textwidth]{chargeactionradialquantization.jpg}
-%\end{center}
-%\caption{We act with a charge in radial quantization by inserting $Q(S^{d-1})$ just outside the sphere on which the state is defined. \label{fig:chargeactionradialquantization}}
-%\end{figure}
-%
-%In radial quantization, a correlation function gets interpreted as a radially ordered product,
+\section{Radial Quantization and the State-Operator Correspondence}
+
+
+So far, we've written lots of commutation relations, and carefully pointed out that they are true in any quantization of the theory. Now we'll really put that idea to use.  In general, we should to choose quantizations that respect symmetries.  In a scale-invariant theory, it's natural to foliate spacetime with spheres around the origin and consider evolving states from smaller spheres to larger spheres using the dilatation operator (figure~\ref{fig:radialquantization}).  This is called ``radial quantization." The sphere $S^{d-1}$ has an associated Hilbert space $\cH$. We can act on $\cH$ by inserting operators on the surface of the sphere. For example, to act with a symmetry generator $Q$, we insert the surface operator $Q(S^{d-1})$ into the path integral (figure~\ref{fig:chargeactionradialquantization}).
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.35\textwidth]{radialquantization.jpg}
+\end{center}
+\caption{In radial quantization, states live on spheres, and we evolve from one state to another with the dilatation operator. \label{fig:radialquantization}}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.35\textwidth]{chargeactionradialquantization.jpg}
+\end{center}
+\caption{We act with a charge in radial quantization by inserting $Q(S^{d-1})$ just outside the sphere on which the state is defined. \label{fig:chargeactionradialquantization}}
+\end{figure}
+
+In radial quantization, a correlation function gets interpreted as a radially ordered product,
+\be
+\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \<0|\mathcal{R}\{ \cO_1(x_1)\cdots \cO_n(x_n)\}|0\>\nn\\
+&\equiv  \theta(|x_n|-|x_{n-1})\cdots \theta(|x_2|-|x_1|) \<0|\cO(x_n)\cdots\cO(x_1)|0\>\nn\\
+&+\mathrm{permutations}.
+\ee
+Of course, we can perform radial quantization around different points.  The same correlation function then gets interpreted as an expectation value of differently ordered operators acting on different states in different (but isomorphic) Hilbert spaces (figure~\ref{fig:radialquantdifferentpoints}).  This is completely analogous to changing reference frames in Lorentz invariant theories.  The radial ordering prescription is consistent because operators at the same radius but different angles on the sphere commute, just as spacelike-separated operators commute in the usual quantization.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{radialquantdifferentpoints.jpg}
+\end{center}
+\caption{When we perform radial quantization around different points, the same correlator gets interpreted as a product of operators with different orderings.  \label{fig:radialquantdifferentpoints}}
+\end{figure}
+
+\subsection{Operator $\Longrightarrow$ State}
+\label{sec:operatorimpliesstate}
+
+The simplest way to prepare a state in radial quantization is to perform the path integral over the interior $B$ of the sphere, with no operator insertions inside $B$.  This gives the vacuum state $|0\>$ on the boundary $\ptl B$ (figure~\ref{fig:radialvacuum.jpg}).  It's easy to see that $|0\>$ is invariant under all symmetries because a topological surface on the boundary of $B$ can be shrunk to zero inside $B$ (figure~\ref{fig:vacuuminvariant}).
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.3\textwidth]{radialvacuum.jpg}
+\end{center}
+\caption{The vacuum in radial quantization is given by the path integral over the interior of the sphere, with no operator insertions.  \label{fig:radialvacuum.jpg}}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{vacuuminvariant.jpg}
+\end{center}
+\caption{The vacuum is automatically invariant under all symmetries.  \label{fig:vacuuminvariant}}
+\end{figure}
+
+To be explicit, suppose our CFT is given by the path integral over a scalar field $\phi$.  The Hilbert space in radial quantization is spanned by ``field eigenstates" $|\phi_b\>$, where $\phi_b(\bn)$ is a field configuration on the sphere $\bn\in \ptl B$.  The subscript ``$b$" indicates that $\phi_b$ is defined only on the boundary $\ptl B$ and not in the interior.  A general state is a linear combination of field eigenstates
+\be
+|\psi\> &\equiv \int D\phi_b |\phi_b\>\<\phi_b|\psi\>.
+\ee
+Here, $\int D\phi_b$ represents a $d-1$-dimensional path integral over fields on $\ptl B$.
+
+For the vacuum, the coefficients $\<\phi_b|0\>$ are given by the path integral over the interior with boundary conditions $\phi_b$ and no operator insertions,
+\be
+\<\phi_b |0\> &=  \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) e^{-S[\phi]}.
+\ee
+
+A more exciting possibility is to insert an operator $\cO(x)$ inside $B$ and then perform the path integral,
+\be
+\<\phi_b|\cO(x)|0\> &= \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) \cO(x) e^{-S[\phi]}.
+\ee
+This defines a state called $\cO(x)|0\>$, see figure~\ref{fig:radialexcited}.
+By inserting different operators inside $B$, we can prepare a variety of states on the boundary $\ptl B$. In this language, $|0\>$ is prepared by inserting the unit operator.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{radialexcited.jpg}
+\end{center}
+\caption{The state $\cO(x)|0\>$ is given by inserting $\cO(x)$ inside the sphere and performing the path integral over the interior.  \label{fig:radialexcited}}
+\end{figure}
+
+\subsection{Operator $\Longleftarrow$ State}
+
+This construction also works backwards. Let $|\cO_i\>$ be eigenstates of the dilatation operator
+\be
+D |\cO_i\> &= \De_i |\cO_i\>.
+\ee
+%  Given a state $|\psi\>$ in radial quantization, let us decompose it into eigenstates of the dilatation operator,
 %\be
-%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \<0|\mathcal{R}\{ \cO_1(x_1)\cdots \cO_n(x_n)\}|0\>\nn\\
-%&\equiv  \theta(|x_n|-|x_{n-1})\cdots \theta(|x_2|-|x_1|) \<0|\cO(x_n)\cdots\cO(x_1)|0\>\nn\\
-%&+\mathrm{permutations}.
+%|\psi\> &= |\cO_1\>+|\cO_2\>+\dots\\
+%D|\psi\> &= \De_1|\cO_1\>+\De_2|\cO_2\>+\dots.
 %\ee
-%Of course, we can perform radial quantization around different points.  The same correlation function then gets interpreted as an expectation value of differently ordered operators acting on different states in different (but isomorphic) Hilbert spaces (figure~\ref{fig:radialquantdifferentpoints}).  This is completely analogous to changing reference frames in Lorentz invariant theories.  The radial ordering prescription is consistent because operators at the same radius but different angles on the sphere commute, just as spacelike-separated operators commute in the usual quantization.
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.75\textwidth]{radialquantdifferentpoints.jpg}
-%\end{center}
-%\caption{When we perform radial quantization around different points, the same correlator gets interpreted as a product of operators with different orderings.  \label{fig:radialquantdifferentpoints}}
-%\end{figure}
-%
-%\subsection{Operator $\Longrightarrow$ State}
-%\label{sec:operatorimpliesstate}
-%
-%The simplest way to prepare a state in radial quantization is to perform the path integral over the interior $B$ of the sphere, with no operator insertions inside $B$.  This gives the vacuum state $|0\>$ on the boundary $\ptl B$ (figure~\ref{fig:radialvacuum.jpg}).  It's easy to see that $|0\>$ is invariant under all symmetries because a topological surface on the boundary of $B$ can be shrunk to zero inside $B$ (figure~\ref{fig:vacuuminvariant}).
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.3\textwidth]{radialvacuum.jpg}
-%\end{center}
-%\caption{The vacuum in radial quantization is given by the path integral over the interior of the sphere, with no operator insertions.  \label{fig:radialvacuum.jpg}}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.7\textwidth]{vacuuminvariant.jpg}
-%\end{center}
-%\caption{The vacuum is automatically invariant under all symmetries.  \label{fig:vacuuminvariant}}
-%\end{figure}
-%
-%To be explicit, suppose our CFT is given by the path integral over a scalar field $\phi$.  The Hilbert space in radial quantization is spanned by ``field eigenstates" $|\phi_b\>$, where $\phi_b(\bn)$ is a field configuration on the sphere $\bn\in \ptl B$.  The subscript ``$b$" indicates that $\phi_b$ is defined only on the boundary $\ptl B$ and not in the interior.  A general state is a linear combination of field eigenstates
-%\be
-%|\psi\> &\equiv \int D\phi_b |\phi_b\>\<\phi_b|\psi\>.
-%\ee
-%Here, $\int D\phi_b$ represents a $d-1$-dimensional path integral over fields on $\ptl B$.
-%
-%For the vacuum, the coefficients $\<\phi_b|0\>$ are given by the path integral over the interior with boundary conditions $\phi_b$ and no operator insertions,
-%\be
-%\<\phi_b |0\> &=  \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) e^{-S[\phi]}.
-%\ee
-%
-%A more exciting possibility is to insert an operator $\cO(x)$ inside $B$ and then perform the path integral,
-%\be
-%\<\phi_b|\cO(x)|0\> &= \int_{\substack{\phi(1,\bn)=\phi_b(\bn) \\ r \leq 1}} D\phi(r,\bn) \cO(x) e^{-S[\phi]}.
-%\ee
-%This defines a state called $\cO(x)|0\>$, see figure~\ref{fig:radialexcited}.
-%By inserting different operators inside $B$, we can prepare a variety of states on the boundary $\ptl B$. In this language, $|0\>$ is prepared by inserting the unit operator.
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.4\textwidth]{radialexcited.jpg}
-%\end{center}
-%\caption{The state $\cO(x)|0\>$ is given by inserting $\cO(x)$ inside the sphere and performing the path integral over the interior.  \label{fig:radialexcited}}
-%\end{figure}
-%
-%\subsection{Operator $\Longleftarrow$ State}
-%
-%This construction also works backwards. Let $|\cO_i\>$ be eigenstates of the dilatation operator
-%\be
-%D |\cO_i\> &= \De_i |\cO_i\>.
-%\ee
-%%  Given a state $|\psi\>$ in radial quantization, let us decompose it into eigenstates of the dilatation operator,
-%%\be
-%%|\psi\> &= |\cO_1\>+|\cO_2\>+\dots\\
-%%D|\psi\> &= \De_1|\cO_1\>+\De_2|\cO_2\>+\dots.
-%%\ee
-%The $|\cO_i\>$ can themselves be used as operators: we cut spherical holes $B_i$ out of the path integral centered around positions $x_i$ and glue in the states $|\cO_i\>$ at the boundary of the holes, as in figure~\ref{fig:correlatorofstates}.
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=0.7\textwidth]{correlatorofstates.jpg}
-%\end{center}
-%\caption{A correlator of states is defined by cutting holes out of the path integral and gluing states into the holes.  \label{fig:correlatorofstates}}
-%\end{figure}
-%This gives a quantity that behaves exactly like a correlator of local operators.
-%In the scalar field example, the gluing procedure gives
-%\be
-%\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int \prod_i D\phi_{bi} \<\phi_{bi}|\cO_i\> \int_{\substack{\phi_{\ptl i}=\phi_{bi}\\ x \notin B_i }} D\phi(x)\, e^{-S},
-%\ee
-%where the path integral $D\phi(x)$ is performed over the region outside the balls $B_i$, and the integrals $D\phi_{bi}$ are over field configurations on the boundaries $\ptl B_i$. Here, $\phi_{\ptl i}$ denotes the restriction of the bulk field $\phi(x)$ to the $i$-th boundary $\ptl B_i$.
-%
-%This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap.  If they're too close together, we can use
-%\be
-%\<\cO(x_1)\cdots \cO(x_n)\> &= \lambda^{\sum_i \Delta_i}\<\cO_1(\lambda x_1)\cdots \cO_n(\lambda x_n)\>,
-%\ee
-%with $\l$ sufficiently large to define the correlator.  Since the $x_i$ can now be arbitrarily close together, we have defined local operators.\footnote{A more careful construction of the state $\implies$ operator map that doesn't require this rescaling trick is given in Polchinski \cite{Polchinski:1998rq} volume 1, chapter 2.}
-%
-%\subsection{Operator $\Longleftrightarrow$ State}
-%
-%So far I've been vague about what I mean by a local operator.  But now, we can give a rigorous definition: we will simply {\it define\/} a local operator to be an eigenstate of $D$ in radial quantization.\footnote{The dilatation operator is diagonalizable in unitary (reflection positive) CFTs.  However, there exist interesting non-unitary theories where $D$ has a nontrivial Jordan block decomposition.  In these cases, we define a local operator as a finite-dimensional representation of $D$.} With this definition, the two constructions above are inverse to each other, with the identification
-%\be
-%\cO(0)\quad &\longleftrightarrow& \quad \cO(0)|0\>\equiv |\cO\>.
-%\ee
-%This is the ``state-operator correspondence."
-%
-%It is straightforward to see how the conformal group acts on states in radial quantization.  A primary operator creates a state that is killed by $K_\mu$ and transforms in a finite-dimensional representation of $D$ and $M_{\mu\nu}$,
-%\begin{align}
-%\label{eq:operatortostateconditionK}
-%\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow && K_\mu|\cO\>&=0,\\
-%\label{eq:operatortostateconditionD}
-%\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow&& D|\cO\>&=\De|\cO\>,\\
-%\label{eq:operatortostateconditionM}
-%\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow&& M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
-%\end{align}
-%This follows by acting on $|0\>$ with the operator equations above and using the fact that $|0\>$ is killed by $K,D,$ and $M$.
-%
-%A conformal multiplet in radial quantization is given by acting with momentum generators on a primary state
-%\be
-%|\cO\>, P_\mu|\cO\>, P_\mu P_\nu|\cO\>, \dots \qquad\textrm{(conformal multiplet)}.
-%\ee
-%This is equivalent to acting with derivatives of $\cO(x)$ at the origin, for example
-%\be
-%\ptl_\mu\cO(x)|_{x=0}|0\> &= [P_\mu,\cO(0)]|0\>\ \ =\ \ P_\mu|\cO\>.
-%\ee
-%The operator $\cO(x)$ creates an infinite linear combination of descendants,
-%\be
-%\cO(x)|0\>\ =\  e^{x\.P}\cO(0)e^{-x\.P}|0\>\ =\ e^{x\.P}|\cO\>\ =\ \sum_{n=0}^\oo \frac{1}{n!}(x\.P)^n|\cO\>.\quad
-%\ee
-%
-%As with the classification of operators, the action of the conformal algebra on a multiplet in radial quantization is determined by the commutation relations of the algebra. In fact the required computations look {\it exactly identical\/} to the computations we did to determine the action of conformal generators on operators (\ref{eq:actionbyrotation}, \ref{eq:dilatationaction}, \ref{eq:actionofK}).  This is because by surrounding operators with charges supported on spheres, we were secretly doing radial quantization all along!
-%
-%
-%\subsection{Another View of Radial Quantization}
-%
-%To study a conformal Killing vector $\e$, it is often helpful to perform a Weyl rescaling of the metric $g\to \Omega(x)^2 g$ so that $\e$ becomes a regular Killing vector, i.e.\ an isometry.  We can turn a dilatation into an isometry by performing a Weyl rescaling from $\R^d$ to the cylinder $\R\x S^{d-1}$,
-%\be
-%ds_{\R^d}^2 &= dr^2 + r^2 ds_{S^{d-1}}^2\nn\\
-%&= r^2\p{\frac{dr^2}{r^2} + ds_{S^{d-1}}^2}\nn\\
-%&= e^{2\tau}(d\tau^2 + ds_{S^{d-1}}^2) = e^{2\tau} ds_{\R\x S^{d-1}}^2,
-%\ee
-%where $r=e^\tau$.
-%
-%Dilatations $r\to\l r$ become shifts of radial time $\tau\to\tau+\log \l$.  Radial quantization in flat space is equivalent to the usual quantization on the cylinder.  States live on spheres and time evolution is generated by acting with $e^{-D\tau}$.  While the development of radial quantization in the previous sections relied only on scale invariance, the cylinder picture relies on conformal invariance because we have performed a nontrivial Weyl rescaling.
-%
-%Let us build a more detailed dictionary between the two pictures.  Under a Weyl rescaling, correlation functions of local operators transform as\footnote{In even dimensions, the partition function itself can transform with a Weyl anomaly $\<1\>_g=\<1\>_{\Omega^2 g}e^{S_\mathrm{Weyl}[g]}$.  This will not be important for our discussion, so we have divided through by the partition function.}
-%\be
-%\label{eq:weyltransformation}
-%\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_g}{\<1\>_g} &= \p{\prod_i \Omega(x_i)^{\De_i}}\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_{\Omega^2g}}{\<1\>_{\Omega^2 g}}.
-%\ee
-%This is a nontrivial claim --- if we implement the Ising model in flat space, compute expectation values and take the continuum limit, it's not obvious that the answer should be simply related to the same lattice theory on the cylinder.\footnote{Comparing the flat and cylindrical Ising models is relatively easy in 2d, but harder in 3d since $S^2$ is curved. See \cite{Brower:2014gsa} for a recent attempt.}    In general it isn't, but at the critical value of the coupling when the theory becomes conformal, tracelessness of the stress tensor implies insensitivity to Weyl rescalings, and the answers become related.
-%
-%\begin{exercise}
-%By integrating by parts in (\ref{eq:dilatationaction}), show that 
-%\be
-%\label{eq:tracetcontact}
-%T_\mu^\mu(x) \cO(y) &= \De \de(x-y)\cO(y).
-%\ee
-%An insertion of $T_\mu^\mu$ is the response of the theory to an infinitesimal Weyl transformation $g\to e^{2\de\omega} g$. Derive (\ref{eq:weyltransformation}) by exponentiation.\footnote{We cheated here by only deriving (\ref{eq:tracetcontact}) in flat space.  In curved space there is an additional contribution to $T_\mu^\mu$ coming from the Weyl anomaly.  This factor cancels in (\ref{eq:weyltransformation}). There could also be modifications to the contact term (\ref{eq:tracetcontact}). However, in a conformally flat metric, we can simply define the curved space operator $\cO(x)$ so that it satisfies (\ref{eq:tracetcontact}). For instance, we may modify the Weyl factor so that it is constant in a tiny neighborhood of $\cO(x)$ and the flat-space calculation applies. This definition might not be consistent with other independent definitions. For instance, if $\cO(x)$ is the stress tensor, it gives a different answer from the canonical definition (\ref{eq:definitionofstresstensor}) because of the Weyl anomaly.}
-%\end{exercise}
-%
-%Thus, given an operator $\cO(x)$ in $\R^d$, it is natural to define a cylinder operator
-%\be
-%\label{eq:definitionofcylinderop}
-%\cO_\mathrm{cyl.}(\tau,\bn) &\equiv e^{\De \tau} \cO_\mathrm{flat}(x=e^\tau \bn).
-%\ee
-%We often omit the subscripts ``cyl." and ``flat," relying on the coordinates to indicate which type of operator we're discussing.
-%\begin{exercise}
-%Using (\ref{eq:weyltransformation}), compute a two-point function of cylinder operators
-%\be
-%\<\cO(\tau_1,\bn_1)\cO(\tau_2,\bn_2)\>.
-%\ee
-%Verify that it is time-translationally invariant on the cylinder. Show that in the limit of large time separation $\tau=\tau_2-\tau_1 \gg 1$, the two-point function has an expansion in terms of the form $e^{-(\De+n)\tau}$ with integer $n\geq 0$.  Interpret these as coming from the exchange of states in the conformal multiplet of $\cO$.
-%\end{exercise}
+The $|\cO_i\>$ can themselves be used as operators: we cut spherical holes $B_i$ out of the path integral centered around positions $x_i$ and glue in the states $|\cO_i\>$ at the boundary of the holes, as in figure~\ref{fig:correlatorofstates}.
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{correlatorofstates.jpg}
+\end{center}
+\caption{A correlator of states is defined by cutting holes out of the path integral and gluing states into the holes.  \label{fig:correlatorofstates}}
+\end{figure}
+This gives a quantity that behaves exactly like a correlator of local operators.
+In the scalar field example, the gluing procedure gives
+\be
+\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int \prod_i D\phi_{bi} \<\phi_{bi}|\cO_i\> \int_{\substack{\phi_{\ptl i}=\phi_{bi}\\ x \notin B_i }} D\phi(x)\, e^{-S},
+\ee
+where the path integral $D\phi(x)$ is performed over the region outside the balls $B_i$, and the integrals $D\phi_{bi}$ are over field configurations on the boundaries $\ptl B_i$. Here, $\phi_{\ptl i}$ denotes the restriction of the bulk field $\phi(x)$ to the $i$-th boundary $\ptl B_i$.
+
+This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap.  If they're too close together, we can use
+\be
+\<\cO(x_1)\cdots \cO(x_n)\> &= \lambda^{\sum_i \Delta_i}\<\cO_1(\lambda x_1)\cdots \cO_n(\lambda x_n)\>,
+\ee
+with $\l$ sufficiently large to define the correlator.  Since the $x_i$ can now be arbitrarily close together, we have defined local operators.\footnote{A more careful construction of the state $\implies$ operator map that doesn't require this rescaling trick is given in Polchinski \cite{Polchinski:1998rq} volume 1, chapter 2.}
+
+\subsection{Operator $\Longleftrightarrow$ State}
+
+So far I've been vague about what I mean by a local operator.  But now, we can give a rigorous definition: we will simply {\it define\/} a local operator to be an eigenstate of $D$ in radial quantization.\footnote{The dilatation operator is diagonalizable in unitary (reflection positive) CFTs.  However, there exist interesting non-unitary theories where $D$ has a nontrivial Jordan block decomposition.  In these cases, we define a local operator as a finite-dimensional representation of $D$.} With this definition, the two constructions above are inverse to each other, with the identification
+\be
+\cO(0)\quad &\longleftrightarrow \quad \cO(0)|0\>\equiv |\cO\>.
+\ee
+This is the ``state-operator correspondence."
+
+It is straightforward to see how the conformal group acts on states in radial quantization.  A primary operator creates a state that is killed by $K_\mu$ and transforms in a finite-dimensional representation of $D$ and $M_{\mu\nu}$,
+\begin{align}
+\label{eq:operatortostateconditionK}
+\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow && K_\mu|\cO\>&=0,\\
+\label{eq:operatortostateconditionD}
+\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow&& D|\cO\>&=\De|\cO\>,\\
+\label{eq:operatortostateconditionM}
+\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow&& M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
+\end{align}
+This follows by acting on $|0\>$ with the operator equations above and using the fact that $|0\>$ is killed by $K,D,$ and $M$.
+
+A conformal multiplet in radial quantization is given by acting with momentum generators on a primary state
+\be
+|\cO\>, P_\mu|\cO\>, P_\mu P_\nu|\cO\>, \dots \qquad\textrm{(conformal multiplet)}.
+\ee
+This is equivalent to acting with derivatives of $\cO(x)$ at the origin, for example
+\be
+\ptl_\mu\cO(x)|_{x=0}|0\> &= [P_\mu,\cO(0)]|0\>\ \ =\ \ P_\mu|\cO\>.
+\ee
+The operator $\cO(x)$ creates an infinite linear combination of descendants,
+\be
+\cO(x)|0\>\ =\  e^{x\.P}\cO(0)e^{-x\.P}|0\>\ =\ e^{x\.P}|\cO\>\ =\ \sum_{n=0}^\oo \frac{1}{n!}(x\.P)^n|\cO\>.\quad
+\ee
+
+As with the classification of operators, the action of the conformal algebra on a multiplet in radial quantization is determined by the commutation relations of the algebra. In fact the required computations look {\it exactly identical\/} to the computations we did to determine the action of conformal generators on operators (\ref{eq:actionbyrotation}, \ref{eq:dilatationaction}, \ref{eq:actionofK}).  This is because by surrounding operators with charges supported on spheres, we were secretly doing radial quantization all along!
+
+
+\subsection{Another View of Radial Quantization}
+
+To study a conformal Killing vector $\e$, it is often helpful to perform a Weyl rescaling of the metric $g\to \Omega(x)^2 g$ so that $\e$ becomes a regular Killing vector, i.e.\ an isometry.  We can turn a dilatation into an isometry by performing a Weyl rescaling from $\R^d$ to the cylinder $\R\x S^{d-1}$,
+\be
+ds_{\R^d}^2 &= dr^2 + r^2 ds_{S^{d-1}}^2\nn\\
+&= r^2\p{\frac{dr^2}{r^2} + ds_{S^{d-1}}^2}\nn\\
+&= e^{2\tau}(d\tau^2 + ds_{S^{d-1}}^2) = e^{2\tau} ds_{\R\x S^{d-1}}^2,
+\ee
+where $r=e^\tau$.
+
+Dilatations $r\to\l r$ become shifts of radial time $\tau\to\tau+\log \l$.  Radial quantization in flat space is equivalent to the usual quantization on the cylinder.  States live on spheres and time evolution is generated by acting with $e^{-D\tau}$.  While the development of radial quantization in the previous sections relied only on scale invariance, the cylinder picture relies on conformal invariance because we have performed a nontrivial Weyl rescaling.
+
+Let us build a more detailed dictionary between the two pictures.  Under a Weyl rescaling, correlation functions of local operators transform as\footnote{In even dimensions, the partition function itself can transform with a Weyl anomaly $\<1\>_g=\<1\>_{\Omega^2 g}e^{S_\mathrm{Weyl}[g]}$.  This will not be important for our discussion, so we have divided through by the partition function.}
+\be
+\label{eq:weyltransformation}
+\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_g}{\<1\>_g} &= \p{\prod_i \Omega(x_i)^{\De_i}}\frac{\<\cO_1(x_1)\cdots\cO_n(x_n)\>_{\Omega^2g}}{\<1\>_{\Omega^2 g}}.
+\ee
+This is a nontrivial claim --- if we implement the Ising model in flat space, compute expectation values and take the continuum limit, it's not obvious that the answer should be simply related to the same lattice theory on the cylinder.\footnote{Comparing the flat and cylindrical Ising models is relatively easy in 2d, but harder in 3d since $S^2$ is curved. See \cite{Brower:2014gsa} for a recent attempt.}    In general it isn't, but at the critical value of the coupling when the theory becomes conformal, tracelessness of the stress tensor implies insensitivity to Weyl rescalings, and the answers become related.
+
+\begin{exercise}
+By integrating by parts in (\ref{eq:dilatationaction}), show that 
+\be
+\label{eq:tracetcontact}
+T_\mu^\mu(x) \cO(y) &= \De \de(x-y)\cO(y).
+\ee
+An insertion of $T_\mu^\mu$ is the response of the theory to an infinitesimal Weyl transformation $g\to e^{2\de\omega} g$. Derive (\ref{eq:weyltransformation}) by exponentiation.\footnote{We cheated here by only deriving (\ref{eq:tracetcontact}) in flat space.  In curved space there is an additional contribution to $T_\mu^\mu$ coming from the Weyl anomaly.  This factor cancels in (\ref{eq:weyltransformation}). There could also be modifications to the contact term (\ref{eq:tracetcontact}). However, in a conformally flat metric, we can simply define the curved space operator $\cO(x)$ so that it satisfies (\ref{eq:tracetcontact}). For instance, we may modify the Weyl factor so that it is constant in a tiny neighborhood of $\cO(x)$ and the flat-space calculation applies. This definition might not be consistent with other independent definitions. For instance, if $\cO(x)$ is the stress tensor, it gives a different answer from the canonical definition (\ref{eq:definitionofstresstensor}) because of the Weyl anomaly.}
+\end{exercise}
+
+Thus, given an operator $\cO(x)$ in $\R^d$, it is natural to define a cylinder operator
+\be
+\label{eq:definitionofcylinderop}
+\cO_\mathrm{cyl.}(\tau,\bn) &\equiv e^{\De \tau} \cO_\mathrm{flat}(x=e^\tau \bn).
+\ee
+We often omit the subscripts ``cyl." and ``flat," relying on the coordinates to indicate which type of operator we're discussing.
+\begin{exercise}
+Using (\ref{eq:weyltransformation}), compute a two-point function of cylinder operators
+\be
+\<\cO(\tau_1,\bn_1)\cO(\tau_2,\bn_2)\>.
+\ee
+Verify that it is time-translationally invariant on the cylinder. Show that in the limit of large time separation $\tau=\tau_2-\tau_1 \gg 1$, the two-point function has an expansion in terms of the form $e^{-(\De+n)\tau}$ with integer $n\geq 0$.  Interpret these as coming from the exchange of states in the conformal multiplet of $\cO$.
+\end{exercise}
 
 
 \begin{appendix}
