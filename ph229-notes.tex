@@ -2741,6 +2741,7 @@ t^{\mu_1\cdots\mu_\ell}(e,\oo,0) &= f_{123} (e^{\mu_1}\cdots e^{\mu_\ell} - \tex
 \ee
 which leads to
 \be
+\label{eq:scalarscalarspinL}
 \<\f_1(x_1)\f_2(x_2)\cO^{\mu_1\cdots\mu_\ell}_3(x_3)\> &= \frac{f_{123}(\hat Z_3^{\mu_1}\cdots \hat Z_3^{\mu_\ell} - \textrm{traces})}{x_{12}^{\De_1+\De_2-\De_3} x_{23}^{\De_2+\De_3-\De_1} x_{31}^{\De_3+\De_1-\De_2}} .
 \ee
 
@@ -2946,7 +2947,7 @@ For a three-point function $\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\>$, the analysis
 \be
 \<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\> &= \frac{f_{123}}{X_{12}^{\De_1+\De_2-\De_3} X_{23}^{\De_2+\De_3-\De_1} X_{31}^{\De_3+\De_1-\De_2}},
 \ee
-where $X_{ij}\equiv -2 X_i\.X_j$. Specializing to the Poincare section $X_{ij}\to (x_i-x_j)^2$, we recover (\ref{}).
+where $X_{ij}\equiv -2 X_i\.X_j$. Specializing to the Poincare section $X_{ij}\to (x_i-x_j)^2$, we recover (\ref{eq:conformalthreeptfunction}).
 
 \subsubsection{Vector operators in the embedding space}
 
@@ -3069,14 +3070,14 @@ To deal with more complicated correlators, it's extremely useful to use ``index-
 %
 %Two-point functions of spinning operators are fixed by conformal invariance.  They are nonzero only if the operators have identical dimensions and spins.  For example, a two-point function of spin-1 operators with dimension $\Delta$ is given by
 %\be
-%\label{eq:twoptfunctionofspin1}
+%\label{eq:finalresultforVV}
 %\<J^\mu(x)J_\nu(y)\> &= C_J \frac{I^\mu{}_{\nu}(x-y)}{(x-y)^{2\De}},\\
 % I^{\mu}{}_{\nu}(x)&\equiv \de^\mu_\nu-2\frac{x^\mu x_\nu}{x^2},
 % \label{eq:Itensor}
 %\ee
 %where $C_J$ is a constant. Note that $I^\mu{}_{\nu}(x)$ is the orthogonal matrix associated with an inversion, $\pdr{x'^\mu}{x^\nu}=\Omega(x) I^\mu{}_\nu(x)$.
 %\begin{exercise}
-%Check that (\ref{eq:twoptfunctionofspin1}) is consistent with conformal symmetry.  Hint: it is enough to check inversions.
+%Check that (\ref{eq:finalresultforVV}) is consistent with conformal symmetry.  Hint: it is enough to check inversions.
 %\end{exercise}
 %
 %Two-point functions of operators in more general spin representations can be constructed from the above.  For spin-$\ell$ traceless symmetric tensors,
@@ -3086,7 +3087,7 @@ To deal with more complicated correlators, it's extremely useful to use ``index-
 %\ee
 %where we can symmetrize either the $\mu$'s or $\nu$'s (or both).  Subtracting traces means adding terms proportional to $\de^{\mu_i\mu_j}$ and $\de_{\nu_i\nu_j}$ so that the result is separately traceless in the $\mu$ indices and the $\nu$ indices (not necessarily under $\mu$-$\nu$ contractions).
 %
-%It is sometimes conventional to normalize $J$ so that $C_J=1$ in (\ref{eq:twoptfunctionofspin1}), (\ref{eq:twopointfunctionofspinL}).  An exception is if $J$ already has a natural normalization.  For example, the normalization of the stress tensor is fixed by demanding that $T^{\mu\nu}$ satisfy the appropriate Ward identities.  In this case, $C_T$ is physically meaningful.
+%It is sometimes conventional to normalize $J$ so that $C_J=1$ in (\ref{eq:finalresultforVV}), (\ref{eq:twopointfunctionofspinL}).  An exception is if $J$ already has a natural normalization.  For example, the normalization of the stress tensor is fixed by demanding that $T^{\mu\nu}$ satisfy the appropriate Ward identities.  In this case, $C_T$ is physically meaningful.
 %
 %Three-point functions are fixed up to a finite number of coefficients.  For example, a three-point function of scalars $\phi_{1}$, $\phi_2$ and a spin-$\ell$ operator $J_{\mu_1\dots\mu_\ell}$ is determined up to a single coefficient $f_{\f_1\f_2 J}$,
 %\be
@@ -3185,6 +3186,7 @@ By inserting different operators inside $B$, we can prepare a variety of states 
 
 This construction also works backwards. Let $|\cO_i\>$ be eigenstates of the dilatation operator
 \be
+\label{eq:eigenvectorofD}
 D |\cO_i\> &= \De_i |\cO_i\>.
 \ee
 %  Given a state $|\psi\>$ in radial quantization, let us decompose it into eigenstates of the dilatation operator,
@@ -3200,17 +3202,32 @@ The $|\cO_i\>$ can themselves be used as operators: we cut spherical holes $B_i$
 \caption{A correlator of states is defined by cutting holes out of the path integral and gluing states into the holes.  \label{fig:correlatorofstates}}
 \end{figure}
 This gives a quantity that behaves exactly like a correlator of local operators.
-In the scalar field example, the gluing procedure gives
+In the scalar field example, the gluing procedure gives an object
 \be
-\<\cO_1(x_1)\cdots \cO_n(x_n)\> &= \int \prod_i D\phi_{bi} \<\phi_{bi}|\cO_i\> \int_{\substack{\phi_{\ptl i}=\phi_{bi}\\ x \notin B_i }} D\phi(x)\, e^{-S},
+\label{eq:pathintegralforC}
+C\p{|\cO_1\>, x_1;\dots ;|\cO_n\>, x_n} &\equiv \int \prod_i D\phi_{bi} \<\phi_{bi}|\cO_i\> \int_{\substack{\phi_{\ptl i}=\phi_{bi}\\ x \notin B_i }} D\phi(x)\, e^{-S[\phi]},
 \ee
 where the path integral $D\phi(x)$ is performed over the region outside the balls $B_i$, and the integrals $D\phi_{bi}$ are over field configurations on the boundaries $\ptl B_i$. Here, $\phi_{\ptl i}$ denotes the restriction of the bulk field $\phi(x)$ to the $i$-th boundary $\ptl B_i$.
 
-This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap.  If they're too close together, we can use
+This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap. However, a correlator of local operators should make sense for arbitrary configurations of non-coincident points. To overcome this problem, we can use the fact that we have diagonalized the dilatation operator. Let us define a correlator of the states $|\cO_i\>$ by
 \be
-\<\cO(x_1)\cdots \cO(x_n)\> &= \lambda^{\sum_i \Delta_i}\<\cO_1(\lambda x_1)\cdots \cO_n(\lambda x_n)\>,
+\label{eq:definitionofstatecorrelator}
+\<\cO(x_1)\cdots \cO(x_n)\> &\equiv \lambda^{\sum_i \Delta_i} C(|\cO_1\>, \l x_1;\dots ;|\cO_n\>, \l x_n),
+%\<\cO_1(\lambda x_1)\cdots \cO_n(\lambda x_n)\>,
 \ee
-with $\l$ sufficiently large to define the correlator.  Since the $x_i$ can now be arbitrarily close together, we have defined local operators.\footnote{A more careful construction of the state $\implies$ operator map that doesn't require this rescaling trick is given in Polchinski \cite{Polchinski:1998rq} volume 1, chapter 2.}
+where $\l\in \R$ is any number sufficiently large that $\l|x_{ij}|>1$.  Since the $x_i$ can now be arbitrarily close together, we have defined local operators.\footnote{A more careful construction of the state $\implies$ operator map that doesn't require this rescaling trick is given in Polchinski \cite{Polchinski:1998rq} volume 1, chapter 2.}
+
+We should check that (\ref{eq:definitionofstatecorrelator}) doesn't depend on $\l$ (assuming $\l$ satisfies the condition $\l|x_{ij}|>1$). Note that
+\be
+&\pdr{}{\l} \<\cO(x_1)\cdots \cO(x_n)\> \nn\\
+&= \lambda^{\sum_i \Delta_i}\sum_i\p{\De_i + x_i\.\pdr{}{x_i}} C(|\cO_1\>, \l x_1; \dots ;|\cO_n\>, \l x_n)
+%&= \lambda^{\sum_i \Delta_i} \sum_i C(|\cO_1\>, \l x_1;\dots; D_i|\cO_i\>,\l x_i; \dots ;|\cO_n\>, \l x_n),
+\ee
+Because of (\ref{eq:eigenvectorofD}), the latter expression is the same as inserting a topological surface operator for $D$ in the path integral (\ref{eq:pathintegralforC}), which vanishes if we have scale-invariant boundary conditions.
+%where
+%\be
+%D_i &= D + x_i\. P
+%\ee
 
 \subsection{Operator $\Longleftrightarrow$ State}
 
@@ -3289,6 +3306,397 @@ Using (\ref{eq:weyltransformation}), compute a two-point function of cylinder op
 Verify that it is time-translationally invariant on the cylinder. Show that in the limit of large time separation $\tau=\tau_2-\tau_1 \gg 1$, the two-point function has an expansion in terms of the form $e^{-(\De+n)\tau}$ with integer $n\geq 0$.  Interpret these as coming from the exchange of states in the conformal multiplet of $\cO$.
 \end{exercise}
 
+\section{Reflection Positivity and Unitarity Bounds}
+
+\subsection{Reflection Positivity}
+\label{sec:reflectionpositivity}
+
+In Lorentzian signature, we are interested in unitary theories: theories where the conserved charges (including the Hamiltonian) are Hermitian operators so that they generate unitary transformations.  Unitarity in Lorentzian signature is equivalent to a property called ``reflection positivity" in Euclidean signature.\footnote{We make some brief comments about Euclidean vs. Lorentzian field theory and analytic continuation in appendix~\ref{app:analyticcontinuation}.}
+
+Consider a Lorentzian theory with a local operator $\cO_L$ and Hermitian energy-momentum generators $(H,\bP_L)$ ($L$ is for ``Lorentzian").  We have the textbook formula
+\be
+\label{eq:textbookinlorentz}
+\cO_L(t,\bx) &= e^{iHt-i\bx\.\bP_L}\cO_L(0,0)e^{-iHt+i\bx\.\bP_L}.
+\ee
+Let $\cO_L(0,0)$ be Hermitian.  It follows from (\ref{eq:textbookinlorentz}) that $\cO_L(t,\bx)$ is Hermitian too.
+
+Now, let us Wick-rotate to Euclidean signature,
+\be
+\label{eq:wickrotatedoperator}
+\cO_E(t_E,\bx) \equiv \cO_L(-it_E,\bx)
+= e^{Ht_E-i\bx\.\bP_L}\cO_L(0,0)e^{-Ht_E+i\bx\.\bP_L}.
+\ee
+The Euclidean operator satisfies
+\be
+\cO_E(t_E,\bx)^\dag &= \cO_E(-t_E,\bx).
+\ee
+To Wick-rotate an operator with spin, we conventionally add factors of $-i$ to the time components,\footnote{These factors are needed to make Euclidean correlation functions manifestly covariant under $\SO(d)$ rotations.} e.g.\ for a vector operator $\cO_L^\mu$,
+\be
+\cO_E^0(t_E,\bx) &= -i \cO_L^0(-it_E,\bx),\nn\\
+\cO_E^i(t_E,\bx) &= \cO_L^i(-it_E,\bx).
+\ee
+This leads to
+\be
+\label{eq:reflectionforhermitianconjugation}
+\cO_E^{\mu_1\dots\mu_\ell}(t_E,\bx)^\dag &= \Theta^{\mu_1}{}_{\nu_1}\cdots \Theta^{\mu_\ell}{}_{\nu_\ell} \cO_E^{\nu_1\cdots\nu_\ell}(-t_E,\bx),
+\ee
+where $\Theta^\mu{}_\nu = \de^\mu_\nu-2\de^\mu_0\de_\nu^0$ is a reflection in the time-direction.
+
+Thus, the way Hermitian conjugation acts on a Euclidean operator depends on which direction we call time.  Whether an operator is Hermitian or not depends on how we quantize the theory! This is very different from Lorentzian signature, where the conjugation properties of operators don't depend on a choice of reference frame.
+
+As an example, consider the momentum generators
+\be
+P^\mu &= -\int d^{d-1}\bx\, T^{\mu 0}(0,\bx).
+\ee
+(From now on, we work in the Euclidean theory and omit the $E$ subscripts.)
+Using (\ref{eq:reflectionforhermitianconjugation}), we have
+\be
+T^{i 0}(0,\bx)^\dag &= -T^{i0}(0,\bx),\nn\\
+T^{00}(0,\bx)^\dag &= T^{00}(0,\bx).
+\ee
+It follows that $P^0$ is Hermitian, and the $P^i$ are {\it antihermitian}.  We may write
+\be
+P^0 = H,\qquad
+P^j = -iP^j_L,
+\ee
+with $H,P_L$ Hermitian, and then (\ref{eq:integratedtranslations}) agrees with the formula we got from Wick rotation (\ref{eq:wickrotatedoperator}).  If we had quantized with a different time direction, say the $x_1$-direction, then we would conclude that $P^1$ is Hermitian, while $P^0,P^2,\dots,P^{d-1}$ are antihermitian.
+
+To reiterate, {\it the way conjugation acts on operators depends on how we quantize our theory}.  This makes sense, because Hermitian conjugation is something you do to operators on Hilbert spaces, and different quantizations have different Hilbert spaces.
+
+This raises the question: given a Euclidean path integral, how do we know if it computes the Wick-rotation of a unitary Lorentzian theory?  One important condition is that norms of states should be positive.  Consider some in-state $|\psi\>$ given by acting on the vacuum with a bunch of operators at negative Euclidean time
+\be
+|\psi\> &= \cO(-t_{E1})\cdots\cO(-t_{En})|0\>.
+\ee
+For brevity, we suppress the spatial positions of the operators.
+The conjugate state is given by
+\be
+\<\psi| &= (\cO(-t_{E1})\cdots\cO(-t_{En})|0\>)^\dag \nn \\
+&= \<0|\cO(t_{En})\cdots\cO(t_{E1}).
+\ee
+That is, $\<\psi|$ is given by taking the vacuum in the future and positioning operators in a time-reflected way.  Thus, the condition
+\be
+\<\psi|\psi\> &\geq 0
+\ee
+says that a time-reflection symmetric configuration should have a positive path integral, see figure~\ref{fig:reflectionpositivity}.  This is called ``reflection positivity."
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{reflectionpositivity.jpg}
+\end{center}
+\caption{Reflection positivity.  \label{fig:reflectionpositivity}}
+\end{figure}
+
+If a Euclidean theory is the Wick-rotation of a unitary Lorentzian theory, then it will be reflection positive.  However, some theories are more naturally defined in Euclidean signature.  In this case, reflection positivity must be checked.  It often suffices to check it in any microscopic theory in the same universality class as the CFT we're interested in.
+\begin{exercise}
+Consider the 2d Ising lattice correlator shown in figure~\ref{fig:isingreflectioncorrelator}.  Show that it can be written as a sum of squares, and is hence positive. (Hint: first sum over spins off the line $L$, and then sum over spins on $L$.) Generalize your proof to argue that the 2d Ising model is reflection-positive.
+\end{exercise}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.3\textwidth]{isingreflectioncorrelator.jpg}
+\end{center}
+\caption{A two point function on a $4\x 5$ Ising lattice with free boundary conditions, with spin operators  inserted at the sites marked with an X.  \label{fig:isingreflectioncorrelator}}
+\end{figure}
+
+The Osterwalder-Schrader reconstruction theorem says that, given a collection of Euclidean correlators satisfying reflection positivity (and some additional technical assumptions), we can reconstruct a unitary Lorentzian quantum field theory by analytic continuation \cite{GlimmJaffe}.  So reflection positivity in Euclidean signature and unitarity in Lorentzian signature are essentially equivalent, and we will use the terms interchangeably. 
+
+\subsubsection{Real vs.\ Complex Operators}
+\label{sec:realvscomplex}
+
+Because Hermitian conjugation is tricky in Euclidean signature, it is helpful introduce some extra terminology.  We call a local operator ``real" if it is Hermitian in Lorentzian signature.  In Euclidean signature, real operators satisfy (\ref{eq:reflectionforhermitianconjugation}).  By contrast, for a complex operator $\cO_L^\dag = \cO_L^*$, we have
+\be
+\cO_E^{\mu_1\dots\mu_\ell}(t_E,\bx)^\dag &= \Theta^{\mu_1}{}_{\nu_1}\cdots \Theta^{\mu_\ell}{}_{\nu_\ell} \cO_E^{\nu_1\cdots\nu_\ell*}(-t_E,\bx).
+\ee
+
+Later we will need the following result.
+If $\f_1,\f_2$ are real scalars and $\cO$ is a real operator with spin $\ell$ in a unitary theory, then the three-point coefficient $f_{\f_1\f_2\cO}$ is real. This is easiest to see in Lorentzian signature when the operators are spacelike separated $x_{ij}^2>0$. Because local operators commute at spacelike separation, we have
+\be
+\<0|\f_1(x_1)\f_2(x_2) \cO^{\mu_1\cdots\mu_\ell}(x_3)|0\>^* &= \<0|\f_1(x_1)\f_2(x_2) \cO^{\mu_1\cdots\mu_\ell}(x_3)|0\>.\quad
+\ee
+Substituting (\ref{eq:scalarscalarspinL}) gives $f_{\f_1\f_2\cO}^*=f_{\f_1\f_2\cO}$.
+
+\subsection{Reflection Positivity on the Cylinder}
+
+Reflection-positivity (or unitarity) has interesting consequences for CFTs on the cylinder.  The Hermitian conjugate of a real cylinder operator is
+\be
+\cO_\mathrm{cyl.}(\tau,\bn)^{\dag_\mathrm{rad}} &= \cO_\mathrm{cyl.}(-\tau,\bn).
+\ee
+Using (\ref{eq:definitionofcylinderop}), this becomes
+\be
+\cO_\mathrm{flat}(x)^{\dag_\mathrm{rad}} &= x^{-2\De}\cO_\mathrm{flat}\p{\frac{x^\mu}{x^2}}.\label{eq:radialconjugation}
+\ee
+Above, we have written $\dag_\mathrm{rad}$ to emphasize that Hermitian conjugation in radial quantization is different from Hermitian conjugation in the usual $P^0$ quantization.  From now on we write simply $\dag$, and hope that the meaning will be clear from context.
+
+The right-hand side of (\ref{eq:radialconjugation}) is just the image of $\cO(x)$ under an inversion $I:x^\mu\to \frac{x^\mu}{x^2}$.  The same is true for operators with spin, where the full formula (\ref{eq:finiteprimarytransformation}) gives
+\be
+\label{eq:conjugateforspin}
+\cO^{\mu_1\cdots\mu_\ell}(x)^\dag &= I^{\mu_1}{}_{\nu_1}(x)\cdots I^{\mu_\ell}{}_{\nu_\ell}(x) x^{-2\De} \cO^{\nu_1\dots\nu_\ell}\p{\frac{x}{x^2}},\nn\\
+I^\mu{}_\nu(x) &= \de^\mu_\nu - \frac{2 x^\mu x_\nu}{x^2}.
+\ee
+\begin{exercise}
+Check that the two-point function of spin-1 operators (\ref{eq:finalresultforVV}) satisfies reflection-positivity on the cylinder if $c_{12}>0$.
+\end{exercise}
+Applying (\ref{eq:conjugateforspin}) to the stress tensor, we find that 
+ the action of conjugation on the conformal charges in radial quantization is
+\be
+Q_\e^\dag &= -Q_{I\e I}.
+\ee
+In particular, we have
+\be
+\label{eq:mantihermitian}
+M_{\mu\nu}^\dag &= -M_{\mu\nu},\nn\\
+D^\dag &= D,\nn\\
+P_\mu^\dag &= K_\mu.
+\ee
+
+These facts let us calculate properties of correlation functions purely algebraically.  As an example, consider a two-point function.  Letting $\tl y = y/y^2$, we have
+\be
+\<\cO(y)\cO(x)\> &= \<0|(y^{-2\De}\cO(\tl y))^\dag \cO(x)|0\>\nn\\
+&= y^{-2\De}\<0|(e^{\tl y\.P}\cO(0)e^{-\tl y\.P})^\dag e^{x\.P}\cO(0)e^{-x\.P}|0\>\nn\\
+&= y^{-2\De}\<0|e^{-\tl y\.K}\cO(0)^\dag e^{\tl y\.K} e^{x\.P}\cO(0)e^{-x\.P}|0\>\nn\\
+&= y^{-2\De}\<0|\cO(0)^\dag e^{\tl y\.K} e^{x\.P}\cO(0) |0\>\nn\\
+&= y^{-2\De}\<\cO|e^{\tl y\.K} e^{x\.P}|\cO\>,
+\label{eq:twopointfromalgebra}
+\ee
+where we've defined
+\be
+\<\cO| \equiv \<0|\cO(0)^\dag = \lim_{y\to \oo} y^{2\De} \<0|\cO(y).
+\ee
+By expanding the exponentials, we can evaluate (\ref{eq:twopointfromalgebra}) using the conformal algebra.  For example, the first couple terms are
+\be
+\<\cO(y)\cO(x)\> &= y^{-2\De}\p{\<\cO|\cO\> + \frac{y^\mu}{y^2}x^\nu\<\cO|K_\mu P_\nu|\cO\>+\dots},
+\ee
+where we've used that $K|\cO\>=\<\cO|P=0$ because $\cO$ is primary.  Using the conformal commutation relations,
+\be
+\<\cO|K_\mu P_\nu|\cO\> &= \<\cO|[K_\mu,P_\nu]|\cO\>\nn\\
+&= \<\cO|(2D\de_{\mu\nu}-2M_{\mu\nu})|\cO\>\nn\\
+&= 2\De\de_{\mu\nu}\<\cO|\cO\>.
+\label{eq:normoffirstdescendant}
+\ee
+Thus,
+\be
+\<\cO(y)\cO(x)\> &= y^{-2\De} \<\cO|\cO\>\p{1 + 2\De\frac{y\.x}{y^2}+\dots}.
+\ee
+This exactly matches the expansion of $\<\cO|\cO\>/(x-y)^{2\De}$ in small $|x|/|y|$!  You can imagine computing all the higher terms and matching the whole series expansion.
+
+%Let us also recover our earlier result that a two-point function of operators in different irreducible spin representations must vanish.  Consider a primary operator $\cO^a$ transforming in a nontrivial unitary representation of $\SO(d)$. The dual state transforms in the dual representation, so we will write it with a lowered index $(|\cO^a\>)^\dag=\<\cO_a|$.  Consider the matrix element $\<\cO_a|M_{\mu\nu}|\cO^b\>$.  Using that $M_{\mu\nu}$ is antihermitian (\ref{eq:mantihermitian}), we can act with it on both the bra and the ket:
+%\begin{align}
+%-((\cS_{\mu\nu})_c{}^a)^*\<\cO_c|\cO^b\> = \<\cO_a|M_{\mu\nu}|\cO^b\> = \<\cO_a|\cO^c\>(\cS_{\mu\nu})_c{}^b.
+%\end{align}
+%But $\cS_{\mu\nu}$ is antihermitian as well, so as a matrix equation this says
+%\be
+%\cS_{\mu\nu}N=N \cS_{\mu\nu},
+%\ee
+%where $N_a{}^b\equiv\<\cO_a|\cO^b\>$.  By Schur's lemma, $N_a{}^b$ must vanish if $a$ and $b$ are indices of different irreducible representations.  If $a,b$ are indices for a single irreducible representation, then $N$ is proportional to the identity.
+
+\begin{exercise}
+This computation is not directly relevant to the course, but it is instructive for getting used to radial ordering.  Consider a three-point function of scalars
+\be
+\<\cO_i(x_1)\cO_j(x_2)\cO_k(x_3)\> &= \<0|\mathcal{R}\{\cO_i(x_1)\cO_j(x_2)\cO_k(x_3)\}|0\>\nn\\
+&=\theta(|x_3|\geq |x_2| \geq |x_1|)\<0|\cO_k(x_3)\cO_j(x_2)\cO_i(x_1)|0\>\nn\\
+&+\mathrm{permutations}.
+\ee
+Consider the operator $e^{2\pi i\mathcal{D}_1}$ where
+\be
+\mathcal{D}_1 &= x_1\.\ptl_1+\De_1.
+\ee
+Using the fact that $e^{2\pi i\mathcal{D}_1}\cO_1(x_1)= e^{2\pi i D}\cO_1(x_1)e^{-2\pi i D}$, compute the action of $e^{2\pi i \mathcal{D}_1}$ on each of the terms above.  You will get different answers for each of the different operator orderings.
+
+Now determine the action of $e^{2\pi i \mathcal{D}_1}$ on the known answer for the scalar three-point function (\ref{eq:conformalthreeptfunction}).  Check that the two answers agree.
+\end{exercise}
+
+\subsection{Unitarity Bounds}
+
+Thinking about the theory on the cylinder gives a natural inner product on states in radial quantization.  Unitarity (or reflection positivity) implies that the norms of states must be nonnegative.  By demanding positivity for every state in a conformal multiplet, we obtain bounds on dimensions of primary operators \cite{Mack:1975je,Jantzen,Minwalla:1997ka}.  We have already seen an example in (\ref{eq:normoffirstdescendant}). We found
+\be
+|P_0|\cO\>|^2 = \<\cO|K_0 P_0|\cO\> = 2\De\<\cO|\cO\>.
+\ee
+Unitarity implies $\De\geq 0$.
+
+Let us do the same exercise, this time for an operator $\cO^a$ in a nontrivial irreducible representation $\rho$ of $\SO(d)$. We normalize $\cO$ so that
+\be
+\<\cO_b|\cO^a\> &= \de^a_b.
+\ee
+Taking inner products between first-level descendants and using the conformal algebra, we find
+\be
+(P_\mu|\cO^a\>)^\dag P_\nu|\cO^b\> = \<\cO_a|K_\mu P_\nu|\cO^b\>
+= 2\De\de_{\mu\nu}\de_a^b-2(\cS_{\mu\nu})_a{}^b.\label{innerproduct}
+\ee
+The state $P_\nu|\cO^b\>$ lives in the representation $\myng{(1)}\otimes \rho$ of $\SO(d)$, where $\myng{(1)}$ is the vector representation.
+Unitarity implies that (\ref{innerproduct}) must be positive-definite as a matrix acting on this space.  This implies
+\be
+\De\geq \textrm{max-eigenvalue}((\cS_{\mu\nu})_a{}^b).
+\ee
+Let us write
+\be
+(\cS_{\mu\nu})_a{}^b &= \frac 1 2 (L^{\a\b})_{\mu\nu}(\cS_{\a\b})_a{}^b\nn\\
+(L^{\a\b})_{\mu\nu} &\equiv \de^\a_\mu\de^\b_\nu - \de^\a_\nu\de^\b_\mu,
+\ee
+where $(L^{\a\b})_{\mu\nu}$ is the generator of rotations in the vector representation $\myng{(1)}$.  Writing $A=\a\b$ for an adjoint index of $\SO(d)$, and thinking of $L^A,\cS_A$ as operators on $\myng{(1)}\otimes \rho$, this becomes
+\be
+L^A \cS_A &= \frac 1 2 \p{(L+\cS)^2-L^2 -\cS^2}\nn\\
+&= \frac 1 2\p{-\mathrm{Cas}(\myng{(1)}\otimes \rho)+\mathrm{Cas}(\myng{(1)})+\mathrm{Cas}(\rho)},
+\ee
+where we've used the familiar trick from basic quantum mechanics to get a linear combination of Casimir operators.\footnote{The quadratic Casimir is $-L^2$ because our generators are antihermitian and differ from the conventional ones by a factor of $i$.}
+
+Let's specialize to the case where $\rho= V_\ell$ is the spin-$\ell$ traceless symmetric tensor representation.  $V_\ell$ has Casimir $\ell(\ell+d-2)$.  To get the maximal eigenvalue of $L\.\cS$, we need the minimal Casimir of
+\be
+\myng{(1)}\otimes V_\ell=V_{\ell-1}\oplus \dots\qquad(\ell>0).
+\ee
+Here the ``$\dots$" are irreducible representations with larger Casimirs.  Thus,
+\be
+\De &\geq \frac 1 2\p{-\mathrm{Cas}(V_{\ell-1})+\mathrm{Cas}(\myng{(1)})+\mathrm{Cas}(V_\ell)}\nn\\
+&= \ell+d-2.
+\ee
+This computation was valid only for $\ell> 0$, since for scalars $\myng{(1)}\otimes V_{\ell=0}=V$.
+
+One can also consider more complicated descendants.
+\begin{exercise}
+Compute the norm of $P_\mu P^\mu |\cO\>$, where $\cO$ is a scalar.  Show that unitarity implies either $\De=0$ or $\De\geq \frac{d-2}{2}$.  This gives a stronger condition than what we derived above ($\De\geq 0$) for scalars.
+\end{exercise}
+
+For traceless symmetric tensors in general conformal field theories, these inequalities are the best you can do (other descendants give no new information).  In theories with more symmetry, like supersymmetric theories or 2d CFTs, unitarity bounds can be more interesting.  A classic reference for unitarity bound computations is \cite{Minwalla:1997ka}.  In the math literature, unitarity bounds for higher-dimensional CFTs were essentially computed long ago by Jantzen \cite{Jantzen}, though the relevance of that work for physics has only been emphasized recently \cite{Yamazaki:2016vqi,Penedones:2015aga}.
+
+In summary, we have the unitarity bounds
+\be
+\De &= 0 \ \textrm{(unit operator), or}\nn\\
+\De &\geq \begin{cases}
+\frac{d-2}{2} & \ell = 0,\\
+\ell+d-2 & \ell > 0.
+\end{cases}
+\label{eq:unitaritysummary}
+\ee
+
+
+\subsubsection{Null States and Conserved Currents}
+
+If $\De$ saturates the bounds (\ref{eq:unitaritysummary}), the conformal multiplet will have a null state.  For the unit operator, all descendants are null.  For a scalar with dimension $\frac{d-2}{2}$, the null state is
+\be
+P^2|\cO\> &= 0.
+\ee
+In operator language, this says $\ptl^2 \cO(x)=0$, which means $\cO$ satisfies the Klein-Gordon equation, and is thus a free scalar that decouples from the rest of the CFT.
+
+For a spin-$\ell$ operator, the null state is\footnote{The null state has spin $\ell-1$ because the unitarity bound came from $V_{\ell-1}\subset V\otimes V_\ell$.  Something special happens for vectors in 2d, where $V\otimes V = \mathbf{1}\oplus\mathbf{1}\oplus V_{2}$, with the extra $\mathbf{1}$ appearing because of the antisymmetric $\e_{\mu\nu}$ symbol. Unitarity then implies that $J^{\mu}$ and $\e^{\mu\nu}J_\nu$ are each separately conserved.}
+\be
+P_\mu | \cO^{\mu\mu_2\cdots\mu_\ell}\> &= 0.
+\ee
+In operator language, this becomes the equation for a conserved current
+\be
+\ptl_\mu \cO^{\mu\mu_2\cdots\mu_\ell}(x) &= 0.
+\ee
+The implication also works the other way, so
+\be
+\De = \ell + d-2 \qquad \textrm{if and only if}\qquad \textrm{$\cO$ is a conserved current}.
+\ee
+Some important examples are global symmetry currents ($\ell=1$, $\Delta=d-1$) and the stress tensor ($\ell=2$, $\Delta=d$).  For CFTs in $d\geq 3$, the presence of currents with spin $\ell\geq 3$ implies that the theory is free \cite{Maldacena:2011jn,Boulanger:2013zza,Alba:2015upa}.\footnote{One must also assume the existence of exactly one stress tensor, since otherwise the theory could contain a free subsector, decoupled from the rest.}
+
+\subsection{Only Primaries and Descendants}
+\label{sec:onlyprimariesanddescendants}
+
+With a positive-definite inner product, we can now prove that all operators in unitary CFTs are linear combinations of primaries and descendants. We will use one additional physical assumption: that the partition function of the theory on $S^{d-1}\x S^1_\beta$ is finite,
+\be
+\mathcal{Z}_{S^{d-1}\x S^1_\beta} = \Tr(e^{-\beta D}) < \oo.
+\ee
+This means that $e^{-\beta D}$ is trace-class, and hence diagonalizable with a discrete spectrum (by the spectral theorem).\footnote{Assuming $e^{-\b D}$ is trace-class may be too strong for some applications. Boundedness of $e^{-\b D}$ suffices for $D$ to be diagonalizable (with a possibly continuous spectrum). An interesting example is Liouville theory, which has a divergent partition function and continuous spectrum, but still has many properties of a sensible CFT, like an OPE.} It follows that $D$ is also diagonalizable, with real eigenvalues because $D$ is Hermitian.
+
+Now consider a local operator $\cO$, and assume for simplicity it is an eigenvector of dilatation with dimension $\De$.  By finiteness of the partition function, there are a finite number of primary operators $\cO_p$ with dimension less than or equal to $\De$.  Using the inner product, we may subtract off the projections of $\cO$ onto the conformal multiplets of $\cO_p$ to get $\cO'$.  Now suppose (for a contradiction) that $\cO'\neq 0$.  Acting on it with $K_\mu$'s, we must eventually get zero (again by finiteness of the partition function), which means there is a new primary with dimension below $\De$, a contradiction.  Thus $\cO'=0$, and $\cO$ is a linear combination of states in the multiplets $\cO_p$.
+
+\section{The Operator Product Expansion}
+
+If we insert two operators $\cO_i(x)\cO_j(0)$ inside a ball and perform the path integral over the interior, we get some state on the boundary.  Because every state is a linear combination of primaries and descendants, we can decompose this state as
+\be
+\label{eq:opeinitial}
+\cO_i(x)\cO_j(0)|0\> &= \sum_{k}C_{ijk}(x,P)\cO_k(0) |0\>,
+\ee
+where $k$ runs over primary operators and $C_{ijk}(x,P)$ is an operator that packages together primaries and descendants in the $k$-th conformal multiplet (figure~\ref{fig:ope}).
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{ope.jpg}
+\end{center}
+\caption{A state created by two operator insertions can be expanded as a sum of primary and descendant states.  \label{fig:ope}}
+\end{figure}
+
+Eq.~(\ref{eq:opeinitial}) is an exact equation that can be used in the path integral, as long as all other operators are outside the sphere with radius $|x|$.  Using the state-operator correspondence, we can write
+\be
+\label{eq:opeinitial2}
+\cO_i(x_1)\cO_j(x_2) &= \sum_{k}C_{ijk}(x_{12},\ptl_2)\cO_k(x_2),\qquad\textrm{(OPE)}
+\ee
+where it is understood that (\ref{eq:opeinitial2}) is valid inside any correlation function where the other operators $\cO_n(x_n)$ have $|x_{2n}|\geq |x_{12}|$.  Eq.~(\ref{eq:opeinitial2}) is called the Operator Product Expansion (OPE).
+
+We could alternatively perform radial quantization around a different point $x_3$, giving
+\be
+\label{eq:opealternative}
+\cO_i(x_1)\cO_j(x_2) &= \sum_k C'_{ijk}(x_{13},x_{23},\ptl_3)\cO_k(x_3),
+\ee
+where $C'_{ijk}(x_{13},x_{23},\ptl_3)$ is some other differential operator (figure~\ref{fig:radialquantotherpoint}).  The form  (\ref{eq:opeinitial2}) is usually more convenient for computations, but the existence of (\ref{eq:opealternative}) is important. It shows that we can do the OPE between two operators whenever it's possible to draw any sphere that separates the two operators from all the others.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{radialquantotherpoint.jpg}
+\end{center}
+\caption{It isn't necessary for one of the operators to be at the origin.  \label{fig:radialquantotherpoint}}
+\end{figure}
+
+We are being a bit schematic in writing the above equations.  It's possible for all the operators to have spin.  In this case, the OPE looks like
+\be
+\cO_i^a(x_1)\cO_j^b(x_2) &= \sum_k C_{ijk}^{ab}{}_c(x_{12},\ptl_2)\cO_k^c(x_2),
+\ee
+where $a,b,c$ are indices for (possibly different) representations of $\SO(d)$.
+
+\subsection{Consistency with Conformal Invariance}
+
+Conformal invariance strongly restricts the form of the OPE\@.  For simplicity, suppose $\cO_i$, $\cO_j$, and $\cO_k$ are scalars.  
+\begin{exercise}
+By acting on both sides of (\ref{eq:opeinitial}) with $D$, prove that $C_{ijk}(x,\ptl)$ has an expansion of the form
+\be
+\label{eq:opeexpansionexample}
+C_{ijk}(x,\ptl) &\propto& |x|^{\De_k-\De_i-\De_j}\p{1 +\# x^\mu\ptl_\mu + \# x^\mu x^\nu\ptl_\mu\ptl_\nu+\# x^2 \ptl^2 + \dots}.\nn\\
+\ee
+\end{exercise}
+This is just a fancy way of saying we can do dimensional analysis and that $\cO_i$ has length-dimension $-\De_i$. We're also implicitly using rotational invariance by contracting all the indices appropriately. We could have proved this too by acting with $M_{\mu\nu}$.
+
+We get a more interesting constraint by acting with $K_\mu$. In fact, consistency with $K_\mu$ completely fixes $C_{ijk}$ up to an overall coefficient. In this way, we can determine the coefficients in (\ref{eq:opeexpansionexample}).
+
+This computation is a little annoying (exercise!), so here's a simpler way to see why the form of the OPE is fixed, and to get the coefficients in (\ref{eq:opeexpansionexample}).  Take the correlation function of both sides of (\ref{eq:opeinitial2}) with a third operator $\cO_k(x_3)$ (we will assume $|x_{23}|\geq |x_{12}|$, so that the OPE is valid),
+\be
+\label{eq:threetotwo}
+\<\cO_i(x_1)\cO_j(x_2)\cO_k(x_3)\> &= \sum_{k'} C_{ijk'}(x_{12},\ptl_2)\<\cO_{k'}(x_2)\cO_k(x_3)\>.
+\ee
+The three-point function on the left-hand side is fixed by conformal invariance, and is given in  (\ref{eq:conformalthreeptfunction}). We can choose an orthonormal basis of primary operators, so that $\<\cO_k(x_2)\cO_{k'}(x_3)\>= \de_{kk'}x_{23}^{-2\De_k}$.  The sum then collapses to a single term, giving
+\be
+\label{eq:matchingthreept}
+\frac{f_{ijk}}{x_{12}^{\De_i+\De_j-\De_k}x_{23}^{\De_j+\De_k-\De_i}x_{31}^{\De_k+\De_i-\De_j}} &= C_{ijk}(x_{12},\ptl_2)x_{23}^{-2\De_k}.
+\ee
+This determines $C_{ijk}$ to be proportional to $f_{ijk}$, times a differential operator that depends only on the $\De_i$'s. The operator can be obtained by matching the small $|x_{12}|/|x_{23}|$ expansion of both sides of (\ref{eq:matchingthreept}).
+\begin{exercise}
+\label{exercise:seriesfordiffops}
+Consider the special case $\De_i=\De_j=\De_\f$, and $\De_k=\De$.  Show
+\be
+\label{eq:identicalscalaropeoperator}
+C_{ijk}(x,\ptl) &= f_{ijk} x^{\De-2\De_\f}\p{1+\frac 1 2 x\.\ptl + \a x^\mu x^\nu\ptl_\mu\ptl_\nu + \b x^2 \ptl^2+\dots},\nn\\
+\ee
+where
+\be
+\label{eq:opedescendantcoefficients}
+\a &= \frac{\De+2}{8(\De+1)},\quad\textrm{and}\quad \b=-\frac{\De}{16(\De-\frac{d-2}{2})(\De+1)}.
+\ee
+\end{exercise}
+
+\subsection{Computing Correlators with the OPE}
+
+Equation (\ref{eq:threetotwo}) gives an example of using the OPE to reduce a three-point function to a sum of two-point functions.  In general, we can use the OPE to reduce any $n$-point function to a sum of $n-1$-point functions,
+\be
+\<\cO_1(x_1)\cO_2(x_2)\cdots\cO_n(x_n)\> &= \sum_k C_{12k}(x_{12},\ptl_2)\<\cO_k(x_2)\cdots\cO_n(x_n)\>.\nn\\
+\ee
+Recursing, we reduce everything to a sum of one-point functions, which are fixed by dimensional analysis,
+\be
+\<\cO(x)\> &= \begin{cases}
+1 & \textrm{if $\cO$ is the unit operator,}\\
+0 & \textrm{otherwise.}
+\end{cases}
+\ee
+This gives an algorithm for computing any flat-space correlation function using the OPE\@.  It shows that all these correlators are determined by dimensions $\De_i$, spins, and OPE coefficients $f_{ijk}$.\footnote{The OPE is also valid on any conformally flat manifold.  The difference is that on nontrivial manifolds, non-unit operators can have nonzero one-point functions.  An example is $\R^{d-1}\x S^1_\b$, which has the interpretation as a CFT at finite temperature.  By dimensional analysis, we have $\<\cO\>_{\R^{d-1}\x S^1_\b}\propto \b^{-\De_\cO}\propto T^{\De_\cO}$.\label{foot:finitetemperature}}
 
 \begin{appendix}
 \end{appendix}
