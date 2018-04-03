@@ -2973,7 +2973,7 @@ Equivalence classes of $\mathcal{V}^A(X)$ then carry $d$ degrees of freedom and 
 To translate from the embedding space back to $\R^d$, we have the following dictionary
 \be
 \label{eq:embeddingtoflatspace}
-V_\mu(x) &= \pdr{X_A(x)}{x^\mu} \mathcal{V}^A(X)|_{X=(1,x^2,x)} \nn\\
+V_\mu(x) &= \pdr{X^A(x)}{x^\mu} \mathcal{V}_A(X)|_{X=(1,x^2,x)} \nn\\
 &= -x_\mu \mathcal{V}^+(X) + \mathcal{V}_\mu(X)|_{X=(1,x^2,x)}.
 \ee
 Note that
@@ -3018,6 +3018,7 @@ We have already verified this for dilatations. It is also easy to see for rotati
 Establish this claim by checking the transformation rule for translations and special conformal transformations. Hint: it suffices to check translations and to prove that $\mathcal{V}^A(X)$ is primary (i.e.\ zero up to gauge redundancy under an infinitesimal special conformal transformation).
 \end{exercise}
 
+\stoplecture
 
 \subsubsection{Correlators of vectors}
 
@@ -3229,6 +3230,8 @@ Because of (\ref{eq:eigenvectorofD}), the latter expression is the same as inser
 %D_i &= D + x_i\. P
 %\ee
 
+\stoplecture
+
 \subsection{Operator $\Longleftrightarrow$ State}
 
 So far I've been vague about what I mean by a local operator.  But now, we can give a rigorous definition: we will simply {\it define\/} a local operator to be an eigenstate of $D$ in radial quantization.\footnote{The dilatation operator is diagonalizable in unitary (reflection positive) CFTs.  However, there exist interesting non-unitary theories where $D$ has a nontrivial Jordan block decomposition.  In these cases, we define a local operator as a finite-dimensional representation of $D$.} With this definition, the two constructions above are inverse to each other, with the identification
@@ -3332,6 +3335,7 @@ The Euclidean operator satisfies
 \ee
 To Wick-rotate an operator with spin, we conventionally add factors of $-i$ to the time components,\footnote{These factors are needed to make Euclidean correlation functions manifestly covariant under $\SO(d)$ rotations.} e.g.\ for a vector operator $\cO_L^\mu$,
 \be
+\label{eq:factorsofIinWick}
 \cO_E^0(t_E,\bx) &= -i \cO_L^0(-it_E,\bx),\nn\\
 \cO_E^i(t_E,\bx) &= \cO_L^i(-it_E,\bx).
 \ee
@@ -3343,6 +3347,8 @@ This leads to
 where $\Theta^\mu{}_\nu = \de^\mu_\nu-2\de^\mu_0\de_\nu^0$ is a reflection in the time-direction.
 
 Thus, the way Hermitian conjugation acts on a Euclidean operator depends on which direction we call time.  Whether an operator is Hermitian or not depends on how we quantize the theory! This is very different from Lorentzian signature, where the conjugation properties of operators don't depend on a choice of reference frame.
+
+\stoplecture
 
 As an example, consider the momentum generators
 \be
@@ -3405,8 +3411,20 @@ The Osterwalder-Schrader reconstruction theorem says that, given a collection of
 
 Because Hermitian conjugation is tricky in Euclidean signature, it is helpful introduce some extra terminology.  We call a local operator ``real" if it is Hermitian in Lorentzian signature.  In Euclidean signature, real operators satisfy (\ref{eq:reflectionforhermitianconjugation}).  By contrast, for a complex operator $\cO_L^\dag = \cO_L^*$, we have
 \be
+\label{eq:complexoperatorconjugation}
 \cO_E^{\mu_1\dots\mu_\ell}(t_E,\bx)^\dag &= \Theta^{\mu_1}{}_{\nu_1}\cdots \Theta^{\mu_\ell}{}_{\nu_\ell} \cO_E^{\nu_1\cdots\nu_\ell*}(-t_E,\bx).
 \ee
+
+%We will often use the following convention: 
+%\begin{itemize}
+%\item A dagger on the operator name itself $\cO^\dag(t_E,\bx)$ means we take the conjugate at the origin first and then translate it to $(t_E,\bx)$.
+%\item A dagger on the outside means conjugation after translation, like we've been discussing above.
+%\end{itemize}
+%With these conventions, we can write (\ref{eq:complexoperatorconjugation}) as
+%\be
+%\label{eq:complexoperatorconjugation}
+%\cO_E^{\mu_1\dots\mu_\ell}(t_E,\bx)^\dag &= \Theta^{\mu_1}{}_{\nu_1}\cdots \Theta^{\mu_\ell}{}_{\nu_\ell} \cO_E^{\nu_1\cdots\nu_\ell}^\dag(-t_E,\bx).
+%\ee
 
 Later we will need the following result.
 If $\f_1,\f_2$ are real scalars and $\cO$ is a real operator with spin $\ell$ in a unitary theory, then the three-point coefficient $f_{\f_1\f_2\cO}$ is real. This is easiest to see in Lorentzian signature when the operators are spacelike separated $x_{ij}^2>0$. Because local operators commute at spacelike separation, we have
@@ -3460,6 +3478,7 @@ These facts let us calculate properties of correlation functions purely algebrai
 \ee
 where we've defined
 \be
+\label{eq:bpzconjugatescalar}
 \<\cO| \equiv \<0|\cO(0)^\dag = \lim_{y\to \oo} y^{2\De} \<0|\cO(y).
 \ee
 By expanding the exponentials, we can evaluate (\ref{eq:twopointfromalgebra}) using the conformal algebra.  For example, the first couple terms are
@@ -3505,6 +3524,78 @@ Using the fact that $e^{2\pi i\mathcal{D}_1}\cO_1(x_1)= e^{2\pi i D}\cO_1(x_1)e^
 Now determine the action of $e^{2\pi i \mathcal{D}_1}$ on the known answer for the scalar three-point function (\ref{eq:conformalthreeptfunction}).  Check that the two answers agree.
 \end{exercise}
 
+\stoplecture
+
+\subsubsection{BPZ conjugation}
+
+\textbf{\textit{Note: This section is somewhat technical, and can be skipped on a first reading.}}
+
+To generalize this computation, we need to define a bra state $\<\cO|$ in radial quantization for an operator $\cO$ in a general representation $\rho$ of $\SO(d)$. The formula~(\ref{eq:conjugateforspin}) gives the radial conjugate of a tensor operator. In our explanation, the $I^\mu{}_\nu(x)$'s came from factors of $i$ introduced during Wick rotation, e.g.\ (\ref{eq:factorsofIinWick}). However, there is no natural convention for Wick-rotating other representations, e.g.\ spinors.
+
+The correct generalization of (\ref{eq:conjugateforspin}) to arbitrary $\rho$ is
+\be
+\label{eq:bpzconjugation}
+\cO^a(x)^{\dag_\mathrm{rad}} &= \frac{g_{a\bar a}(x)}{x^{2\De}} \cO^{\dag \bar a}\p{\frac{x}{x^2}}.
+\ee
+Here, $\cO^{\dag \bar a}(y)$ denotes the non-radial Hermitian conjugate of $\cO$ at the origin,\footnote{Note that different choices of time direction at the origin may give different definitions of $\cO^{\dag \bar a}$. However, these choices will cancel out in the combination $g_{a \bar a} \cO^{\dag \bar a}$. Also, the origin is not important here: we could have chosen any reference point $y_0$ and defined $\cO^\dag(y_0)$ in any quantization such that $y_0$ is at zero time.} translated to the point $y$
+\be
+\cO^{\dag \bar a}(y) &= e^{y\.P}\cO^{\dag \bar a}(0) e^{-y\.P}.
+\ee
+The tensor $g_{a\bar a}(x)$ is the inverse of the numerator of a two-point function
+\be
+\label{eq:twopointandconjugate}
+\<\cO^{\dag \bar a}(x_2)\cO^b(x_1)\> &= c_\cO \frac{g^{\bar a b}(x_{12})}{x_{12}^{2\De}},\\
+g_{a\bar a}(x) g^{\bar a b}(x) &= \de_a^b,
+\ee
+where $c_\cO$ is a positive operator-dependent constant.
+Note that (\ref{eq:bpzconjugation}) reduces to (\ref{eq:conjugateforspin}) when $\cO$ is a real, traceless symmetric tensor.\footnote{We have written $\dag_\mathrm{rad}$ in (\ref{eq:bpzconjugation}) to emphasize that $\cO^a(x)^{\dag_\mathrm{rad}}$ and $\cO^{\dag b}(x)$ are different. You will often see people drop the ``rad" and simply distinguish between the two objects by whether $\dag$ is on the outside or inside of the parentheses. This notation can be very confusing, but is sometimes convenient.\label{footnote:confusing}} The definition (\ref{eq:bpzconjugation}) is called Belavin-Polyakov-Zamolodchikov (BPZ) conjugation.
+
+Let us make some comments about (\ref{eq:twopointandconjugate}).  Recall from section~\ref{} that $\cO(x)$ can only have a nonzero two-point function with an operator in the dual reflected representation $(\rho^R)^*$ of $\SO(d)$. It turns out that $\cO^\dag(x)$ always transforms in this representation. In other-words, we can always find a nonzero conformally-invariant two-point structure (\ref{eq:twopointandconjugate}). This must be the case because $\<0|\cO^\dag \cO|0\>$ is the norm of a state, so it had better be nonzero.
+
+We can also understand this more explicitly. Given a representation $\rho$ of $\SO(d)$, we can form a representation $\rho_L$ of $\SO(d-1,1)$ by
+\be
+\rho_L(M^L_{\mu\nu}) &= i^{\de_{\mu 0}+\de_{\nu 0}} \rho(M_{\mu\nu}).
+\ee
+Here $M_{\mu\nu}$ are the generators of $\SO(d)$ and $M^L_{\mu\nu}$ are the generators of $\SO(d-1,1)$.
+The factors of $i$ are because of Wick rotation.\footnote{Note that we can naturally Wick-rotate the matrix elements but there is no natural way to Wick-rotate the vectors that $\rho(M)$ acts on, in general.} They ensure that if $\rho(M_{\mu\nu})$ satisfy the algebra of $\SO(d)$, then $\rho_L(M_{\mu\nu}^L)$ satisfy the algebra of $\SO(d-1,1)$. Taking the complex conjugate of both sides, we find
+\be
+\rho_L(M^L_{\mu\nu})^* &= (-i)^{\de_{\mu 0}+\de_{\nu 0}} \rho(M_{\mu\nu})^*\nn\\
+&= i^{\de_{\mu 0}+\de_{\nu 0}} \rho(I_\mu{}^\rho I_{\nu}{}^\s M_{\rho \s})^*,
+\ee
+where $I_\mu{}^\nu$ is a reflection in the $0$ direction. On the left-hand side are matrix elements acting on $\cO^\dag$ in Lorentzian signature, so $\rho(I_\mu{}^\rho I_{\nu}{}^\s M_{\rho \s})^*$ are matrix elements acting on $\cO^\dag$ in Euclidean signature. Because $\SO(d)$ is compact, complex conjugation is the same as taking the dual. Recalling the definition~(\ref{eq:reflectedrep}), we see that $\rho(I_\mu{}^\rho I_{\nu}{}^\s M_{\rho \s})^*$ are matrix elements of the dual reflected representation $(\rho^R)^*$.
+
+As an example, in exercise~\ref{eq:reflectedreps} we saw that the dual reflected representation of a left-handed spinor $\psi_\a$ in 4d is a right-handed spinor $\bar\psi_{\dot \a}$ (reflected is the same as dual reflected in this case, since each type of spinor in 4d is self-dual). In Lorentzian signature, these representations are indeed complex conjugates of each other.
+
+We are now ready to define the dual state to $|\cO^a\>$ in radial quantization:
+\be
+\<\cO_a| 
+&= (\cO^a(0)|0\>)^{\dag_\mathrm{rad}} \nn\\
+&= \lim_{x\to 0} (\cO^a(x)|0\>)^{\dag_\mathrm{rad}} \nn\\
+&= \lim_{x\to 0} \<0|\cO^a(x)^{\dag_\mathrm{rad}} \nn\\
+&= \lim_{y\to \oo} y^{2\De} g_{ab}(y) \<0|\cO^{\dag b}(y),
+\ee
+where $y=x/x^2$.
+We have given $\<\cO_a|$ a lowered index because it transforms in the dual representation $\rho^*$. One very nice property of BPZ conjugation is that the limit $\<\cO_a|$ is independent of the direction along which we take $\cO^\dag$ to infinity. We can see this by computing an inner product
+\be
+\<\cO_b|\cO^a\> &= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) \<0|\cO^{\dag \bar a}(y) \cO^a(0)|0\> \nn\\
+&= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) c_\cO \frac{g^{\bar a a}(y)}{y^{2\De}} \nn\\
+&= c_\cO \de_b^a.
+\ee
+
+\begin{exercise}
+\textbf{\textit{Warning: trick question!}} Let $\cO(x)$ be a Hermitian operator. Recall that 
+\be
+\label{eq:trickyequation}
+[D,\cO(0)] &= \De \cO(0),
+\ee
+with $\De$ real.
+Furthermore, in radial quantization, we have $D^\dag = D$. Now note that the commutator of two Hermitian operators is anti-hermitian:
+\be
+[A,B]^\dag &= [B,A] = -[A,B].
+\ee
+How can this be consistent with (\ref{eq:trickyequation})? Hint: see footnote~\ref{footnote:confusing}.
+\end{exercise}
+
 \subsection{Unitarity Bounds}
 
 Thinking about the theory on the cylinder gives a natural inner product on states in radial quantization.  Unitarity (or reflection positivity) implies that the norms of states must be nonnegative.  By demanding positivity for every state in a conformal multiplet, we obtain bounds on dimensions of primary operators \cite{Mack:1975je,Jantzen,Minwalla:1997ka}.  We have already seen an example in (\ref{eq:normoffirstdescendant}). We found
@@ -3513,39 +3604,44 @@ Thinking about the theory on the cylinder gives a natural inner product on state
 \ee
 Unitarity implies $\De\geq 0$.
 
-Let us do the same exercise, this time for an operator $\cO^a$ in a nontrivial irreducible representation $\rho$ of $\SO(d)$. We normalize $\cO$ so that
+Let us generalize this argument to the case where $\cO^a$ transforms in a nontrivial representation of $\SO(d)$. We can normalize $\cO$ so that
 \be
 \<\cO_b|\cO^a\> &= \de^a_b.
 \ee
 Taking inner products between first-level descendants and using the conformal algebra, we find
 \be
-(P_\mu|\cO^a\>)^\dag P_\nu|\cO^b\> = \<\cO_a|K_\mu P_\nu|\cO^b\>
-= 2\De\de_{\mu\nu}\de_a^b-2(\cS_{\mu\nu})_a{}^b.\label{innerproduct}
+(P_\mu|\cO^a\>)^\dag P^\nu|\cO^b\> = \<\cO_a|K_\mu P^\nu|\cO^b\>
+= 2\De\de_{\mu}^{\nu}\de_a^b-2(\cS_{\mu}{}^{\nu})_a{}^b.\label{innerproduct}
 \ee
-The state $P_\nu|\cO^b\>$ lives in the representation $\myng{(1)}\otimes \rho$ of $\SO(d)$, where $\myng{(1)}$ is the vector representation.
+The state $P^\nu|\cO^b\>$ lives in the representation $\myng{(1)}\otimes \rho$ of $\SO(d)$, where $\myng{(1)}$ is the vector representation.
 Unitarity implies that (\ref{innerproduct}) must be positive-definite as a matrix acting on this space.  This implies
 \be
-\De\geq \textrm{max-eigenvalue}((\cS_{\mu\nu})_a{}^b).
+\De\geq \textrm{max-eigenvalue}((\cS_{\mu}{}^{\nu})_a{}^b).
 \ee
 Let us write
 \be
-(\cS_{\mu\nu})_a{}^b &= \frac 1 2 (L^{\a\b})_{\mu\nu}(\cS_{\a\b})_a{}^b\nn\\
+(\cS_{\mu}{}^{\nu})_a{}^b &=  \frac 1 2\sum_{\a,\b} (L^{\a\b})_{\mu}{}^{\nu}(\cS_{\a\b})_a{}^b \nn\\
+&= \sum_{\substack{A=\a\b \\ \a<\b}} (L^A)_\mu{}^\nu (\cS_A)_a{}^b,\nn\\
 (L^{\a\b})_{\mu\nu} &\equiv \de^\a_\mu\de^\b_\nu - \de^\a_\nu\de^\b_\mu,
 \ee
-where $(L^{\a\b})_{\mu\nu}$ is the generator of rotations in the vector representation $\myng{(1)}$.  Writing $A=\a\b$ for an adjoint index of $\SO(d)$, and thinking of $L^A,\cS_A$ as operators on $\myng{(1)}\otimes \rho$, this becomes
+where $(L^{\a\b})_{\mu}{}^{\nu}$ is the generator of rotations in the vector representation $\myng{(1)}$. In the second line, we have written $A=\a\b$ with $\a<\b$, which we should think of as an adjoint index of $\SO(d)$. Thinking of $L^A,\cS_A$ as operators on $\myng{(1)}\otimes \rho$, this becomes
 \be
-L^A \cS_A &= \frac 1 2 \p{(L+\cS)^2-L^2 -\cS^2}\nn\\
-&= \frac 1 2\p{-\mathrm{Cas}(\myng{(1)}\otimes \rho)+\mathrm{Cas}(\myng{(1)})+\mathrm{Cas}(\rho)},
+\sum_A L^A \otimes \cS_A &= \frac 1 2 \p{(L\otimes 1 +1\otimes \cS)^2-(L\otimes 1)^2 -(1\otimes\cS)^2}\nn\\
+&= \frac 1 2\p{-C_2(\myng{(1)}\otimes \rho)+C_2(\myng{(1)})\otimes 1+1\otimes C_2(\rho)},
 \ee
-where we've used the familiar trick from basic quantum mechanics to get a linear combination of Casimir operators.\footnote{The quadratic Casimir is $-L^2$ because our generators are antihermitian and differ from the conventional ones by a factor of $i$.}
+where we've used the familiar trick from basic quantum mechanics to get a linear combination of quadratic Casimir operators. (The quadratic Casimir is $-L^2=-\sum_A L^A L_A$ because our generators are antihermitian and differ from the conventional ones by a factor of $i$.)
 
-Let's specialize to the case where $\rho= V_\ell$ is the spin-$\ell$ traceless symmetric tensor representation.  $V_\ell$ has Casimir $\ell(\ell+d-2)$.  To get the maximal eigenvalue of $L\.\cS$, we need the minimal Casimir of
+Let's specialize to the case where $\rho= V_\ell$ is the spin-$\ell$ traceless symmetric tensor representation.  $V_\ell$ has Casimir 
+\be
+C_2(V_\ell)=\ell(\ell+d-2).
+\ee
+To get the maximal eigenvalue of $L\.\cS$, we need the minimal Casimir of
 \be
 \myng{(1)}\otimes V_\ell=V_{\ell-1}\oplus \dots\qquad(\ell>0).
 \ee
 Here the ``$\dots$" are irreducible representations with larger Casimirs.  Thus,
 \be
-\De &\geq \frac 1 2\p{-\mathrm{Cas}(V_{\ell-1})+\mathrm{Cas}(\myng{(1)})+\mathrm{Cas}(V_\ell)}\nn\\
+\De &\geq \frac 1 2\p{-C_2(V_{\ell-1})+C_2(\myng{(1)})+C_2(V_\ell)}\nn\\
 &= \ell+d-2.
 \ee
 This computation was valid only for $\ell> 0$, since for scalars $\myng{(1)}\otimes V_{\ell=0}=V$.
@@ -3555,7 +3651,7 @@ One can also consider more complicated descendants.
 Compute the norm of $P_\mu P^\mu |\cO\>$, where $\cO$ is a scalar.  Show that unitarity implies either $\De=0$ or $\De\geq \frac{d-2}{2}$.  This gives a stronger condition than what we derived above ($\De\geq 0$) for scalars.
 \end{exercise}
 
-For traceless symmetric tensors in general conformal field theories, these inequalities are the best you can do (other descendants give no new information).  In theories with more symmetry, like supersymmetric theories or 2d CFTs, unitarity bounds can be more interesting.  A classic reference for unitarity bound computations is \cite{Minwalla:1997ka}.  In the math literature, unitarity bounds for higher-dimensional CFTs were essentially computed long ago by Jantzen \cite{Jantzen}, though the relevance of that work for physics has only been emphasized recently \cite{Yamazaki:2016vqi,Penedones:2015aga}.
+For traceless symmetric tensors in general conformal field theories, these inequalities are the best you can do (other descendants give no new information).\footnote{An elegant way to study all possible descendants at once is to go to momentum space in Lorentzian signature \cite{}. In fact, this is how unitarity bounds were originally derived by Mack. Unfortunately, this direction would take us too far afield from our discussion.}  In theories with more symmetry, like supersymmetric theories or 2d CFTs, unitarity bounds can be more interesting.  A classic reference for unitarity bound computations is \cite{Minwalla:1997ka}.  In the math literature, unitarity bounds for higher-dimensional CFTs were essentially computed long ago by Jantzen \cite{Jantzen}, though the relevance of that work for physics has only been emphasized recently \cite{Yamazaki:2016vqi,Penedones:2015aga}.
 
 In summary, we have the unitarity bounds
 \be
@@ -3584,7 +3680,7 @@ In operator language, this becomes the equation for a conserved current
 \be
 \ptl_\mu \cO^{\mu\mu_2\cdots\mu_\ell}(x) &= 0.
 \ee
-The implication also works the other way, so
+The implication also works the other way:
 \be
 \De = \ell + d-2 \qquad \textrm{if and only if}\qquad \textrm{$\cO$ is a conserved current}.
 \ee
