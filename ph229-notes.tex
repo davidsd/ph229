@@ -1971,8 +1971,8 @@ or
 This is the Killing equation. It is equivalent to the statement that $\e$ generates an isometry of the flat metric on $\R^d$. It has solutions
 \begin{align}
 \label{eq:poincaregenerators}
-p_\mu &= \ptl_\mu &&\textrm{(translations)},\nn\\
-m_{\mu\nu} &= x_\nu\ptl_\mu - x_\mu\ptl_\nu && \textrm{(rotations)}.
+p_\mu &= \ptl_\mu &\textrm{(translations)},\nn\\
+m_{\mu\nu} &= x_\nu\ptl_\mu - x_\mu\ptl_\nu & \textrm{(rotations)}.
 \end{align}
 The corresponding charges
 are momentum $P_\mu=Q_{p_\mu}$ and angular momentum $M_{\mu\nu}=Q_{m_{\mu\nu}}$.
@@ -2137,8 +2137,8 @@ Thus $\e_\de$ is at most a quadratic polynomial in $x$.
 From here the analysis is straightforward. Together with $p_\mu,m_{\mu\nu}$, the space of solutions is spanned by
 \begin{align}
 \label{eq:extraconformalgenerators}
-d &= x^\mu \ptl_\mu &&\textrm{(dilatations)},\nn\\
-k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &&\textrm{(special conformal transformations)}.
+d &= x^\mu \ptl_\mu &\textrm{(dilatations)},\nn\\
+k_\mu &= 2x_\mu (x\.\ptl)-x^2\ptl_\mu &\textrm{(special conformal transformations)}.
 \end{align}
 The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$. Overall, there are
 \be
@@ -2264,7 +2264,7 @@ L_{-1,0} &= D,\nn\\
 L_{0,\mu} &= \frac 1 2 (P_\mu+K_\mu),\nn\\
 L_{-1,\mu}&= \frac 1 2 (P_\mu-K_\mu),
 \ee
-where $L_{ab}=-L_{ba}$ and $a,b\in \{-1,0,1,\dots,d\}$.  Show that $L_{ab}$ satisfy the commutation relations of $\SO(d+1,1)$.
+where $L_{ab}=-L_{ba}$ and $a,b\in \{-1,0,1,\dots,d\}$. Show that $L_{ab}$ satisfy the commutation relations of $\SO(d+1,1)$. The metric in $d{+}2$-dimensions is diagonal with $g_{-1,-1}=-1$, and $g_{ii}=+1$ for $i=0,\dots,d$. 
 \end{exercise}
 The fact that the conformal algebra is $\SO(d+1,1)$ suggests that it might be good to think about its action in terms of $\R^{d+1,1}$ instead of $\R^d$.  This is the idea behind the ``embedding space formalism" \cite{Dirac:1936fq,Mack:1969rr,Boulware:1970ty,Ferrara:1973eg,Weinberg:2010fx,Costa:2011mg}, which provides a simple and powerful way to understand the constraints of conformal invariance. We will be more pedestrian in this course, but I recommend reading about the embedding space formalism in the lecture notes by Penedones \cite{Joao} or Rychkov \cite{Rychkov:2016iqz}.
 
@@ -2434,9 +2434,9 @@ where as before
 \ee
 Here, $\rho^a{}_b(R)$ is a matrix implementing the action of $R$ in the $\SO(d)$ representation $\rho$ of $\cO$, for example
 \begin{align}
-\rho(R) &= 1 && \textrm{(scalar representation)},\nn\\
-\rho^\mu{}_\nu(R) &= R^\mu{}_\nu && \textrm{(vector representation)},\label{eq:vectorrep}\nn\\
- &\cdots&& \cdots
+\rho(R) &= 1 & \textrm{(scalar representation)},\nn\\
+\rho^\mu{}_\nu(R) &= R^\mu{}_\nu & \textrm{(vector representation)},\label{eq:vectorrep}\nn\\
+ &\cdots& \cdots
 \end{align}
 and so on.
 
@@ -2542,9 +2542,9 @@ Generalize (\ref{eq:fourptfunctionofprimaries}) to the case of non-identical sca
 The left-hand side of (\ref{eq:fourptfunctionofprimaries}) is manifestly invariant under permutations of the points $x_i$.  This leads to consistency conditions on $g(u,v)$,
 \begin{align}
 \label{eq:trivialcrossing}
-g(u,v) &= g(u/v,1/v) && \textrm{(from swapping $1\leftrightarrow 2$ or $3\leftrightarrow 4$)},\\
+g(u,v) &= g(u/v,1/v) & \textrm{(from swapping $1\leftrightarrow 2$ or $3\leftrightarrow 4$)},\\
 \label{eq:crossingsymmetry}
-g(u,v) &= \p{\frac{u}{v}}^{\De_\f} g(v,u) && \textrm{(from swapping $1\leftrightarrow 3$ or $2\leftrightarrow 4$)}.
+g(u,v) &= \p{\frac{u}{v}}^{\De_\f} g(v,u) & \textrm{(from swapping $1\leftrightarrow 3$ or $2\leftrightarrow 4$)}.
 \end{align}
 All other permutations can be generated from the ones above.  We will see shortly that $g(u,v)$ is  actually determined in terms of the dimensions $\De_i$ and three-point coefficients $f_{ijk}$ of the theory.  Equation~(\ref{eq:trivialcrossing}) will be satisfied for trivial reasons.  However (\ref{eq:crossingsymmetry}) will lead to powerful constraints on the $\De_i, f_{ijk}$.
 
@@ -2797,7 +2797,7 @@ The null cone is preserved by $\SO(d+1,1)$, so we have a $d+1$-dimensional space
 \ee
 \stoplecture
 
-In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." Geometrically, we the projective null cone is the space of lines contained in the null cone, and the conformal group maps one line to another. 
+In the projective null cone, each null vector $X$ represents an equivalence class, and the conformal group maps one equivalence class to another. We can think of rescaling as a ``gauge redundancy." Geometrically, the projective null cone is the space of lines contained in the null cone, and the conformal group maps one line to another. 
 
 To be more explicit, let us fix a gauge by choosing a representative for each equivalence class. One simple gauge-fixing is $X^++X^-=1$, which is equivalent to cutting the null cone with a plane, with intersection locus $S^d$. This shows that the projective null cone is topologically equivalent to $S^d$, which we should think of as $\R^d$ plus the point at infinity. $S^d$ is called the ``conformal compactification" of $\R^d$.
 
@@ -2807,7 +2807,7 @@ Every null vector on the Poincare section can be written
 \be
 X &= (1,x^2, x^\mu),
 \ee
-where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group, $X \mapsto g X$. Now $gX$ may not be on the Poincare section anymore, so we must rescale by $(gX)^+$ to restore our gauge choice
+where $x\in \R^d$ and $x^2=x_\mu x^\mu$.\footnote{Note that the limit of $(1,x^2,x^\mu)$ as $x\to \oo$ is projectively equivalent to $(0,1,0)$, which justifies the claim that we should think of $(0,1,0)$ as the point at infinity.} Now consider the action of the conformal group, $X \mapsto g X$. Note that $gX$ may not be on the Poincare section anymore, so we must rescale by $(gX)^+$ to restore our gauge choice
 \be
 (1,x^2,x) = X &\mapsto g X \to (gX)/(gX)^+ = (1,x'^2,x'^\mu).
 \ee
@@ -2951,7 +2951,7 @@ where $X_{ij}\equiv -2 X_i\.X_j$. Specializing to the Poincare section $X_{ij}\t
 
 \subsubsection{Vector operators in the embedding space}
 
-To describe more complicated operators, instead of starting with the conformal Ward identities, let us try to guess what they lift to.
+To describe more complicated operators, let us try to guess what they lift to.
 Scalar operators lift to scalars on the null cone, so it's natural to guess that a vector $V^\mu(x)$ on $\R^d$ lifts to a vector $\mathcal{V}^A$ ($A=+,-,1,\dots,d$) in the embedding space,
 \be
 V^\mu(x) &\to \mathcal{V}^A(X).
@@ -2970,7 +2970,7 @@ Equivalence classes of $\mathcal{V}^A(X)$ then carry $d$ degrees of freedom and 
 \mathcal{V}^A(X) &\to (g^{-1})^A{}_B \mathcal{V}^B(g X),\qquad g\in \SO(d+1,1).
 \ee
 
-To translate from the embedding space back to $\R^d$, we have the following dictionary
+To translate from the embedding space back to $\R^d$, we can use the following dictionary
 \be
 \label{eq:embeddingtoflatspace}
 V_\mu(x) &= \pdr{X^A(x)}{x^\mu} \mathcal{V}_A(X)|_{X=(1,x^2,x)} \nn\\
@@ -3024,7 +3024,7 @@ Establish this claim by checking the transformation rule for translations and sp
 
 Let us now compute a two-point function $\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\>$ using this technology. It must be homogeneous of degree $-\De_i$ in $X_i$. In addition to depending on $X_1\.X_2$, it must also carry two vector indices under the conformal group. The most general such object is
 \be
-\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\> &= \frac{a \de^{AB}X_1\.X_2 + b X_1^A X_2^B + c X_2^A X_1^B}{X_{12}^{\De_1+1}}
+\<\mathcal{V}_1^A(X_1) \mathcal{V}_2^B(X_2)\> &= \frac{a \de^{AB}X_1\.X_2 + b X_1^A X_2^B + c X_2^A X_1^B}{X_{12}^{\De_1+1}}.
 \ee
 Using gauge redundancy, we are free to set the term proportional to $b$ to zero. Another way to say this is that when we use the dictionary (\ref{eq:embeddingtoflatspace}), this term will give zero because of (\ref{eq:dotxz}). Thus, let us choose $b=0$.
 
@@ -3210,7 +3210,7 @@ C\p{|\cO_1\>, x_1;\dots ;|\cO_n\>, x_n} &\equiv \int \prod_i D\phi_{bi} \<\phi_{
 \ee
 where the path integral $D\phi(x)$ is performed over the region outside the balls $B_i$, and the integrals $D\phi_{bi}$ are over field configurations on the boundaries $\ptl B_i$. Here, $\phi_{\ptl i}$ denotes the restriction of the bulk field $\phi(x)$ to the $i$-th boundary $\ptl B_i$.
 
-This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap. However, a correlator of local operators should make sense for arbitrary configurations of non-coincident points. To overcome this problem, we can use the fact that we have diagonalized the dilatation operator. Let us define a correlator of the states $|\cO_i\>$ by
+This construction only works when the $x_i$ are far enough apart that the balls $B_i$ don't overlap. However, a correlator of local operators should make sense for arbitrary configurations of non-coincident points. To overcome this problem, we can use the fact that we have diagonalized the dilatation operator. Let us define a correlator of the states $|\cO_i\>$ by using a dilatation to bring the spheres far enough apart,
 \be
 \label{eq:definitionofstatecorrelator}
 \<\cO(x_1)\cdots \cO(x_n)\> &\equiv \lambda^{\sum_i \Delta_i} C(|\cO_1\>, \l x_1;\dots ;|\cO_n\>, \l x_n),
@@ -3243,11 +3243,11 @@ This is the ``state-operator correspondence."
 It is straightforward to see how the conformal group acts on states in radial quantization.  A primary operator creates a state that is killed by $K_\mu$ and transforms in a finite-dimensional representation of $D$ and $M_{\mu\nu}$,
 \begin{align}
 \label{eq:operatortostateconditionK}
-\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow && K_\mu|\cO\>&=0,\\
+\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow &&  K_\mu|\cO\>&=0,\\
 \label{eq:operatortostateconditionD}
-\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow&& D|\cO\>&=\De|\cO\>,\\
+\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow && D|\cO\>&=\De|\cO\>,\\
 \label{eq:operatortostateconditionM}
-\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow&& M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
+\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow && M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
 \end{align}
 This follows by acting on $|0\>$ with the operator equations above and using the fact that $|0\>$ is killed by $K,D,$ and $M$.
 
@@ -3257,7 +3257,7 @@ A conformal multiplet in radial quantization is given by acting with momentum ge
 \ee
 This is equivalent to acting with derivatives of $\cO(x)$ at the origin, for example
 \be
-\ptl_\mu\cO(x)|_{x=0}|0\> &= [P_\mu,\cO(0)]|0\>\ \ =\ \ P_\mu|\cO\>.
+\ptl_\mu\cO(x)|_{x=0}|0\> &= [P_\mu,\cO(0)]|0\>=P_\mu|\cO\>.
 \ee
 The operator $\cO(x)$ creates an infinite linear combination of descendants,
 \be
@@ -3528,8 +3528,6 @@ Now determine the action of $e^{2\pi i \mathcal{D}_1}$ on the known answer for t
 
 \subsubsection{BPZ conjugation}
 
-\textbf{\textit{Note: This section is somewhat technical, and can be skipped on a first reading.}}
-
 To generalize this computation, we need to define a bra state $\<\cO|$ in radial quantization for an operator $\cO$ in a general representation $\rho$ of $\SO(d)$. The formula~(\ref{eq:conjugateforspin}) gives the radial conjugate of a tensor operator. In our explanation, the $I^\mu{}_\nu(x)$'s came from factors of $i$ introduced during Wick rotation, e.g.\ (\ref{eq:factorsofIinWick}). However, there is no natural convention for Wick-rotating other representations, e.g.\ spinors.
 
 The correct generalization of (\ref{eq:conjugateforspin}) to arbitrary $\rho$ is
@@ -3541,13 +3539,17 @@ Here, $\cO^{\dag \bar a}(y)$ denotes the non-radial Hermitian conjugate of $\cO$
 \be
 \cO^{\dag \bar a}(y) &= e^{y\.P}\cO^{\dag \bar a}(0) e^{-y\.P}.
 \ee
-The tensor $g_{a\bar a}(x)$ is the inverse of the numerator of a two-point function
+The tensor $g_{a\bar a}(x)=(g^{\bar a a}(x))^*$ is the inverse of the numerator of a two-point function
 \be
 \label{eq:twopointandconjugate}
-\<\cO^{\dag \bar a}(x_2)\cO^b(x_1)\> &= c_\cO \frac{g^{\bar a b}(x_{12})}{x_{12}^{2\De}},\\
-g_{a\bar a}(x) g^{\bar a b}(x) &= \de_a^b,
+\<\cO^{\dag \bar a}(x_2)\cO^b(x_1)\> &= c_\cO \frac{g^{\bar a b}(x_{12})}{x_{12}^{2\De}},
 \ee
-where $c_\cO$ is a positive operator-dependent constant.
+normalized so that
+\be
+\sum_{\bar a}(g^{\bar a a}(x))^* g^{\bar a b} &= \de_a^b.
+%g_{a\bar a}(x) g^{\bar a b}(x) &= \de_a^b,
+\ee
+Here, $c_\cO$ is a positive operator-dependent constant.
 Note that (\ref{eq:bpzconjugation}) reduces to (\ref{eq:conjugateforspin}) when $\cO$ is a real, traceless symmetric tensor.\footnote{We have written $\dag_\mathrm{rad}$ in (\ref{eq:bpzconjugation}) to emphasize that $\cO^a(x)^{\dag_\mathrm{rad}}$ and $\cO^{\dag b}(x)$ are different. You will often see people drop the ``rad" and simply distinguish between the two objects by whether $\dag$ is on the outside or inside of the parentheses. This notation can be very confusing, but is sometimes convenient.\label{footnote:confusing}} The definition (\ref{eq:bpzconjugation}) is called Belavin-Polyakov-Zamolodchikov (BPZ) conjugation.
 
 Let us make some comments about (\ref{eq:twopointandconjugate}).  Recall from section~\ref{} that $\cO(x)$ can only have a nonzero two-point function with an operator in the dual reflected representation $(\rho^R)^*$ of $\SO(d)$. It turns out that $\cO^\dag(x)$ always transforms in this representation. In other-words, we can always find a nonzero conformally-invariant two-point structure (\ref{eq:twopointandconjugate}). This must be the case because $\<0|\cO^\dag \cO|0\>$ is the norm of a state, so it had better be nonzero.
@@ -3575,7 +3577,7 @@ We are now ready to define the dual state to $|\cO^a\>$ in radial quantization:
 &= \lim_{y\to \oo} y^{2\De} g_{ab}(y) \<0|\cO^{\dag b}(y),
 \ee
 where $y=x/x^2$.
-We have given $\<\cO_a|$ a lowered index because it transforms in the dual representation $\rho^*$. One very nice property of BPZ conjugation is that the limit $\<\cO_a|$ is independent of the direction along which we take $\cO^\dag$ to infinity. We can see this by computing an inner product
+We have given $\<\cO_a|$ a lowered index because it transforms in the dual representation $\rho^*$. A nice property of BPZ conjugation is that the limit $\<\cO_a|$ is independent of the direction along which we take $\cO^\dag$ to infinity. We can see this by computing an inner product
 \be
 \<\cO_b|\cO^a\> &= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) \<0|\cO^{\dag \bar a}(y) \cO^a(0)|0\> \nn\\
 &= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) c_\cO \frac{g^{\bar a a}(y)}{y^{2\De}} \nn\\
@@ -3682,6 +3684,7 @@ In operator language, this becomes the equation for a conserved current
 \ee
 The implication also works the other way:
 \be
+\label{eq:thmaboutconserved}
 \De = \ell + d-2 \qquad \textrm{if and only if}\qquad \textrm{$\cO$ is a conserved current}.
 \ee
 Some important examples are global symmetry currents ($\ell=1$, $\Delta=d-1$) and the stress tensor ($\ell=2$, $\Delta=d$).  For CFTs in $d\geq 3$, the presence of currents with spin $\ell\geq 3$ implies that the theory is free \cite{Maldacena:2011jn,Boulanger:2013zza,Alba:2015upa}.\footnote{One must also assume the existence of exactly one stress tensor, since otherwise the theory could contain a free subsector, decoupled from the rest.}
@@ -3747,7 +3750,7 @@ Conformal invariance strongly restricts the form of the OPE\@.  For simplicity, 
 By acting on both sides of (\ref{eq:opeinitial}) with $D$, prove that $C_{ijk}(x,\ptl)$ has an expansion of the form
 \be
 \label{eq:opeexpansionexample}
-C_{ijk}(x,\ptl) &\propto& |x|^{\De_k-\De_i-\De_j}\p{1 +\# x^\mu\ptl_\mu + \# x^\mu x^\nu\ptl_\mu\ptl_\nu+\# x^2 \ptl^2 + \dots}.\nn\\
+C_{ijk}(x,\ptl) &\propto |x|^{\De_k-\De_i-\De_j}\p{1 +\# x^\mu\ptl_\mu + \# x^\mu x^\nu\ptl_\mu\ptl_\nu+\# x^2 \ptl^2 + \dots}.\nn\\
 \ee
 \end{exercise}
 This is just a fancy way of saying we can do dimensional analysis and that $\cO_i$ has length-dimension $-\De_i$. We're also implicitly using rotational invariance by contracting all the indices appropriately. We could have proved this too by acting with $M_{\mu\nu}$.
@@ -3793,6 +3796,586 @@ Recursing, we reduce everything to a sum of one-point functions, which are fixed
 \end{cases}
 \ee
 This gives an algorithm for computing any flat-space correlation function using the OPE\@.  It shows that all these correlators are determined by dimensions $\De_i$, spins, and OPE coefficients $f_{ijk}$.\footnote{The OPE is also valid on any conformally flat manifold.  The difference is that on nontrivial manifolds, non-unit operators can have nonzero one-point functions.  An example is $\R^{d-1}\x S^1_\b$, which has the interpretation as a CFT at finite temperature.  By dimensional analysis, we have $\<\cO\>_{\R^{d-1}\x S^1_\b}\propto \b^{-\De_\cO}\propto T^{\De_\cO}$.\label{foot:finitetemperature}}
+
+\stoplecture
+
+\section{Conformal Blocks}
+
+\subsection{Using the OPE}
+
+Let us use the OPE to compute a four-point function of identical scalars.  Recall that Ward identities imply
+\be
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \frac{g(u,v)}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}},
+\ee
+where the cross-ratios $u$, $v$ are given by~(\ref{eq:definitionofcrossratios}).
+
+The OPE takes the form
+\be
+\label{eq:scalarscalarOPE}
+\f(x_1)\f(x_2) &= \sum_\cO f_{\f\f\cO} C_{a}(x_{12},\ptl_2)\cO^{a}(x_2),
+\ee
+where $\cO^{a}$ can have nonzero spin in general.  For $\cO^a$ to appear in the OPE of two scalars, it must transform in a spin-$\ell$ traceless symmetric tensor representation of $\SO(d)$.
+\begin{exercise}
+Prove this as follows. Show that $\<\cO^a|\f(x)|\f\>$ vanishes unless $\cO^a$ is a symmetric tensor.  (Tracelessness comes from restricting to irreducible representations of $\SO(d)$.) Argue that if $\<\cO^a|\f(x)|\f\>$ vanishes, then for any descendent $|\psi\>=P\cdots P|\cO\>$, the matrix element $\<\psi|\f(x)|\f\>$ vanishes as well.
+\end{exercise}
+\begin{exercise}
+\label{exercise:elleven}
+Using (\ref{eq:conformalthreeptfunction}), show that $f_{\f\f\cO}$ vanishes unless $\ell$ is even.
+\end{exercise}
+
+Assuming the points are configured appropriately, we can pair up the operators (12) (34) and perform the OPE between them,\footnote{Although our computation will make it look like we need $x_{3,4}$ to be sufficiently far from $x_{1,2}$, we will see shortly that the answer will be correct whenever we can draw any sphere separating $x_1,x_2$ from $x_3,x_4$.}
+\begin{align}
+\label{eq:fourptcalc}
+\<
+\contraction{}{\f}{(x_1)}{\f}
+\f(x_1)&\f(x_2)
+\contraction{}{\f}{(x_1)}{\f}
+\f(x_3)\f(x_4)
+\>\nn\\
+&= \sum_{\cO,\cO'}f_{\f\f\cO}f_{\f\f\cO'} C_a(x_{12},\ptl_2)C_b(x_{34},\ptl_4)\<\cO^a(x_2)\cO'^b(x_4)\>\nn\\
+&= \sum_\cO f_{\f\f\cO}^2 C_a(x_{12},\ptl_2)C_b(x_{34},\ptl_4)\frac{I^{ab}(x_{24})}{x_{24}^{2\De_\cO}}\nn\\
+&= \frac{1}{x_{12}^{2\De_\f} x_{34}^{2\De_\f}}\sum_\cO f_{\f\f\cO}^2 g_{\De_\cO,\ell_\cO}(x_i),
+\end{align}
+where
+\be
+\label{eq:olddefinitionofg}
+g_{\De,\ell}(x_i) &\equiv x_{12}^{2\De_\f} x_{34}^{2\De_\f} C_a(x_{12},\ptl_2)C_b(x_{34},\ptl_4)\frac{I^{ab}(x_{24})}{x_{24}^{2\De}}.
+\ee
+In (\ref{eq:fourptcalc}), we have chosen an orthonormal basis of operators and used that
+\be
+\label{eq:canonicallynormalizedtwopt}
+\<\cO^a(x)\cO'^b(0)\> &= \de_{\cO\cO'} \frac{I^{ab}(x)}{x^{2\De_\cO}},
+\ee
+where $I^{ab}(x)=I^{\mu_1\cdots\mu_\ell,\nu_1\cdots\nu_\ell}(x)$ is the tensor in (\ref{eq:twopointfunctionofspinL}).
+
+The functions $g_{\De,\ell}(x_i)$ are called {\it conformal blocks}.  Although it's not obvious from the way we defined them, it turns out they are actually functions of the conformal cross-ratios $u,v$ alone.  We thus have the conformal block decomposition
+\be
+g(u,v) &= \sum_\cO f_{\f\f\cO}^2 g_{\De_\cO,\ell_\cO}(u,v).
+\ee
+\begin{exercise}
+Using the differential operator (\ref{eq:identicalscalaropeoperator}), show
+\be
+\label{eq:boundaryconditionforblock}
+g_{\De,0}(u,v) &= u^{\De/2}\p{1+\dots}.
+\ee
+\end{exercise}
+
+\begin{exercise}
+Using (\ref{eq:scalarscalarspinL}), argue that $x^{2\De_\f} C_{\f\f\cO}(x,\ptl)$ is independent of $\Delta_\phi$ for any spin of $\cO$. Conclude that $g_{\De,\ell}(u,v)$ is independent of $\Delta_\phi$. (This is a special property of conformal blocks for operators with identical scaling dimensions.)
+\end{exercise}
+
+\subsection{In Radial Quantization}
+
+A conformal block represents the contribution of a single conformal multiplet to a four-point function.  It is instructive to understand it in radial quantization.  Along the way, we'll explain why the blocks are functions of the cross-ratios $u,v$ alone.
+
+Let us pick an origin such that $|x_{3,4}|\geq |x_{1,2}|$, so that
+\be
+\label{eq:fourptradial}
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \<0|\mathcal{R}\{\f(x_3)\f(x_4)\}\mathcal{R}\{\f(x_1)\f(x_2)\}|0\>.\quad
+\ee
+For a primary operator $\cO$, let $|\cO|$ be the projector onto the conformal multiplet of $\cO$,
+\be
+|\cO| &\equiv \sum_{\a,\b=\cO,P\cO,PP\cO,\dots} |\a\>\mathcal{N}^{-1}_{\a\b}\<\b|,\qquad
+\mathcal{N}_{\a\b} \equiv \<\a|\b\>.
+\ee
+The identity is the sum of these projectors over all primary operators.
+\be
+\mathbf{1} &= \sum_\cO |\cO|.
+\ee
+Inserting this into (\ref{eq:fourptradial}) gives
+\be
+\label{eq:insertingprojector}
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \sum_\cO\<0|\mathcal{R}\{\f(x_3)\f(x_4)\}|\cO|\mathcal{R}\{\f(x_1)\f(x_2)\}|0\>.\nn\\
+\ee
+Each term in the sum is a conformal block times a squared OPE coefficient and some conventional powers of $x_{ij}$,
+\be
+\label{eq:newdefinitionofg}
+\<0|\mathcal{R}\{\f(x_3)\f(x_4)\}|\cO|\mathcal{R}\{\f(x_1)\f(x_2)\}|0\> &= \frac{f_{\f\f\cO}^2}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}}g_{\De_\cO,\ell_\cO}(u,v).\qquad
+\ee
+\begin{exercise}
+Verify the equivalence between (\ref{eq:newdefinitionofg}) and (\ref{eq:olddefinitionofg}) by performing the OPE between $\f(x_3)\f(x_4)$ and $\f(x_1)\f(x_2)$.
+\end{exercise}
+
+This expression makes it clear why $g_{\De,\ell}(u,v)$ is a function of $u$ and $v$: the projector $|\cO|$ commutes with all conformal generators (by construction).  Thus, the object above satisfies all the same Ward identities as a four-point function of primaries, and it must take the form (\ref{eq:fourptfunctionofprimaries}).  In path integral language, we can think of $|\cO|$ as a new type of  surface operator.  Here, we've inserted it on a sphere separating $x_{1,2}$ from $x_{3,4}$.
+
+\subsection{From the Conformal Casimir}
+
+We can now give a simple and elegant way to compute the conformal block, due to Dolan \& Osborn \cite{DO2}.
+Recall that the conformal algebra is isomorphic to $\SO(d+1,1)$, with generators $L_{ab}$ given by (\ref{eq:conformalgeneratorssodplus11}).  The quadratic Casimir of the conformal group is defined by
+\be
+C&=-\frac 1 2 L^2 = -\frac 1 2 L^{ab}L_{ab} \nn\\
+&= -\frac 1 2 M^{\mu\nu} M_{\mu\nu} - \frac 1 2 P\.K - \frac 1 2 K\.P + D^2
+\ee
+Because $C$ commutes with the algebra of $\SO(d+1,1)$, it acts with the same eigenvalue on every state in an irreducible representation.  
+\begin{exercise}
+Show that this eigenvalue is given by
+\be
+C|\cO\> &= \l_{\De,\ell}|\cO\>,\nn\\
+\l_{\De,\ell} &\equiv \De(\De-d)+\ell(\ell+d-2).
+\ee
+\end{exercise}
+It follows that $C$ gives this same eigenvalue when acting on the projection operator $|\cO|$ from either the left or right,
+\be
+C|\cO|=|\cO| C = \l_{\De,\ell}|\cO|.
+\ee
+
+Let $\cL_{(i)ab}$ be the differential operator giving the action of $L_{ab}$ on the operator $\f(x_i)$.  Note that
+\be
+(\cL_{(1)ab}+\cL_{(2)ab})\f(x_1)\f(x_2)|0\> &= \p{[L_{ab},\f(x_1)]\f(x_2)+\f(x_1)[L_{ab},\f(x_2)]}|0\>\nn\\
+&= L_{ab}\f(x_1)\f(x_2)|0\>.
+\ee
+Thus, 
+\be
+C\f(x_1)\f(x_2)|0\> &= -\frac 1 2 \cL_{(12)}^2 \f(x_1)\f(x_2)|0\>,\nn\\
+\textrm{where}\qquad  \cL_{(12)} &\equiv \cL_{(1)}+\cL_{(2)}.
+\ee
+We then have
+\begin{align}
+-\frac 1 2 \cL_{(12)}^2\<0|&\mathcal{R}\{\f(x_3)\f(x_4)\}|\cO|\mathcal{R}\{\f(x_1)\f(x_2)\}|0\>\nn\\
+&=
+\<0|\mathcal{R}\{\f(x_3)\f(x_4)\}|\cO| C\mathcal{R}\{\f(x_1)\f(x_2)\}|0\>\nn\\
+&= \l_{\De,\ell}\<0|\mathcal{R}\{\f(x_3)\f(x_4)\}|\cO|\mathcal{R}\{\f(x_1)\f(x_2)\}|0\>.
+\end{align}
+Plugging in (\ref{eq:newdefinitionofg}), we find that $g_{\De,\ell}$ satisfies the differential equation 
+\be
+\label{eq:conformalcasimir}
+\cD g_{\De,\ell}(u,v) &= \l_{\De,\ell} g_{\De,\ell}(u,v),
+\ee
+where $\cD$ is a differential operator in terms of $u,v$.
+
+\subsubsection{Computing $\cD$ using the embedding space}
+
+It is relatively simple to compute $\cD$ using the embedding space. Recall that we can lift $\f(x)$ to the embedding space via
+\be
+\label{eq:embeddinglift}
+\Phi(X) &= (X^+)^{-\De_\f} \phi(X^\mu/X^+).
+\ee
+With this definition, we have
+\be
+[L_{ab},\Phi(X)] &= \cL_{ab} \Phi(X),
+\ee
+where $\cL_{ab}$ are simply the generators of $\SO(d+1,1)$ rotations
+\be
+\cL_{ab} &= X_a \pdr{}{X^b} - X_b \pdr{}{X^a},\qquad (a,b=+,-,1,\dots,d).
+\ee
+Multiplying (\ref{eq:newdefinitionofg}) by $\prod_i (X_i^+)^{-\De_\f}$, writing $x^\mu=X^\mu/X^+$, and using (\ref{eq:embeddinglift}), we can  write a conformal block in terms of embedding-space operators
+\be
+\label{eq:newdefinitionofgembedding}
+\<0|\mathcal{R}\{\Phi(X_3)\Phi(X_4)\}|\cO|\mathcal{R}\{\Phi(X_1)\Phi(X_2)\}|0\> &= \frac{f_{\f\f\cO}^2}{X_{12}^{\De_\f}X_{34}^{\De_\f}}g_{\De,\ell}(u,v),
+\ee
+where
+\be
+X_{ij}&\equiv -2 X_i \. X_j, \quad u = \frac{X_{12} X_{34}}{X_{13} X_{24}},\quad v =\frac{X_{23}X_{14}}{X_{13}X_{24}},
+\ee
+and we have abbreviated $\De=\De_\cO,\ell=\ell_\cO$.
+
+The same logic as before implies that $-\frac 1 2 \cL_{(12)}^2$ acts with eigenvalue $\l_{\De,\ell}$ on (\ref{eq:newdefinitionofgembedding}). However, note that $\cL_{(12)}$ trivially commutes with $X_{34}$, and it also commutes with $X_{12}$ because $X_{12}$ is invariant under simultaneous rotations of $X_1,X_2$. Thus, we get a differential operator acting on $g_{\De,\ell}(u,v)$ alone
+\be
+\l_{\De,\ell} g_{\De,\ell}(u,v) &= -\frac 1 2 \cL_{(12)}^2 g_{\De,\ell}(u,v) \nn\\
+&= -\frac 1 2\left[\p{(\cL_{(12)}u) \pdr{}{u} + (\cL_{(12)}v)\pdr{}{v} }^2 + (\cL_{(12)}^2 u) \pdr{}{u} +(\cL_{(12)}^2 v)\pdr{}{v}\right]\nn\\
+&\qquad \x g_{\De,\ell}(u,v)
+\ee
+For brevity, we are suppressing indices: $\cL_{(12)}^2 u = \cL_{(12)}^{ab} \cL_{(12)ab}u$.
+Plugging in the definitions of $u,v$, it is now straightforward to compute the derivatives. For example,
+\be
+\cL_{(12)ab} u &= \p{X_{1a}\pdr{}{X_1^b} + X_{2a}\pdr{}{X_2^b} - (a\leftrightarrow b)}\frac{X_{12}X_{34}}{X_{13}X_{24}} \nn\\
+&= \p{-\frac{X_{1a}X_{3b}}{X_1\.X_3}-\frac{X_{2a}X_{4b}}{X_2\.X_4} - (a\leftrightarrow b)} u
+\ee
+
+Combining everything together, the object in square-brackets becomes a differential operator $\cD$ depending on $u,v$ alone. This differential operator is simplest to write in the coordinates $z,\bar z$ defined by $u=z\bar z,\ v=(1-z)(1-\bar z)$ as usual:
+\be
+\label{eq:resultforD}
+\cD &= 2(z^2(1-z)\ptl_z^2-z^2 \ptl_z) + 2(\bar z^2 (1-\bar z)\ptl_{\bar z}^2-\bar z^2 \ptl_{\bar z})\nn\\
+& + 2(d-2)\frac{z\bar z}{z-\bar z}((1-z)\ptl_z - (1-\bar z)\ptl_{\bar z}).
+\ee
+
+Eq.~(\ref{eq:conformalcasimir}), together with the boundary condition~(\ref{eq:boundaryconditionforblock}) (and its generalization to nonzero spin, which we give shortly), then determines the conformal block $g_{\Delta,\ell}(u,v)$. 
+
+\subsubsection{Solution in 2d}
+
+In even dimensions, the Casimir equation can be solved analytically. The solution is simplest in 2d, where the second line of (\ref{eq:resultforD}) is zero and $\cD$ splits into a sum of two separate differential operators in $z$ and $\bar z$. In $2d$, the Casimir eigenvalue can be written
+\be
+\De(\De-2) + \ell^2 &= 2h(h-1) + 2\bar h(\bar h - 1)
+\ee
+where
+\be
+h &\equiv \frac{\De+\ell}{2},\quad \bar h = \frac{\De-\ell}{2}.
+\ee
+Thus, the Casimir equation can be solved by separation of variables. A general solution is a sum of terms of the form
+\be
+f(z) \bar f(\bar z),
+\ee
+where $f(z)$ satisfies
+\be
+2(z^2(1-z)\ptl_z^2-z^2 \ptl_z)f(z) &= 2h(h-1)f(z).
+\ee
+This is a 1-dimensional hypergeometric differential equation. Its solutions are given by
+\be
+f(z) &= A\, k_{2h}(z) + B\, k_{2(1-h)}(z) \nn\\
+k_{2h}(z) &= z^h {}_2F_1(h,h,2h,z).
+\ee
+(The factor of $2$ in the notation $k_{2h}$ is a common convention.) The factorization of the Casimir equation in 2d ultimately stems from factorization of the conformal algebra in 2d, which we will discuss in more detail shortly. The function $k_{2h}(z)$ is a conformal block for half of the 2d conformal algebra, which is $\mathrm{SL}(2,\R)$.
+
+The linear combination of solutions in $z$ and $\bar z$ with the right boundary conditions for a conformal block is
+\be
+\label{eq:explicitblock2d}
+g_{\De,\ell}^{(2d)}(u,v) &\propto k_{2h}(z) k_{2\bar h}(\bar z) + k_{2\bar h}(z) k_{2h}(\bar z) \nn\\
+&\propto k_{\De+\ell}(z)k_{\De-\ell}(\bar z) + k_{\De-\ell}(z)k_{\De+\ell}(\bar z).
+\ee
+
+\subsubsection{Other solutions}
+
+Dolan and Osborn showed that even though the Casimir equation doesn't factorize in general dimensions, it can still be solved analytically in even dimensions \cite{DO1,DO2}. For example, in 4d, the solution with the correct boundary conditions for a conformal block is
+\be
+\label{eq:explicitblock4d}
+g_{\De,\ell}^{(4d)}(u,v) &\propto \frac{z \bar z}{z-\bar z}\p{k_{\De+\ell}(z)k_{\De-\ell-2}(\bar z) - k_{\De-\ell-2}(z)k_{\De+\ell}(\bar z)}.
+\ee
+(The precise normalization depends on a choice of conventions for two and three-point functions.)
+Note that the $\mathrm{SL}(2,\R)$ conformal block appears again, but in a more complicated way.
+In odd dimensions, no explicit formula in terms of elementary functions is known.  However the blocks can still be computed in a series expansion using the Casimir equation or alternative techniques like recursion relations. We will re-compute the (\ref{eq:explicitblock2d}) from an elementary sum over states in section~\ref{}.
+
+\subsection{Series Expansion}
+
+It will be helpful to understand the series expansion of the conformal blocks in more detail.
+ The ``radial coordinates" of \cite{Pappadopulo:2012jk,Hogervorst:2013sma} are ideal for this purpose.
+ Using conformal transformations, we can place all four operators on a plane in the configuration shown in figure~\ref{fig:rho}.  This makes it clear that the conformal block expansion is valid whenever $|\rho|<1$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.55\textwidth]{fig-rho}
+\end{center}
+\caption{Any four points can be brought to the above configuration using conformal transformations. (Figure from \cite{Hogervorst:2013sma}.)  \label{fig:rho}}
+\end{figure}
+
+\begin{exercise}
+Show that $\rho=re^{i\theta}$ is related to $z$ via
+\be
+\label{eq:radialcoordinatedefinition}
+\rho = \frac{z}{(1+\sqrt{1-z})^2},\qquad z = \frac{4\rho}{(1+\rho)^2}
+\ee
+(and similarly for $\bar\rho=r e^{-i\theta}$ and $\bar z$).
+\end{exercise}
+
+In radial quantization, this corresponds to placing cylinder operators (\ref{eq:definitionofcylinderop}) at diametrically opposite points $\pm \bn$ and $\pm \bn'$ on $S^{d-1}$, with $\cos\th=\bn\.\bn'$, and with the pairs separated by time $\tau=-\log r$ (figure~\ref{fig:cylinderconfig}).  The conformal block is then
+\be
+\label{eq:blockintermsofpsi}
+ g_{\De,\ell}(u,v) &= \<\psi(\bn)||\cO|e^{-\tau D}|\psi(\bn')\>,
+\ee
+where we've defined the state\footnote{The factor $2^{\De_\f}=\<\f_\mathrm{cyl.}(0,\bn)\f_\mathrm{cyl.}(0,-\bn)\>^{-1}$ comes from transforming $x_{12}^{-2\De_\f}$ to the cylinder (exercise!).}
+\be
+|\psi(\bn)\> &\equiv \frac{2^{\De_\f}}{f_{\f\f\cO}}\phi_\mathrm{cyl.}(0,\bn)\phi_\mathrm{cyl.}(0,-\bn)|0\>.
+\ee
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{cylinderconfig.jpg}
+\end{center}
+\caption{Configuration on the cylinder corresponding to (\ref{eq:blockintermsofpsi}).  \label{fig:cylinderconfig}}
+\end{figure}
+
+A descendant $P^{\mu_1}\cdots P^{\mu_n}|\cO\>$ has energy $\De+n$ on the cylinder.  Within the $n$-th energy level, the $\SO(d)$ spins that appear are
+\be
+\label{eq:rangeofjs}
+j \in \{\ell+n,\ell+n-2,\dots,\mathrm{max}(\ell-n,\ell+n\,\,\mathrm{mod}\,\,2)\}.
+\ee
+Consider a set of descendent states $|n,j\>^{\mu_1\cdots\mu_j}$ with energy $\De+n$ and spin $j$. They contribute
+\be
+r^{\De+n} \<\psi(\bn)|n,j\>^{\mu_1\cdots\mu_j}{}_{\mu_1\cdots\mu_j}\<n,j|\psi(\bn')\>.
+\label{eq:definitespinandenergy}
+\ee
+By rotational invariance,
+\be
+\<\psi(\bn)|n,j\>^{\mu_1\cdots\mu_j} &\propto \bn^{\mu_1}\cdots\bn^{\mu_j}-\mathrm{traces}.
+\ee
+Because $|\psi(\bn)\>=|\psi(-\bn)\>$, $j$ must be even (and thus $n$ is even).
+The contraction of two traceless symmetric tensors is a Gegenbauer polynomial,
+\be
+C_j^{\frac{d-2}{2}}(\bn\cdot\bn') &\propto (\bn^{\mu_1}\cdots\bn^{\mu_j}-\mathrm{traces})(\bn'_{\mu_1}\cdots\bn'_{\mu_j}-\mathrm{traces}),
+\ee
+so (\ref{eq:definitespinandenergy}) becomes
+\be
+r^{\De+n} \<\psi(\bn)|n,j\>^{\mu_1\cdots\mu_j}{}_{\mu_1\cdots\mu_j}\<n,j|\psi(\bn')\> &\propto r^{\De+n}C_j^{\frac{d-2}{2}}(\cos\th).
+\ee
+
+Summing over descendants, we find
+\be
+\label{eq:seriesexpansion}
+g_{\De,\ell}(u,v) &= \sum_{\substack{n=0,2,\dots \\ j}} B_{n,j}r^{\De+n}C_j^{\frac{d-2}{2}}(\cos\th),%\label{eq:seriesforblock}
+\ee
+where $j$ ranges over the values in (\ref{eq:rangeofjs}) and $B_{n,j}$ are constants.  
+Notice a few properties:
+\begin{itemize}
+\item The leading term in the $r$-expansion comes from the primary state $|\cO\>$ with $n=0$ and $j=\ell$. This can be used as a boundary condition in the Casimir equation to determine the higher coefficients $B_{n,j}$.
+\item The $B_{n,j}$ are positive in a unitary theory because they are given by norms of projections of $|\psi\>$ onto energy and spin eigenstates.
+\item The $B_{n,j}$ are rational functions of $\De$.  This follows because the Casimir eigenvalue $\l_{\De,\ell}$ is polynomial in $\De$, or alternatively from the fact that the differential operators $C_a(x,\ptl)$ appearing in the OPE (\ref{eq:scalarscalarOPE}) have a series expansion in $x$ with rational coefficients, see exercise~\ref{exercise:seriesfordiffops}. 
+\end{itemize}
+
+\begin{exercise}
+Expand $g^{(2d)}_{\De,\ell}(u,v)$ and $g^{(4d)}_{\De,\ell}(u,v)$ to the first few orders in $r$, and check these properties.  Verify that some of the coefficients $B_{n,j}$ become negative when $\De$ violates the unitarity bound.
+\end{exercise}
+
+\begin{exercise}
+By rewriting in terms of $r,\th$ and using (\ref{eq:seriesexpansion}), show that even spin blocks are invariant under $x_1\leftrightarrow x_2$ or $x_3\leftrightarrow x_4$,
+\be
+\label{eq:invariantunderonetwo}
+g_{\De,\ell}(u,v) &= g_{\De,\ell}\p{\frac{u}{v},\frac 1 v},\qquad(\textrm{$\ell$ even}).
+\ee
+\end{exercise}
+
+\section{The Conformal Bootstrap}
+
+\subsection{OPE Associativity and Crossing Symmetry}
+
+We've gotten pretty far using symmetries and basic principles of quantum field theory.  We  classified operators into primaries and descendants. We established the OPE, which determines $n$-point functions as sums of $(n-1)$-point functions,
+\be
+\label{eq:usingOPEtoreducecorrelator}
+\<\cO_1(x_1)\cO_2(x_2)\cdots\cO_n(x_n)\> &= \sum_k C_{12k}(x_{12},\ptl_2)\<\cO_2(x_2)\cdots\cO_n(x_n)\>.\nn\\
+\ee
+And we showed that the differential operators $C_{ijk}(x,\ptl)$ are determined by conformal symmetry in terms of dimensions $\De_i$, spins, and OPE coefficients $f_{ijk}$. 
+
+Now it's time to implement the last step of the bootstrap program: impose consistency conditions and derive constraints.  Using the OPE, all correlation functions can be written in terms of the ``CFT data" $\De_i,f_{ijk}$.  Now suppose someone hands you a random set of numbers $\De_i,f_{ijk}$.  Does that define a consistent CFT?
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{opedifferentways.jpg}
+\end{center}
+\caption{Two different ways of evaluating a five-point function using the OPE\@.  Dots represent operators in the correlator, and vertices represent the OPE\@. The two ways differ by a crossing symmetry transformation (\ref{eq:graphicalcrossing}) applied to the left part of the diagram.\label{fig:opedifferentways}}
+\end{figure}
+
+The answer is: not always.  By doing the OPE (\ref{eq:usingOPEtoreducecorrelator}) between different pairs of operators in different orders (see figure~\ref{fig:opedifferentways}), we get naively different expressions for the same correlator in terms of CFT data.  These expressions should agree. 
+This means the OPE should be associative,
+\be
+\contraction{}{
+\frac 1 2\!\!\!\!\!
+\cO_1\cO_2
+}{}{\cO_3}
+\contraction{}{\cO_1}{}{\cO_2}
+\cO_1\cO_2\cO_3
+&=
+\contraction{}{
+\frac 1 2\!\!\!\!\!
+\cO_1
+}{}{
+\contraction{}{\cO_2}{}{\cO_3}
+\cO_2\cO_3
+}
+\contraction{\cO_1}{\cO_2}{}{\cO_3}
+\cO_1\cO_2\cO_3,
+\ee
+or more explicitly,
+\be
+\label{eq:OPEassociativity}
+C_{12i}(x_{12},\ptl_2)C_{i3j}(x_{23},\ptl_3)\cO_j(x_3) &= C_{23i}(x_{23},\ptl_3)C_{1ij}(x_{13},\ptl_3)\cO_j(x_3).\nn\\
+\ee
+(We suppress spin indices for simplicity.)
+Taking the correlator of both sides with a fourth operator $\cO_4(x_4)$ gives the {\it crossing symmetry equation}
+
+\be
+\label{eq:graphicalcrossing}
+\hspace{-0.4in}
+\setlength{\unitlength}{.4in}
+\begin{picture}(7,1.7)(0,0.2)
+\linethickness{1pt}
+\put(1.7,0.4){\line(1,2){0.3}}
+\put(1.7,1.6){\line(1,-2){0.3}}
+\put(2,1){\line(1,0){0.8}}
+\put(2.8,1){\line(1,2){0.3}}
+\put(2.8,1){\line(1,-2){0.3}}
+\put(1.2,1){\makebox(0,0){$\mathlarger{\sum}_i^{\phantom\cO}$}}
+\put(4,1){\makebox(0,0){$=$}}
+\put(1.65,1.8){\makebox(0,0){\small $1$}}
+\put(1.65,0.2){\makebox(0,0){\small $2$}}
+\put(3.15,1.8){\makebox(0,0){\small $4$}}
+\put(3.15,0.2){\makebox(0,0){\small $3$}}
+\put(5.38,1.8){\makebox(0,0){\small $1$}}
+\put(5.38,0.2){\makebox(0,0){\small $2$}}
+\put(6.6,1.8){\makebox(0,0){\small $4$}}
+\put(6.6,0.2){\makebox(0,0){\small $3$}}
+\put(6.3,1){\makebox(0,0){\small $\cO_i$}}
+\put(2.4,1.2){\makebox(0,0){\small $\cO_i$}}
+\put(5,1){\makebox(0,0){$\mathlarger{\sum}_i^{\phantom\cO}$}}
+\put(6,0.6){\line(0,1){0.8}}
+\put(5.5,0.35){\line(2,1){0.5}}
+\put(6,0.6){\line(2,-1){0.5}}
+\put(6,1.38){\line(2,1){0.5}}
+\put(5.5,1.65){\line(2,-1){0.5}}
+\end{picture}.
+\ee
+The left-hand side is the conformal block expansion of $\<\cO_1\cO_2\cO_3\cO_4\>$ in the $12\leftrightarrow 34$ channel, while the right-hand side is the expansion in the $14\leftrightarrow 23$ channel.
+ 
+\begin{exercise}
+\label{ex:crossingexercise}
+Argue that by choosing different operators $\cO_4$ and taking linear combinations of derivatives, one can recover OPE associativity (\ref{eq:OPEassociativity}) from the crossing equation (\ref{eq:graphicalcrossing}). Conclude that crossing symmetry of all four-point functions implies crossing symmetry of all $n$-point functions (i.e.\ that any way of computing an $n$-point function using the OPE gives the same result).
+\end{exercise}
+
+%Most of the rest of this course will be devoted to studying its implications for the simplest possible case: a four-point function of identical scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$.  
+
+%\subsubsection{Additional Structures and Consistency Conditions}
+%\label{sec:additionalstructures}
+%
+%Before jumping in, let us reflect on the implications of exercise~\ref{ex:crossingexercise}:  A solution to the crossing equations~(\ref{eq:graphicalcrossing}) gives a completely nonperturbative definition of flat-space correlation functions of local operators, without the need for a Lagrangian.  This is most of the way towards a full theory. However, some structures associated with local QFTs are missing, and additional structures might bring new consistency conditions.
+%
+%Firstly, CFTs can admit extended objects like line operators, surface operators, boundaries, and interfaces. These objects have additional data associated with them, and it's possible to write down OPEs and crossing equations that relate this data to itself and the usual CFT data, see e.g. \cite{Liendo:2012hy,Gaiotto:2013nva}.  It is also interesting to consider correlation functions on manifolds not conformally equivalent to flat space. An example includes the theory at finite temperature (discussed in footnote~\ref{foot:finitetemperature}). This introduces more data, for example the one-point functions of local and extended operators on nontrivial manifolds.\footnote{It is known that this data is not determined by the local operator spectrum.  For example, pure Chern-Simons theory has no local operators at all, but has interesting nonlocal observables that depend on the gauge group and level \cite{Witten:1988hf}.  Also, 4d conformal gauge theories admit different sets of line operators for the same set of local operators \cite{Aharony:2013hda}.} Other interesting constraints come from studying CFTs in Lorentzian signature. Examples include bounds from energy positivity \cite{Hofman:2008ar}, dispersion relations \cite{Komargodski:2011vj,Nachtmann:1973mr,Komargodski:2012ek,Komargodski:2016gci}, and causality \cite{Maldacena:2015waa,Hartman:2015lfa}.
+%
+%The full set of data and consistency conditions associated with a CFT is not known in general. However, we do have examples of constraints on local operators beyond the OPE and crossing equations. The most famous is modular invariance: the requirement that the partition function of a 2d CFT on the torus $T^2$ be invariant (or covariant) under large diffeomorphisms.  Imposing modular invariance is an additional step that must be performed after solving the crossing equations in 2d CFTs \cite{Moore:1988uz}.\footnote{2d is special because the space of states on a spatial slice $S^1\subset T^2$ is the same as the space of states in radial quantization, and thus modular invariance on $T^2$ directly constrains local operators.  This is not true in $d\geq 3$, so it is not clear how modular invariance on $T^d$ constrains local operators in that case.}
+%
+\subsection{Crossing Symmetry for Identical Scalars} 
+The crossing equation (\ref{eq:graphicalcrossing}) is a powerful but complicated constraint on the CFT data.  
+For concreteness, let us write it out for a four-point function of identical real scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$. We have the conformal block expansion
+\be
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \frac{1}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}}\sum_{\cO\in \f\x\f} f_{\f\f\cO}^2 g_{\De,\ell}(u,v),
+\label{eq:identicscalarsblockexp}
+\ee
+where $g_{\De,\ell}(u,v)$ are conformal blocks.  %, and the cross ratios are
+%\be
+%u = z\bar z = \frac{x_{12}^2 x_{34}^2}{x_{13}^2 x_{24}^2},\qquad v=(1-z)(1-\bar z) =\frac{x_{23}^2 x_{14}^2}{x_{13}^2 x_{24}^2}.
+%\ee
+By exercise~\ref{exercise:elleven}, $\ell=\ell_\cO$ must be even in order for $\cO$ to appear in an OPE of identical scalars. We have chosen a basis of operators such that the $\cO$'s are real and orthonormal, as in  (\ref{eq:canonicallynormalizedtwopt}).  Unitarity implies that the three-point coefficients $f_{\f\f\cO}$ are real in this basis (section~\ref{sec:realvscomplex}).
+
+Crossing symmetry is equivalent to the statement that the expansion (\ref{eq:identicscalarsblockexp}) should be invariant under permutations of the four points. Invariance under $1\leftrightarrow 3$ or $2\leftrightarrow 4$ implies
+\be
+\label{eq:crossingeqsummary}
+\sum_{\cO\in \f\x\f} f_{\f\f\cO}^2 g_{\De,\ell}(u,v) &= \p{\frac{u}{v}}^{\De_\f} \sum_{\cO\in \f\x\f} f_{\f\f\cO}^2 g_{\De,\ell}(v,u).
+\ee
+Eq.~(\ref{eq:invariantunderonetwo}) shows that invariance of the four-point function under $1\leftrightarrow 2$ or $3\leftrightarrow 4$ is true block-by-block.  All other permutations can be generated from these. %Thus (\ref{eq:crossingeqsummary}) the only nontrivial condition on the conformal block expansion in this case.
+
+%\end{itemize}
+
+%We know at least two operators present in the $\f\x\f$ OPE: the unit operator and the stress tensor.  Normalizing $\f$ so that $\<\f(x)\f(0)\>=x^{-2\De_\f}$, we have $f_{\f\f\mathbf{1}}=1$.  The stress tensor three-point coefficient is set by Ward identities to be $f_{\f\f T_{\mu\nu}}\propto \De_\f/\sqrt{C_T}$, where $C_T$ is the coefficient of the two-point function of the canonically normalized stress tensor (\ref{eq:twopointfunctionofspinL}).  The factor of $1/\sqrt{C_T}$ relative to (\ref{eq:stresstensorward}) comes from choosing the basis of operators $\cO$ to be orthonormal.
+
+
+\section{Ward identities}
+
+
+\subsection{Spin-$1$ current}
+
+Most of the three-point coefficients $f_{ijk}$ are unknown a-priori. However, some coefficients involving conserved currents are fixed by symmetries.
+For example, let $J^\mu$ be a conserved primary spin-1 operator. By integrating $J^\mu$ over a surface, we can form the conserved charge
+\be
+Q(\Sigma) &\equiv i\int_\Sigma dS_\mu J^\mu.
+\ee
+(The factor of $i$ is so that $Q$ is Hermitian when $\Sigma$ is a spatial slice.)  Unitarity implies (\ref{eq:thmaboutconserved}) that $J$ has dimension $d-1$, so $Q$ is dimensionless. Note that $Q$ commutes with conformal transformations.
+
+Suppose $\f(x)$ is a complex scalar with charge $q$ under $Q$,
+\be
+[Q,\f(x)] &= q \f(x).
+\ee
+The three-point function $\<\f^* \f J\>$ is fixed by conformal symmetry up to a coefficient:
+\be
+\label{eq:threeptcurrent}
+\<\f^*(x_1) \f(x_2) J^\mu(x_3)\> &= \frac{f_{\f^*\f J}}{x_{12}^{2\De_\f-d+2} x_{23}^{d-2} x_{31}^{d-2}}\p{\frac{x_{13}^\mu}{x_{13}^2} - \frac{x_{23}^\mu}{x_{23}^2}}.
+\ee
+Integrating $x_3$ over a surface $\Sigma$ surrounding $x_2$, we find
+\be
+i\int_\Sigma dS_\mu(x_3) \<\f^*(x_1) \f(x_2) J^\mu(x_3)\>
+&=
+\<\f^*(x_1)Q(\Sigma) \f(x_2) \>\nn\\
+ &= q\<\f^*(x_1) \f(x_2)\>.
+\ee
+Plugging in (\ref{eq:threeptcurrent}), we see that $f_{\f\f J}$ is fixed in terms of $q$.
+
+To simplify the computation, it is useful to study the configuration
+\be
+\label{eq:ourconfig}
+x_1=\oo,\quad x_2=0,\quad x_3=x.
+\ee
+Recall that $\f^*(\oo) \equiv \lim_{L\to \oo} L^{2\De_\f} \f^*(Le)$, where $e$ is a unit vector. In this configuration, we have
+\be
+\label{eq:chargeintegral}
+q &= i\int_\Sigma dS_\mu(x) \frac{f_{\f^*\f J} x^\mu }{x^{d}} \nn\\
+ &= i S_d f_{\f^*\f J},
+\ee
+where $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ is the volume of the unit sphere in $d$-dimensions. The fact that the integral (\ref{eq:chargeintegral}) only depends on the topological class of $\Sigma$ is simply Gauss' law from electrostatics.
+
+We can summarize this result by writing the $\f$ term in the $J\x\f$ OPE:
+\be
+J^\mu(x) \f(0) &= -\frac{i}{S_d}q \frac{x^\mu}{x^d} \f(0) + \dots.
+\ee
+Here ``$\dots$" represents descendants of $\f$ and other conformal multiplets. Taking the correlator of both sides with $\f^*(\oo)$, we get back to (\ref{eq:threeptcurrent}) in the configuration (\ref{eq:ourconfig}). Integrating $J^\mu$ around a sphere $\Sigma$ centered at $\f$ gives $Q(\Sigma)\f(0)=q\f(0)$.
+
+More generally, suppose $\f_i$ are scalar operators. The commutator $[Q,\f_i]$ must be a primary scalar, since $Q$ commutes with the conformal generators. Thus, we can write
+\be
+\label{eq:generalizedQ}
+[Q,\f_i(x)] &= t_i{}^j \f_j(x),
+\ee
+for some matrix $t_i{}^j$. Note that $T_i{}^j$ can only be nonzero if $\De_i=\De_j$, by dimensional analysis.
+Repeating the above computation, we find
+\be
+\label{eq:jope}
+J^\mu(x) \f_i(0) &= -\frac{i}{S_d} t_i{}^j \frac{x^\mu}{x^d} \f_j(0) + \dots.
+\ee
+The ``$\dots$" cannot contain other scalar primary operators. Otherwise, by integrating $J$ over a sphere, we would find a contradiction with (\ref{eq:generalizedQ}). Furthermore, the ``$\dots$" cannot contribute to the integral of $J^\mu$ over a sphere. Otherwise, $Q$ would transform $\f_i(0)$ into a non-scalar operator.
+
+In general, if $\cO_i$ have spin, there can be multiple three-point structures for $\<\cO_i \cO_j J\>$. One of these three-point structures will be fixed by the Ward-identity, and the others will be unconstrained. For example, given a collection of currents $J_\mu^a$ generating a nonabelian symmetry with structure constants $f^{abc}$, the three-point function will have the form
+\be
+\<J^a J^b J^c\> &= f^{abc}\x(\textrm{Ward-identity structure}) + \textrm{other structures}.
+\ee
+
+\subsection{The stress-tensor}
+
+Some OPE coefficients of the stress-tensor are also fixed by Ward identities in a similar way. Again, there is only a single conformally-invariant structure for the three-point function $\<\f_i \f_j T^{\mu\nu}\>$. The integral of $T^{\mu\nu}$ gives the conformal charges acting on a two-point function, so $f_{ij T}$ must be proportional to $C_{ij}=\<\f_i \f_j\>$.
+
+To compute the constant of proportionality, let us jump straight to the OPE
+\be
+T^{\mu\nu}(x) \f_i(0) &= f_{T i}{}^{j} \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}} \f_j(0) + \dots,
+\ee
+where $f_{Ti}{}^k C_{kj}=f_{Tij}$. One can derive this expression by taking the correlator of both sides with another scalar and using (\ref{}). However, a shortcut is to use dimensional analysis and tracelessness of $T^{\mu\nu}$ to fix the form that the OPE can take. One can check that the result is automatically conserved (away from the origin).
+
+Note that the dilatation operator is given by
+\be
+D &= - \int_\Sigma dS_\mu x_\nu T^{\mu\nu}.
+\ee
+Applying this above, we find
+\be
+\De_i \f_i(0) &= D(\Sigma) \f_i(0) = -f_{Ti}{}^j \int dS_\mu \frac{d-1}{d}\frac{x^\mu}{x^d} \f_j(0) \nn\\
+&= -\frac{d-1}{d}S_d f_{Ti}{}^j \f_j(0).
+\ee
+Thus, we have the OPE
+\be
+\label{eq:tope}
+T^{\mu\nu}(x) \f_i(0) &= - \frac{d\De_i}{S_d(d-1)} \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}} \f_i(0) + \dots
+\ee
+As usual, the coefficients of all descendent operators $\ptl\cdots\ptl \f_i$ are fixed by conformal invariance in terms of the same OPE coefficient
+\be
+T^{\mu\nu}(x_1) \f_i(x_2) &= - \frac{d\De_i}{S_d(d-1)}C^{\mu\nu}(x_{12},\ptl_2) \f_i(x_2) + \dots
+\ee
+Computing the next 
+
+As before, this result shows that no other scalars can appear in the $T\x \f_i$ OPE. Operators with spin can appear, but the integrals of their corresponding terms over the sphere must vanish. When $\cO_i$ have spin, there can be multiple three-point structures for $\<\cO_i \cO_j T^{\mu\nu}\>$. Generically, one of them is fixed by Ward identities to be proportional to $\De_i$ and another is fixed to be related to the rotation generators $\cS_{\mu\nu}$. (This latter type of Ward identity is trivial in the scalar case.) The other structures are unconstrained.
+
+\subsection{Two-point functions of conserved currents}
+
+In our discussion of conformal blocks, we used a convention that all two-point functions are normalized (\ref{eq:canonicallynormalizedtwopt}) as,
+\be
+\label{eq:standardtwopt}
+\<\cO^{a}(x) \cO^{b}(0)\> &= \frac{I^{ab}(x)}{x^{2\De}},
+\ee
+where $I^{ab}(x)$ is a standard tensor. For example, for a traceless symmetric tensor
+\be
+I^{\mu_1\mu_2}{}_{\nu_1\nu_2}(x) &= I^{(\mu_1}{}_{\nu_1}(x) \cdots I^{\mu_\ell)}{}_{\nu_\ell}(x)-\textrm{traces}.
+\ee
+However, conserved currents and the stress tensor come with a canonical normalization given by demanding that their integrals give the correct charges. Alternatively, we can imagine computing $J^\mu,T^{\mu\nu}$ using the Noether procedure, and this does not give us the freedom to rescale them. The OPEs (\ref{eq:jope}) and (\ref{eq:tope}) are written using this canonical normalization.
+
+In the canonical normalization, we have
+\be
+\<J^\mu(x)J_\nu(0)\> &= C_J \frac{I^{\mu}{}_{\nu}(x)}{x^{2(d-1)}} \nn\\
+\<T^{\mu\nu}(x) T_{\rho\s}(0)\> &= C_T \frac{I^{(\mu}{}_{\rho}(x) I^{\nu)}{}_{\s}(x)-\frac{1}{d} \de^{\mu\nu}\de_{\rho\s}}{x^{2d}}.
+\ee
+The two-point coefficients $C_J, C_T$ are interesting physical observables. 
+
+When an operator has a non-standard two-point function $\<\cO(x) \cO(0)\> = C_\cO I(x)/x^{2\De}$, the corresponding coefficients in the conformal block expansion get modified according to
+\be
+f_{\f\f\cO}^2 &\to \frac{f_{\f\f\cO}^2}{C_\cO}.
+\ee
+For example, the coefficient of the stress-tensor in the conformal block expansion of $\<\f\f\f\f\>$ is proportional to
+\be
+\frac{f_{\f\f T}^2}{C_T} &\propto \frac{\De_\f^2}{C_T}.
+\ee
+
+\section{2 dimensions}
+
+
 
 \begin{appendix}
 \end{appendix}
