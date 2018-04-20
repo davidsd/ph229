@@ -79,6 +79,8 @@
 \newcommand\bs{\mathbf{s}}
 \newcommand\draftnote[1]{{\color{blue} #1}}
 \newcommand\C{\mathbb{C}}
+\renewcommand\bar[1]{\overline{#1}}
+\newcommand\SL{\mathrm{SL}}
 
 \newcommand\stoplecture{
 \stepcounter{LectureCounter}
@@ -92,6 +94,8 @@
 \newtheorem{exercise}{Exercise}[section]
 \let\Exercisefont\itshape
 \def\Exerciseheadfont{\bfseries}
+
+\numberwithin{equation}{section}
 
 \begin{document}
 
@@ -1440,7 +1444,7 @@ Here are some properties of the $O(N)$-model:
 u_* &= \frac{2\pi^2 \e}{N+8} + O(\e^2).
 \ee
 
-\item At large $N\gg 1$, the theory can be solved in any $d$ in an expansion in $1/N$. In particular, it can be solved directly in $d=3$. One can then try to recover information about the cases $N=1,2,3$ by extrapolating to small-$N$.  This extrapolation is sometimes successful quantitatively, but it can also help build further intuition about the spectrum of the small-$N$ theories.\footnote{Another important feature of the $O(N)$ models is that at large-$N$, they have a known holographic dual in AdS$_4$. The dual theory is due to Vasiliev and the duality was discovered by Klebanov and Polyakov \arXiv{}.}
+\item At large $N\gg 1$, the theory can be solved in any $d$ in an expansion in $1/N$. In particular, it can be solved directly in $d=3$. One can then try to recover information about the cases $N=1,2,3$ by extrapolating to small-$N$.  This extrapolation is sometimes successful quantitatively, but it can also help build further intuition about the spectrum of the small-$N$ theories.\footnote{Another important feature of the $O(N)$ models is that at large-$N$, they have a known holographic dual in AdS$_4$. The dual theory is due to Vasiliev and the duality was discovered by Klebanov and Polyakov \cite{}.}
 
 \end{itemize}
 
@@ -1647,6 +1651,7 @@ Taking the divergence $\frac{\ptl}{\ptl x^\mu}$ on the right-hand side we get
 \be
 \ptl_x^\nu \ptl_x^2 \frac{1}{(x-y)^{d-2}} &\propto \ptl_x^\nu \de^d(x-y).
 \ee
+We will derive the behavior (\ref{eq:examplesingularity}) in section~\ref{}.
 
 A stress tensor is always present in a continuum QFT. However, in a lattice model, a stress tensor must be emergent (if it exists).
 
@@ -1735,7 +1740,7 @@ T^{\mu\nu} &= \ptl^\mu \f \ptl^\nu \f - \frac 1 2 g^{\mu\nu} (\ptl \f)^2 - \xi (
 In other words, $\xi$ determines a choice of improvement term in (\ref{eq:improv}).
 \end{exercise}
 
-A related complication that this formalism avoids is that the Noether procedure doesn't automatically give a symmetric stress tensor (it does for the free scalar, but that was luck), and one must find an improvement term that fixes this. In the background metric formalism, the stress tensor is automatically symmetric.
+A related complication that this formalism avoids is that the Noether procedure doesn't automatically give a symmetric stress tensor (it does for the free scalar, but that was luck), and one might need to find an improvement term that fixes this. In the background metric formalism, the stress tensor is automatically symmetric.
 
 A disadvantage of the background metric approach is that it might not be obvious how to couple a given UV system (e.g.\ a lattice model) to a nontrivial metric. For the Ising CFT, we can take advantage of the fact that there exists a continuum field theory (i.e.\ $\f^4$ theory) in its universality class, which manifestly can be coupled to curved space. However, for more general CFTs, the assumption that they can be coupled  to a background metric is nontrivial.\footnote{In fact, some theories have local gravitational anomalies that mean they are not precisely diffeomorphism invariant. However, this is a very mild breaking of diffeomorphism invariance and doesn't affect our analysis.}
 
@@ -1883,16 +1888,16 @@ An insertion of $U_{\Z_2}(\Sigma)$ is defined by
 \<U_{\Z_2}(\Sigma) \cO_1\cdots \cO_n \> &\equiv \sum_{\{s_i\}}  \cO_1\cdots \cO_n e^{K\sum_{\<ij\>} p_{i,j}(\Sigma) s_i s_j}.
 \ee
 
-Why is the operator $U_{\Z_2}(\Sigma)$ topological? Consider a deformation $\Sigma\to \Sigma'$. We can transform $U_{\Z_2}(\Sigma)$ into $U_{\Z_2}(\Sigma')$ by doing a change of variables $s_i\to -s_i$ for all spins between $\Sigma$ and $\Sigma'$ in the path integral (\ref{eq:pathintegralwithUinserted}).
+Why is the operator $U_{\Z_2}(\Sigma)$ topological? Consider a deformation $\Sigma\to \Sigma'$. Because $\Sigma$ and $\Sigma'$ are homologous, their difference is the boundary of a region $\mathcal{R}$, i.e.\ $\ptl\mathcal{R}=\Sigma-\Sigma'$. We can transform $U_{\Z_2}(\Sigma)$ into $U_{\Z_2}(\Sigma')$ by doing a change of variables $s_i\to -s_i$ in the path integral (\ref{eq:pathintegralwithUinserted}) for all spins in $\mathcal{R}$.
 
-When we flip the spins between $\Sigma$ and $\Sigma'$, any $\Z_2$-odd operator in that region will also flip sign. Thus, $U_{\Z_2}(\Sigma)$ can be deformed freely, but when we move it past an operator, we pick up a factor of the $\Z_2$ charge of that operator. For example, if $B$ is a ball containing an operator $\cO$ (and no other operators), we have
+When we flip the spins in $\mathcal{R}$, any $\Z_2$-odd operator in that region will also flip sign. Thus, $U_{\Z_2}(\Sigma)$ can be deformed freely, but when we move it past an operator, we pick up the $\Z_2$ charge of that operator. For example, if $B$ is a ball containing an operator $\cO$ (and no other operators), we have
 \be
 \label{eq:ztsphere}
 \<U_{\Z_2}(\ptl B) \cO \cdots\> &= q_\cO\< \cO\cdots\>,\qquad q_\cO=\pm 1.
 \ee
 This equation is exactly analogous to (\ref{eq:integratedwardidentity}).
 
-Consider inserting $U_{\mathbb{Z}_2}$ on a spatial slice $\Sigma_t$ at fixed time $t$.\footnote{Since we are on a lattice, $t$ is discrete. As usual, we are free to choose any lattice direction as time.} After quantization, $U_{\mathbb{Z}_2}(\Sigma_t)$ becomes an operator $\hat U_{\mathbb{Z}_2}$ that is independent of $t$ --- in other words it is conserved --- because $U_{\mathbb{Z}_2}$ is topological. The only effect of $t$ is to determine the ordering of quantum operators. For example, assuming $t_3>t_2>t_1$, we have\footnote{When $\Sigma$ is inserted between two rows of spins, we evolve from one row to the next using either $\hat T \hat U_{\mathbb{Z}_2}$ or $ \hat U_{\mathbb{Z}_2}\hat T$, where $\hat T$ is the transfer matrix. The two choices are the same because $\hat U_{\mathbb{Z}_2}$ commutes with $\hat T$. This is one way of saying that $\hat U_{\mathbb{Z}_2}$ is conserved.}
+Consider inserting $U_{\mathbb{Z}_2}$ on a spatial slice $\Sigma_t$ at fixed time $t$.\footnote{Since we are on a lattice, $t$ is discrete. As usual, we are free to choose any lattice direction as time.} After quantization, $U_{\mathbb{Z}_2}(\Sigma_t)$ becomes an operator $\hat U_{\mathbb{Z}_2}$ that is independent of $t$ (i.e.\ conserved) because $U_{\mathbb{Z}_2}$ is topological. The only effect of $t$ is to determine the ordering of quantum operators. For example, assuming $t_3>t_2>t_1$, we have\footnote{When $\Sigma$ is inserted between two rows of spins, we evolve from one row to the next using either $\hat T \hat U_{\mathbb{Z}_2}$ or $ \hat U_{\mathbb{Z}_2}\hat T$, where $\hat T$ is the transfer matrix. The two choices are the same because $\hat U_{\mathbb{Z}_2}$ commutes with $\hat T$. This is one way of saying that $\hat U_{\mathbb{Z}_2}$ is conserved.}
 \be
 \<\cO_3(t_3) U_{\Z_2}(\Sigma_{t_2}) \cO_1(t_1)\> &= \<0|\hat \cO_3(t_3) \hat U_{\mathbb{Z}_2} \hat \cO_1(t_1)|0\>.
 \ee
@@ -1911,11 +1916,12 @@ By now it should be clear that $\hat U_{\mathbb{Z}_2}$ is the generator of a $\m
 
 \subsubsection{Implementation in the continuum}
 
-The operator $U_{\mathbb{Z}_2}$ can also be defined in continuum $\f^4$ theory as follows. Given a surface $\Sigma$, let us cover it with small open balls $B_i$ such that $\Sigma$ splits each ball into two pieces $B_i^\mathrm{left}\cup B_i^\mathrm{right}$. We do this so we don't have to  worry about the global structure of $\Sigma$. The action without an insertion of $U_{\mathbb{Z}_2}(\Sigma)$ is the integral of a Lagrangian density
+The operator $U_{\mathbb{Z}_2}$ can also be defined in continuum $\f^4$ theory as follows. Given a surface $\Sigma$, let us cover space with small open balls $B_i$ such that $\Sigma$ splits each ball into at most two pieces $B_i^\mathrm{left}\cup B_i^\mathrm{right}$ (one of which might be empty). We do this so we don't have to  worry about the global structure of $\Sigma$. The action without an insertion of $U_{\mathbb{Z}_2}(\Sigma)$ can be written as
 \be
-S[\phi] &= \sum_{i} \int_{B_i} d^d x \cL[\f](x),\nn\\
-\cL[\phi](x) &= \frac 1 2 (\ptl \f)^2 + \dots.
+S[\phi] &= \sum_{i} \int_{B_i} d^d x  f_i(x) \cL[\f](x),\nn\\
+\cL[\phi](x) &= \frac 1 2 (\ptl \f)^2 + \dots,
 \ee
+where $f_i(x)$ is a partition of unity for the balls $B_i$. This means that $f_i$ are functions such that $f_i$ is supported inside $B_i$ and $\sum_i f_i = 1$.
 Note that $S[\phi]$ favors configurations where $\f$ is slowly-varying.
 
 To insert $U_{\mathbb{Z}_2}(\Sigma)$, we would like to instead favor configurations where $\f$ flips sign as it crosses $\Sigma$. Let 
@@ -1927,7 +1933,7 @@ To insert $U_{\mathbb{Z}_2}(\Sigma)$, we would like to instead favor configurati
 \ee
 The modified action is given by
 \be
-S'[\phi] &= \sum_i\int_{B_i} d^d x \cL[\f'_i](x).
+S'[\phi] &= \sum_i\int_{B_i} d^d x f_i(x) \cL[\f'_i](x).
 \ee
 Inserting $U_{\mathbb{Z}_2}(\Sigma)$ means performing the path integral with the modified action $S'$,
 \be
@@ -1948,7 +1954,7 @@ This turns $S'$ back into $S$, but with the cost of introducing ``twisted" bound
 \ee
 where $\b$ is the length of the time circle. The path integral with twisted boundary conditions is often more straightforward to evaluate.
 
-One effect of inserting $U_{\mathbb{Z}_2}$ on a spatial slice $T^{d-1}\subset T^d$ is that correlators of $\Z_2$-odd operators in the presence of $U_{\mathbb{Z}_2}(T^{d-1})$ become antiperiodic in the time direction. This is because to move them around the time circle, we must cross $U_{\mathbb{Z}_2}$, and doing so introduces a sign. This can also be understood in terms of twisted boundary conditions: any operator made of an odd number of $\f$'s will also satisfy the antiperiodicity condition (\ref{eq:antiperiodicity}).
+One effect of inserting $U_{\mathbb{Z}_2}$ on a spatial slice $T^{d-1}\subset T^d$ is that correlators of $\Z_2$-odd operators in the presence of $U_{\mathbb{Z}_2}(T^{d-1})$ become antiperiodic in the time direction. This is because to move them around the time circle, we must cross $U_{\mathbb{Z}_2}$, and doing so introduces a sign. This can also be understood in terms of twisted boundary conditions: any operator made of an odd number of $\f$'s will be antiperiodic because of (\ref{eq:antiperiodicity}).
 
 \subsection{More spacetime symmetries}
 
@@ -2115,6 +2121,7 @@ where $c(x)$ is any scalar function.  Contracting both sides with $\de^{\mu\nu}$
 
 Equation (\ref{eq:conformalkilling}) is the {\it conformal\/} Killing equation. Let us find its solutions in $\R^d$. Taking $\ptl^\nu\ptl^\mu$ of both sides, we find
 \be
+\label{eq:termneededforvirasoro}
 \p{2-\frac 2 d} \ptl^2(\ptl\.\e) = 0\quad \implies \quad \ptl^2 (\ptl \. \e)=0,
 \ee
 where we have assumed that $d\neq 1$. Now taking $\ptl^\nu\ptl_\rho$ and symmetrizing in $(\rho\mu)$, we find
@@ -2146,20 +2153,27 @@ The corresponding symmetry charges are $D=Q_d$ and $K_\mu=Q_{k_\mu}$. Overall, t
 \ee
 solutions to the conformal Killing equation in $d>2$, each with an associated conserved charge.
 
-Now let us return to the case $d=2$. It is natural to write the conformal Killing equation in terms of holomorphic and antiholomorphic coordinates $\e = \e \ptl_z + \bar \e \ptl_{\bar z}$, where $\e,\bar \e$ are initially independent functions of both $z$ and $\bar z$. In this language, the conformal Killing equation becomes
+Now let us return to the case $d=2$. It is convenient to use holomorphic and antiholomorphic coordinates $\e = \e^z \ptl_z + \e^{\bar z} \ptl_{\bar z}$. In these coordinates, the conformal Killing equation (\ref{eq:conformalkilling}) becomes
 \be
-\ptl_z \bar \e = 0,\quad \ptl_{\bar z} \e = 0.
+\ptl_z \bar \e^{\bar z} = 0,\quad \ptl_{\bar z} \e^z = 0.
 \ee
-(The equation involving $\ptl_z \e + \ptl_{\bar z} \bar \e$ is tautological.) A general solution is given by choosing $\e$ to be a function of $z$ alone, and $\bar \e$ to be a function of $\bar z$ alone,
+(The equation involving $\ptl_z \e^{z} + \ptl_{\bar z} \bar \e^{\bar z}$ is tautological.) A general solution is given by choosing $\e^z$ to be a function of $z$ alone, and $\e^{\bar z}$ to be a function of $\bar z$ alone,
 \be
-\e &= \e(z) \ptl_z + \bar \e(\bar z) \ptl_{\bar z}.
+\label{eq:killingvectwod}
+\e^z(z,\bar z) &= \e(z) \nn\\
+\e^{\bar z}(z,\bar z) &= \bar \e(z)
 \ee
 Note that this includes the solutions $p_\mu,m_{\mu\nu},k_\mu,d$ along with many others.
 Consequently, 2d CFTs have an infinite set of conserved charges given by the integral of the stress tensor against a holomorphic or antiholomorphic vector field. We will study the implications of this infinite set of charges in section~\ref{}. For now we focus on the charges that are present in any $d$.
 %\footnote{The above solutions are present in any spacetime dimension.  In two dimensions, there exists an infinite set of additional solutions to the conformal Killing equation, leading to an infinite set of additional conserved quantities \cite{Belavin:1984vu}.}
 
+Finally, let us discuss the case $d=1$. A general vector 1-dimensional vector field has the form $\e(t)\ptl_t$. The conformal Killing equation reads
+\be
+2 \ptl_t \e(t) &= 2 \ptl_t \e(t),
+\ee
+which is tautological. Another way to say this is that in 1-dimension every diffeomorphism is a conformal transformation. 1d CFTs are thus diffeomorphism-invariant, so they are topological QFTs (TQFTs). The underlying reason is that the trace of the stress tensor in 1d is $T^{00}$, which is also the Hamiltonian. Thus, tracelessness means the Hamiltonian vanishes so the theory has no nontrivial time-dependence.
 
-\draftnote{Discuss 1 dimension}
+Because 1d CFTs are essentially trivial according to this definition, people sometimes use different definitions of 1d CFT that allow for more nontrivial dynamics.
 
 \stoplecture
 
@@ -2220,6 +2234,7 @@ The charges $Q_\e$ give a representation of the conformal algebra
 where $[\e_1,\e_2]$ is a commutator of vector fields.\footnote{The minus sign in (\ref{eq:conformalalgebra}) comes from the fact that when charges $Q_i$ are represented by differential operators $\cD_i$, repeated action reverses the order $[Q_1,[Q_2,\cO]]=\cD_2 \cD_1 \cO$.  Alternatively, we could have introduced an extra minus sign in the $Q$'s so that $[Q,\cO]=-\cD$ and then $Q,\cD$ would have the same commutation relations.}  This is not obvious and deserves proof. In fact, it is {\it not true\/} in 2-dimensional CFTs, where the algebra of charges is a central extension of the the algebra of conformal killing vectors.
 
 \begin{exercise}
+\label{exercise:primarytransofmationfort}
 Show that in $d\geq 3$,
 \be
 \label{eq:conformaltransfofT}
@@ -2233,7 +2248,8 @@ Using (\ref{eq:conformaltransfofT}), prove the commutation relation (\ref{eq:con
 \end{exercise}
 
 \begin{exercise}
-When $d=2$, it's possible to add an extra term in (\ref{eq:conformaltransfofT}) proportional to the unit operator that is consistent with dimensional analysis, conservation, and tracelessness.  Find this term (up to an overall coefficient),\footnote{The coefficient can be fixed by comparing with the OPE, see e.g. \cite{Polchinski:1998rq}. It is proportional to the central charge $c$.} and show how it modifies the commutation relations (\ref{eq:conformalalgebra}). This is the Virasoro algebra!
+\label{exercise:virasoro}
+When $d=2$, it's possible to add two extra terms in (\ref{eq:conformaltransfofT}) proportional to the unit operator that are consistent with dimensional analysis, conservation, and tracelessness.  One of these terms breaks parity ($i.e.$ it depends on the 2d epsilon symbol) and the other doesn't. Find the parity-preserving term (up to an overall coefficient),\footnote{The coefficient can be fixed by studying a two-point function of stress tensors, see section~\ref{sec:determinec}. It is proportional to the central charge $c$.} and show how it modifies the commutation relations (\ref{eq:conformalalgebra}). This is the Virasoro algebra! Bonus question: what is the parity-breaking term?
 \end{exercise}
 
 \draftnote{Write out more of this in detail.}
@@ -2357,6 +2373,7 @@ If we had an operator with negative scaling dimension, then its correlators woul
 
 
 \subsection{Conformal representations}
+\label{sec:conformalreps}
 
 Note that $K_\mu$ is a lowering operator for dimension,
 \be
@@ -2553,6 +2570,7 @@ All other permutations can be generated from the ones above.  We will see shortl
 For operators with spin, the solutions to the conformal Ward identities are more complicated. We will discuss two different approaches, both with advantages and disadvantages. The first approach is to relate an arbitrary configuration of points to some standard configuration (``conformal frame"), where the Ward identities are easier to solve. This is the same type of argument we used above to show that a four-point function can depend on two conformal cross-ratios.
 
 \subsubsection{Two-point functions}
+\label{sec:twoptsection}
 
 Consider a two-point function of primary operators $\cO_1^a, \cO_2^b$ transforming in representations $\rho_1,\rho_2$ of $\SO(d)$, with dimensions $\De_1,\De_2$. Here, $a,b$ are indices for $\rho_1,\rho_2$, respectively. The Ward identity (\ref{eq:finiteprimarytransformation}) implies
 \be
@@ -2651,6 +2669,7 @@ For traceless symmetric tensor operators $\cO_1^{\mu_1\cdots\mu_\ell}$ and $\cO_
 \ee
 Here, parentheses $(\mu_1\cdots\mu_\ell)$ mean we symmetrize the given indices,\footnote{it is only necessary to symmetrize in either $\mu$ or $\nu$, but we symmetrize both for clarity} and ``$-\textrm{traces}$" means we subtract terms proportional to $\de^{\mu_i\mu_j}$ and $\de_{\nu_i\nu_j}$ to make the result traceless. For example, for spin-2 operators,
 \be
+\label{eq:spintwotwopt}
 &\<\cO_1^{\mu_1\mu_2}(0) \cO_{2,\nu_1\nu_2}(x)\>\nn\\
 &=
 c_{12} \frac{\frac{1}{2}(I^{\mu_1}{}_{\nu_1}(x)I^{\mu_2}{}_{\nu_2}(x) + I^{\mu_2}{}_{\nu_1}(x)I^{\mu_1}{}_{\nu_2}(x)) - \frac{1}{d} \de^{\mu_1\mu_2} \de_{\nu_1\nu_2}}{x^{2\De}}.
@@ -3434,6 +3453,7 @@ If $\f_1,\f_2$ are real scalars and $\cO$ is a real operator with spin $\ell$ in
 Substituting (\ref{eq:scalarscalarspinL}) gives $f_{\f_1\f_2\cO}^*=f_{\f_1\f_2\cO}$.
 
 \subsection{Reflection Positivity on the Cylinder}
+\label{sec:reflposcyl}
 
 Reflection-positivity (or unitarity) has interesting consequences for CFTs on the cylinder.  The Hermitian conjugate of a real cylinder operator is
 \be
@@ -3457,8 +3477,10 @@ Check that the two-point function of spin-1 operators (\ref{eq:finalresultforVV}
 Applying (\ref{eq:conjugateforspin}) to the stress tensor, we find that 
  the action of conjugation on the conformal charges in radial quantization is
 \be
-Q_\e^\dag &= -Q_{I\e I}.
+Q_\e^\dag &= -Q_{I\e^{*\nu}I^{-1}}.
 \ee
+Here, $I\e^{*\nu}I^{-1}$ is defined by its action on functions $f(x)$. The action of $I$ on functions is given by $(If)(x)=f(I(x))$.
+The minus sign comes from the fact that the unit normal vector $x^\mu/|x|$ used in defining the charges flips sign under an inversion.
 In particular, we have
 \be
 \label{eq:mantihermitian}
@@ -3579,6 +3601,7 @@ We are now ready to define the dual state to $|\cO^a\>$ in radial quantization:
 where $y=x/x^2$.
 We have given $\<\cO_a|$ a lowered index because it transforms in the dual representation $\rho^*$. A nice property of BPZ conjugation is that the limit $\<\cO_a|$ is independent of the direction along which we take $\cO^\dag$ to infinity. We can see this by computing an inner product
 \be
+\label{eq:bpznormprim}
 \<\cO_b|\cO^a\> &= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) \<0|\cO^{\dag \bar a}(y) \cO^a(0)|0\> \nn\\
 &= \lim_{y\to \oo} y^{2\De} g_{b\bar a}(y) c_\cO \frac{g^{\bar a a}(y)}{y^{2\De}} \nn\\
 &= c_\cO \de_b^a.
@@ -4034,6 +4057,8 @@ g_{\De,\ell}^{(4d)}(u,v) &\propto \frac{z \bar z}{z-\bar z}\p{k_{\De+\ell}(z)k_{
 Note that the $\mathrm{SL}(2,\R)$ conformal block appears again, but in a more complicated way.
 In odd dimensions, no explicit formula in terms of elementary functions is known.  However the blocks can still be computed in a series expansion using the Casimir equation or alternative techniques like recursion relations. We will re-compute the (\ref{eq:explicitblock2d}) from an elementary sum over states in section~\ref{}.
 
+\stoplecture
+
 \subsection{Series Expansion}
 
 It will be helpful to understand the series expansion of the conformal blocks in more detail.
@@ -4211,14 +4236,14 @@ Argue that by choosing different operators $\cO_4$ and taking linear combination
 
 %Most of the rest of this course will be devoted to studying its implications for the simplest possible case: a four-point function of identical scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$.  
 
-%\subsubsection{Additional Structures and Consistency Conditions}
-%\label{sec:additionalstructures}
-%
-%Before jumping in, let us reflect on the implications of exercise~\ref{ex:crossingexercise}:  A solution to the crossing equations~(\ref{eq:graphicalcrossing}) gives a completely nonperturbative definition of flat-space correlation functions of local operators, without the need for a Lagrangian.  This is most of the way towards a full theory. However, some structures associated with local QFTs are missing, and additional structures might bring new consistency conditions.
-%
-%Firstly, CFTs can admit extended objects like line operators, surface operators, boundaries, and interfaces. These objects have additional data associated with them, and it's possible to write down OPEs and crossing equations that relate this data to itself and the usual CFT data, see e.g. \cite{Liendo:2012hy,Gaiotto:2013nva}.  It is also interesting to consider correlation functions on manifolds not conformally equivalent to flat space. An example includes the theory at finite temperature (discussed in footnote~\ref{foot:finitetemperature}). This introduces more data, for example the one-point functions of local and extended operators on nontrivial manifolds.\footnote{It is known that this data is not determined by the local operator spectrum.  For example, pure Chern-Simons theory has no local operators at all, but has interesting nonlocal observables that depend on the gauge group and level \cite{Witten:1988hf}.  Also, 4d conformal gauge theories admit different sets of line operators for the same set of local operators \cite{Aharony:2013hda}.} Other interesting constraints come from studying CFTs in Lorentzian signature. Examples include bounds from energy positivity \cite{Hofman:2008ar}, dispersion relations \cite{Komargodski:2011vj,Nachtmann:1973mr,Komargodski:2012ek,Komargodski:2016gci}, and causality \cite{Maldacena:2015waa,Hartman:2015lfa}.
-%
-%The full set of data and consistency conditions associated with a CFT is not known in general. However, we do have examples of constraints on local operators beyond the OPE and crossing equations. The most famous is modular invariance: the requirement that the partition function of a 2d CFT on the torus $T^2$ be invariant (or covariant) under large diffeomorphisms.  Imposing modular invariance is an additional step that must be performed after solving the crossing equations in 2d CFTs \cite{Moore:1988uz}.\footnote{2d is special because the space of states on a spatial slice $S^1\subset T^2$ is the same as the space of states in radial quantization, and thus modular invariance on $T^2$ directly constrains local operators.  This is not true in $d\geq 3$, so it is not clear how modular invariance on $T^d$ constrains local operators in that case.}
+\subsubsection{Additional Structures and Consistency Conditions}
+\label{sec:additionalstructures}
+
+Let us reflect on the implications of exercise~\ref{ex:crossingexercise}:  A solution to the crossing equations~(\ref{eq:graphicalcrossing}) gives a completely nonperturbative definition of flat-space correlation functions of local operators, without the need for a Lagrangian.  This is most of the way towards a full theory. However, some structures associated with local QFTs are missing, and additional structures might bring new consistency conditions.
+
+Firstly, CFTs can admit extended objects like line operators, surface operators, boundaries, and interfaces. These objects have additional data associated with them, and it's possible to write down OPEs and crossing equations that relate this data to itself and the usual CFT data, see e.g. \cite{Liendo:2012hy,Gaiotto:2013nva}.  It is also interesting to consider correlation functions on manifolds not conformally equivalent to flat space. An example includes the theory at finite temperature (discussed in footnote~\ref{foot:finitetemperature}). This introduces more data, for example the one-point functions of local and extended operators on nontrivial manifolds.\footnote{It is known that this data is not determined by the local operator spectrum.  For example, pure Chern-Simons theory has no local operators at all, but has interesting nonlocal observables that depend on the gauge group and level \cite{Witten:1988hf}.  Also, 4d conformal gauge theories admit different sets of line operators for the same set of local operators \cite{Aharony:2013hda}.} Other interesting constraints come from studying CFTs in Lorentzian signature. Examples include bounds from energy positivity \cite{Hofman:2008ar}, dispersion relations \cite{Komargodski:2011vj,Nachtmann:1973mr,Komargodski:2012ek,Komargodski:2016gci}, and causality \cite{Maldacena:2015waa,Hartman:2015lfa}.
+
+The full set of data and consistency conditions associated with a CFT is not known in general. However, we do have examples of constraints on local operators beyond the OPE and crossing equations. The most famous is modular invariance: the requirement that the partition function of a 2d CFT on the torus $T^2$ be invariant (or covariant) under large diffeomorphisms.  Imposing modular invariance is an additional step that must be performed after solving the crossing equations in 2d CFTs \cite{Moore:1988uz}.\footnote{2d is special because the space of states on a spatial slice $S^1\subset T^2$ is the same as the space of states in radial quantization, and thus modular invariance on $T^2$ directly constrains local operators.  This is not true in $d\geq 3$, so it is not clear how modular invariance on $T^d$ constrains local operators in that case.} We will study modular invariance in more detail in section~\ref{}.
 %
 \subsection{Crossing Symmetry for Identical Scalars} 
 The crossing equation (\ref{eq:graphicalcrossing}) is a powerful but complicated constraint on the CFT data.  
@@ -4244,6 +4269,38 @@ Eq.~(\ref{eq:invariantunderonetwo}) shows that invariance of the four-point func
 
 %We know at least two operators present in the $\f\x\f$ OPE: the unit operator and the stress tensor.  Normalizing $\f$ so that $\<\f(x)\f(0)\>=x^{-2\De_\f}$, we have $f_{\f\f\mathbf{1}}=1$.  The stress tensor three-point coefficient is set by Ward identities to be $f_{\f\f T_{\mu\nu}}\propto \De_\f/\sqrt{C_T}$, where $C_T$ is the coefficient of the two-point function of the canonically normalized stress tensor (\ref{eq:twopointfunctionofspinL}).  The factor of $1/\sqrt{C_T}$ relative to (\ref{eq:stresstensorward}) comes from choosing the basis of operators $\cO$ to be orthonormal.
 
+\stoplecture
+
+\subsection{An infinite number of primaries}
+
+As a preview of how the crossing equation works, consider $2$-dimensions. Let us specialize to $z=\bar z$, and study the equation at small $z$. The leading term on the left-hand side is the unit operator, which has conformal block given by
+\be
+g_{\De=0,\ell=0}(u,v) &= 1.
+\ee
+On the right-hand side, expanding the blocks at small $z$, we find
+\be
+g_{\De,\ell}^{(2d)}(v,u)|_{z=\bar z} &= 2 k_{\De+\ell}(1-z) k_{\De-\ell}(1-z)\nn\\
+& \sim \log^2 z + \dots,
+\ee
+where $\dots$ represents less singular terms as $z\to 0$.
+
+Thus, the structure of the crossing equation is
+\be
+1 &\sim z^{2\De_\f} \sum_\cO (\log^2 z + \dots).
+\ee
+This immediately looks like a contradiction because $\lim_{z\to 0} z^{2\De_\f} \log^2 z = 0$, but the left-hand side is nonzero.
+
+The problem is that the sum $\sum_\cO$ does not commute with the small-$z$ expansion of the blocks. A toy model for what's happening is the expression
+\be
+\lim_{z\to 0} \sum_{n=0}^\oo z e^{-n z}.
+\ee
+Taking the limit inside the sum, we get 0 term-by-term. However, this is incorrect. We must perform the sum first, giving $\lim_{z\to 0} \frac{z}{1-e^{-z}}=1$. The key point is that while $e^{-nz}$ is regular at $z=0$, an infinite sum of terms of the form $e^{-nz}$ can become singular at $z=0$.
+
+A similar phenomenon occurs in the crossing equation. Although each individual block on the right-hand side has at most a $\log^2 z$ singularity as $z\to 0$, an infinite sum of blocks can give an enhanced singularity of the form $z^{-2\De_\f}$, which cancels the $z^{2\De_\f}$ to give $1$.
+
+We conclude that any CFT must have an infinite number of primary operators, since this is necessary for consistency of the crossing equation.
+
+One of our main goals for the rest of the course will be to study the crossing equations and find solutions if possible. 2-dimensional CFTs possess extra symmetries that will allow us to make significant progress in this direction. We will specialize to 2-dimensions in section~\ref{sec:twod}. Before we do so, there are a few more results to discuss in higher dimensions.
 
 \section{Ward identities}
 
@@ -4261,13 +4318,14 @@ Suppose $\f(x)$ is a complex scalar with charge $q$ under $Q$,
 \be
 [Q,\f(x)] &= q \f(x).
 \ee
-The three-point function $\<\f^* \f J\>$ is fixed by conformal symmetry up to a coefficient:
+Recall that the three-point function $\<\f^* \f J\>$ is fixed by conformal symmetry up to a coefficient (equation~(\ref{eq:scalarscalarspinL})):
 \be
 \label{eq:threeptcurrent}
 \<\f^*(x_1) \f(x_2) J^\mu(x_3)\> &= \frac{f_{\f^*\f J}}{x_{12}^{2\De_\f-d+2} x_{23}^{d-2} x_{31}^{d-2}}\p{\frac{x_{13}^\mu}{x_{13}^2} - \frac{x_{23}^\mu}{x_{23}^2}}.
 \ee
 Integrating $x_3$ over a surface $\Sigma$ surrounding $x_2$, we find
 \be
+\label{eq:wardidentitywefind}
 i\int_\Sigma dS_\mu(x_3) \<\f^*(x_1) \f(x_2) J^\mu(x_3)\>
 &=
 \<\f^*(x_1)Q(\Sigma) \f(x_2) \>\nn\\
@@ -4275,56 +4333,60 @@ i\int_\Sigma dS_\mu(x_3) \<\f^*(x_1) \f(x_2) J^\mu(x_3)\>
 \ee
 Plugging in (\ref{eq:threeptcurrent}), we see that $f_{\f\f J}$ is fixed in terms of $q$.
 
-To simplify the computation, it is useful to study the configuration
+It is useful to specialize to the configuration\footnote{Recall that $\f^*(\oo) \equiv \lim_{L\to \oo} L^{2\De_\f} \f^*(Le)$, where $e$ is a unit vector.}
 \be
-\label{eq:ourconfig}
-x_1=\oo,\quad x_2=0,\quad x_3=x.
+\label{eq:specialkinematics}
+\<\f^*(\oo) J^\mu(x) \f(0)\> &= f_{\f^* \f J} \frac{x^\mu}{x^d}.
 \ee
-Recall that $\f^*(\oo) \equiv \lim_{L\to \oo} L^{2\De_\f} \f^*(Le)$, where $e$ is a unit vector. In this configuration, we have
+In this configuration, the Ward identity (\ref{eq:wardidentitywefind}) becomes
 \be
 \label{eq:chargeintegral}
-q &= i\int_\Sigma dS_\mu(x) \frac{f_{\f^*\f J} x^\mu }{x^{d}} \nn\\
- &= i S_d f_{\f^*\f J},
+q &= i\int_\Sigma dS_\mu(x) \frac{f_{\f^*\f J} x^\mu }{x^{d}} = i S_d f_{\f^*\f J},
 \ee
-where $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ is the volume of the unit sphere in $d$-dimensions. The fact that the integral (\ref{eq:chargeintegral}) only depends on the topological class of $\Sigma$ is simply Gauss' law from electrostatics.
+where $S_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}$ is the volume of the unit sphere in $d$-dimensions. The fact that the integral in (\ref{eq:chargeintegral}) only depends on the topological class of $\Sigma$ is simply Gauss' law from electrostatics.
+
+%\begin{exercise}
+%Derive $q=iS_d f_{\f^* \f J}$ directly from (\ref{eq:wardidentitywefind}) without specializing the positions of the operators.
+%\end{exercise}
 
 We can summarize this result by writing the $\f$ term in the $J\x\f$ OPE:
 \be
 J^\mu(x) \f(0) &= -\frac{i}{S_d}q \frac{x^\mu}{x^d} \f(0) + \dots.
 \ee
-Here ``$\dots$" represents descendants of $\f$ and other conformal multiplets. Taking the correlator of both sides with $\f^*(\oo)$, we get back to (\ref{eq:threeptcurrent}) in the configuration (\ref{eq:ourconfig}). Integrating $J^\mu$ around a sphere $\Sigma$ centered at $\f$ gives $Q(\Sigma)\f(0)=q\f(0)$.
+Here ``$\dots$" represents descendants of $\f$ and other conformal multiplets. Taking the correlator of both sides with $\f^*(\oo)$, we get back to (\ref{eq:specialkinematics}). Integrating $J^\mu$ around a sphere $\Sigma$ centered at $\f$ gives $Q(\Sigma)\f(0)=q\f(0)$.
 
 More generally, suppose $\f_i$ are scalar operators. The commutator $[Q,\f_i]$ must be a primary scalar, since $Q$ commutes with the conformal generators. Thus, we can write
 \be
 \label{eq:generalizedQ}
 [Q,\f_i(x)] &= t_i{}^j \f_j(x),
 \ee
-for some matrix $t_i{}^j$. Note that $T_i{}^j$ can only be nonzero if $\De_i=\De_j$, by dimensional analysis.
+for some matrix $t_i{}^j$. Note that $t_i{}^j$ can only be nonzero if $\De_i=\De_j$, by dimensional analysis (more formally, by acting on both sides of (\ref{eq:generalizedQ}) with $D$).
 Repeating the above computation, we find
 \be
 \label{eq:jope}
 J^\mu(x) \f_i(0) &= -\frac{i}{S_d} t_i{}^j \frac{x^\mu}{x^d} \f_j(0) + \dots.
 \ee
-The ``$\dots$" cannot contain other scalar primary operators. Otherwise, by integrating $J$ over a sphere, we would find a contradiction with (\ref{eq:generalizedQ}). Furthermore, the ``$\dots$" cannot contribute to the integral of $J^\mu$ over a sphere. Otherwise, $Q$ would transform $\f_i(0)$ into a non-scalar operator.
+We can also see here that $\f_j$ must have the same dimension as $\f_i$. Otherwise, the $x$-dependence in (\ref{eq:jope}) would be $x^\mu x^{\De_j-\De_i-d}$, which is not conserved.
 
-In general, if $\cO_i$ have spin, there can be multiple three-point structures for $\<\cO_i \cO_j J\>$. One of these three-point structures will be fixed by the Ward-identity, and the others will be unconstrained. For example, given a collection of currents $J_\mu^a$ generating a nonabelian symmetry with structure constants $f^{abc}$, the three-point function will have the form
+In general, if $\cO_i,\cO_j$ have spin, there can be multiple three-point structures for $\<\cO_i \cO_j J\>$. One of these three-point structures will be fixed by the Ward-identity, and the others will be unconstrained. For example, given a collection of currents $J_\mu^a$ generating a nonabelian symmetry with structure constants $f^{abc}$, the three-point function will have the form
 \be
 \<J^a J^b J^c\> &= f^{abc}\x(\textrm{Ward-identity structure}) + \textrm{other structures}.
 \ee
 
 \subsection{The stress-tensor}
+\label{sec:stresstensorward}
 
-Some OPE coefficients of the stress-tensor are also fixed by Ward identities in a similar way. Again, there is only a single conformally-invariant structure for the three-point function $\<\f_i \f_j T^{\mu\nu}\>$. The integral of $T^{\mu\nu}$ gives the conformal charges acting on a two-point function, so $f_{ij T}$ must be proportional to $C_{ij}=\<\f_i \f_j\>$.
+Some OPE coefficients of the stress-tensor are also fixed by Ward identities in a similar way. Again, there is only a single conformally-invariant structure for a three-point function $\<\f_i \f_j T^{\mu\nu}\>$. The integral of $T^{\mu\nu}$ gives the conformal charges, so $f_{ij T}$ must be proportional to $C_{ij}=\<\f_i \f_j\>$.
 
 To compute the constant of proportionality, let us jump straight to the OPE
 \be
 T^{\mu\nu}(x) \f_i(0) &= f_{T i}{}^{j} \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}} \f_j(0) + \dots,
 \ee
-where $f_{Ti}{}^k C_{kj}=f_{Tij}$. One can derive this expression by taking the correlator of both sides with another scalar and using (\ref{}). However, a shortcut is to use dimensional analysis and tracelessness of $T^{\mu\nu}$ to fix the form that the OPE can take. One can check that the result is automatically conserved (away from the origin).
+where $f_{Ti}{}^k C_{kj}=f_{Tij}$. One can derive this expression by taking the correlator of both sides with another scalar and using (\ref{eq:scalarscalarspinL}). However, a shortcut is to use dimensional analysis and tracelessness of $T^{\mu\nu}$ to fix the form that the OPE can take. One can check that the result is automatically conserved (away from the origin).
 
 Note that the dilatation operator is given by
 \be
-D &= - \int_\Sigma dS_\mu x_\nu T^{\mu\nu}.
+D(\Sigma) &= - \int_\Sigma dS_\mu x_\nu T^{\mu\nu}.
 \ee
 Applying this above, we find
 \be
@@ -4336,15 +4398,64 @@ Thus, we have the OPE
 \label{eq:tope}
 T^{\mu\nu}(x) \f_i(0) &= - \frac{d\De_i}{S_d(d-1)} \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}} \f_i(0) + \dots
 \ee
-As usual, the coefficients of all descendent operators $\ptl\cdots\ptl \f_i$ are fixed by conformal invariance in terms of the same OPE coefficient
-\be
-T^{\mu\nu}(x_1) \f_i(x_2) &= - \frac{d\De_i}{S_d(d-1)}C^{\mu\nu}(x_{12},\ptl_2) \f_i(x_2) + \dots
-\ee
-Computing the next 
 
-As before, this result shows that no other scalars can appear in the $T\x \f_i$ OPE. Operators with spin can appear, but the integrals of their corresponding terms over the sphere must vanish. When $\cO_i$ have spin, there can be multiple three-point structures for $\<\cO_i \cO_j T^{\mu\nu}\>$. Generically, one of them is fixed by Ward identities to be proportional to $\De_i$ and another is fixed to be related to the rotation generators $\cS_{\mu\nu}$. (This latter type of Ward identity is trivial in the scalar case.) The other structures are unconstrained.
+We fixed the OPE coefficient $f_{\f_i \f_j T}$ using just the dilatation operator. But what about the other conformal generators? The most interesting case is $P^\mu$.
+\begin{exercise}
+Using conservation and tracelessness of $T^{\mu\nu}$, show that the term proportional to $\ptl \f_i(0)$ in the $T^{\mu\nu}(x)\f_i(0)$ OPE is given by
+\be
+\label{eq:tderivativeterm}
+T^{\mu\nu}(x) \f_i(0) &= (\ref{eq:tope}) + A \p{\frac{x^\mu\ptl^\nu+x^\nu\ptl^\mu-\de^{\mu\nu}x\.\ptl}{x^d}+(d-2)\frac{x^\mu x^\nu}{x^{d+2}}x\.\ptl} \f_i(0) \nn\\
+& \quad + \dots
+\ee
+for some constant $A$. In general, the contribution of $\f_i$ to the OPE is
+\be
+\label{eq:generalopeTphi}
+T^{\mu\nu}(x_1)\f_i(x_2) &= C^{\mu\nu}(x_{12},\ptl_2) \f_i(x_2) + \textrm{other multiplets},
+\ee
+where $C^{\mu\nu}(x,\ptl)$ is a differential operator. By taking the correlator of both sides of (\ref{eq:generalopeTphi}) with $\f_i(x_3)$ and using the known form of a conformally-invariant three-point function (\ref{eq:scalarscalarspinL}), show that
+\be
+A &=\frac{2}{\De_i} f_{Ti}{}^j = -\frac{d}{2S_d(d-1)}.
+\ee
+Check that this is precisely the value needed to give the Ward identity for momentum
+\be
+[P^\mu,\f_i(0)] &= -\int_\Sigma dS_\nu(x) T^{\mu\nu}(x) \f_i(0) = \ptl^\mu \f_i(0),
+\ee
+\end{exercise}
+
+Once we have fixed the coefficient $f_{Ti}{}^j$ using the dilatation Ward identity, we will find that all other Ward identities are automatically satisfied. The situation is different for non-scalar operators $\cO_i$. In this case, there can be multiple conformally-invariant structures for the three-point function $\<\cO_j \cO_i T^{\mu\nu}\>$. In general, Ward identities for both $D$ and $M_{\mu\nu}$ can give nontrivial constraints on these structures. The Ward identities for $P$ and $K$ will follow as a consequence.
+
+%
+%We fixed the OPE coefficient $f_{\f_i \f_j T}$ using just the dilatation operator. But what about the other conformal generators? The most interesting case is $P^\mu$. Let us check how its Ward identity is satisfied.
+%As usual, the coefficients of all descendent operators $\ptl\cdots\ptl \f_i$ are fixed by conformal invariance in terms of the same OPE coefficient
+%\be
+%T^{\mu\nu}(x_1) \f_i(x_2) &= - \frac{d\De_i}{S_d(d-1)}C^{\mu\nu}(x_{12},\ptl_2) \f_i(x_2) + \dots
+%\ee
+%By a similar computation to exercise~\ref{}, we find
+%\be
+%C^{\mu\nu}(x,\ptl) &= \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}}\p{1+\frac{d}{\De_i} x\.\ptl + \dots}
+%\ee
+%Let us include this next term in the OPE
+%\be
+%T^{\mu\nu}(x) \f_i(0) &= - \frac{d\De_i}{S_d(d-1)} \frac{x^\mu x^\nu - \tfrac{1}{d} x^2 \de^{\mu\nu}}{x^{d+2}} \p{\f_i(0)+\frac{d}{\De_i} x\.\ptl \f_i(0) + \dots} \nn\\
+%&\qquad + \dots
+%\ee
+%The momentum operator is given by
+%\be
+%P^\mu = -\int_\Sigma dS_\nu T^{\mu\nu}.
+%\ee
+%Applying this to the first two terms above, with $\Sigma=S^{d-1}$ centered at the origin, we find the following integrals
+%\be
+%-\int_{S^{d-1}} dS_\nu \frac{x^\mu x^\nu - \tfrac 1 d x^2 \de_{\mu\nu}}{x^{d+2}} &= 0\nn\\
+%-\int_{S^{d-1}} dS_\nu \frac{x^\mu x^\nu - \tfrac 1 d x^2 \de_{\mu\nu}}{x^{d+2}}x_\rho &= -\frac{d-1}{d^2} S_d \de^\mu_\rho.
+%\ee
+%Thus, we recover
+%\be
+%[P^\mu,\f_i(0)] &= \ptl^\mu \f_i(0).
+%\ee
+
 
 \subsection{Two-point functions of conserved currents}
+\label{sec:twoptconserved}
 
 In our discussion of conformal blocks, we used a convention that all two-point functions are normalized (\ref{eq:canonicallynormalizedtwopt}) as,
 \be
@@ -4360,9 +4471,14 @@ However, conserved currents and the stress tensor come with a canonical normaliz
 In the canonical normalization, we have
 \be
 \<J^\mu(x)J_\nu(0)\> &= C_J \frac{I^{\mu}{}_{\nu}(x)}{x^{2(d-1)}} \nn\\
-\<T^{\mu\nu}(x) T_{\rho\s}(0)\> &= C_T \frac{I^{(\mu}{}_{\rho}(x) I^{\nu)}{}_{\s}(x)-\frac{1}{d} \de^{\mu\nu}\de_{\rho\s}}{x^{2d}}.
+\<T^{\mu\nu}(x) T_{\rho\s}(0)\> &= 2C_T \frac{I^{(\mu}{}_{\rho}(x) I^{\nu)}{}_{\s}(x)-\frac{1}{d} \de^{\mu\nu}\de_{\rho\s}}{x^{2d}}.
 \ee
-The two-point coefficients $C_J, C_T$ are interesting physical observables. 
+The two-point coefficients $C_J, C_T$ are interesting physical observables. Note that they must be positive in a unitary theory. To see this, we can use (\ref{eq:bpznormprim}) to compute
+\be
+0 &\leq \sum_\mu ||J^\mu\>|^2 = \<J_\mu|J^\mu\> = d C_J \nn\\
+0 &\leq \sum_{\mu,\nu} ||T^{\mu\nu}\>|^2 = \<T_{\mu\nu}|T^{\mu\nu}\> = (d^2+d-2)C_T.
+\ee
+If $C_J$ or $C_T$ vanished, the corresponding state $|J^\mu\>$ or $|T^{\mu\nu}\>$ would have to vanish, which would mean the operators $J^\mu$ or $T^{\mu\nu}$ vanished identically, a contradiction.
 
 When an operator has a non-standard two-point function $\<\cO(x) \cO(0)\> = C_\cO I(x)/x^{2\De}$, the corresponding coefficients in the conformal block expansion get modified according to
 \be
@@ -4374,8 +4490,340 @@ For example, the coefficient of the stress-tensor in the conformal block expansi
 \ee
 
 \section{2 dimensions}
+\label{sec:twod}
+
+\subsection{Conventions}
+
+We now specialize to $2$-dimensional CFTs and discuss the extra structure that is present there. It is useful to adopt complex coordinates
+\be
+z &= x^1 + i x^2,\quad \bar z= x^1 - i x^2.
+\ee
+A vector $v^\mu$ has components
+\be
+v^z = v^1 + i v^2,\quad v^{\bar z} = v^1 - iv^2,\quad v_z=\frac 1 2 (v^1 - i v^2),\quad v_{\bar z} = \frac 1 2 (v^1 + i v^2).
+\ee
+These components are raised and lowered using the metric
+\be
+g_{z\bar z} = g_{\bar z z} = \tfrac 1 2, \quad g_{zz}=g_{\bar z\bar z}=0,\quad g^{z\bar z} = g^{\bar z z} =2,\quad g^{zz} =g^{\bar z \bar z} = 0.
+\ee
+We also define
+\be
+\ptl \equiv \ptl_z=\tfrac1 2(\ptl_1-i\ptl_2)=\tfrac 1 2 \ptl^{\bar z},\qquad \bar \ptl \equiv \ptl_{\bar z} = \tfrac 1 2 (\ptl_1+i\ptl_2) = \tfrac 1 2 \ptl^z.
+\ee
+
+\subsection{The stress tensor and conformal charges}
+
+Let us study the conditions on the stress-tensor in these coordinates. Tracelessness is the statement that
+\be
+\label{eq:tracelessness2d}
+T_{z\bar z} = 0.
+\ee
+The conservation condition then implies
+\be
+\label{eq:conservation2d}
+0 &= \ptl^{\bar z} T_{\bar z \bar z} + \ptl^z T_{z\bar z} = \tfrac 1 2\ptl T_{\bar z \bar z} \nn\\
+0 &= \ptl^z T_{zz} + \ptl^{\bar z} T_{\bar z z} = \tfrac 1 2\bar\ptl T_{zz}.
+\ee
+In other words, $T_{zz}$ is holomorphic and $T_{\bar z \bar z}$ is anti-holomorphic. Because $T_{zz}$ is holomorphic, it is traditional to write it as a function of $z$ alone, and similarly for $T_{\bar z\bar z}$,
+\be
+T_{zz}(z,\bar z) &= T(z) \nn\\
+T_{\bar z \bar z}(z,\bar z) &= \bar T(\bar z).
+\ee
+
+As usual, the conditions (\ref{eq:tracelessness2d}) and (\ref{eq:conservation2d}) hold as operator equations, which means they are true at separated points, but can be violated by contact terms when $T^{\mu\nu}(x)$ becomes coincident with other operators. This means that correlators of $T(z)$ are only constrained to be holomorphic at separated points. For example, they can have poles at the locations of other insertions
+\be
+\<T(z) \cO(z_0,\bar z_0)\cdots\> &\sim \frac{1}{(z-z_0)^2} + \dots.
+\ee
+
+In 2-dimensions, it is conventional to include a factor of $-2\pi$ in the definition of $T^{\mu\nu}$,
+\be
+\<T^{\mu\nu}\cdots\>_g &= -2\pi \frac{2}{\sqrt g}\frac{\de}{\de g^{\mu\nu}}\<\cdots\>_g\qquad (\textrm{$2$-dimensions})
+\ee
+The conformal charges are then given by
+\be
+Q_\e(\Sigma) &= \frac{1}{2\pi} \int_\Sigma dS^\mu \e^\nu(x) T_{\mu\nu}(x)\qquad (\textrm{$2$-dimensions}),
+\ee
+where $\e^\mu$ is a conformal Killing vector.
+
+Recall that the solutions to the conformal Killing equation in 2d are given by (\ref{eq:killingvectwod})
+\be
+\e^\mu \ptl_\mu &= \e(z) \ptl + \bar\e(\bar z) \bar\ptl,
+\ee
+where $\e(z)$ is purely holomorphic and $\bar\e(\bar z)$ is purely anti-holomorphic.
+In terms of $\e,\bar \e$, the charges become
+\be
+\label{eq:definitionofchargetwod}
+Q_\e(\Sigma) %&= \frac{1}{2\pi} \int_\Sigma dS^\mu \e^\nu(x) T_{\mu\nu}(x) \nn\\
+&= \frac{1}{2\pi i}\oint_\Sigma dz\, \e(z) T(z) - \frac{1}{2\pi i} \oint_\Sigma d\bar z\, \bar \e(\bar z) \bar T(\bar z)
+\ee
+The space of globally-defined holomorphic vector fields on $S^2$ is only three-dimensional. However, to define topological surface operators, we only need holomorphicity in a neighborhood of the curve $\Sigma$ where the charges are defined. Thus, we can allow $\e(z)$ and $\bar\e(\bar z)$ to have poles. The charges $Q_\e(\Sigma)$ will be topological away from the poles.
+
+It is conventional to define a basis of conformal Killing vectors given by
+\be
+\ell_m &= z^{m+1} \ptl,\quad \bar \ell_m=\bar z^{m+1} \bar\ptl.
+\ee
+As vector-fields, they satisfy the Witt algebra
+\be
+\label{eq:wittalgebra}
+[\ell_m,\ell_n]=-(m-n)\ell_{m+n}
+\ee
+and similarly for $\bar\ell_m$. The corresponding charges are
+\be
+L_m(\Sigma) &= Q_{\ell_m}(\Sigma) = \frac{1}{2\pi i}\oint_\Sigma z^{m+1} T(z) \nn\\
+\bar L_m(\Sigma) &= Q_{\bar\ell_m}(\Sigma) = -\frac 1 {2\pi i} \oint_\Sigma \bar z^{m+1} \bar T(\bar z).
+\ee
+
+\begin{exercise}
+Show that the $L_m,\bar L_m$ for $m=-1,0,1$ are related to the usual generators of $\SO(d+1,1)=\SO(3,1)$ by
+\be
+\label{eq:relationtoglobalcharges}
+L_{-1} = P_z,\quad L_0 = \tfrac1 2 (D+i M_{12}),\quad L_{1}= K_{\bar z} \nn\\
+\bar L_{-1} = P_{\bar z},\quad \bar L_0 = \tfrac 1 2 (D-i M_{12}),\quad \bar L_1=K_z.
+\ee
+Show that they generate the algebra $\mathrm{SL}(2,\R)\x \mathrm{SL}(2,\R)$:
+\be
+[L_0,L_1]=-L_1,\quad [L_0,L_{-1}]=L_{-1},\quad [L_1,L_{-1}]=2L_0 \nn\\
+[\bar L_0,\bar L_1]=-\bar L_1,\quad [\bar L_0,\bar L_{-1}]=\bar L_{-1},\quad [\bar L_1,\bar L_{-1}]=2\bar L_0
+\ee
+with all other commutators vanishing.
+\end{exercise}
+The fact that of $\SO(3,1)\cong \mathrm{SL}(2,\R)\x \mathrm{SL}(2,\R)$ as complexified Lie algebras is a familiar group theory fact.
+
+We call $L_{-1,0,1},\bar L_{-1,0,1}$ the ``global" conformal charges because they come from conformal Killing vectors that are globally-defined on the sphere $S^2$. This is in contrast to the charges $L_m,\bar L_m$ for $m\notin\{-1,0,1\}$, which come from conformal Killing vectors with poles (either at zero or infinity).
+
+\subsubsection{BPZ conjugation}
+
+Recall from section~\ref{sec:reflposcyl} that the BPZ conjugate of $Q_\e$ is $Q_\e^\dag = Q_{-I\e^* I^{-1}}$, where $I$ acts on functions by $(I f)(x)=f(I(x))$. In our coordinates, an inversion acts as $I(z,\bar z) = (1/\bar z, 1/z)$, so we have
+\be
+(-I \ell_m^* I)f(z,\bar z) &= \left.-(\bar z^{m+1}\bar\ptl) f\p{\frac 1 {\bar z},\frac 1 { z}}
+\right|_{(z,\bar z) \to \p{\frac 1 {\bar z},\frac 1 { z}}} \nn\\
+%&= - \left.\bar z^{m+1} \bar\ptl f\p{\frac 1 {\bar z},\frac 1 { z}}
+%\right|_{(z,\bar z) \to \p{\frac 1 {\bar z},\frac 1 { z}}}\nn\\
+&= \left.\bar z^{m-1} f^{(1,0)}\p{\frac 1 {\bar z},\frac 1 { z}}
+\right|_{(z,\bar z) \to \p{\frac 1 {\bar z},\frac 1 { z}}}\nn\\
+&=\ell_{-m} f(z,\bar z).
+\ee
+Thus, we have
+\be
+L_m^\dag = L_{-m},\quad \bar L_m^\dag = \bar L_{-m}.
+\ee
+This is easy to verify for the global charges from (\ref{eq:relationtoglobalcharges}).
 
 
+\subsection{The Virasoro algebra}
+
+In exercise~(\ref{exercise:primarytransofmationfort}), we argued that in $d\geq 3$
+\be
+\label{eq:higherdimQT}
+[Q_\z,T^{\mu\nu}] &= \z^\rho \ptl_\rho T^{\mu\nu} + (\ptl\.\z)T^{\mu\nu} - \ptl_\rho \z^\mu T^{\rho \nu} + \ptl^\nu \z_\rho T^{\rho \mu} \quad (d\geq 3).
+\ee
+The form of this expression is fixed by dimensional analysis, conservation and tracelessness of $T^{\mu\nu}$, and the Ward identity for momentum. In retrospect, we can see that it is equivalent to the condition that $T^{\mu\nu}$ transforms like a primary under the global conformal algebra $\SO(3,1)$.
+
+In $d=2$ dimensions, it is possible to write two additional terms proportional to the unit operator that are consistent with these conditions (exercise~\ref{exercise:virasoro}):
+\be
+\label{eq:extraterm}
+[Q_\z,T^{\mu\nu}] &= (\ref{eq:higherdimQT}) + a\,\ptl^\mu \ptl^\nu \ptl\.\z + b\,\ptl^\mu \ptl^\nu \ptl\.\tl\z
+\ee
+where 
+\be
+\tl \z_\mu = \e_{\mu\nu} \z^\nu
+\ee
+with $\e_{\mu\nu}$ the 2-dimensional $\e$-symbol. Here $a,b$ are constants. Note that tracelessness and conservation are implied by $\ptl^2 (\ptl\.\z)=\ptl^2 (\ptl\.\tl\z)=0$, which is a consequence of the conformal Killing equation  (equation~(\ref{eq:termneededforvirasoro})). The extra term in (\ref{eq:extraterm}) does not affect the global generators because the corresponding vector fields are at most quadratic polynomials in $x$.
+
+In holomorphic coordinates, (\ref{eq:extraterm}) becomes
+\be
+[Q_\z,T(z)] &= (\ref{eq:higherdimQT}) + \frac{c}{12}\ptl^3 \z(z), \nn\\
+[Q_\z,\bar T(\bar z)] &= (\ref{eq:higherdimQT}) + \frac{\bar c}{12}\bar \ptl^3 \bar\z(\bar z),
+\ee
+where we have defined
+\be
+c = 12(a + ib),\quad \bar c = 12(a - i b).
+\ee
+(The factors of $12$ are for later convenience.)
+Plugging into (\ref{eq:definitionofchargetwod}), we find a modification of the algebra of charges
+\be
+\label{eq:virasoronice}
+[Q_{\z},Q_{\xi}] &= Q_{-[\z,\xi]} + \frac c {24\pi i} \oint_\Sigma dz\, \xi(z) \ptl^3 \z(z) - \frac{\bar c}{24\pi i} \oint_\Sigma d\bar z\, \bar\xi(\bar z)\bar\ptl^3 \bar \z(\bar z),
+\ee
+where the contour $\Sigma$ is the same as the one used to define $Q_\xi$.
+Let us consider charges defined on a circle surrounding the origin. Applied to $L_m,\bar L_m$, (\ref{eq:virasoronice}) becomes
+\be
+\label{eq:virasoroalgebra}
+[L_m,L_n] &= (m-n)L_{m+n} + \frac{c}{12} (m^3-m) \de_{m,-n}.
+\ee
+The $\bar L_m$ satisfy the same algebra with $\bar c$ instead of $c$.
+
+The commutation relations (\ref{eq:virasoroalgebra}) define the so-called Virasoro algebra. The constant $c$ is called the ``central charge." The Virasoro algebra is a nontrivial central extension of the Witt algebra (\ref{eq:wittalgebra}). ``Central" refers to the fact that the term in (\ref{eq:virasoroalgebra}) proportional to $c$ commutes with all the generators --- i.e.\ it is in the center of the algebra.
+
+\subsection{Determining the central charge}
+\label{sec:determinec}
+
+We have seen that a central term is consistent with basic properties of the stress tensor. However, does it actually need to be there? We can find out by computing it. Let us study the vacuum expectation value of the simplest expression containing $c$. This is
+\be
+\frac c 2 = \<[L_2,L_{-2}]\> = \left\<\frac{1}{2\pi i} \oint_{C_1} dz_1 z_1^3 T(z_1) \frac{1}{2\pi i} \oint_{C_2} dz_2 z_2^{-1} T(z_2)\right\> - (C_2 \leftrightarrow C_1). \nn\\
+\ee
+Here $C_1,C_2$ are circles surrounding the origin, with $C_1$ outside $C_2$. Because there is no singularity in the integrand when $z_2$ is near the origin and $T(z_2)$ is holomorphic, the $z_2$-integral just gives $T(0)$ by Cauchy's theorem. The term with $C_2\leftrightarrow C_1$ vanishes because $z_1^3 T(z_1)$ is holomorphic inside $C_2$. (Recall that $T(z)$ can fail to be holomorphic when it coincides with other operator insertions, but in this case the other $T$ is outside $C_2$.) Thus, we find
+\be
+\frac c 2 &= \frac{1}{2\pi i} \oint_{C_1} dz_1 z_1^3\< T(z_1) T(0) \>
+\ee
+
+We saw in section~\ref{sec:twoptconserved} that
+\be
+\label{eq:twoptstresstwod}
+\<T_{\mu\nu}(x)T_{\rho\s}(0)\> &= 2C_T \frac{\tfrac 1 2 (I_{\mu\rho}(x) I_{\nu\s}(x) + I_{\mu\s}(x) I_{\nu\rho}(x)) -  \tfrac{1}{d}\de_{\mu\nu} \de_{\rho\s}}{x^4},
+\ee
+where $C_T$ is positive in a unitary theory. In 2d, this expression actually assumes parity-invariance, as we discuss below, but let us continue on for now.
+\begin{exercise}
+Show that in holomorphic coordinates, (\ref{eq:twoptstresstwod}) becomes
+\be
+\label{eq:twodstressholo}
+\<T(z)T(0)\> &= \frac{C_T}{2 z^4}.
+\ee
+\end{exercise}
+We could have alternatively derived (\ref{eq:twodstressholo}) just using dimensional analysis and holomorphicity. Plugging (\ref{eq:twodstressholo}) into (\ref{eq:twoptstresstwod}), we find
+\be
+c &= C_T.
+\ee
+Thus, $c$ is related to the two-point function of stress tensors, and it is nonzero and positive in any unitary theory.
+
+If we allow ourselves to use the 2d $\e$-symbol, then there is actually an additional allowed tensor structure for $\<T_{\mu\nu}(x)T_{\rho\s}(0)\>$.\footnote{Exercise: find it!} Previously in section~\ref{sec:twoptsection} we proved that operators in an irreducible representation of $\SO(d)$ have a unique two-point structure. This is not a contradiction because the spin-$\ell$ representation in 2d is actually {\it reducible}. Specifically, $\SO(2)=U(1)$, and the spin-$\ell$ representation splits into two 1-dimensional irreps of $U(1)$ with charges $\pm \ell$. In the case of the stress tensor, these irreps are precisely described by $T(z)=T_{zz}(z)$ and $\bar T(\bar z) = T_{\bar z\bar z}(\bar z)$ --- they don't mix with each other under $\SO(2)$ rotations. Thus, it is possible to write two separate two-point structures 
+\be
+\<T(z)T(0)\> = \frac{c}{2z^4},\quad \<\bar T(\bar z) \bar T(0)\> = \frac{\bar c}{2\bar z^4},
+\ee
+where $c,\bar c$ can be different. By a similar calculation to the above, we find that $\bar c$ is the central charge for the antiholomorphic Virasoro algebra.
+
+Unitarity implies that $c$ and $\bar c$ are each nonnegative:
+\be
+\frac c 2 &= \<0|[L_{2},L_{-2}]|0\> = \<0|L_2 L_{-2}|0\> = |L_{-2}|0\>|^2
+\ee
+(and similarly for $\bar c$). In a parity-invariant theory, we would have $c=\bar c$.
+
+\subsection{Virasoro multiplets}
+
+One of the commutation relations of the Virasoro algebra is
+\be
+[L_0,L_m] &= -m L_m.
+\ee
+Thus, the generators $L_m$ with $m>0$ are {\it lowering} operators for $L_0$ and the generators with $m<0$ are {\it raising} operators.
+
+Recall that $L_0 = \tfrac 1 2(D+i M_{12})$. Acting on an operator with spin $\ell$, its eigenvalues are given by $\tfrac 1 2 (\De\pm \ell)$. The unitarity bounds (\ref{eq:unitaritysummary}) imply that this is positive. We can also re-derive the unitarity bounds using the fact that $L_{-1}^\dag = P_z^\dag = K_{\bar z} = L_1$, so
+\be
+0 \leq |L_{-1} |\cO\>|^2 = \<\cO|L_1 L_{-1}|\cO\> = 2\<\cO|L_0|\cO\>,
+\ee
+where $|\cO\>$ is a primary state with respect to $\SL(2,\R)$ (i.e.\ it is killed by $L_1=K_{\bar z}$). Thus, $L_0$ has positive eigenvalues in any $\SL(2,\R)$-primary state, and consequently in any state.
+
+In section~\ref{sec:conformalreps}, we used positivity of $D$ to argue that there must exist states that are killed by the lowering operators $K_\mu$. By the same reasoning, there must exist states that are killed by $L_m$ for all $m>0$. If not, we could build an infinite chain of states with decreasing $L_0$ eigenvalue by repeatedly acting with $L_m$'s. This motivates the definition
+\be
+\textrm{Virasoro primary:}\quad L_m|\cO\> = 0,\textrm{ for all $m>0$}.
+\ee
+
+Virasoro primariness is a stronger condition that primariness with respect to $\SL(2,\R)$: every Virasoro primary is an $\SL(2,\R)$-primary, but not vice-versa.\footnote{In the literature, you often see the terminology ``Virasoro primary" $\to$ ``primary" and ``$\SL(2,\R)$-primary" $\to$ ``quasiprimary." This leads to confusion in higher-dimensions, so I won't this terminology here.}
+
+Given a Virasoro primary $|\cO\>$, we can build a Virasoro multiplet from it by acting with raising operators:
+\be
+\begin{array}{ll}
+\textrm{state}& \textrm{$L_0$-eigenvalue}\\
+|\cO\> & h\\
+L_{-1}|\cO\> & h+1\\
+L_{-1}^2|\cO\>,L_{-2}|\cO\> & h+2\\
+L_{-1}^3|\cO\>,L_{-1}L_{-2}|\cO\>,L_{-3}|\cO\>\quad & h+3 \\
+\dots & \dots
+\end{array}
+\ee
+The non-primary states in the multiplet are called Virasoro descendants. To write them, we have used commutation relations of the Virasoro algebra to place the $L_{-m}$'s in increasing order. The number of states at the $n$-th level is equal to $p(n)$, the number of partitions of $n$.
+
+A 2d CFT has both a left-moving and right-moving Virasoro symmetry, so we can organize operators in the theory into primaries/descendants with respect to both Virasoro algebras.
+
+One of the most important Virasoro primaries is the vacuum state $|0\>$. It's clear that the vacuum must be primary because it has the lowest $L_0$ eigenvalue of any state in the theory. However, we can verify this more directly by computing
+\be
+\label{eq:stresstensorintegral}
+L_m|0\> &= \frac{1}{2\pi i}\oint_C dz\, z^{m+1} T(z)|0\>,
+\ee
+where $C$ is a circle around the origin.
+Because there are no operator insertions inside $C$, the combination $z^{m+1} T(z)$ is holomorphic inside $C$ whenever $m\geq -1$. In this case, we can shrink the contour to zero, giving
+\be
+\label{eq:primarvac}
+L_m|0\> = 0\quad (m\geq -1).
+\ee
+Thus, the vacuum is a Virasoro primary and is additionally killed by $L_{-1}$ (a translation generator).
+
+When $m<-1$,  $z^{m+1} T(z)$ has a pole at the origin and the contour in (\ref{eq:stresstensorintegral}) cannot be shrunk to zero.
+A particularly interesting case is $m=-2$, where Cauchy's theorem gives
+\be
+\label{eq:stressisvirasoro}
+L_{-2}|0\> &= T(0)|0\>.
+\ee
+Thus, the stress-tensor is not a Virasoro primary --- it is a Virasoro descendent of the identity operator. (It is still a primary with respect to the global conformal algebra.) The fact that the stress tensor can be created purely using conserved charges in 2d is extremely powerful, with far-reaching consequences.
+
+
+\subsection{OPEs with the stress tensor}
+
+We can generalize the above computation by considering the action of $T(z)$ on any state in radial quantization
+\be
+T(z)|\Psi\>.
+\ee
+Suppose that $|\Psi\>$ is created by inserting operators strictly inside the unit disc. Then $T(z)|\Psi\>$ is holomorphic for $z$ in an annulus around the origin. Consequently, it has a convergent Laurent expansion inside the annulus,
+\be
+T(z)|\Psi\> &= \sum_{n=-\oo}^\oo \frac{1}{z^{n+2}}|\Phi_n\>.
+\ee
+On the other hand, by integrating $T(z)$ along a circle, we can produce the conformal charges:
+\be
+L_m |\Psi\> &= \frac{1}{2\pi i} \oint dz\, z^{m+1} \sum_{n=-\oo}^\oo \frac{1}{z^{n+2}}|\Phi_n\> = |\Phi_m\>.
+\ee
+We conclude that
+\be
+T(z)|\Psi\> &= \sum_{m=-\oo}^\oo \frac{L_m }{z^{m+2}} |\Psi\>.
+\ee
+Because this is true in a complete basis of states, we can write
+\be
+\label{eq:stresstensorlaurent}
+T(z) = \sum_{m=-\oo}^\oo \frac{L_m}{z^{m+2}},
+\ee
+where we should interpret both sides as operators acting on a state in radial quantization. Applying (\ref{eq:stresstensorlaurent}) to the vacuum state, using (\ref{eq:primarvac}), and taking $z\to 0$, we recover (\ref{eq:stressisvirasoro}).
+
+
+Consider now a Virasoro primary state $|\cO\>=\cO(0,0)|0\>$, and suppose it is an eigenstate of $L_0,\bar L_0$ with eigenvalues $h,\bar h$. Acting with (\ref{eq:stresstensorlaurent}) and replacing $m\to -m$ in the sum, we find
+\be
+\label{eq:applytoOvirasoro}
+T(z)|\cO\> &= \sum_{m=0}^\oo z^{m-2} L_{-m}|\cO\>\quad(\textrm{Virasoro primary})
+\ee
+The sum starts at zero because $L_m|\cO\>=0$ for $m>0$ by Virasoro-primariness of $\cO$. We also know the action of the first two charges:
+\be
+L_0|\cO\> &= h|\cO\>,\nn\\
+L_{-1}|\cO\> &= \ptl \cO(0,0)|0\>.
+\ee
+Thus, using the state-operator correspondence, (\ref{eq:applytoOvirasoro}) becomes
+\be
+\label{eq:opeofstresswithvirprim}
+T(z)\cO(0,0) &= \frac{h}{z^2} \cO(0,0) + \frac{1}{z}\ptl\cO(0,0) + \dots,
+\ee
+where $\dots$ are higher Virasoro-descendents $L_{-m}\cO$. Note that these higher descendants come with nonsingular powers of $z$. Equation (\ref{eq:opeofstresswithvirprim}) is the two-dimensional version of (\ref{eq:tope}) and (\ref{eq:tderivativeterm}).
+
+As a final application of (\ref{eq:stresstensorlaurent}), let us study the OPE of the stress-tensor with itself. Recall that $T(z)$ is not a Virasoro primary, so this computation is slightly different from (\ref{eq:opeofstresswithvirprim}). We have
+\be
+\label{eq:applyttot}
+T(z)T(0)|0\> &= \sum_{m=-\oo}^\oo \frac{L_m}{z^{m+2}} L_{-2}|0\>
+\ee
+
+\begin{exercise}
+Using the Virasoro algebra and primariness of the vacuum, show that (\ref{eq:applyttot}) becomes
+\be
+\frac{c}{2z^4}|0\> + \frac{2}{z^2}L_{-2}|0\> + \frac{1}{z}L_{-1}L_{-2}|0\> + \dots,
+\ee
+where ``$\dots$" are nonsingular in $z$.
+\end{exercise}
+The state-operator correspondence then gives the OPE
+\be
+\label{eq:ttopetwod}
+T(z)T(0) &= \frac{c}{2z^4} + \frac{2}{z^2}T(0) + \frac{1}{z} \ptl T(0) + \dots
+\ee
+The second and third terms in (\ref{eq:ttopetwod}) are the two-dimensional versions of (\ref{eq:tope}) and (\ref{eq:tderivativeterm}). The first term is the contribution of the unit operator in the $T\x T$ OPE. We could have derived the presence of the above terms using only Ward identities for global conformal invariance, following the logic in section~\ref{sec:stresstensorward}. However, this would not have made clear that these are the {\it only\/} singular terms in the $T\x T$ OPE.
+
+\subsection{Correlators of primaries and descendants}
+
+%Because the stress tensor is made entirely of symmetry charges, 
+%
+%The OPEs (\ref{eq:opeofstresswithvirprim}) and (\ref{eq:ttopetwod}) are enough to 
 
 \begin{appendix}
 \end{appendix}
