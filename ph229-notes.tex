@@ -4489,7 +4489,7 @@ For example, the coefficient of the stress-tensor in the conformal block expansi
 \frac{f_{\f\f T}^2}{C_T} &\propto \frac{\De_\f^2}{C_T}.
 \ee
 
-\section{2 dimensions}
+\section[2-dimensions]{2-dimensions\footnote{Sources for this section: Polchinski \cite{}.}}
 \label{sec:twod}
 
 \subsection{Conventions}
@@ -4712,25 +4712,26 @@ Recall that $L_0 = \tfrac 1 2(D+i M_{12})$. Acting on an operator with spin $\el
 \ee
 where $|\cO\>$ is a primary state with respect to $\SL(2,\R)$ (i.e.\ it is killed by $L_1=K_{\bar z}$). Thus, $L_0$ has positive eigenvalues in any $\SL(2,\R)$-primary state, and consequently in any state.
 
-In section~\ref{sec:conformalreps}, we used positivity of $D$ to argue that there must exist states that are killed by the lowering operators $K_\mu$. By the same reasoning, there must exist states that are killed by $L_m$ for all $m>0$. If not, we could build an infinite chain of states with decreasing $L_0$ eigenvalue by repeatedly acting with $L_m$'s. This motivates the definition
+In section~\ref{sec:conformalreps}, we used positivity of $D$ to argue that there must exist states that are killed by the lowering operators $K_\mu$. By the same reasoning, there must exist states that are killed by $L_m$ for all $m>0$. If not, we could build an infinite chain of states with decreasing $L_0$ eigenvalue by repeatedly acting with $L_m$'s. This motivates us to define a {\it Virasoro primary} by
 \be
-\textrm{Virasoro primary:}\quad L_m|\cO\> = 0,\textrm{ for all $m>0$}.
+L_0|\cO\> &= h|\cO\> \\
+L_m|\cO\> &= 0,\quad m>0.
 \ee
 
 Virasoro primariness is a stronger condition that primariness with respect to $\SL(2,\R)$: every Virasoro primary is an $\SL(2,\R)$-primary, but not vice-versa.\footnote{In the literature, you often see the terminology ``Virasoro primary" $\to$ ``primary" and ``$\SL(2,\R)$-primary" $\to$ ``quasiprimary." This leads to confusion in higher-dimensions, so I won't this terminology here.}
 
-Given a Virasoro primary $|\cO\>$, we can build a Virasoro multiplet from it by acting with raising operators:
+Given a Virasoro primary $|\cO\>$, we can build a Virasoro multiplet by acting with raising operators:
 \be
 \begin{array}{ll}
 \textrm{state}& \textrm{$L_0$-eigenvalue}\\
 |\cO\> & h\\
 L_{-1}|\cO\> & h+1\\
 L_{-1}^2|\cO\>,L_{-2}|\cO\> & h+2\\
-L_{-1}^3|\cO\>,L_{-1}L_{-2}|\cO\>,L_{-3}|\cO\>\quad & h+3 \\
+L_{-1}^3|\cO\>,L_{-2}L_{-1}|\cO\>,L_{-3}|\cO\>\quad & h+3 \\
 \dots & \dots
 \end{array}
 \ee
-The non-primary states in the multiplet are called Virasoro descendants. To write them, we have used commutation relations of the Virasoro algebra to place the $L_{-m}$'s in increasing order. The number of states at the $n$-th level is equal to $p(n)$, the number of partitions of $n$.
+The non-primary states in the multiplet are called Virasoro descendants. To write them, we have used commutation relations of the Virasoro algebra to place the $L_{-m}$'s in increasing order. The number of states at the $n$-th level is equal to $p(n)$, the number of partitions of $n$. By the same argument as in section~\ref{sec:onlyprimariesanddescendants}, in a unitary 2d CFT, all states are linear combinations of Virasoro primaries and descendants.
 
 A 2d CFT has both a left-moving and right-moving Virasoro symmetry, so we can organize operators in the theory into primaries/descendants with respect to both Virasoro algebras.
 
@@ -4782,7 +4783,7 @@ T(z) = \sum_{m=-\oo}^\oo \frac{L_m}{z^{m+2}},
 where we should interpret both sides as operators acting on a state in radial quantization. Applying (\ref{eq:stresstensorlaurent}) to the vacuum state, using (\ref{eq:primarvac}), and taking $z\to 0$, we recover (\ref{eq:stressisvirasoro}).
 
 
-Consider now a Virasoro primary state $|\cO\>=\cO(0,0)|0\>$, and suppose it is an eigenstate of $L_0,\bar L_0$ with eigenvalues $h,\bar h$. Acting with (\ref{eq:stresstensorlaurent}) and replacing $m\to -m$ in the sum, we find
+Consider now a Virasoro primary state $|\cO\>=\cO(0,0)|0\>$, with $L_0,\bar L_0$-eigenvalues $h,\bar h$. Acting with (\ref{eq:stresstensorlaurent}) and replacing $m\to -m$ in the sum, we find
 \be
 \label{eq:applytoOvirasoro}
 T(z)|\cO\> &= \sum_{m=0}^\oo z^{m-2} L_{-m}|\cO\>\quad(\textrm{Virasoro primary})
@@ -4819,7 +4820,128 @@ T(z)T(0) &= \frac{c}{2z^4} + \frac{2}{z^2}T(0) + \frac{1}{z} \ptl T(0) + \dots
 \ee
 The second and third terms in (\ref{eq:ttopetwod}) are the two-dimensional versions of (\ref{eq:tope}) and (\ref{eq:tderivativeterm}). The first term is the contribution of the unit operator in the $T\x T$ OPE. We could have derived the presence of the above terms using only Ward identities for global conformal invariance, following the logic in section~\ref{sec:stresstensorward}. However, this would not have made clear that these are the {\it only\/} singular terms in the $T\x T$ OPE.
 
+\subsection{Example: the free boson}
+
+\newcommand\no[1]{:\!#1\!:}
+\newcommand\cV{\mathcal{V}}
+
+The free boson is perhaps the most important 2d CFT.\footnote{Our discussion of the free boson will be brief. This subject is treated in much more detail in di Francesco or Polchinski \cite{}, and I encourage you to look there if anything is confusing.} The action is
+\be
+S &= \frac{1}{4\pi} \int d^2 x \ptl_\mu \f \ptl^\mu \f.
+\ee 
+The factor $\tfrac{1}{4\pi}$ out front is a convention. Correlation functions in this theory are computed via Wick contractions with the propagator
+\be
+\<\f(z_1,\bar z_1) \f(z_2,\bar z_2)\> &= -\frac{1}{2} \log |z_{12}|^2.
+\ee
+The equation of motion says that
+\be
+\ptl \bar\ptl \f &= 0.
+\ee
+This means that $\ptl \f$ is holomorphic, so we write $\ptl \f(z)$.
+
+Suppose we would like to define a composite operator $\f^2(z_1,\bar z_1)$. We can take the product $\f(z_1,\bar z_1)\f(z_2,\bar z_2)$ and try to take the limit $z_{12}\to 0$. However, in any correlation function, there would be a contribution from the Wick contraction between these two fields, which is singular when the points become coincident. Thus, to get a well-defined limit, we must first subtract off this contraction
+\be
+\label{eq:normalorderedtwophi}
+\no{\f(z_1,\bar z_1)\f(z_2,\bar z_2)} &\equiv \f(z_1,\bar z_1)\f(z_2,\bar z_2) + \frac{1}{2} \log |z_{12}|^2
+\ee
+This procedure is called ``normal ordering." The normal-ordered product (\ref{eq:normalorderedtwophi}) now has a nonsingular limit as $z_1\to z_2$, which we can use to define a composite operator.
+Similarly, the normal ordering of a product
+\be
+\no{\mathcal{A}_1\cdots \mathcal{A}_n}
+\ee
+is defined by subtracting off all the contractions among fields inside the $\mathcal{A}_i$. 
+
+With these definitions, the stress tensor is given by
+\be
+T(z) &= - \no{\ptl \phi \ptl \phi},\qquad \bar T(\bar z)=-\no{\bar\ptl \phi \bar\ptl \phi}
+\ee
+Let us compute the OPE of two stress tensors. The first step is to express their product in terms of normal-ordered operators. This means we must include all possible Wick contractions between the two $T$'s (but not inside of an individual $T$, because they are already normal-orderd).
+\be
+T(z_1)T(z_2) &= \no{\ptl\phi(z_1)\ptl\phi(z_1)} \no{\ptl \phi(z_2)\ptl\phi(z_2)} \nn\\
+&= 2\x\frac{1}{4z_{12}^4} - 4\x\frac{1}{2 z_{12}^2}\no{\ptl\f(z_1)\ptl\f(z_2)}\nn\\
+&\quad + \no{\ptl\phi(z_1)\ptl\phi(z_1)\ptl \phi(z_2)\ptl\phi(z_2)}
+\ee
+Here, we repeatedly use $\<\ptl \f(z_1)\ptl\f(z_2)\>=-\frac{1}{2z_{12}^2}$. Let us focus on the singular terms in the OPE and Taylor expand in small $z_{12}$ inside the normal-ordering symbol. We find
+\be
+T(z_1)T(z_2) &= \frac{1}{2z_{12}^4} + \frac{2}{z_{12}^2} T(z_2) + \frac{1}{z_{12}}\ptl T(z_2) + \dots.
+\ee
+This is indeed consistent with the expected OPE of two stress tensors. Furthermore, we see that the free boson theory has central charge $c=1$.
+
+This theory has an important class of Virasoro primaries called ``vertex operators," defined by 
+\be
+\cV_\a(z,\bar z)=\no{e^{i\a\f(z,\bar z)}}\quad (\a\in \R).
+\ee
+We can verify that $\cV_\a$ is a Virasoro primary by studying the OPE
+\be
+T(z)\cV_\a(w,\bar w) &= -\no{\ptl\f(z)\ptl\f(z)}\no{\sum_{n=0}^\oo \frac{(i\a)^n}{n!} \f(w,\bar w)^n} \nn\\
+&= -\frac{1}{4(z-w)^2}\sum_{n=2}^\oo \frac{(i\a)^n}{(n-2)!} \no{\f(w,\bar w)^{n-2}} \nn\\
+&\quad +\frac{1}{z-w}\sum_{n=1}^\oo \frac{(i\a)^n}{(n-1)!}\no{\ptl\f(z)\f(w,\bar w)^{n-1}} \nn\\
+&=\frac{\a^2}{4(z-w)^2}\cV_\a(w,\bar w)+\frac{1}{z-w} \ptl \cV_\a(w,\bar w) + \dots
+\ee
+This shows that $\cV_\a$ is primary because the strongest singularity is a double pole, so $L_m\.\cV_\a=0$ for $m>0$. Comparing with (\ref{eq:opeofstresswithvirprim}), we see that $\cV_\a$ has dimension $\frac{\a^2}{4}$.
+
+The free boson has a number of pathologies. Firstly, $\f$ has dimension zero, but it is not the unit operator. This immediately shows that the theory is nonunitary. Another way to see nonunitarity is to note that the two-point function $-\tfrac 1 2\log|z|^2$ actually becomes {\it negative} for large $|z|$. Furthermore, there is a continuous infinity of primary operators $\cV_\a$ indexed by $\a$, which means that the partition function of the theory is infinite.
+
+All of these pathologies can be fixed by imposing periodicity
+\be
+\label{eq:freebosonperiodicity}
+\f &\sim \f + 2\pi R
+\ee
+for some constant $R$. More formally, $\f$ now becomes a map from $\R^2$ into the circle with radius $R$, so we call this theory the free boson with ``compact target space." Note that the periodicity (\ref{eq:freebosonperiodicity}) does not violate conformal invariance because $\f$ has dimension 0, so $R$ is a dimensionless constant. By contrast, in higher dimensions a free boson has mass-dimension $\tfrac{d-2}{2}$, so to introduce a periodicity we would have to introduce a mass scale, breaking conformal invariance.
+
+The periodicity condition (\ref{eq:freebosonperiodicity}) has several effects. Firstly, it {\it removes} the operator $\f$ itself from the theory, since $\f$ is not invariant under shifts by $2\pi R$.  This solves the pathologies associated with a logarithmic two-point function. Instead, we can have derivatives $\ptl \f, \bar \ptl \f$. We can also have vertex operators $\cV_\a$, but $\a$ now must be quantized $\a\in \tfrac 1 R \Z$ in order to be consistent with (\ref{eq:freebosonperiodicity}). This solves the problem of a continuous infinity of states. A more subtle effect of periodicity is that it introduces new operators into the theory called ``vortex" or ``winding" operators. We will hopefully have time to discuss them in a later section.
+
+
 \subsection{Correlators of primaries and descendants}
+
+Consider a correlation function of $n$ Virasoro primaries $\cO_i$ and a single stress-tensor $T(z)$. Poles in $z$ are determined by the singular terms in the OPE (\ref{eq:opeofstresswithvirprim}):
+\be
+\label{eq:corwithholo}
+&\<T(z)\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\> \nn\\
+&= \sum_{i=1}^n \p{\frac{h_i}{(z-z_i)^2} + \frac{1}{z-z_i} \ptl_{i}} \<\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\> + \textrm{holomorphic}.
+\ee
+Furthermore, the correlator must decay like $1/z^4$ at large $z$. The reason is that we can perform the OPE between the $\cO_i$, resulting in a sum of operators at the origin. Only the global conformal multiplet of $T$ contributes, and the leading term at large-$z$ is given by $\<T(z)T(0)\>\propto 1/z^4$.
+
+To satisfy this boundary condition at infinity, the ``holomorphic" addition in (\ref{eq:corwithholo}) must actually vanish. Thus, the correlator is completely determined by Ward identities\footnote{In higher dimensions, Ward identities give a kind of cohomology class of the correlator of $T^{\mu\nu}$, but they do not determine the correlator entirely.}
+\be
+\label{eq:correlatorwithsinglet}
+&\<T(z)\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\> \nn\\
+&= \sum_{i=1}^n \p{\frac{h_i}{(z-z_i)^2} + \frac{1}{z-z_i} \ptl_{i}} \<\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\>.
+\ee
+This expression clearly decays as fast as $z^{-1}$ at large-$z$. However, the asymptotics behaving as $z^{-1},z^{-2},z^{-3}$ must actually vanish, for consistency with the boundary condition at infinity.
+\begin{exercise}
+Expand (\ref{eq:correlatorwithsinglet}) to orders $z^{-1},z^{-2},z^{-3}$ at large $z$, and show that each term vanishes by using invariance of $\<\cO_1\cdots\cO_n\>$ under global conformal transformations.
+\end{exercise}
+
+From (\ref{eq:correlatorwithsinglet}), we can compute the action of Virasoro charges on any operator in the correlator by integrating $T(z)$. For example, consider a correlator containing the Virasoro descendent
+\be
+L_{-k}\.\cO_1(z_1,\bar z_1) &= \frac{1}{2\pi i} \oint_C dz \frac{1}{(z-z_1)^{k-1}} T(z) \cO_1(z_1,\bar z_1),
+\ee
+where $C$ encircles $z_1$.
+This operator is equivalent to acting with $L_{-k}$ on $\cO(0,0)$ and then translating the resulting operator to $(z,\bar z)$,
+\be
+L_{-k}\.\cO(z,\bar z) &\equiv e^{zL_{-1}+\bar z \bar L_{-1}}(L_{-k} \cO(0,0))e^{-zL_{-1}-\bar z \bar L_{-1}}.
+\ee
+Performing the integral inside (\ref{eq:correlatorwithsinglet}), we find
+\be
+\<(L_{-k}\.\cO_1)\cO_2\cdots \cO_n\> &= \cL_{-k} \<\cO_1\cdots \cO_n\>,
+\ee
+where
+\be
+\cL_{-k} &= \sum_{i=2}^n \p{\frac{h_i(k-1)}{(z_i-z_1)^k} - \frac{1}{(z_i-z_1)^{k-1}} \ptl_i}.
+\ee
+
+Correlation functions with multiple Virasoro descendants can be computed by starting with a correlation function containing more $T(z)$'s. These are determined in a similar way by the singular terms in their OPEs. For example, a correlator with two $T$'s can be reduced to a correlator with one $T$ via
+\be
+&\<T(z)T(z')\cO_1(z_1,\bar z_1)\cdots \cO_n(z_n,\bar z_n)\>\nn\\
+ &= \left[\sum_{i=1}^n \p{\frac{h_i}{(z-z_i)^2} + \frac{1}{z-z_i} \ptl_{i}} + \p{\frac{c}{2(z-z')^4} + \frac{2}{(z-z')^2} + \frac{1}{z-z'}\ptl'}\right]\nn\\
+ &\quad \x \<T(z')\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\>.
+\ee
+In this way, we can in principle compute arbitrary correlation functions
+\be
+\<(L_{-k_1}\cdots L_{-k_n}\.\cO_1)\cdots (L_{-j_1}\cdots L_{-j_m}\.\cO_n)\>
+\ee
+in terms of differential operators acting on the correlator of primaries.
 
 %Because the stress tensor is made entirely of symmetry charges, 
 %
