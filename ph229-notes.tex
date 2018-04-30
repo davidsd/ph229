@@ -623,7 +623,7 @@ U(x_b,\tau_b;x_a,\tau_a) &= \int_{-\oo}^\oo dx_c U(x_b,\tau_b;x_c,\tau_c)U(x_c,\
 To quantize the theory, we build up the path integral  in small time-increments using the gluing rule. Suppose we have already computed the path integral $U(x_0,\tau_0;x_a,\tau_a)$ on the interval $[\tau_a,\tau_0]$. To extend $\tau_0\to \tau_0+\e$, we write
 \be
 \label{eq:gluingforsmallinterval}
-U(x_1,\tau_0+\e;x_a,\tau_a) &= \int dx_0\, U(x',\tau_0+\e;x_0,\tau_0) U(x_0,\tau_0;x_a,\tau_a).
+U(x_1,\tau_0+\e;x_a,\tau_a) &= \int dx_0\, U(x_1,\tau_0+\e;x_0,\tau_0) U(x_0,\tau_0;x_a,\tau_a).
 \ee
 The quantity
 \be
@@ -661,7 +661,7 @@ S[x] &= \int_0^\e d\tau \p{\frac 1 2 \dot x^2 + V(x)}.
 \ee
 Because the time interval is so short, if $|x(\tau)-x_0|$ ever becomes larger than $O(\e)$, the kinetic term will cause the amplitude to be highly suppressed. Thus, let us assume $|x(\tau)-x_0|$ is of order $\e$. This means we can replace $V(x)\to V(x_0)$ (up to subleading corrections in $\e$), so the potential factors out of the integrand
 \be
-e^{-S[x]} &= e^{-\e V(x_0)} \exp\p{\int_0^\e d\tau \frac{\dot x^2}{2}}.
+e^{-S[x]} &= e^{-\e V(x_0)} \exp\p{-\int_0^\e d\tau \frac{\dot x^2}{2}}.
 \ee
 
 We can now split $x(\tau)$ into a classical term and a fluctuation term $\z(\tau)$ with boundary conditions $\z(0)=\z(\e)=0$,
