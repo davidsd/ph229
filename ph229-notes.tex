@@ -81,6 +81,7 @@
 \newcommand\C{\mathbb{C}}
 \renewcommand\bar[1]{\overline{#1}}
 \newcommand\SL{\mathrm{SL}}
+\newcommand\cM{\mathcal{M}}
 
 \newcommand\stoplecture{
 \stepcounter{LectureCounter}
@@ -4424,6 +4425,10 @@ Check that this is precisely the value needed to give the Ward identity for mome
 
 Once we have fixed the coefficient $f_{Ti}{}^j$ using the dilatation Ward identity, we will find that all other Ward identities are automatically satisfied. The situation is different for non-scalar operators $\cO_i$. In this case, there can be multiple conformally-invariant structures for the three-point function $\<\cO_j \cO_i T^{\mu\nu}\>$. In general, Ward identities for both $D$ and $M_{\mu\nu}$ can give nontrivial constraints on these structures. The Ward identities for $P$ and $K$ will follow as a consequence.
 
+
+\stoplecture
+
+
 %
 %We fixed the OPE coefficient $f_{\f_i \f_j T}$ using just the dilatation operator. But what about the other conformal generators? The most interesting case is $P^\mu$. Let us check how its Ward identity is satisfied.
 %As usual, the coefficients of all descendent operators $\ptl\cdots\ptl \f_i$ are fixed by conformal invariance in terms of the same OPE coefficient
@@ -4651,7 +4656,7 @@ Let us consider charges defined on a circle surrounding the origin. Applied to $
 \label{eq:virasoroalgebra}
 [L_m,L_n] &= (m-n)L_{m+n} + \frac{c}{12} (m^3-m) \de_{m,-n}.
 \ee
-The $\bar L_m$ satisfy the same algebra with $\bar c$ instead of $c$.
+The $\bar L_m$ satisfy the same algebra with $\bar c$ instead of $c$. We call $L_m$ the ``left-moving" Virasoro algebra and $\bar L_m$ the ``right-moving" Virasoro algebra.
 
 The commutation relations (\ref{eq:virasoroalgebra}) define the so-called Virasoro algebra. The constant $c$ is called the ``central charge." The Virasoro algebra is a nontrivial central extension of the Witt algebra (\ref{eq:wittalgebra}). ``Central" refers to the fact that the term in (\ref{eq:virasoroalgebra}) proportional to $c$ commutes with all the generators --- i.e.\ it is in the center of the algebra.
 
@@ -4698,6 +4703,10 @@ Unitarity implies that $c$ and $\bar c$ are each nonnegative:
 \ee
 (and similarly for $\bar c$). In a parity-invariant theory, we would have $c=\bar c$.
 
+
+\stoplecture
+
+
 \subsection{Virasoro multiplets}
 
 One of the commutation relations of the Virasoro algebra is
@@ -4717,6 +4726,7 @@ In section~\ref{sec:conformalreps}, we used positivity of $D$ to argue that ther
 L_0|\cO\> &= h|\cO\> \\
 L_m|\cO\> &= 0,\quad m>0.
 \ee
+We call $h$ the left-moving weight of $|\cO\>$.
 
 Virasoro primariness is a stronger condition that primariness with respect to $\SL(2,\R)$: every Virasoro primary is an $\SL(2,\R)$-primary, but not vice-versa.\footnote{In the literature, you often see the terminology ``Virasoro primary" $\to$ ``primary" and ``$\SL(2,\R)$-primary" $\to$ ``quasiprimary." This leads to confusion in higher-dimensions, so I won't this terminology here.}
 
@@ -4755,7 +4765,6 @@ A particularly interesting case is $m=-2$, where Cauchy's theorem gives
 L_{-2}|0\> &= T(0)|0\>.
 \ee
 Thus, the stress-tensor is not a Virasoro primary --- it is a Virasoro descendent of the identity operator. (It is still a primary with respect to the global conformal algebra.) The fact that the stress tensor can be created purely using conserved charges in 2d is extremely powerful, with far-reaching consequences.
-
 
 \subsection{OPEs with the stress tensor}
 
@@ -4891,6 +4900,8 @@ for some constant $R$. More formally, $\f$ now becomes a map from $\R^2$ into th
 
 The periodicity condition (\ref{eq:freebosonperiodicity}) has several effects. Firstly, it {\it removes} the operator $\f$ itself from the theory, since $\f$ is not invariant under shifts by $2\pi R$.  This solves the pathologies associated with a logarithmic two-point function. Instead, we can have derivatives $\ptl \f, \bar \ptl \f$. We can also have vertex operators $\cV_\a$, but $\a$ now must be quantized $\a\in \tfrac 1 R \Z$ in order to be consistent with (\ref{eq:freebosonperiodicity}). This solves the problem of a continuous infinity of states. A more subtle effect of periodicity is that it introduces new operators into the theory called ``vortex" or ``winding" operators. We will hopefully have time to discuss them in a later section.
 
+\stoplecture
+
 
 \subsection{Correlators of primaries and descendants}
 
@@ -4922,7 +4933,7 @@ This operator is equivalent to acting with $L_{-k}$ on $\cO(0,0)$ and then trans
 \be
 L_{-k}\.\cO(z,\bar z) &\equiv e^{zL_{-1}+\bar z \bar L_{-1}}(L_{-k} \cO(0,0))e^{-zL_{-1}-\bar z \bar L_{-1}}.
 \ee
-Performing the integral inside (\ref{eq:correlatorwithsinglet}), we find
+Performing the integral inside (\ref{eq:correlatorwithsinglet}), or equivalently expanding (\ref{eq:correlatorwithsinglet}) in a Laurent expansion around $z_1$, we find
 \be
 \<(L_{-k}\.\cO_1)\cO_2\cdots \cO_n\> &= \cL_{-k} \<\cO_1\cdots \cO_n\>,
 \ee
@@ -4931,11 +4942,11 @@ where
 \cL_{-k} &= \sum_{i=2}^n \p{\frac{h_i(k-1)}{(z_i-z_1)^k} - \frac{1}{(z_i-z_1)^{k-1}} \ptl_i}.
 \ee
 
-Correlation functions with multiple Virasoro descendants can be computed by starting with a correlation function containing more $T(z)$'s. These are determined in a similar way by the singular terms in their OPEs. For example, a correlator with two $T$'s can be reduced to a correlator with one $T$ via
+Correlation functions with multiple Virasoro descendants can be computed by starting with a correlation function containing more $T(z)$'s. These are determined in a similar way by the singular terms in their OPEs. For example, a correlator with two $T$'s can be reduced to a sum of correlators with zero and one $T$ via
 \be
-&\<T(z)T(z')\cO_1(z_1,\bar z_1)\cdots \cO_n(z_n,\bar z_n)\>\nn\\
- &= \left[\sum_{i=1}^n \p{\frac{h_i}{(z-z_i)^2} + \frac{1}{z-z_i} \ptl_{i}} + \p{\frac{c}{2(z-z')^4} + \frac{2}{(z-z')^2} + \frac{1}{z-z'}\ptl'}\right]\nn\\
- &\quad \x \<T(z')\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\>.
+&\<T(z)T(z_0)\cO_1(z_1,\bar z_1)\cdots \cO_n(z_n,\bar z_n)\>\nn\\
+ &= \sum_{i=0}^n \p{\frac{h_i}{(z-z_i)^2} + \frac{1}{z-z_i} \ptl_{i}} \<T(z_0)\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\> \nn\\
+&\quad + \frac{c}{2(z-z_0)^4}\<\cO_1(z_1,\bar z_1) \cdots \cO_n(z_n,\bar z_n)\>
 \ee
 In this way, we can in principle compute arbitrary correlation functions
 \be
@@ -4943,9 +4954,303 @@ In this way, we can in principle compute arbitrary correlation functions
 \ee
 in terms of differential operators acting on the correlator of primaries.
 
-%Because the stress tensor is made entirely of symmetry charges, 
-%
-%The OPEs (\ref{eq:opeofstresswithvirprim}) and (\ref{eq:ttopetwod}) are enough to 
+\subsection{Unitarity bounds and the Kac determinant formula}
+
+We derived the unitarity bounds (\ref{}) by demanding that global descendant states have positive norms. We can get stronger conditions using the Virasoro algebra. Let $|h\>$ be a primary state with left-moving weight $h$. As we have discussed, the inner product
+\be
+\label{test}
+\cM^1 &\equiv \<h|L_1 L_{-1}|h\> = 2h
+\ee
+implies that $h\geq 0$ in a unitary theory. At the second level of a Virasoro multiplet, we have two states, and we can compute a matrix of inner products
+\be
+\cM^2 &= \begin{pmatrix}
+\<h|L_1^2 \\
+\<h|L_2 
+\end{pmatrix}
+\begin{pmatrix}
+L_{-1}^2|h\> & L_{-2}|h\>
+\end{pmatrix} \nn\\
+&= \begin{pmatrix}
+8 h^2 + 4h & 6h \nn\\
+6h & 4h+c/2
+\end{pmatrix}.
+\ee
+This two-by-two matrix must be positive-definite, which is equivalent to positivity of its trace and its determinant. The determinant is
+\be
+\label{eq:leveltwo}
+\det(\cM^2) &= 32 h(h-h_+)(h-h_-) \nn\\
+h_{\pm} &= \frac{(5-c) \pm ((1-c)(25-c))^{1/2}}{16}.
+\ee
+The determinant is nonnegative in the region $c\geq 1,h\geq 0$. However, when $0<c<1$, positivity also requires that $h$ is not between $h_-$ and $h_+$.
+
+In general one can study the full matrix of norms of descendants,
+\be
+\label{eq:matrixofvirasoronorms}
+\cM_{\{k\},\{k'\}} &= \<h|L_{\{k\}}L_{-\{k'\}}|h\>.
+\ee
+Here, we use the notation that $\{k\}$ denotes a collection of positive integers in decreasing order $k_1\geq k_2 \geq\dots \geq k_l \geq 1$, and $L_{-\{k\}}$ denotes the corresponding product of Virasoro generators
+\be
+L_{-\{k\}} &\equiv L_{-k_1}\cdots L_{-k_l}.
+\ee
+
+The matrix $\cM$ splits into blocks $\cM^N$ for each level $N=k_1+\cdots+k_l$.
+The determinant of $\cM^N$ was computed as a function of $h,c$ by Kac \cite{}:
+\be
+\det(\cM^N(c,h)) &= K_N\prod_{1\leq rs \leq N} (h-h_{r,s})^{p(N-rs)}.
+\ee
+Here, $K_N$ is a positive constant. The zeros of the determinant are 
+\be
+h_{r,s} &= \frac{c-1}{24} + \frac 1 4 (r \a_++s\a_-)^2 \nn\\
+\a_{\pm} &= (24)^{-1/2}((1-c)^{1/2} \pm (25-c)^{1/2}).
+\ee
+Finally, $p(n)$ counts ``partitions of $n$," i.e.\ the number of ways $n$ can be written as a sum of positive integers
+\be
+& 1 &\implies p(1) =1 \nn\\
+& 2=1+1 &\implies p(2) = 2\nn\\
+& 3=2+1=1+1+1 &\implies p(3) = 3 \nn\\
+& 4=3+1=2+2=2+1+1=1+1+1+1 &\implies p(4) = 5 \nn\\
+&\dots
+\ee
+It has the generating function
+\be
+\sum_{n=0}^\oo p(n) q^n &= \prod_{k=1}^\oo \frac{1}{1-q^k}.
+\ee
+
+By analyzing the Kac determinant formula, one can show that unitary representations can exist either for $c\geq 1, h\geq 0$, or at a discrete set of points $(c,h)$ for $0\leq c < 1$:
+\be
+c &= 1-\frac{6}{m(m+1)},\quad (m=2,3,\dots),\nn\\
+h &= h_{r,s} = \frac{(r(m+1)-sm)^2-1}{4m(m+1)},\quad (1\leq r \leq m-1,\  1\leq s \leq m).
+\ee
+
+The discrete representations correspond to values of $c,h$ where the Kac determinant vanishes. This means that one of the descendant states has zero norm, and consequently must vanish in a unitary theory. For example, when $m=3$, we have $c=1/2$ and one of the possible values of $h$ is $h_{1,2}=\tfrac 1 {16}$. The Kac determinant vanishes at level $2$, since $h_{1,2}=h_-$ in equation~(\ref{eq:leveltwo}). The corresponding null state is
+\be
+\label{eq:correspondingnull}
+\p{L_{-2} - \tfrac{4}{3} L_{-1}^2}|h=\tfrac 1 {16}\>.
+\ee
+We will see shortly that this representation of the Virasoro algebra plays an important role in the 2d Ising model.
+
+\stoplecture
+
+\subsection{Virasoro blocks}
+
+Recall that a conformal block with respect to the global conformal algebra is defined by inserting a projector onto a conformal multiplet into a four-point function,
+\be
+\label{eq:newdefinitionofgagain}
+\<0|\f(x_3)\f(x_4)|\cO|\f(x_1)\f(x_2)|0\> &= \frac{f_{\f\f\cO}^2}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}}g_{\De_\cO,\ell_\cO}(u,v).\qquad
+\ee
+Explicitly, the projector $|\cO|=|\cO|_\mathrm{global}$ is defined by
+\be
+|\cO|_\mathrm{global} &\equiv \sum_{\a,\b=\cO,P\cO,PP\cO,\dots} |\a\>\mathcal{N}^{-1}_{\a\b}\<\b|,\qquad
+\mathcal{N}_{\a\b} \equiv \<\a|\b\>.
+\ee
+In 2d theories, it is conventional to {\it not\/} strip off the dimensionful factors $x_{12}^{-2\De_\f} x_{34}^{-2\De}$, and instead define a conformal block to be the left-hand side, divided by the squared OPE coefficient $f_{\f\f\cO}^2$. Alternatively, we can simply compute the left-hand side, pretending that we're in a fictitious theory where $f_{\f\f\cO}^2=1$.
+
+We can similarly define Virasoro$\x$Virasoro blocks by inserting a projector onto a single Virasoro$\x$Virasoro multiplet. Given a Virasoro$\x$Virasoro primary $|\cO\>$, the projector onto its corresponding multiplet is given by
+\be
+\label{eq:virasoroprojector}
+|\cO|_{\mathrm{V}\x\mathrm{V}} &\equiv \sum_{\{k,\bar k\},\{k',\bar k'\}}|\cO,\{k,\bar k\}\>\cM^{-1}_{\{k\},\{k'\}} \cM^{-1}_{\{\bar k\},\{\bar k'\}}\<\cO,\{k',\bar k'\}|.
+\ee
+As before, the descendent label $\{k\}$ represents a collection of positive integers in decreasing order, and we have defined
+\be
+|\cO,\{k\}\>=L_{-\{k\}}|\cO\> \equiv L_{-k_1}\cdots L_{-k_n} |\cO\>
+\ee
+A pair of descendent labels $|\cO,\{k,\bar k\}\>$ represents a descendant with respect to both the left- and right-moving Virasoro algebra. $\cM_{\{k\},\{k'\}}$ is the matrix of norms (\ref{eq:matrixofvirasoronorms}). In writing (\ref{eq:virasoroprojector}), we have used the fact the matrix of norms with respect to the Virasoro$\x$Virasoro algebra is a tensor product of the $\cM$'s for each individual Virasoro algebra. 
+
+Let us insert (\ref{eq:virasoroprojector}) into a four-point function of Virasoro$\x$Virasoro primaries
+\be
+\<0|\cO_3(z_3,\bar z_3)\cO_4(z_4\bar z_4)|\cO|_{\mathrm{V}\x\mathrm{V}}\ \cO_1(z_1,\bar z_1)\cO_2(z_2,\bar z_2)|0\>.
+\ee
+We find that we must compute three-point functions like
+\be
+\<\cO_3(z_3,\bar z_3)\cO_4(z_4,\bar z_4) L_{-\{k\}}\bar L_{-\{\bar k\}} \cO(0,0)\>.
+\ee
+Fortunately, these can be written in terms of three-point functions of primaries using the appropriate differential operators
+\be
+ &= \cL_{-\{k\}}\bar \cL_{-\{\bar k\}}\<\cO_3(z_3,\bar z_3) \cO_4(z_4,\bar z_4) \cO(z,z)\>|_{z=\bar z=0}
+\ee
+
+Three-point functions are determined by conformal symmetry (up to a constant) in terms of the weights $h_i,\bar h_i$ as follows
+\be
+&\<\cO_1(z_1,\bar z_1)\cO_2(z_2,\bar z_2) \cO_3(z_3,\bar z_3)\>\nn\\
+ &= \frac{1}{z_{12}^{h_1+h_2-h_3} z_{23}^{h_2+h_3-h_1} z_{31}^{h_3+h_1-h_2}} \x \textrm{antiholomorphic}.
+ \label{eq:twodthreept}
+\ee
+Note that even if the spins $\ell_i=h_i-\bar h_i$ are nonzero, there is still precisely one solution to the conformal Ward identities in 2 dimensions. This is because each operator transforms in a 1-dimensional representation of $\SO(2)=U(1)$, so we always have $(\rho_1\otimes \rho_2 \otimes \rho_3)^{\SO(1)}=1$.
+
+Because the three-point functions, the differential operators $\cL_{-\{k\}}$, and the matrix of norms factorize into completely independent holomorphic and antiholomorphic pieces, it follows that the Virasoro$\x$Virasoro block factorizes too
+\be
+\<0|\cO_3(z_3,\bar z_3)\cO_4(z_4\bar z_4)|\cO|_{\mathrm{V}\x\mathrm{V}}\ \cO_1(z_1,\bar z_1)\cO_2(z_2,\bar z_2)|0\>
+&= \mathcal{F}^{34}_{12}(h|z_i)\bar{\mathcal{F}}^{34}_{12}(\bar h|\bar z_i)
+\ee
+To compute the individual pieces $\mathcal{F}^{34}_{12}(h|z_i)$, we can pretend that all the antiholomorphic weights $\bar h_i$ are zero, so that we are studying a four-point function of purely holomorphic operators with weights $h_i$,
+\be
+\mathcal{F}^{34}_{12}(h|z_i) &= \<0|\cO_3(z_3)\cO_4(z_4)|\cO|_\mathrm{Vir} \cO_1(z_1)\cO_2(z_2)|0\>.
+\ee
+This quantity is called a Virasoro block.
+
+The three-point function $\<\cO_1(z_1)\cO_2(z_2)\cO(z)\>$ is equal to the first term in (\ref{eq:twodthreept}). It is not strictly-speaking a function of $z_1,z_2,z$ because it is not single-valued in general (since the $h_i$ can take non-integer values). Only after combining it with the antiholomorphic term in (\ref{eq:twodthreept}), do we get a single-valued function in two dimensions, due to the condition $h-\bar h\in \Z$. Similarly, the Virasoro block $\mathcal{F}^{34}_{12}(h|z_i)$ is not actually a single-valued function of the $z_i$. It has interesting monodromies that we will discuss later.
+
+A single unitary Virasoro multiplet splits into a direct sum of global conformal multiplets. Consequently, the projector onto a Virasoro multiplet can be expressed as a sum of projectors onto global ($\SL(2,\R)$) multiplets
+\be
+\label{eq:virasoroprojectorglobal}
+|\cO|_\mathrm{Vir} &= \sum_{\{k\},\{k'\}} |\cO,\{k\}\> \cM_{\{k\},\{k'\}}^{-1} \<\cO,\{k'\}| \nn\\
+&= \sum_{\cO'} |\cO'|_\mathrm{global}.
+\ee
+Here, $\cO'$ runs over all Virasoro descendants of $\cO$ that are primaries with respect to $\SL(2,\R)$. In other words, $L_{1}|\cO'\>=0$, but the higher $L_{m}$'s do not necessarily kill $\cO'$. Besides the Virasoro primary itself, the first example of such a state occurs at level 2. We can find it by solving
+\be
+0 &= L_1(L_{-2}+ aL_{-1}^2)|\cO\> \nn\\
+ &= (3+2 a (2h+1)) L_{-1} |\cO\> \quad \implies \quad a = - \frac{3}{4h+2}
+\ee
+Thus, the first $\SL(2,\R)$ primary state is
+\be
+\label{eq:exprforleveltwoprim}
+|\cO'\> &= \p{L_{-2} - \frac{3}{4h+2} L_{-1}^2}|\cO\>
+\ee
+Note that this is precisely the state (\ref{eq:correspondingnull}) that becomes null when $c=\frac 1 2, h=\frac 1 {16}$. When a Virasoro descendent in a multiplet with $h\geq 0$ becomes null, its entire global conformal multiplet must simultaneously become null. This is because the unitarity bounds for $\SL(2,\R)$ forbid null $\SL(2,\R)$ descendants that aren't built from a null primary. Thus, the leading null Virasoro descendent is always a global primary.
+
+As a check on (\ref{eq:exprforleveltwoprim}), we can compute a three-point function
+\be
+\<\cO_1(z_1)\cO_2(z_2) \cO'(z_0)\> &= \p{\cL_{-2} - \frac{3}{4h+2} \cL_{-1}^2}\<\cO_1(z_1)\cO_2(z_2) \cO(z_0)\>,
+\ee
+For simplicity, consider the case $h_1=h_2=\de$. Plugging in the standard form for a three-point function of primaries, we find after some impressive cancellations
+\be
+\label{eq:checkonleveltwoprim}
+\p{\cL_{-2} - \frac{3}{4h+2} \cL_{-1}^2} \frac{1}{z_{12}^{2\de-h} z_{20}^{h}z_{10}^{h}}
+&= \frac{2\de(2h+1)+h(h-1)}{2(2h+1)} \frac{1}{z_{12}^{2\de-h-2} z_{20}^{h+2}z_{10}^{h+2}}.
+\ee
+The result indeed has the form of a three-point function of global primaries, times an interesting coefficient.
+
+As a consequence of (\ref{eq:virasoroprojectorglobal}), Virasoro blocks are a sum of global conformal blocks. The relative coefficients of the different blocks are determined by three-point functions with different Virasoro descendants of $\cO$. Furthermore, when $h,c$ obey unitarity, the sum over global blocks has positive coefficients.
+
+\subsubsection{Computing the first few levels}
+
+Let us compute $\mathcal{F}^{34}_{12}(h|z_i)$ up to level $2$. As we will see, we have actually already done the computation, but let us start from the definition since it is instructive. For simplicity, we will take the external $h_i$ to be equal, $h_1=h_2=h_3=h_4=\de$. The answer should obey the conformal Ward identities for a four-point function of operators with weight $\de$. Thus, it suffices to compute it in the standard configuration
+\be
+z_1=0,\quad z_2=z,\quad z_3=1,\quad z_4=\oo.
+\ee
+An operator insertion at infinity is defined by $\cO(\oo)=\lim_{L\to \oo} L^{2h} \cO(L)$. Note that $\cO_1(0)|0\>=|\cO_1\>$ and $\<0|\cO_4(\oo)=\<\cO_4|$.
+
+The first few terms in the Virasoro block are
+\be
+\mathcal{F}(h|z) &=\<\cO_4|\cO_3(1)|\cO\>\<\cO|\cO_2(z)|\cO_1\> \nn\\
+&+\<\cO_4|\cO_3(1)L_{-1}|\cO\>(\cM^1)^{-1}\<\cO|L_1\cO_2(z)|\cO_1\> \nn\\
+&+\<\cO_4|\cO_3(1) \begin{bmatrix}
+L_{-1}^2|\cO\> &
+L_{-2}|\cO\>
+\end{bmatrix}
+(\cM^2)^{-1}
+\begin{bmatrix}
+\<\cO|L_{1}^2 \\
+\<\cO|L_{2}
+\end{bmatrix}
+\cO_2(z)|\cO_1\>\nn\\
+&+\dots
+\ee
+
+Each of the matrix elements can be computed from derivatives of the basic three-point functions
+\be
+\<\cO_1(z_1)\cO_2(z_2)\cO(z_0)\> &= \frac{1}{z_{12}^{2\de-h} z_{10}^h z_{20}^h}\nn\\
+\<\cO_3(z_3)\cO_4(z_4)\cO(z_0)\> &= \frac{1}{z_{34}^{2\de-h} z_{30}^h z_{40}^h}
+\ee
+and a similar expression for $\<\cO_3\cO_4\cO\>$. Let us compute them one by one. We have
+\be
+\<\cO_4|\cO_3(1)L_{-1}|\cO\> &= \ptl_{z_0}\lim_{z_4\to\oo} z_4^{2\de} \<\cO_4(z_4)\cO_3(1)\cO(z_0)\>|_{z_0=0}\nn\\
+& = \left.\ptl_{z_0} \frac{1}{(1-z_0)^h}\right|_{z_0=0} = h
+\ee
+Similarly, taking two derivatives
+\be
+\<\cO_4|\cO_3(1)L_{-1}^2|\cO\> &= \ptl_{z_0}^2\lim_{z_4\to\oo} z_4^{2\de}\<\cO_4(z_4)\cO_3(1)\cO(z_0)\>|_{z_0=0}\nn\\
+& = \left.\ptl_{z_0}^2 \frac{1}{(1-z_0)^h}\right|_{z_0=0} = h(h+1)
+\ee
+For the $L_{-2}$ term, we have
+\be
+\<\cO_3(z_3)\cO_4(z_4)L_{-2}\.\cO(0)\> &= \cL_{-2}\<\cO_3(z_3)\cO_4(z_4)\cO(z_0)\>|_{z_0=0} \nn\\
+&= \sum_{i=3,4} \p{\frac{\de}{z_i^2} - \frac{1}{z_i} \ptl_i} \<\cO_3(z_3)\cO_4(z_4)\cO(0)\>
+\ee
+In the $z_4\to \oo$ limit, the term with $i=4$ will be subleading. Thus, we have
+\be
+\<\cO_4|\cO_3(1)L_{-2}|\cO\> &= \left.\p{\frac{\de}{z_3^2} - \frac{1}{z_3}\ptl_{z_3}}\frac{1}{z_3^{h}}\right|_{z_3=1} = \de+h
+\ee
+
+Now, consider the matrix elements with $\cO_1$ and $\cO_2$. We can relate these to the computations we've already done as follows. We would first like to relate $\cO_2(z)$ to $\cO_2(1)$. This can be done by integrating the Ward identity for dilatations,
+\be
+[L_0,\cO(w)] &= (w\ptl_w+h)\cO(w) \nn\\
+e^{\lambda L_0}\cO(w) e^{-\lambda L_0} &= e^{\lambda(w\ptl_w+h)}\cO(z) = e^{\l h} \cO(e^\l w)
+\ee
+Setting $\l=\log z$ and $w=1$, we have
+\be
+z^{L_0} \cO(1) e^{-L_0} = z^h \cO(z).
+\ee
+
+Let us use this inside a matrix element 
+\be
+\<\cO|L_{\{k\}} \cO_2(z) |\cO_1\> &= z^{-h_2}\<\cO|L_{\{k\}} z^{L_0} \cO_2(1) z^{-L_0} |\cO_1\> \nn\\
+&= z^{-h_2-h_1+h_\cO+N} \<\cO|L_{\{k\}} \cO_2(1)|\cO_1\>
+\ee
+where $N$ is the level of $L_{\{k\}}$. Now the remaining matrix element is just
+\be
+\<\cO|L_{\{k\}} \cO_2(1)|\cO_1\> = (\<\cO_1|\cO_2(1)L_{-\{k\}}|\cO\>)^*
+\ee
+And these are precisely the same as the quantities we computed above. Our expansion for the Virasoro block becomes
+\be
+\mathcal{F}(h|z) &= z^{h-2\de}\p{1 + \frac{h^2}{\cM^1} z + 
+\begin{bmatrix}
+h(h+1) &
+(\de + h)
+\end{bmatrix}
+(\cM^2)^{-1}
+\begin{bmatrix}
+h(h+1) \\
+\de+h
+\end{bmatrix} z^2 + \dots} \nn\\
+&= z^{h-2\de}\p{1+\frac{h}{2} z + \p{\frac{h(h+1)^2}{4(2h+1)}
++ \frac{\p{2\de (2h+1)+h(h-1)}^2}{2(2h+1)(c(2h+1)+2h(8h-5))}}z^2 + \dots}
+\ee
+where we used the expression (\ref{eq:leveltwomatrixnorms}) for $\cM^2$.
+
+Let us make some observations about this result. The Virasoro block is equal to $z^{h-2\de}$ times a power series in $z$, where each integer power corresponds to the level of the descendent being ``exchanged" between $\cO_1\cO_2$ and $\cO_3 \cO_4$. The coefficients in this power series are rational functions of $h,\de$, and $c$. The Virasoro block should be expressible as a linear combination of $\SL(2,\R)$ blocks corresponding to the global primaries
+\be
+\cO,\quad \p{L_{-2} - \frac{3}{4h+2}L_{-1}^2}\.\cO,\quad\dots.
+\ee
+Indeed, note that the first two terms in the $z$-expansion match the $\SL(2,\R)$ block for $\cO$,
+\be
+\<\cO_4(\oo)\cO_3(1)|\cO|_\mathrm{global} \cO_2(z)\cO_1(0)\> &=
+z^{-2\de} k_{2h}(z) \nn\\
+&= z^{h-2\de}{}_2F_1(h,h,2h,z) \nn\\
+&= z^{h-2\de}\p{1+\frac{h^2}{2h} z + \frac{h^2(h+1)^2}{4h(2h+1)} z^2 + \dots}
+\ee
+The factor of $z^{-2\de}$ is because we are no longer stripping off the dimensionful factors $x_{12}^{-2\De_\f}x_{34}^{-2\De_\f}$ from the block.
+
+Subtracting off the first $\SL(2,\R)$ block, we can deduce the next term in the expansion in global blocks
+\be
+\label{eq:expansioninglboalblocks}
+\mathcal{F}(h|z) &= z^{-2\de} k_{2h}(z) + \frac{\p{2\de (2h+1)+h(h-1)}^2}{2(2h+1)(c(2h+1)+2h(8h-5))} z^{-2\de} k_{2(h+2)}(z) + \dots
+\ee
+Indeed, the crazy factor out front is just the square of the coefficient~(\ref{eq:checkonleveltwoprim}) divided by the norm-squared of the level-2 global primary
+\be
+\label{eq:normglobalprim}
+\left|\p{L_{-2} - \frac{3}{4h+2} L_{-1}^2}|\cO\>\right|^2 &= \frac{c(2h+1)+2h(8h-5)}{2(2h+1)}.
+\ee
+Thus, we could have jumped straight to (\ref{eq:expansioninglboalblocks}) based on the calculations (\ref{eq:checkonleveltwoprim}) and (\ref{eq:normglobalprim}).
+
+Because all of the global primaries besides $|\cO\>$ itself contain higher Virasoro generators $L_{-k}$ with $k>1$, their norms are polynomials in $c$ with nonzero degree. In the large-$c$ limit, the contribution of these states goes away, and we are left with only the leading global block $z^{-2\de} k_{2h}(z)$. This leading block can be computed using the Casimir equation for $\SL(2,\R)$ as we discussed before, or by explicitly summing descendants with respect to $L_{-1}$. Indeed, it's not too hard to improve our previous calculation to do this to all orders. We need
+\be
+\<\cO_4|\cO_3(1)L_{-1}^n|\cO\> &= \ptl_{z_0}^n\lim_{z_4\to\oo} z_4^{2\de}\<\cO_4(z_4)\cO_3(1)\cO(z_0)\>|_{z_0=0}\nn\\
+& = \left.\ptl_{z_0}^n \frac{1}{(1-z_0)^h}\right|_{z_0=0} = (h)_n,
+\ee
+where $(h)_n=h(h+1)\cdots(h+n-1)=\frac{\Gamma(h+n)}{\Gamma(h)}$ is the Pochhammer symbol.  We also need the result
+\begin{exercise}
+Assuming $\<\cO|\cO\>=1$, show that
+\be
+\<\cO|L_1^n L_{-1}^n|\cO\> &= n!(2n)_n.
+\ee
+\end{exercise}
+Thus, the $\SL(2,\R)$ block is
+\be
+\sum_{n=0}^\oo \frac{(h)_n^2}{n!(2n)_n} z^{h+n-2\de} = z^{-2\de} k_{2h}(z).
+\ee
+
+One can imagine computing Virasoro blocks to higher orders by following the procedure above. Unsurprisingly, this gets cumbersome quite quickly. The most efficient methods for computing general Virasoro blocks are based on recursion relations discovered by Zamolodchikov, which take advantage of the analyticity structure of the blocks in $h$ and $c$ in a clever way. However, in some special cases, Virasoro blocks can be computed in closed form. We will explore an example shortly.
 
 \begin{appendix}
 \end{appendix}
