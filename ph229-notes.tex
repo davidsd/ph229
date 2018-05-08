@@ -82,6 +82,9 @@
 \renewcommand\bar[1]{\overline{#1}}
 \newcommand\SL{\mathrm{SL}}
 \newcommand\cM{\mathcal{M}}
+\newcommand\cN{\mathcal{N}}
+\newcommand\cA{\mathcal{A}}
+\newcommand\cF{\mathcal{F}}
 
 \newcommand\stoplecture{
 \stepcounter{LectureCounter}
@@ -241,7 +244,7 @@ An example is a special conformal transformation,
 \label{eq:specialconformalsymmetry}
 x^\mu \to \frac{x^\mu - b^\mu x^2}{1-2 b\.x + b^2 x^2}\qquad(b\in \R^d).
 \ee
-In 2-dimensions, there are more exotic examples, like the one pictured in figure~\ref{}.\footnote{We will give a precise definition for what it means for a theory to be invariant under transformations like (\ref{eq:rescalingsymmetry}) and (\ref{eq:specialconformalsymmetry}) later in the course.}
+In 2 dimensions, there are more exotic examples, like the one pictured in figure~\ref{}.\footnote{We will give a precise definition for what it means for a theory to be invariant under transformations like (\ref{eq:rescalingsymmetry}) and (\ref{eq:specialconformalsymmetry}) later in the course.}
 
 Here is some rough intuition for why critical points display conformal symmetry. We know that a critical theory is invariant under rescalings and rotations. If the theory is also local, in the sense that degrees of freedom at a point only interact directly with other degrees of freedom at nearby points, then the theory should also be invariant under transformations that locally look like a rescaling and rotation. This is the defining property of a conformal transformation. Turning this rough intuition into a theorem is a difficult problem (that we will discuss in more detail later). However, it seems to be true in a wide class of systems.
 
@@ -1075,7 +1078,7 @@ Thus, the mass gap is given by $m_\mathrm{gap}=|g-1|$. At the special point $g=g
 
 To summarize, in the continuum limit, at the critical coupling, and at long distances, the quantum TFIM becomes a free relativistic fermion. This is yet another example of IR equivalence/duality. The IR theory has an emergent $\SO(1,1)$ Lorentz symmetry that was not present in the original spin system. In fact, it is also has emergent conformal symmetry, as we'll see later.
 
-The fact that the critical point of the 1+1d quantum TFIM (and consequently other theories in the same universality class, like the 2d Ising lattice model) is equivalent to a free theory is very special to 2-dimensions. Our derivation relied in a fundamental way on the Jordan-Wigner transformation and does not work, for example in 2+1d.\footnote{There are newly-discovered versions of the Jordan-Wigner transformation in higher dimensions (\arXiv{1711.00515} --- one of your classmates is a coauthor!), but they do not relate the 2+1d TFIM to a free theory.}
+The fact that the critical point of the 1+1d quantum TFIM (and consequently other theories in the same universality class, like the 2d Ising lattice model) is equivalent to a free theory is very special to 2 dimensions. Our derivation relied in a fundamental way on the Jordan-Wigner transformation and does not work, for example in 2+1d.\footnote{There are newly-discovered versions of the Jordan-Wigner transformation in higher dimensions (\arXiv{1711.00515} --- one of your classmates is a coauthor!), but they do not relate the 2+1d TFIM to a free theory.}
 
 \stoplecture
 
@@ -1227,6 +1230,7 @@ m_\mathrm{gap} &\propto m_t \propto |u_t|^{1/y_t} \propto |t|^{1/y_t}.
 \ee
 This determines the critical exponent\footnote{Our calculation of $\nu$ in the 2d Ising model shows that $\De_t=1$ for that theory. The corresponding $\cO_t$ is the mass of a 2d free fermion, which indeed has dimension $1$.}
 \be
+\label{eq:nuexponent}
 \nu=\frac{1}{y_t} = \frac{1}{d-\De_t}.
 \ee
 
@@ -2086,7 +2090,7 @@ This correlator vanishes if $x$ is in the past or future of all the other $x_i$,
 
 \subsubsection{Scale without conformal invariance}
 
-Scale without conformal invariance is possible in nonunitary theories. Perhaps the simplest example is the theory of elasticity in 2-dimensions \cite{Riva:2005gd}. This is the theory of a vector $u_\mu$ with action
+Scale without conformal invariance is possible in nonunitary theories. Perhaps the simplest example is the theory of elasticity in 2 dimensions \cite{Riva:2005gd}. This is the theory of a vector $u_\mu$ with action
 \be
 \label{eq:theoryofelasticity}
 S &= \int d^2 x \p{g u_{\mu\nu} u^{\mu\nu} + \frac k 2 (u_\mu{}^\mu)^2},
@@ -4301,7 +4305,7 @@ A similar phenomenon occurs in the crossing equation. Although each individual b
 
 We conclude that any CFT must have an infinite number of primary operators, since this is necessary for consistency of the crossing equation.
 
-One of our main goals for the rest of the course will be to study the crossing equations and find solutions if possible. 2-dimensional CFTs possess extra symmetries that will allow us to make significant progress in this direction. We will specialize to 2-dimensions in section~\ref{sec:twod}. Before we do so, there are a few more results to discuss in higher dimensions.
+One of our main goals for the rest of the course will be to study the crossing equations and find solutions if possible. 2-dimensional CFTs possess extra symmetries that will allow us to make significant progress in this direction. We will specialize to 2 dimensions in section~\ref{sec:twod}. Before we do so, there are a few more results to discuss in higher dimensions.
 
 \section{Ward identities}
 
@@ -4494,7 +4498,7 @@ For example, the coefficient of the stress-tensor in the conformal block expansi
 \frac{f_{\f\f T}^2}{C_T} &\propto \frac{\De_\f^2}{C_T}.
 \ee
 
-\section[2-dimensions]{2-dimensions\footnote{Sources for this section: Polchinski \cite{}.}}
+\section[2 dimensions]{2 dimensions\footnote{Sources for this section: Polchinski \cite{}.}}
 \label{sec:twod}
 
 \subsection{Conventions}
@@ -4540,7 +4544,7 @@ As usual, the conditions (\ref{eq:tracelessness2d}) and (\ref{eq:conservation2d}
 \<T(z) \cO(z_0,\bar z_0)\cdots\> &\sim \frac{1}{(z-z_0)^2} + \dots.
 \ee
 
-In 2-dimensions, it is conventional to include a factor of $-2\pi$ in the definition of $T^{\mu\nu}$,
+In 2 dimensions, it is conventional to include a factor of $-2\pi$ in the definition of $T^{\mu\nu}$,
 \be
 \<T^{\mu\nu}\cdots\>_g &= -2\pi \frac{2}{\sqrt g}\frac{\de}{\de g^{\mu\nu}}\<\cdots\>_g\qquad (\textrm{$2$-dimensions})
 \ee
@@ -4613,6 +4617,16 @@ Thus, we have
 L_m^\dag = L_{-m},\quad \bar L_m^\dag = \bar L_{-m}.
 \ee
 This is easy to verify for the global charges from (\ref{eq:relationtoglobalcharges}).
+
+Essentially, complex conjugation exchanges $z$ and $\bar z$, but reflection exchanges them back.
+As another example, consider a local operator $\cO_{\mu_1\cdots\mu_J}(z,\bar z)$ satisfying the reality condition (\ref{eq:reflectionforhermitianconjugation}). Hermitian conjugation maps $z,\bar z$ components to themselves, for example
+\be
+\cO_{z\cdots z}^\dag(z,\bar z) &= \cO_{z \cdots z}(\bar z,z).
+\ee
+This is necessary for a purely holomorphic operator to have a nonvanishing two-point function consistent with unitarity,
+\be
+\p{\frac{c}{z_{12}^4}}^* = \<0|T_{zz}(z_1)T_{zz}(z_2)|0\>^\dag = \<0|T_{zz}(\bar z_2) T_{zz}(\bar z_1)|0\> = \frac{c}{\bar z_{12}^4}.
+\ee
 
 
 \subsection{The Virasoro algebra}
@@ -4691,7 +4705,7 @@ c &= C_T.
 \ee
 Thus, $c$ is related to the two-point function of stress tensors, and it is nonzero and positive in any unitary theory.
 
-If we allow ourselves to use the 2d $\e$-symbol, then there is actually an additional allowed tensor structure for $\<T_{\mu\nu}(x)T_{\rho\s}(0)\>$.\footnote{Exercise: find it!} Previously in section~\ref{sec:twoptsection} we proved that operators in an irreducible representation of $\SO(d)$ have a unique two-point structure. This is not a contradiction because the spin-$\ell$ representation in 2d is actually {\it reducible}. Specifically, $\SO(2)=U(1)$, and the spin-$\ell$ representation splits into two 1-dimensional irreps of $U(1)$ with charges $\pm \ell$. In the case of the stress tensor, these irreps are precisely described by $T(z)=T_{zz}(z)$ and $\bar T(\bar z) = T_{\bar z\bar z}(\bar z)$ --- they don't mix with each other under $\SO(2)$ rotations. Thus, it is possible to write two separate two-point structures 
+If we allow ourselves to use the 2d $\e$-symbol, then there is actually an additional allowed tensor structure for $\<T_{\mu\nu}(x)T_{\rho\s}(0)\>$.\footnote{Exercise: find it!} Previously in section~\ref{sec:twoptsection} we proved that operators in an irreducible representation of $\SO(d)$ have a unique two-point structure. This is not a contradiction because the spin-$\ell$ representation in 2d is actually {\it reducible}. Specifically, $\SO(2)=U(1)$, and the spin-$\ell$ representation splits into two 1-dimensional irreps of $U(1)$ with charges $s=\pm \ell$. In the case of the stress tensor, these irreps are precisely described by $T(z)=T_{zz}(z)$ and $\bar T(\bar z) = T_{\bar z\bar z}(\bar z)$ --- they don't mix with each other under $\SO(2)$ rotations. Thus, it is possible to write two separate two-point structures\footnote{Note that the charge $\ell$ representation under $\SO(2)=U(1)$ is isomorphic to its dual-reflected representation, which allows these two-point functions to be nonvanishing.}
 \be
 \<T(z)T(0)\> = \frac{c}{2z^4},\quad \<\bar T(\bar z) \bar T(0)\> = \frac{\bar c}{2\bar z^4},
 \ee
@@ -4708,6 +4722,7 @@ Unitarity implies that $c$ and $\bar c$ are each nonnegative:
 
 
 \subsection{Virasoro multiplets}
+\label{sec:virasorormult}
 
 One of the commutation relations of the Virasoro algebra is
 \be
@@ -4743,7 +4758,12 @@ L_{-1}^3|\cO\>,L_{-2}L_{-1}|\cO\>,L_{-3}|\cO\>\quad & h+3 \\
 \ee
 The non-primary states in the multiplet are called Virasoro descendants. To write them, we have used commutation relations of the Virasoro algebra to place the $L_{-m}$'s in increasing order. The number of states at the $n$-th level is equal to $p(n)$, the number of partitions of $n$. By the same argument as in section~\ref{sec:onlyprimariesanddescendants}, in a unitary 2d CFT, all states are linear combinations of Virasoro primaries and descendants.
 
-A 2d CFT has both a left-moving and right-moving Virasoro symmetry, so we can organize operators in the theory into primaries/descendants with respect to both Virasoro algebras.
+A 2d CFT has both a left-moving and right-moving Virasoro symmetry, so we can organize operators in the theory into primaries/descendants with respect to both Virasoro algebras. The left- and right-moving weights are related to the usual quantum numbers by
+\be
+h+\bar h = \De,\quad h-\bar h = s.
+\ee
+Here, $s$ is the charge under $i M_{12}$. A spin-$\ell$ traceless symmetric tensor splits into two states with charges $s=\pm \ell$. Note that $s\in \Z$ for bosonic operators and $s\in \Z + \frac 1 2$ for fermionic operators.
+
 
 One of the most important Virasoro primaries is the vacuum state $|0\>$. It's clear that the vacuum must be primary because it has the lowest $L_0$ eigenvalue of any state in the theory. However, we can verify this more directly by computing
 \be
@@ -4939,6 +4959,7 @@ Performing the integral inside (\ref{eq:correlatorwithsinglet}), or equivalently
 \ee
 where
 \be
+\label{eq:higherdiffop}
 \cL_{-k} &= \sum_{i=2}^n \p{\frac{h_i(k-1)}{(z_i-z_1)^k} - \frac{1}{(z_i-z_1)^{k-1}} \ptl_i}.
 \ee
 
@@ -4958,7 +4979,6 @@ in terms of differential operators acting on the correlator of primaries.
 
 We derived the unitarity bounds (\ref{}) by demanding that global descendant states have positive norms. We can get stronger conditions using the Virasoro algebra. Let $|h\>$ be a primary state with left-moving weight $h$. As we have discussed, the inner product
 \be
-\label{test}
 \cM^1 &\equiv \<h|L_1 L_{-1}|h\> = 2h
 \ee
 implies that $h\geq 0$ in a unitary theory. At the second level of a Virasoro multiplet, we have two states, and we can compute a matrix of inner products
@@ -4967,11 +4987,12 @@ implies that $h\geq 0$ in a unitary theory. At the second level of a Virasoro mu
 \<h|L_1^2 \\
 \<h|L_2 
 \end{pmatrix}
+\label{eq:leveltwomatrixnorms}
 \begin{pmatrix}
 L_{-1}^2|h\> & L_{-2}|h\>
 \end{pmatrix} \nn\\
 &= \begin{pmatrix}
-8 h^2 + 4h & 6h \nn\\
+8 h^2 + 4h & 6h \\
 6h & 4h+c/2
 \end{pmatrix}.
 \ee
@@ -5000,7 +5021,8 @@ The determinant of $\cM^N$ was computed as a function of $h,c$ by Kac \cite{}:
 \ee
 Here, $K_N$ is a positive constant. The zeros of the determinant are 
 \be
-h_{r,s} &= \frac{c-1}{24} + \frac 1 4 (r \a_++s\a_-)^2 \nn\\
+\label{eq:kaczeros}
+h_{r,s} &= \frac{c-1}{24} + \frac {(r \a_++s\a_-)^2} 4  \nn\\
 \a_{\pm} &= (24)^{-1/2}((1-c)^{1/2} \pm (25-c)^{1/2}).
 \ee
 Finally, $p(n)$ counts ``partitions of $n$," i.e.\ the number of ways $n$ can be written as a sum of positive integers
@@ -5088,47 +5110,20 @@ To compute the individual pieces $\mathcal{F}^{34}_{12}(h|z_i)$, we can pretend 
 \ee
 This quantity is called a Virasoro block.
 
-The three-point function $\<\cO_1(z_1)\cO_2(z_2)\cO(z)\>$ is equal to the first term in (\ref{eq:twodthreept}). It is not strictly-speaking a function of $z_1,z_2,z$ because it is not single-valued in general (since the $h_i$ can take non-integer values). Only after combining it with the antiholomorphic term in (\ref{eq:twodthreept}), do we get a single-valued function in two dimensions, due to the condition $h-\bar h\in \Z$. Similarly, the Virasoro block $\mathcal{F}^{34}_{12}(h|z_i)$ is not actually a single-valued function of the $z_i$. It has interesting monodromies that we will discuss later.
-
-A single unitary Virasoro multiplet splits into a direct sum of global conformal multiplets. Consequently, the projector onto a Virasoro multiplet can be expressed as a sum of projectors onto global ($\SL(2,\R)$) multiplets
-\be
-\label{eq:virasoroprojectorglobal}
-|\cO|_\mathrm{Vir} &= \sum_{\{k\},\{k'\}} |\cO,\{k\}\> \cM_{\{k\},\{k'\}}^{-1} \<\cO,\{k'\}| \nn\\
-&= \sum_{\cO'} |\cO'|_\mathrm{global}.
-\ee
-Here, $\cO'$ runs over all Virasoro descendants of $\cO$ that are primaries with respect to $\SL(2,\R)$. In other words, $L_{1}|\cO'\>=0$, but the higher $L_{m}$'s do not necessarily kill $\cO'$. Besides the Virasoro primary itself, the first example of such a state occurs at level 2. We can find it by solving
-\be
-0 &= L_1(L_{-2}+ aL_{-1}^2)|\cO\> \nn\\
- &= (3+2 a (2h+1)) L_{-1} |\cO\> \quad \implies \quad a = - \frac{3}{4h+2}
-\ee
-Thus, the first $\SL(2,\R)$ primary state is
-\be
-\label{eq:exprforleveltwoprim}
-|\cO'\> &= \p{L_{-2} - \frac{3}{4h+2} L_{-1}^2}|\cO\>
-\ee
-Note that this is precisely the state (\ref{eq:correspondingnull}) that becomes null when $c=\frac 1 2, h=\frac 1 {16}$. When a Virasoro descendent in a multiplet with $h\geq 0$ becomes null, its entire global conformal multiplet must simultaneously become null. This is because the unitarity bounds for $\SL(2,\R)$ forbid null $\SL(2,\R)$ descendants that aren't built from a null primary. Thus, the leading null Virasoro descendent is always a global primary.
-
-As a check on (\ref{eq:exprforleveltwoprim}), we can compute a three-point function
-\be
-\<\cO_1(z_1)\cO_2(z_2) \cO'(z_0)\> &= \p{\cL_{-2} - \frac{3}{4h+2} \cL_{-1}^2}\<\cO_1(z_1)\cO_2(z_2) \cO(z_0)\>,
-\ee
-For simplicity, consider the case $h_1=h_2=\de$. Plugging in the standard form for a three-point function of primaries, we find after some impressive cancellations
-\be
-\label{eq:checkonleveltwoprim}
-\p{\cL_{-2} - \frac{3}{4h+2} \cL_{-1}^2} \frac{1}{z_{12}^{2\de-h} z_{20}^{h}z_{10}^{h}}
-&= \frac{2\de(2h+1)+h(h-1)}{2(2h+1)} \frac{1}{z_{12}^{2\de-h-2} z_{20}^{h+2}z_{10}^{h+2}}.
-\ee
-The result indeed has the form of a three-point function of global primaries, times an interesting coefficient.
-
-As a consequence of (\ref{eq:virasoroprojectorglobal}), Virasoro blocks are a sum of global conformal blocks. The relative coefficients of the different blocks are determined by three-point functions with different Virasoro descendants of $\cO$. Furthermore, when $h,c$ obey unitarity, the sum over global blocks has positive coefficients.
+The three-point function $\<\cO_1(z_1)\cO_2(z_2)\cO(z)\>$ is equal to the first term in (\ref{eq:twodthreept}). It is not strictly-speaking a function of $z_1,z_2,z$ because it is not necessarily single-valued (since the $h_i$ can take non-integer values). Only after combining it with the antiholomorphic term in (\ref{eq:twodthreept}), do we get a single-valued function in two dimensions, due to the condition $h-\bar h\in \Z$. Similarly, the Virasoro block $\mathcal{F}^{34}_{12}(h|z_i)$ is not actually a single-valued function of the $z_i$. It has interesting monodromies that we will discuss later.
 
 \subsubsection{Computing the first few levels}
 
 Let us compute $\mathcal{F}^{34}_{12}(h|z_i)$ up to level $2$. As we will see, we have actually already done the computation, but let us start from the definition since it is instructive. For simplicity, we will take the external $h_i$ to be equal, $h_1=h_2=h_3=h_4=\de$. The answer should obey the conformal Ward identities for a four-point function of operators with weight $\de$. Thus, it suffices to compute it in the standard configuration
 \be
+\label{eq:standardconfigholo}
 z_1=0,\quad z_2=z,\quad z_3=1,\quad z_4=\oo.
 \ee
-An operator insertion at infinity is defined by $\cO(\oo)=\lim_{L\to \oo} L^{2h} \cO(L)$. Note that $\cO_1(0)|0\>=|\cO_1\>$ and $\<0|\cO_4(\oo)=\<\cO_4|$.
+An operator insertion at infinity is defined by $\cO(\oo)=\lim_{L\to \oo} L^{2h} \cO(L)$. Note that $\cO_1(0)|0\>=|\cO_1\>$ and $\<0|\cO_4(\oo)=\<\cO_4|$. The Virasoro block in a general configuration is fixed by conformal Ward identities to be
+\be
+\mathcal{F}^{34}_{12}(h|z_i) &= \frac{1}{ x_{13}^{2\de}z_{24}^{2\de}} \mathcal{F}^{34}_{12}\p{h\left|0,\frac{z_{12} z_{34}}{z_{13} z_{24}},1,\oo\right.}
+\ee
+This can be derived by noting that both sides agree in the standard configuration and also satisfy the Ward identities for a four-point function of primaries.
 
 The first few terms in the Virasoro block are
 \be
@@ -5152,7 +5147,7 @@ Each of the matrix elements can be computed from derivatives of the basic three-
 \<\cO_1(z_1)\cO_2(z_2)\cO(z_0)\> &= \frac{1}{z_{12}^{2\de-h} z_{10}^h z_{20}^h}\nn\\
 \<\cO_3(z_3)\cO_4(z_4)\cO(z_0)\> &= \frac{1}{z_{34}^{2\de-h} z_{30}^h z_{40}^h}
 \ee
-and a similar expression for $\<\cO_3\cO_4\cO\>$. Let us compute them one by one. We have
+For example,
 \be
 \<\cO_4|\cO_3(1)L_{-1}|\cO\> &= \ptl_{z_0}\lim_{z_4\to\oo} z_4^{2\de} \<\cO_4(z_4)\cO_3(1)\cO(z_0)\>|_{z_0=0}\nn\\
 & = \left.\ptl_{z_0} \frac{1}{(1-z_0)^h}\right|_{z_0=0} = h
@@ -5167,7 +5162,7 @@ For the $L_{-2}$ term, we have
 \<\cO_3(z_3)\cO_4(z_4)L_{-2}\.\cO(0)\> &= \cL_{-2}\<\cO_3(z_3)\cO_4(z_4)\cO(z_0)\>|_{z_0=0} \nn\\
 &= \sum_{i=3,4} \p{\frac{\de}{z_i^2} - \frac{1}{z_i} \ptl_i} \<\cO_3(z_3)\cO_4(z_4)\cO(0)\>
 \ee
-In the $z_4\to \oo$ limit, the term with $i=4$ will be subleading. Thus, we have
+In the $z_4\to \oo$ limit, the term with $i=4$ is subleading. Thus, we have
 \be
 \<\cO_4|\cO_3(1)L_{-2}|\cO\> &= \left.\p{\frac{\de}{z_3^2} - \frac{1}{z_3}\ptl_{z_3}}\frac{1}{z_3^{h}}\right|_{z_3=1} = \de+h
 \ee
@@ -5181,13 +5176,13 @@ Setting $\l=\log z$ and $w=1$, we have
 \be
 z^{L_0} \cO(1) e^{-L_0} = z^h \cO(z).
 \ee
-
-Let us use this inside a matrix element 
+Inserting this inside a matrix element,
 \be
 \<\cO|L_{\{k\}} \cO_2(z) |\cO_1\> &= z^{-h_2}\<\cO|L_{\{k\}} z^{L_0} \cO_2(1) z^{-L_0} |\cO_1\> \nn\\
-&= z^{-h_2-h_1+h_\cO+N} \<\cO|L_{\{k\}} \cO_2(1)|\cO_1\>
+&= z^{-h_2-h_1+h_\cO+N} \<\cO|L_{\{k\}} \cO_2(1)|\cO_1\>,
+\label{eq:zdependence}
 \ee
-where $N$ is the level of $L_{\{k\}}$. Now the remaining matrix element is just
+where $N$ is the level of $L_{\{k\}}$. We also have
 \be
 \<\cO|L_{\{k\}} \cO_2(1)|\cO_1\> = (\<\cO_1|\cO_2(1)L_{-\{k\}}|\cO\>)^*
 \ee
@@ -5205,52 +5200,331 @@ h(h+1) \\
 \end{bmatrix} z^2 + \dots} \nn\\
 &= z^{h-2\de}\p{1+\frac{h}{2} z + \p{\frac{h(h+1)^2}{4(2h+1)}
 + \frac{\p{2\de (2h+1)+h(h-1)}^2}{2(2h+1)(c(2h+1)+2h(8h-5))}}z^2 + \dots}
+\label{eq:seriesexpansionforvir}
 \ee
 where we used the expression (\ref{eq:leveltwomatrixnorms}) for $\cM^2$.
 
-Let us make some observations about this result. The Virasoro block is equal to $z^{h-2\de}$ times a power series in $z$, where each integer power corresponds to the level of the descendent being ``exchanged" between $\cO_1\cO_2$ and $\cO_3 \cO_4$. The coefficients in this power series are rational functions of $h,\de$, and $c$. The Virasoro block should be expressible as a linear combination of $\SL(2,\R)$ blocks corresponding to the global primaries
-\be
-\cO,\quad \p{L_{-2} - \frac{3}{4h+2}L_{-1}^2}\.\cO,\quad\dots.
-\ee
-Indeed, note that the first two terms in the $z$-expansion match the $\SL(2,\R)$ block for $\cO$,
-\be
-\<\cO_4(\oo)\cO_3(1)|\cO|_\mathrm{global} \cO_2(z)\cO_1(0)\> &=
-z^{-2\de} k_{2h}(z) \nn\\
-&= z^{h-2\de}{}_2F_1(h,h,2h,z) \nn\\
-&= z^{h-2\de}\p{1+\frac{h^2}{2h} z + \frac{h^2(h+1)^2}{4h(2h+1)} z^2 + \dots}
-\ee
-The factor of $z^{-2\de}$ is because we are no longer stripping off the dimensionful factors $x_{12}^{-2\De_\f}x_{34}^{-2\De_\f}$ from the block.
+The Virasoro block is equal to $z^{h-2\de}$ times a power series in $z$, where each integer power corresponds to the level of the descendent being ``exchanged" between $\cO_1\cO_2$ and $\cO_3 \cO_4$. The coefficients in this power series are rational functions of $h,\de$, and $c$.
 
-Subtracting off the first $\SL(2,\R)$ block, we can deduce the next term in the expansion in global blocks
-\be
-\label{eq:expansioninglboalblocks}
-\mathcal{F}(h|z) &= z^{-2\de} k_{2h}(z) + \frac{\p{2\de (2h+1)+h(h-1)}^2}{2(2h+1)(c(2h+1)+2h(8h-5))} z^{-2\de} k_{2(h+2)}(z) + \dots
-\ee
-Indeed, the crazy factor out front is just the square of the coefficient~(\ref{eq:checkonleveltwoprim}) divided by the norm-squared of the level-2 global primary
-\be
-\label{eq:normglobalprim}
-\left|\p{L_{-2} - \frac{3}{4h+2} L_{-1}^2}|\cO\>\right|^2 &= \frac{c(2h+1)+2h(8h-5)}{2(2h+1)}.
-\ee
-Thus, we could have jumped straight to (\ref{eq:expansioninglboalblocks}) based on the calculations (\ref{eq:checkonleveltwoprim}) and (\ref{eq:normglobalprim}).
+\subsubsection{Expression in terms of global blocks}
 
-Because all of the global primaries besides $|\cO\>$ itself contain higher Virasoro generators $L_{-k}$ with $k>1$, their norms are polynomials in $c$ with nonzero degree. In the large-$c$ limit, the contribution of these states goes away, and we are left with only the leading global block $z^{-2\de} k_{2h}(z)$. This leading block can be computed using the Casimir equation for $\SL(2,\R)$ as we discussed before, or by explicitly summing descendants with respect to $L_{-1}$. Indeed, it's not too hard to improve our previous calculation to do this to all orders. We need
+A single unitary Virasoro multiplet splits into a direct sum of $\SL(2,\R)$ multiplets. (Recall that $\SL(2,\R)$ is generated by $L_{-1},L_0,L_1$.) Consequently, the projector onto a Virasoro multiplet can be expressed as a sum of projectors onto global $\SL(2,\R)$ multiplets
+\be
+\label{eq:virasoroprojectorglobal}
+|\cO|_\mathrm{Vir} &= \sum_{\{k\},\{k'\}} |\cO,\{k\}\> \cM_{\{k\},\{k'\}}^{-1} \<\cO,\{k'\}| \nn\\
+&= \sum_{\cO'} |\cO'|_\mathrm{\SL(2,\R)}.
+\ee
+Here, $\cO'$ runs over all Virasoro descendants of $\cO$ that are primaries with respect to $\SL(2,\R)$. In other words, $L_{1}|\cO'\>=0$, but the higher $L_{m}$'s do not necessarily kill $\cO'$. As a consequence of (\ref{eq:virasoroprojectorglobal}), Virasoro blocks can be written as a sum of global conformal blocks,
+\be
+\label{eq:sumoversltwoblocksforvir}
+\mathcal{F}(h|z) &= \sum_{\cO'} \frac{f_{12\cO'} f_{34\cO'}}{C_{\cO'}} g^{\SL(2,\R)}_{h'}(z)
+\ee
+The three-point coefficients $f_{12\cO'},f_{34\cO'}$ are determined by the Virasoro algebra, as we will see shortly. The coefficient $C_{\cO'}=\<\cO'|\cO'\>$ is the norm of $\cO'$. Note that when $h_1=h_2=h_3=h_4$, the combination $\frac{f_{12\cO'} f_{34\cO'}}{C_{\cO'}}$ is necessarily positive in a unitary theory.
+
+
+We have already computed $\SL(2,\R)$ blocks using the Casimir equation, but let us re-derive them using the methods above. We have
+\be
+g^{\SL(2,\R)}_{h}(z) &= \sum_{n=0}^\oo \frac{\<\cO_4|\cO_3(1)L_{-1}^n|\cO\>\<\cO|L_1^n \cO_2(z)|\cO_1\>}{\<\cO|L_1^n L_{-1}^n|\cO\>}.
+\ee
+There is only one $\SL(2,\R)$ descendant at each level. Their matrix elements are a slight generalization of what we've already computed:
 \be
 \<\cO_4|\cO_3(1)L_{-1}^n|\cO\> &= \ptl_{z_0}^n\lim_{z_4\to\oo} z_4^{2\de}\<\cO_4(z_4)\cO_3(1)\cO(z_0)\>|_{z_0=0}\nn\\
 & = \left.\ptl_{z_0}^n \frac{1}{(1-z_0)^h}\right|_{z_0=0} = (h)_n,
 \ee
-where $(h)_n=h(h+1)\cdots(h+n-1)=\frac{\Gamma(h+n)}{\Gamma(h)}$ is the Pochhammer symbol.  We also need the result
+where $(h)_n=h(h+1)\cdots(h+n-1)=\frac{\Gamma(h+n)}{\Gamma(h)}$ is the Pochhammer symbol.
 \begin{exercise}
 Assuming $\<\cO|\cO\>=1$, show that
 \be
 \<\cO|L_1^n L_{-1}^n|\cO\> &= n!(2n)_n.
 \ee
 \end{exercise}
-Thus, the $\SL(2,\R)$ block is
+Putting everything together and using (\ref{eq:zdependence}), the $\SL(2,\R)$ block is
 \be
-\sum_{n=0}^\oo \frac{(h)_n^2}{n!(2n)_n} z^{h+n-2\de} = z^{-2\de} k_{2h}(z).
+\label{eq:sumforsltwoblock}
+g^{\SL(2,\R)}_{h}(z)= \sum_{n=0}^\oo \frac{(h)_n^2}{n!(2n)_n} z^{h+n-2\de} = z^{-2\de} k_{2h}(z).
 \ee
+In section~\ref{}, we used the Casimir equation to derive
+\be
+\<0|\cO_4(z_4) \cO_3(z_3) |\cO|_{\SL(2,\R)} \cO_2(z_2) \cO_1(z_1)|0\> &= \frac{1}{z_{12}^{2\de} z_{34}^{2\de}} k_{2h}\p{\frac{z_{12} z_{34}}{z_{13} z_{24}}},
+\ee
+which agrees with (\ref{eq:sumforsltwoblock}) after specializing to the standard configuration (\ref{eq:standardconfigholo}).
+
+The leading $\SL(2,\R)$ primary in a Virasoro multiplet is the Virasoro primary $|\cO\>$ itself. The next $\SL(2,\R)$ primary occurs at level 2. Note that the series expansion of the Virasoro block (\ref{eq:seriesexpansionforvir}) agrees with the series expansion of $z^{-2\de} k_{2h}$ up to order $z^{h-2\de+1}$. This is consistent with the fact that the first two levels belong to a single $\SL(2,\R)$ multiplet.
+
+We can find the new primary at level 2 by solving
+\be
+0 &= L_1(L_{-2}+ aL_{-1}^2)|\cO\> \nn\\
+ &= (3+2 a (2h+1)) L_{-1} |\cO\> \quad \implies \quad a = - \frac{3}{2(2h+1)}
+\ee
+Thus, the next $\SL(2,\R)$ primary state is\footnote{Note that this is precisely the state (\ref{eq:correspondingnull}) that becomes null when $c=\frac 1 2, h=\frac 1 {16}$. When a Virasoro descendent in a multiplet with $h\geq 0$ becomes null, its entire global conformal multiplet must simultaneously become null. This is because the unitarity bounds for $\SL(2,\R)$ forbid null $\SL(2,\R)$ descendants that aren't built from a null primary. Thus, the leading null Virasoro descendent is always a global primary.}
+\be
+\label{eq:exprforleveltwoprim}
+|\cO'\> &= \p{L_{-2} - \frac{3}{2(2h+1)} L_{-1}^2}|\cO\>.
+\ee
+As a check, let us compute the three-point function
+\be
+\<\cO_1(z_1)\cO_2(z_2) \cO'(z_0)\> &=
+\label{eq:checkonleveltwoprim}
+\p{\cL_{-2} - \frac{3}{4h+2} \cL_{-1}^2} \frac{1}{z_{12}^{2\de-h} z_{20}^{h}z_{10}^{h}}\nn\\
+&= \frac{2\de(2h+1)+h(h-1)}{2(2h+1)} \frac{1}{z_{12}^{2\de-h-2} z_{20}^{h+2}z_{10}^{h+2}}.
+\ee
+After some cancellations, we find that the result indeed has the form of a three-point function of $\SL(2,\R)$ primaries. The norm-squared of the level-2 $\SL(2,\R)$ primary is given by
+\be
+\label{eq:normglobalprim}
+C_{\cO'} = \left|\p{L_{-2} - \frac{3}{4h+2} L_{-1}^2}|\cO\>\right|^2 &= \frac{c(2h+1)+2h(8h-5)}{2(2h+1)}.
+\ee
+%Thus, we could have jumped straight to (\ref{eq:expansioninglboalblocks}) based on the calculations (\ref{eq:checkonleveltwoprim}) and (\ref{eq:normglobalprim}).
+%
+
+% The Virasoro block should be expressible as a linear combination of $\SL(2,\R)$ blocks corresponding to the global primaries
+%\be
+%\cO,\quad \p{L_{-2} - \frac{3}{4h+2}L_{-1}^2}\.\cO,\quad\dots.
+%\ee
+%Indeed, note that the first two terms in the $z$-expansion match the $\SL(2,\R)$ block for $\cO$,
+%\be
+%\<\cO_4(\oo)\cO_3(1)|\cO|_\mathrm{global} \cO_2(z)\cO_1(0)\> &=
+%z^{-2\de} k_{2h}(z) \nn\\
+%&= z^{h-2\de}{}_2F_1(h,h,2h,z) \nn\\
+%&= z^{h-2\de}\p{1+\frac{h^2}{2h} z + \frac{h^2(h+1)^2}{4h(2h+1)} z^2 + \dots}
+%\ee
+%The factor of $z^{-2\de}$ is because we are no longer stripping off the dimensionful factors $x_{12}^{-2\De_\f}x_{34}^{-2\De_\f}$ from the block.
+
+Plugging (\ref{eq:checkonleveltwoprim}) and (\ref{eq:normglobalprim}) into (\ref{eq:sumoversltwoblocksforvir}), we deduce
+\be
+\label{eq:expansioninglboalblocks}
+\mathcal{F}(h|z) &= z^{-2\de} k_{2h}(z) + \frac{\p{2\de (2h+1)+h(h-1)}^2}{2(2h+1)(c(2h+1)+2h(8h-5))} z^{-2\de} k_{2(h+2)}(z) + \dots,
+\ee
+which agrees with (\ref{eq:seriesexpansionforvir}) up to order $z^{h-2\de+2}$. 
+
+In going from (\ref{eq:seriesexpansionforvir}) to (\ref{eq:expansioninglboalblocks}), we essentially just changed our basis of level-2 Virasoro descendants
+\be
+\begin{pmatrix}
+L_{-1}^2|\cO\> \\
+\ L_{-2}|\cO\>
+\end{pmatrix}
+ &\quad\to\quad
+ \begin{pmatrix}
+ L_{-1}^2|\cO\>\\
+ \p{L_{-2}-\frac{3}{2(2h+1)}L_{-1}^2}|\cO\>
+ \end{pmatrix}.
+\ee
+This change of basis does not affect the Virasoro block, by construction, but it does make the $\SL(2,\R)$ multiplet structure manifest.
+
+Because all of the global primaries besides $|\cO\>$ contain higher Virasoro generators $L_{-k}$ with $k>1$, their norms are polynomials in $c$ with nonzero degree.  In the large-$c$ limit, the contribution of these states goes away, and we are left with only the leading $\SL(2,\R)$ block $z^{-2\de} k_{2h}(z)$.
+
 
 One can imagine computing Virasoro blocks to higher orders by following the procedure above. Unsurprisingly, this gets cumbersome quite quickly. The most efficient methods for computing general Virasoro blocks are based on recursion relations discovered by Zamolodchikov, which take advantage of the analyticity structure of the blocks in $h$ and $c$ in a clever way. However, in some special cases, Virasoro blocks can be computed in closed form. We will explore an example shortly.
+
+\stoplecture
+
+\subsection[Minimal models]{Minimal models\footnote{Source for this section: Polchinski \cite{}.}}
+
+\subsubsection{Verma modules and null states}
+
+The Virasoro multiplet defined in section~\ref{}, given by a primary $|\cO\>$ and arbitrary descendent states $L_{-\{k\}}|\cO\>$, is called a {\it Verma module\/}, and denoted by $V(h,c)$. At special values of $h,c$, it can happen that $V(h,c)$ becomes reducible: it contains a subrepresentation that transforms into itself under the Virasoro algebra. This subrepresentation is generated by its own primary $|\chi\>$, which is simultaneously a descendent of $|\cO\>$. $|\chi\>$ is called a {\it null state}.
+
+When $V(h,c)$ has a null state, we can define the quotient representation
+\be
+M(h,c) = V(h,c)/V_\chi,
+\ee
+where $V_\chi$ is the Verma module built from $|\chi\>$. In other words, $M(h,c)$ is defined by setting $|\chi\>$ and all its descendants to zero.
+
+Null states are necessarily orthogonal to all of $V(h,c)$, since
+\be
+\<\chi|L_{-\{k\}}|\cO\> &= \<\cO|L_{\{k\}}|\chi\>^* = 0,
+\ee
+where we used that $|\chi\>$ is primary. In particular, $\<\chi|\chi\>=0$, so $|\chi\>$ must vanish in a unitary theory. In this case, unitarity requires that $|\cO\>$ transform in the quotient representation $M(h,c)$. We say that $\cO$ is {\it degenerate}.
+
+The simplest example of a degenerate operator is the unit operator $1$, which has weight $h=0$. The Verma module $V(0,c)$ has a null state
+\be
+L_{-1}|0\>.
+\ee
+Unitarity requires this state to vanish, so the Virasoro multiplet of the identity is $M(0,c)$. Vanishing of $L_{-1}|0\>$ expresses translation-invariance of the vacuum.
+
+The next simplest example of a degenerate operator is a primary $\cO_{1,2}$ with weight
+\be
+\label{eq:leveltwonullweight}
+h=h_{1,2}=\frac{c-1}{24} + \frac{(\a_++2\a_-)^2}{4},
+\ee
+where $h_{r,s}$ is given in (\ref{eq:kaczeros}). The null state is the level-2 $\SL(2,\R)$-primary discussed in the previous section
+\be
+\label{eq:nullconditionleveltwo}
+\cN_{1,2} &= \p{L_{-2}-\frac{3}{2(2h_{1,2}+1)}L_{-1}^2}\.\cO_{1,2} = 0.
+\ee
+In section~\ref{}, we saw that the multiplet $\cO_{1,2}$ is consistent with unitarity if $c=\frac 1 2$. For now, we will not assume unitarity, so we allow $c$ to be arbitrary. Unitarity will make an appearance later.
+
+The null condition (\ref{eq:nullconditionleveltwo}) is a generalization of a conservation condition like $\ptl_\mu J^\mu=0$. Like conservation conditions, it imposes constraints on correlation functions. Let us imagine that $\cO_{1,2}$ has left-moving weight (\ref{eq:leveltwonullweight}) and some unspecified (not necessarily degenerate) right-moving weight. Inserting (\ref{eq:nullconditionleveltwo}) into a correlation function with other primary operators and using (\ref{eq:higherdiffop}), we find
+\be
+0 &= \< \cN_{1,2}(z_1,\bar z_1) \prod_{i=2}^n \cO_i(z_i,\bar z_i)\> \nn\\
+&= \p{\cL_{-2} - \frac{3}{2(2h_{1,2}+1)} \cL_{-1}^2 } \cA_n \nn\\
+&= \p{\sum_{i=2}^n \frac{h_i}{(z_i-z_1)^2} - \sum_{i=2}^n \frac{1}{z_i-z_1} \ptl_{z_i} - \frac{3}{2(2h_{1,2}+1)} \frac{\ptl^2}{\ptl z_1^2}} \cA_n,
+\label{eq:degeneracycondition}
+\ee
+where
+\be
+\cA_n &\equiv \<\cO_{1,2}(z_1,\bar z_1)\prod_{i=2}^n \cO_i(z_i,\bar z_i)\>.
+\ee
+
+\subsubsection{Degenerate three-point functions and fusion rules}
+
+Consider the case of a three-point function
+\be
+\cA_3 &= \<\cO_{1,2}(z_1,\bar z_1) \cO_2(z_2,\bar z_2) \cO_3(z_3,\bar z_3)\> \nn\\
+&= \frac{1}{z_{12}^{h_{1,2}+h_2-h_3} z_{23}^{h_2+h_3-h_{1,2}} z_{31}^{h_3+h_{1,2}-h_2}} \x \textrm{antiholomorphic}.
+\ee
+Applying (\ref{eq:degeneracycondition}) and specializing the points to $z_1=0,z_2=1,z_3=\oo$, we find
+\be
+\label{eq:quadraticfordegenerate}
+\frac{h_{1,2}^2  - 3(h_2-h_3)^2 + h_2 +  h_3 + h_{1,2}(2h_2+2h_3-1)}{2(h_{1,2}+1)} &= 0
+\ee
+Thus, given $h_2$, there are only two possible choices for $h_3$ consistent with the degeneracy condition (\ref{eq:nullconditionleveltwo})! They are given by the roots of (\ref{eq:quadraticfordegenerate}). Parameterizing $h_2$ by
+\be
+\label{eq:funnyparameterization}
+h_2 &= \frac{c-1}{24} + \frac{\g^2}{4},
+\ee
+the roots are
+\be
+h_3 &= \frac{c-1}{24} + \frac{(\g\pm \a_-)^2}{4}.
+\ee
+In other words, the only nonzero three-point functions involving $\cO_{1,2}$ are
+\be
+\<\cO_{1,2} \cO_{(\g)} \cO_{(\g\pm \a_-)} \>,
+\ee
+where $\cO_{(\g)}$ denotes a primary with weight (\ref{eq:funnyparameterization}).
+
+We can summarize this situation by writing the {\it fusion rule\/}
+\be
+\cO_{1,2} \x \cO_{(\g)} &= \cO_{(\g+\a_-)} + \cO_{(\g-\a_-)}.
+\ee
+A fusion rule is a list of conformal multiplets that are allowed by symmetry to appear in a given OPE. The nice feature of degenerate operators is that their fusion rules are finite. Perhaps the closest analog in higher dimensions is the statement (\ref{eq:tope}) that the only scalar appearing in the $T^{\mu\nu} \f$ OPE is $\f$ itself (though an infinite number of types of higher-spin operators can appear).
+
+For the operator $\cO_{2,1}$, one can derive
+\be
+\cO_{2,1} \x \cO_{(\g)} &= \cO_{(\g+\a_+)} + \cO_{(\g-\a_+)}.
+\ee
+In the case where the operator $\cO_{(\g)}$ is itself degenerate, the fusion rules become
+\be
+\label{eq:fusionalgebragenerators}
+\cO_{1,2}\x \cO_{r,s} &= \cO_{r,s+1} + \cO_{r,s-1},\nn\\
+\cO_{2,1} \x \cO_{r,s} &= \cO_{r+1,s} + \cO_{r-1,s}.
+\ee
+One can show that only positive values of the indices on the right-hand side can appear. For example, consider the OPE $\cO_{1,2}\cO_{2,1}$. Using the first fusion rule, we find that onl $\cO_{2,2}$ and $\cO_{2,0}$ can appear. However, using the second we find that only $\cO_{0,2}$ and $\cO_{2,2}$ can appear. Thus $\cO_{0,2}$ and $\cO_{2,0}$ are excluded. This argument generalizes to show that $r,s$ can never become zero on the right-hand side. Thus, the operators on the right-hand side are always degenerate.
+
+The values of $r,s$ can still be unbounded above. However, when $\a_-/\a_+=-p/q$ is rational, the fusion algebra truncates to a finite set. In this case, we have
+\be
+\label{eq:cminimal}
+c &= 1-6 \frac{(p-q)^2}{pq}, \nn\\
+h_{r,s} &= \frac{(rq-sp)^2 - (p-q)^2}{4 p q}.
+\ee
+The reason for the truncation is that there is a reflection symmetry
+\be
+\label{eq:reflectionweights}
+h_{p-r,q-s} &= h_{r,s},
+\ee
+so each conformal family has at least two null vectors at level $rs$ and $(p-r)(q-s)$ and its correlators satisfy two differential equations. Under reflection, the conditions $r>0$ and $s>0$ become $r<p$ and $s<q$, so the operators are restricted to the range
+\be
+\label{eq:rangesrs}
+1 \leq r < p,\quad 1 \leq s < q
+\ee
+Thus, when $c$ takes the value (\ref{eq:cminimal}), it is possible to have a theory with a finite number of degenerate Virasoro multiplets.
+
+So far, we have focused on multiplets with respect to the left-moving Virasoro algebra. We can also have a finite number of degenerate primaries with respect to the right-moving algebra, so that the Hilbert space has the form
+\be
+\cH &= \bigoplus_{h,\bar h} M(c,h) \otimes \bar M(c,\bar h).
+\ee
+Theories with a finite algebra of degenerate conformal multiplets are called {\it minimal models}. Not all possible $(h,\bar h)$ must be present in a given theory, and some pairs could occur multiple times. The possible ways to pair left- and right-weights are constrained by conditions like (half-)integrality of spin (locality) and modular invariance (which we discuss in section~\ref{}). For now, we simply assert that one possible solution is to set left- and right-moving weights to be equal, with exactly one primary of each type. In other words, the Hilbert space is
+\be
+\cH &= \frac 1 2 \bigoplus_{\substack{1 \leq r < p \\ 1 \leq s < q}} M(c, h_{r,s}) \otimes \bar M(c,h_{r,s}),
+\ee
+where $\frac 1 2$ indicates that we should restrict to non-redundant values of $h_{r,s}$ under the reflection (\ref{eq:reflectionweights}). The resulting theory is called a {\it diagonal} minimal model and denoted by $\cM_{p,q}$. Without loss of generality, we take $p>q$.
+
+\subsubsection{The 2d Ising model}
+
+When $(p,q)=(m+1,m)$, the modules $M(c, h_{r,s})$ become the discrete unitary Virasoro multiplets described in section~\ref{sec:virasorormult}. The central charge is
+\be
+c=1-\frac{6}{m(m+1)}.
+\ee
+Thus, the dimensions and central charge of $\cM_{m+1,m}$ are consistent with unitarity if $m=3,4,\dots$. We have not yet computed the three-point coefficients of these theories, but those turn out to be real and thus consistent with unitarity as well.
+
+The simplest nontrivial unitary minimal model is $\cM_{4,3}$, with central charge $c= \frac{1}{2}$. Its left-moving weights are
+\be
+\label{eq:leftmovingisingweights}
+h_{1,1}=0,\quad h_{2,1}=\frac 1 2,\quad h_{1,2}=\frac 1{16}.
+\ee
+(There are 6 values $(r,s)$ consistent with (\ref{eq:rangesrs}), but the reflection symmetry (\ref{eq:reflectionweights}) reduces the number of unique weights to 3.)
+The diagonal minimal model $\cM_{4,3}$ thus has operators
+\be
+\label{eq:spectrumtwodising}
+\begin{array}{cc}
+\textrm{operator} & (h,\bar h) \\
+\hline
+1 & (0,0) \\
+\s & (\tfrac 1 {16},\tfrac 1 {16}) \\
+\e & (\tfrac 1 {2},\tfrac 1 2)
+\end{array}.
+\ee
+The operator $\s$ is a scalar with dimension $\tfrac 1 {16}+\tfrac 1{16}=\tfrac 1 8$, and $\e$ is a scalar with dimension $\tfrac 1 2 + \tfrac 1 2=1$. The fusion rules (\ref{eq:fusionalgebragenerators}) imply
+\be
+\s \x \e = \s,\quad \s \x \s = 1 + \e,\quad \e \x \e = 1,
+\label{eq:fusionrulesising}
+\ee
+together with the trivial rule $1\x \cO=\cO$.
+
+Note that the fusion rules (\ref{eq:fusionrulesising}) are consistent with a $\Z_2$ global symmetry under which $\s$ has charge $-1$ and $\e$ has charge $+1$. Note also that $\e$ is the only $\Z_2$-even relevant scalar in the theory. Thus $\cM_{4,3}$ describes a unitary critical point with critical exponent $\nu = \frac{1}{2-\De_\e}=1$, where we've used (\ref{eq:nuexponent}). These are exactly the properties of the quantum transverse-field Ising model we computed in section~\ref{}. Indeed $\cM_{4,3}$ describes the critical point of the 2d Ising model.\footnote{In fact, in section~\ref{}, we showed that the 2d critical Ising model is equivalent to a free fermion. We will discuss the relationship between $\cM_{4,3}$ and the free fermion in section~\ref{}.}
+
+\subsubsection{Degenerate Virasoro blocks}
+
+Let us now apply the degeneracy condition (\ref{eq:degeneracycondition}) to a four-point function of primaries. For simplicity, consider the four-point function $\<\s\s\s\s\>$ in the 2d Ising model. This has Virasoro block expansion
+\be
+\label{eq:sigmafourpt}
+\<\s(z_1,\bar z_1)\cdots \s(z_4,\bar z_4)\> &= \sum_{\cO=1,\e} f_{\s\s\cO}^2 \mathcal{F}(h_\cO|z_1,\dots,z_4) \mathcal{F}(\bar h_\cO|\bar z_1,\dots,\bar z_4),
+\ee
+where $f_{\s\s\cO}$ are coefficients we must determine.
+
+The four-point function (\ref{eq:sigmafourpt}) satisfies the degeneracy condition (\ref{eq:degeneracycondition}) in both $z$ and $\bar z$. In fact, each individual Virasoro block $\mathcal{F}(h_\cO,z)$
+\be
+\label{eq:virasororighthandside}
+\mathcal{F}(h_\cO|z_1,\dots,z_4) &= \frac{1}{z_{13}^{2 h_\s} z_{24}^{2h_\s}} \mathcal{F}(h_\cO|z)
+\ee
+must also satisfy (\ref{eq:degeneracycondition}). The reason is that $\mathcal{F}$ is given by
+\be
+\mathcal{F}(h_\cO|z_1,\dots,z_4) &= \<\cO_{1,2}(z_4) \cO_{1,2}(z_3)|\cO|_\mathrm{Vir.}\cO_{1,2}(z_2)\cO_{1,2}(z_1)\>,
+\ee
+where $\cO_{1,2}$ is a degenerate operator, and the projector $|\cO|_{\mathrm{Vir.}}$ is transparent to the Virasoro charges. Thus, $\mathcal{F}$ satisfies the same Ward identities as physical four-point functions of degenerate operators.
+
+Plugging the right-hand side of (\ref{eq:virasororighthandside}) into (\ref{eq:degeneracycondition}), we obtain a second-order differential equation for the Virasoro block
+\be
+\p{\frac{\ptl^2}{\ptl z^2} - \frac{2(2h_\s+1)(2z-1)}{3 z(1-z)}\pdr{}{z} - \frac{2h_\s(2h_\s+1)}{3 z^2(1-z)^2}} \cF(h|z) &= 0,
+\ee
+where $h_\s=\frac 1 {16}$.
+The general solution is
+\be
+A\frac{\sqrt{1+ \sqrt z}}{z^{1/8}(1-z)^{1/8}} + B\frac{\sqrt{1- \sqrt z}}{z^{1/8}(1-z)^{1/8}}.
+\ee
+for some coefficients $A,B$. Matching to the leading term $z^{h-2h_\s}$ in the series expansion for the Virasoro block (\ref{eq:seriesexpansionforvir}), we find
+\be
+\cF(0|z) &= \frac{\sqrt{1+ \sqrt z}+\sqrt{1-\sqrt z}}{2z^{1/8}(1-z)^{1/8}}, \nn\\
+\cF(\tfrac 1 2|z) &= \frac{\sqrt{1+ \sqrt z}-\sqrt{1-\sqrt z}}{z^{1/8}(1-z)^{1/8}}. 
+\ee
+Thus in this special case, the Virasoro blocks can actually be determined in closed form! This is true more generally for Virasoro blocks involving degenerate primaries: they satisfy differential equations of hypergeometric type which can be solved analytically.
+
+\subsubsection{Bootstrapping the 2d Ising model}
+
+We now have a tremendous amount of information about the four-point function $\<\s\s\s\s\>$. Let us normalize $\s$ so that $f_{\s\s 1}=1$. The only remaining unknown is the coefficient $f_{\s\s\e}$. We can determine it using crossing symmetry. Specializing to the standard configuration (\ref{}), we have
+\be
+\<\s(0,0)\s(z,\bar z) \s(1,1) \s(\oo,\oo) \> &= |\cF(0|z)|^2 + f_{\s\s\e}^2 |\cF(\tfrac 1 2|z)|^2.
+\ee
+Expanding around $z=0,1$, the leading terms are
+\be
+\frac{1}{|z|^4},\quad \frac{1}{|1-z|^{\frac 1 4}} \p{\frac 1 2 + 2 f_{\s\s\e}^2}.
+\ee
+Crossing symmetry says that these should be exchanged under $(z,\bar z)\to (1-z,1-\bar z)$, which determines $f_{\s\s\e}^2 = \tfrac 1 4$. We can choose the sign of $\e$ so that $f_{\s\s\e}=\tfrac 1 2$.
+
+The final result for the four-point function is 
+\be
+\<\s(0,0)\s(z,\bar z) \s(1,1) \s(\oo,\oo) \> &= \frac{\sqrt{1-\sqrt z}\sqrt{1-\sqrt{\bar z}} + \sqrt{1+\sqrt z}\sqrt{1+\sqrt{\bar z}}}{2(z(1-z)\bar z(1-\bar z))^{1/8}}.
+\ee
+Despite appearances, this is actually crossing-symmetric (check it!).
 
 \begin{appendix}
 \end{appendix}
