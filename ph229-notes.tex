@@ -5528,14 +5528,14 @@ The final result for the four-point function is
 \ee
 Despite appearances, this is actually crossing-symmetric (check it!).
 
-\section{Anomalies}
+\section{Anomalies and nontrivial manifolds}
+
+\subsection{The Weyl anomaly}
+\label{eq:twodflatspaceanalysis}
 
 Given a QFT with some symmetries, we can try to couple the corresponding symmetry currents to non-dynamical classical background fields. For a spin-1 current $J^\mu$, this means coupling to a background gauge field by adding $\int dx\,A_\mu(x) J^\mu(x)$ to the action. For the stress-tensor, this means placing the theory on a nontrivial metric. Coupling to a background field is a first step towards gauging a symmetry. To gauge the symmetry, we make the background field dynamical by path-integrating over it. We will not discuss gauging in this section --- all background fields are non-dynamical.
 
  It can happen that symmetries present in a trivial background are broken in a nontrivial background (and furthermore they cannot be restored by modifying details of the coupling to background fields). This is called an anomaly. Sometimes the procedure of coupling to a background field requires a choice, and by making different choices we can decide which symmetries are broken and which ones are preserved. This is called a mixed anomaly.
-
-\subsection{The Weyl anomaly}
-\label{eq:twodflatspaceanalysis}
 
 A Weyl anomaly is a mixed anomaly between coordinate invariance and Weyl-invariance.\footnote{Coordinate invariance is often called ``diffeomorphism invariance" because a change of coordinates is equivalent to a diffeomorphism between different coordinate patches.} We almost always choose to preserve coordinate invariance (otherwise, the theory would depend on a choice of {\it coordinates}, not just a choice of metric). Thus a Weyl anomaly is effectively a breaking of Weyl invariance in a nontrivial background.\footnote{This can include a nontrivial metric, as well as gauge fields, background scalars, and more.}
 
@@ -5648,15 +5648,16 @@ A nonzero trace of the stress tensor means non-invariance under infinitesimal We
 We have calculated the leading breaking of Weyl invariance in a metric infinitesimally close to flat space, but what should it be in a general (non-infinitesimal) metric? We expect breaking of Weyl invariance to be a short-distance effect, since it comes from regularizing coincident singularities in integrated correlators. Consequently, the Weyl variation of a correlation function should be a local functional of the background fields (in this case the metric). Furthermore, on a general metric, we continue to demand coordinate invariance, so this functional should be coordinate-invariant,
 \be
 \label{eq:weylvariationinfinitesimal}
-\de_\w \<\cdots\>_g &= -\p{\int d^2 x \sqrt g\, \w(a_1 R + a_2 R^2 + a_3\nabla^2 R + \dots)}\<\cdots\>_g.
+\de_\w \<\cdots\>_g &= -\p{\int d^2 x \sqrt g\, \w(a_0+a_1 R + a_2 R^2 + a_3\nabla^2 R + \dots)}\<\cdots\>_g.
 \ee
 Specializing to a correlator of the unit operator, we can write the above functional as
 %The same functional should appear for all correlators $\<\cdots\>_g$. Thus, we can summarize (\ref{eq:weylvariationinfinitesimal}) in terms of the log of the partition function
 \be
 \label{eq:weylvariationpartition}
-\de_\w\mathcal{W}[g] &= \int d^2 x \sqrt g\, \w(a_1 R + a_2 R^2 + a_3 \nabla^2 R + \dots),\\
+\de_\w\mathcal{W}[g] &= \int d^2 x \sqrt g\, \w(a_0+a_1 R + a_2 R^2 + a_3 \nabla^2 R + \dots),\\
 \mathcal{W}[g]&\equiv -\log\<1\>_g.
 \ee
+Dimensional analysis actually tells us that only the $a_1$ term can be present. However, let us derive this more slowly.
 
 
 Although (\ref{eq:weylvariationpartition}) makes it look like Weyl-invariance is completely broken, it is still a very strong condition. $\mathcal{W}[g]$ is in general a very {\it nonlocal\/} functional of the background metric $g$. The fact that its Weyl variation is {\it local\/} is surprising and useful. For many purposes, this condition is just as good as Weyl-invariance.
@@ -5669,7 +5670,7 @@ The Weyl variation (\ref{eq:weylvariationpartition}) is subject to several consi
 \be
 \left[\de_{\w_1},\de_{\w_2}\right] &= 0.
 \ee
-Applying this condition to $\mathcal{W}[g]$, we get constraints on the coefficients $a_i$. For example, $a_1$ is unconstrained because
+Applying this condition to $\mathcal{W}[g]$, we get constraints on the coefficients $a_i$. For example, $a_0,a_1$ are unconstrained because
 \be
 \de_{\w_2} \p{\int d^2x \sqrt g \w_1 R} &= \int d^2 x \sqrt g\, \w_1 (-2\nabla^2 \w_2)= 2 \int d^2 x \sqrt g\, \ptl_\mu\w_1\ptl^\mu \w_2
 \ee
@@ -5677,15 +5678,15 @@ is symmetric under $\w_1\leftrightarrow \w_2$. We however find that $a_3 = 2 a_2
 
 \item {\bf Defined modulo Weyl variations of local counterterms.} Correlation functions in conformal field theory are only defined modulo local functionals of background fields, called ``local counterterms." The reason is that different microscopic theories can give rise to different counterterms when we integrate out their degrees of freedom. Because the CFT only describes the low-energy fixed-point, we are ignorant of which microscopic theory the CFT came from, and we must allow addition of arbitrary local counterterms to the action.\footnote{An example is the ``cosmological constant" discussed in section~\ref{}.} Quantities that can be shifted by local counterterms are called ``scheme-dependent." For example, $\mathcal{W}[g]$ is only defined modulo
 \be
-\mathcal{W}[g] &\sim \mathcal{W}[g] + \int d^2 x \sqrt g (b_1 R + b_2 R^2 + \dots).
+\mathcal{W}[g] &\sim \mathcal{W}[g] + \int d^2 x \sqrt g (b_0 + b_1 R + b_2 R^2 + \dots).
 \ee
-Taking the variation of both sides, we find that we can shift $a_2$, but not $a_1$.
+Taking the variation of both sides, we find that we can shift $a_0,a_2$, but not $a_1$.
 
-In general, addition of arbitrary counterterms allows us to remove any terms in (\ref{eq:weylvariationpartition}) that are not consistent with dimensional analysis. We could have simplified our discussion by only including the first term in (\ref{eq:weylvariationpartition}).
+In general, addition of arbitrary counterterms allows us to remove any terms in (\ref{eq:weylvariationpartition}) that are not consistent with dimensional analysis. We could have simplified our discussion by only including the $a_1$ term in (\ref{eq:weylvariationpartition}).
 
 \end{itemize}
 
-Thus, the space of consistent Weyl anomalies is the solution to a kind of cohomology problem. The only nontrivial coefficient is $a_1$, which we can fix by matching to (\ref{eq:Weylanomaly}). We find
+Thus, the space of consistent anomalies is determined by solving a kind of cohomology problem. In two dimensions, the only nontrivial solution is the $a_1$ term, which we can fix by matching to the Weyl anomaly near flat space (\ref{eq:Weylanomaly}):
 \be
 \de_\w \mathcal{W} &= -\frac{c}{24\pi} \int d^2x \sqrt{g}\, \w R.
 \ee
@@ -5703,11 +5704,11 @@ S_\mathrm{Weyl}[g,\w_1+\w_2] &= S_\mathrm{Weyl}[g,\w_1] + S_\mathrm{Weyl}[e^{2\w
 Show that this is equivalent to the Wess-Zumino consistency condition.
 \end{exercise}
 
-Integrating the Weyl variation (\ref{eq:weylvariationinfinitesimal}), we find
+Integrating the Weyl variation of a correlator (\ref{eq:weylvariationinfinitesimal}), we find
 \be
 \<\cdots\>_{e^{2\w} g} &= e^{S_{\mathrm{Weyl}}[g,\w]}\<\cdots\>_g.
 \ee
-For the discussion in this section, we have considered Weyl variations that are trivial near operator insertions. If we now allow them to become nontrivial, we get nontrivial Weyl factors depending on the dimensions of the operators. For example, for primary scalars $\cO_i$, we have
+So far, we have considered Weyl variations that are trivial near operator insertions. If we now allow them to become nontrivial, we get nontrivial Weyl factors depending on the dimensions of the operators. For example, for primary scalars $\cO_i$, we have
 \be
 \label{eq:weylvariationwithanomaly}
 \<\cO_1(x_1)\cdots \cO_n(x_n)\>_{e^{2\w} g} &= e^{S_\mathrm{Weyl}[g,\w]-\sum_i\De_i \w(x_i)} \<\cO_1(x_1)\cdots \cO_n(x_n)\>_{g}.
@@ -5744,6 +5745,8 @@ The reason is that to compute the Weyl transformation of an operator, we must sp
 
 However, to define $T_{\mu\nu}$ we do not have a choice. An insertion of $T_{\mu\nu}$ is always the variation with respect to the metric. This is the only definition that respects coordinate invariance (conservation of $T_{\mu\nu}$). Using this definition, we find (\ref{eq:anomalousstresstensortransf}).
 
+Similarly for other operators, symmetries (like e.g.\ supersymmetry) might prevent us from using a naive definition of the operators, and force a nontrivial Weyl anomaly on us. This can only happen for operators with integer scaling dimension.
+
 Let us apply (\ref{eq:anomalousstresstensortransf}) to the case where $g=\de$ is the flat-space metric, working in $d=2$ dimensions.  We have
 \be
 \label{eq:anomalousstresstensor}
@@ -5763,19 +5766,258 @@ Thus, even though the one-point function of $T^{\mu\nu}$ vanishes in flat space,
 \be
 E_\mathrm{Casimir} &= -\frac{c}{12}.
 \ee
-In general, the Hamiltonian on the cylinder is equal to the flat-space dilatation operator, with an additional shift by the Casimir energy
+More generally, integrating (\ref{eq:anomalousstresstensortransf}) along a spatial slice of the cylinder, we find that the Hamiltonian on the cylinder is equal to the flat-space dilatation operator, with an additional shift by the Casimir energy
 \be
-H_\mathrm{cyl.} &= D - \frac{c}{12}.
+H_\mathrm{cyl.} &= D - \frac{c}{12} = L_0 + \bar L_0 - \frac{c}{12}.
 \ee
-This shift doesn't affect any of our previous analysis of correlation functions on the cylinder because the Casimir cancels from the position dependence of operators
+This shift doesn't affect any of our previous analysis of correlation functions on the cylinder because the Casimir energy cancels from the position dependence of operators
 \be
 e^{-\tau H_\mathrm{cyl.}} \phi(0) e^{\tau H_{\mathrm{cyl.}}} &= e^{-\tau D} \phi(0) e^{\tau D}.
 \ee
 However, the Casimir energy becomes an important observable when we study effects that depend on the total amount of time evolution in the cylinder Hilbert space.\footnote{One can also compute the Casimir energy in 4-dimensions using the appropriate $S_\mathrm{Weyl}$. However, the 4-dimensional Casimir energy is scheme-dependent on the cylinder $S^3 \x R$ because it can be shifted by adding the counterterm $\int d^d x \sqrt g R^2$ to the action. Supersymmetry can remove this scheme dependence, rendering the 4d Casimir energy a good observable again, see \cite{}.}
 
+Another way to derive the Casimir energy is to study how the partition function changes as we perform a Weyl transformation to the cylinder
+\be
+dr^2 + r^2 d\th^2 \to \frac{1}{r^2} (dr^2 + r^2 d\th^2).
+\ee
+We have
+\be
+S_\mathrm{Weyl}[\de,-\log r] &= \frac{c}{24\pi} \int d^2 x \sqrt g (-\ptl_\mu \log r)(-\ptl^\mu \log r) \nn\\
+&= \frac{c}{24\pi} \int \frac{d^2 x}{r^2} 
+\label{eq:divergentweylintegral}
+\ee
+This is a divergent integral. The reason is that the cylinder is noncompact, so the partition function diverges. Instead, let us modify the Weyl factor to create a cylinder of finite length $T$. This means we should cutoff the integral (\ref{eq:divergentweylintegral}) at $\log (r_\mathrm{max}/r_\mathrm{min}) = T$. The result is then
+\be
+S_\mathrm{Weyl} &\approx \frac{c}{24\pi} 2\pi T = \frac{cT}{12}.
+\ee
+The partition function under a long amount of time evolution $T$ is dominated by the ground state energy $E_0$. So we have
+\be
+e^{-E_0 T} &\sim e^{S_\mathrm{Weyl}} \sim e^{\frac{cT}{12}}\qquad \implies \qquad E_0 = -\frac{c}{12}.
+\ee
+Here, $\sim$ means equal in the large $T$. For this argument, we do not have to be careful about the precise way of choosing the Weyl factor to cap off the cylinder because those choices are unimportant at large $T$.
+
+Finally, there is another way of deriving the Casmir energy using the transformation law for $T(z)$ under a conformal transformation. We will not have time to discuss this, but see \cite{}.
+
 \subsection{Modular invariance}
 
-Now that we understand the Hamiltonian on the cylinder $S^1 \x \R$, let us compute the partition function of a 2d CFT on the torus $T^2$.
+\subsubsection{Partition functions and characters}
+
+Now that we understand the Hamiltonian on the cylinder $S^1 \x \R$, let us compute the partition function of a 2d CFT on the torus $T^2=S^1 \x S^1_\ell$, where $S^1_\ell$ has radius $\ell$. Using the state-operator correspondence, we can label every state by its corresponding operator. We have
+\be
+Z(\b) &= \Tr(e^{-2\pi \ell H_\mathrm{cyl.}}) = \sum_\cO e^{-2\pi\ell(\De_\cO - \frac{c}{12})}.
+\ee
+More generally, we can consider the torus given by quotienting the complex plane $\mathbb{C}$ by the lattice $2\pi(\mathbb{Z}+\tau \mathbb{Z})$. The case we just considered is $\tau = i\ell$. If $\tau=\tau_1 + i\tau_2$ has a nonzero real part, the torus can be thought of as $S^1 \x S^1_\b$, where we twist the spatial $S^1$ by an angle $2\pi \tau_1$ before gluing. This is equivalent to inserting $e^{-2\pi \tau_1 M_{12}}$ into the trace, where $M_{12}=L_0-\bar L_0$ is the rotation generator (equivalently, minus the spatial translation generator on the cylinder). This more general partition function is
+\be
+Z(\tau) &= \Tr(e^{-2\pi \tau_2 H_\mathrm{cyl.} - 2\pi \tau_1 M_{12}}) \nn\\
+&= \Tr(e^{2\pi i \tau (L_0 - \frac{c}{24}) - 2\pi i \bar\tau (\bar L_0 - \frac{c}{24})}) \nn\\
+&= \Tr(q^{L_0 - \frac{c}{24}} \bar q^{\bar L_0 - \frac{c}{24}}),
+\ee
+where we have defined $q=e^{2\pi i \tau}, \bar q = e^{-2\pi i \bar\tau}$.
+
+The sum over states in the trace can be split into a sum over different Virasoro$\x$Virasoro multiplets
+\be
+Z(\tau) &= \sum_{\textrm{primary }\cO} %\Tr_{\mathcal{V}_\cO}(q^{L_0 - \frac{c}{24}} \bar q^{\bar L_0 - \frac{c}{24}})
+%\nn\\
+\p{ \sum_{\a = L_{-\{k\}} \bar L_{-\{\bar k\}}\cO} q^{h_\a -\frac{c}{24}}\bar q^{\bar h_\a - \frac{c}{24}}} \nn\\
+&= \sum_{(R,\bar R)} m_{R,\bar R}\chi_{R}(\tau) \bar \chi_{\bar R}(\bar\tau).
+\ee
+Here, we have used that the sum over an individual Virasoro$\x$Virasoro multiplet factorizes into a product of holomorphic and antiholomorphic functions of $\tau$ (equivalently, $q$). The integer coefficient $m_{R,\bar R}$ is the multiplicity of the representation $R\otimes\bar R$  in the Hilbert space.
+The holomorphic function $\chi_R(\tau)$ is called a Virasoro character. It is defined by
+\be
+\chi_R(\tau) &\equiv \Tr_{R}(q^{L_0- \frac{c}{24}}) = q^{h-\frac{c}{24}}\sum_n d(n) q^n,
+\ee
+where $d(n)$ denotes the number of states at level $n$ in the representation $R$.
+
+For a Verma module $V(h,c)$, the number of states at level $n$ is equal to the number of partitions $p(n)$. Its character is given by
+\be
+\chi_{V(h,c)}(\tau) &= q^{h-\frac{c}{24}}(1+q+q^2 + \dots)(1+q^2 + q^4 + \dots)(1+q^3 + q^6 + \dots)\dots \nn\\
+&= q^{h-\frac{c}{24}}\prod_{n=0}^\oo \frac{1}{(1-q^n)} \nn\\
+&= \frac{q^{h-(c-1)/24}}{\eta(\tau)}.
+\ee
+Here, the Dedekind eta function is defined by
+\be
+\eta(\tau) &= q^{\frac{1}{24}}\prod_{n=1}^\oo(1-q^n).
+\ee
+
+When a Virasoro multiplet has a null state at level $N$, we should omit the corresponding term $(1+q^N+q^{2N}+\dots)$ from the character. This is equivalent to multiplying by $(1-q^N)$. For example, the vacuum Virasoro multiplet, with $h=0$ has a null state at level $1$, and for generic $c$ this is the only null state. Thus its character is
+\be
+\chi_{\mathrm{vac.}}(\tau) &= \frac{q^{-(c-1)/24}(1-q)}{\eta(\tau)}.
+\ee
+
+The Virasoro representations $M(h_{r,s},c)$ for minimal models $\mathcal{M}_{p,p'}$ have a complicated nested pattern of null descendants. We will not derive their characters, but simply state the result
+\be
+\chi_{r,s}(\tau) &= \chi_{M(h_{r,s},c)}(\tau) = K_{r,s}^{(p,p')}(q) - K_{r,-s}^{(p,p')}(q) \nn\\
+K_{r,s}^{(p,p')}(q) &= \frac{1}{\eta(\tau)}\sum_{n\in \Z} q^{(2p p' n + pr - p' s)^2/4p p'},
+\ee
+where
+\be
+c &= 1+ 6\frac{(p-p')^2}{p p'}.
+\ee
+
+\subsubsection{Modular transformations}
+
+The torus $T^2$ is completely specified by the lattice $L=\Z+\tau \Z=\Z + \tau \Z$. However, different values of $\tau$ can give rise to the same lattice. For example, shifting $\tau$ by $1$ obviously doesn't change $L$.
+ More generally, we can consider a lattice given by the integer span of two complex numbers $\b \Z + \a \Z$. We get an isomorphic lattice by doing any integer change of basis
+\be
+\begin{pmatrix}
+\a\\
+\b
+\end{pmatrix} 
+&\to
+g 
+\begin{pmatrix}
+\a\\
+\b
+\end{pmatrix}
+=
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+\begin{pmatrix}
+\a\\
+\b
+\end{pmatrix}
+\ee
+We require that $a,b,c,d$ be integers and that this transformation be invertible. This requires that $g\in \SL(2,\Z)$.
+
+The partition function of a CFT on $T^2$ should depend only on the geometry of the $T^2$, not on the basis vectors we choose to describe the underlying lattice. Furthermore, because of Weyl-invariance, the partition function on $T^2$ is independent of the area of the $T^2$. (We have to be slightly careful: there is a nonzero Weyl anomaly $T^\mu_\mu = -\frac{c}{12}R$, but the Ricci curvature $R$ vanishes on the torus.) Thus, in addition to $\SL(2,\Z)$ transformations, we can multiply $\a,\b$ by a common factor to set $\b=1$. This implies that the partition function should be invariant under
+\be
+\begin{pmatrix}
+\tau\\
+1
+\end{pmatrix}
+&
+\to
+\begin{pmatrix}
+a\tau + b\\
+c\tau + d
+\end{pmatrix}
+\begin{pmatrix}
+\tau\\
+1
+\end{pmatrix}
+\to
+\begin{pmatrix}
+\frac{a\tau+b}{c\tau+d}\\
+1
+\end{pmatrix}
+\ee
+for any element of $\SL(2,\Z)$. Note that the matrix $\begin{pmatrix} -1 & 0 \\ 0 & -1\end{pmatrix}$ acts trivially on $\tau$, so the group acting on $\tau$ is actually $\mathrm{PSL}(2,\Z)$, the projective special linear group. $\mathrm{PSL}(2,\Z)$ is generated by the transformations
+\be
+T:\tau\to \tau+1 \\
+S:\tau \to -1/\tau.
+\ee
+Our claim is that the partition function of a CFT should be invariant under these:
+\be
+Z(\tau) = Z(\tau+1) = Z(-1/\tau).
+\ee
+This is called {\it modular invariance}.
+
+As a simple example, consider the case $\tau=i\ell$ with $\ell\in \R$. The transformation $\tau\to -1/\tau$ corresponds to rotating the torus by $90^\circ$ and then rescaling it by $1/\ell$ to make the spatial slice have length $2\pi$ again.
+
+\subsubsection{The Cardy formula}
+
+Modular invariance is a powerful constraint on the CFT spectrum. One basic consequence is the Cardy formula for the growth of the number of primary operators in a 2d CFT at high energy. Let us set $q=\bar q$ and consider the limit $q=e^{2\pi i \tau}\to 0$, corresponding to large imaginary $\tau$. The behavior of $Z(\tau)$ is dominated by the state with lowest energy, i.e.\ the vacuum. Taking into account the Casimir energy, we have
+\be
+\label{eq:qtozero}
+Z(\tau)&\sim q^{-\frac{c}{12}}\qquad (q\to 0),
+\ee
+so the partition function is growing (assuming $c$ is positive).
+On the other hand, as $\tau=i\ell \to i\oo$, the $S$-transform $\tl q = e^{-2\pi i/\tau}\to 1$. If we write the partition function in terms of $\tl q$,
+\be
+Z(\tau) = Z(-1/\tau) = \Tr(\tl q^{L_0+\bar L_0 - \frac{c}{12}}),
+\ee
+then we find that it is dominated by high energy states in the limit $\tl q \to 1$.
+
+In order to reproduce the correct behavior (\ref{eq:qtozero}) as $q\to 0$, we need a particular density of high-energy states. Denote the average density of states with energy $E$ as $\rho(E)$. In the limit $\ell\to \oo$, we can approximate the sum over energies as an integral
+\be
+e^{\frac{c}{12}2\pi \ell} &= \int dE\, \rho(E)\, e^{-2\pi E/\ell}.
+\ee
+Let us suppose the integral is sharply peaked at a saddle point. The saddle value of $E$ is the solution to
+\be
+\label{eq:saddlecondition}
+\pdr{}{E}\log \rho(E) - \frac{2\pi}{\ell} &= 0
+\ee
+The partition function is approximately given by evaluating the integrand at this value
+\be
+\label{eq:saddleequation}
+\frac{c}{12} 2\pi \ell &= \log \rho(E(\ell)) - 2\pi \frac{E(\ell)}{\ell}.
+\ee
+Taking a derivative with respect to $\ell$ and using the saddle condition (\ref{eq:saddlecondition}), we find
+\be
+2\pi \frac{c}{12} &= 2\pi \frac{E(\ell)}{\ell^2}.
+\ee
+Finally, solving for $\ell$ and plugging back into (\ref{eq:saddleequation}), we find
+\be
+\log\rho(E) &= 2\pi \sqrt{\frac{c E}{3}} \qquad(\textrm{Cardy formula}).
+\ee
+Thus, the density of high-energy states is determined by the central charge.
+The Cardy formula has many applications. For example, it is behind the first successful counting of black hole microstates in String Theory, by Strominger and Vafa.
+
+\subsubsection{Modular invariance of minimal models}
+
+In minimal models, the partition function can be written as a sum of characters for degenerate Virasoro multiplets
+\be
+Z(\tau) &= \sum_{(h,\bar h)} m_{h,\bar h} \chi_{M(h,c)}(\tau)\chi_{\bar M(\bar h,c)}(\bar\tau).
+\ee
+The individual characters are not modular-invariant, but instead transform in an interesting way under $\mathrm{PSL}(2,\Z)$. One can show using the Poincare resummation formula that
+\be
+\label{eq:minimalmodulartrans}
+\chi_{r,s}(-1/\tau) &= \sum_{r',s'} \mathcal{S}_{rs,r's'} \chi_{r',s'}(\tau) \nn\\
+S_{rs,r's'} &= 2 \sqrt{\frac{2}{p p'}}(-1)^{1+ss'+rr'} \sin\p{\pi \frac{p}{p'}rr'}\sin\p{\pi \frac{p'}{p}ss'}.
+\ee
+Here $\mathcal{S}$ is called the ``modular $\mathcal{S}$-matrix." Because $S^2=1$ in $\mathrm{PSL}(2,\Z)$, we automatically have
+\be
+\mathcal{S}^2 = 1.
+\ee
+The interesting observation for us is that $\mathcal{S}$ is symmetric and real, so that we can also write this as
+\be
+\mathcal{S}^\dag \mathcal{S} = 1,
+\ee
+i.e.\ $\mathcal{S}$ is unitary.
+As an example, the modular $\mathcal{S}$-matrix for the case $(p,p')=(4,3)$ is given by
+\be
+\mathcal{S} &= \frac{1}{2} \begin{pmatrix}
+1 & 1 & \sqrt 2 \\
+1 & 1 & -\sqrt 2 \\
+\sqrt 2 & -\sqrt 2 & 0
+\end{pmatrix}
+\ee
+in the basis of representations $h=0,h=\frac 1 2,h=\frac 1 {16}$.
+
+A consequence of unitarity of $\cS$ is that the diagonal minimal models with Hilbert space
+\be
+\cH &= \sum_{(r,s)} M(h_{r,s},c)\otimes \bar M(h_{r,s},c)
+\ee
+always have a modular-invariant partition function. More precisely, we can form a vector of characters
+\be
+\vec\chi(\tau) &= \begin{pmatrix}
+\chi_{1,1}(\tau) \\
+\chi_{2,1}(\tau) \\
+\vdots
+\end{pmatrix},
+\ee
+where we include all $(r,s)$ allowed in a minimal model.
+The modular transformation rule (\ref{eq:minimalmodulartrans}) reads
+\be
+\vec\chi(-1/\tau) &= \mathcal{S} \vec\chi(\tau).
+\ee
+The partition function of a diagonal minimal model is
+\be
+Z_\mathrm{diag.}(\tau) &=\sum_{(r,s)} \bar \chi_{r,s}(\bar\tau) \chi_{r,s}(\tau) =  \vec \chi(\tau)^\dag \vec\chi(\tau),
+\ee
+which is automatically invariant under $\mathcal{S}$. We should also check invariance under $T$, which acts by
+\be
+\chi_{r,s}(\tau+1) &= e^{2\pi i(h_{r,s}-c/24)} \chi_{r,s}(\tau).
+\ee
+This is a diagonal matrix of phases, and is thus unitary as well.
+
+In general, modular-invariance of the partition function gives a constraint on admissible ways to pair up left- and right-moving weights in consistent theories. There exist so-called non-diagonal modular invariants, which give rise to new minimal models. The simplest example is the three-state Potts model, which is constructed from a nontrivial left-right pairing of $\mathcal{M}_{6,5}$ representations.
+
+In general, one can ask whether there are new constraints on 2d CFTs from consistency on nontrivial manifolds. Moore and Seiberg showed that the only nontrivial conditions are crossing symmetry of the operator algebra and modular-invariance of one-point functions on the torus. We have just discussed modular-invariance of the partition function, which can be thought of as the one-point function of the unit operator $Z(\tau)=\<1\>_{T^2_\tau}$. More generally, one could study $\<\cO\>_{T^2_\tau}$, and these quantities should be modular-invariant as well.\footnote{More precisely, they are real modular forms with weight $\De_\cO$.} Once these conditions are satisfied, the CFT has consistent correlation functions on any manifold.
+
+Unfortunately, an equally nice analog of modular invariance in higher-dimensionals is not known. It is true that partition functions on higher-dimensional torii like $T^3$ should be invariant under a higher-dimensional generalization of the modular group. However, this doesn't give simple constraints on local operators because the spatial slices on $T^3$ have topology $T^2$, and the Hilbert-space on $T^2$ is not simply related to the Hilbert space on $S^2$ (which is related to local operators). The problem of understanding CFT partition functions and Hilbert spaces on general manifolds is still very much open.
 
 \begin{appendix}
 \end{appendix}
