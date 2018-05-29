@@ -148,7 +148,7 @@ Notes for Physics 229, 2017-2018. These notes are in progress. They were last up
 
 \section*{Resources}
 
-These introductory notes are heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{Pufu2017}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/} \cite{Cardy:1996xt}, Slava Rychkov's EPFL lectures on CFT \cite{Rychkov:2016iqz}, and John McGreevy's lectures on QFT \cite{McGreevy2017}.
+The introductory part of these notes is heavily based on Silviu Pufu's Bootstrap 2017 lectures \cite{Pufu2017}, John Cardy's book {\it Scaling and Renormalization in Statistical Physics\/} \cite{Cardy:1996xt}, Slava Rychkov's EPFL lectures on CFT \cite{Rychkov:2016iqz}, and John McGreevy's lectures on QFT \cite{McGreevy2017}. The core material on axiomatic CFT is based on my TASI lectures \cite{}. The section on 2d CFTs is based on material in Polchinski's String Theory book \cite{} and di Francesco et.\ al.\ \cite{}.
 
 
 \section{Introduction}
@@ -163,7 +163,7 @@ Quantum Field Theory is a universal language for theoretical physics. It shows u
 \item string theory/holography.
 \end{itemize}
 
-The microscopic physics in all of these settings can be quite complicated. However, often the macroscopic physics displays extra ``emergent" symmetries that can help us do computations.
+The microscopic physics in these settings can be quite complicated. However, the macroscopic physics sometimes displays extra ``emergent" symmetries that can help us do computations.
 
 For example, in condensed matter physics, we are interested in describing a material made up of atoms with some lattice spacing $a$.\footnote{We ignore the possibility of lattice defects for the moment.} We refer to the detailed lattice system as the ``microscopic theory." Quantum field theory is a good description at distances much larger than the lattice spacing $x\gg a$, or equivalently energy/momenta much lower than the UV cutoff $\Lambda_{UV}=1/a$.\footnote{QFTs that are valid below a UV cutoff are often called ``effective field theories" (EFTs).} At these large scales, the discrete translation symmetry of the lattice becomes a continuous symmetry.
 
@@ -171,23 +171,23 @@ Similarly, in statistical physics, particle physics, and string theory, QFT can 
 
 Statistical systems are described by QFTs in Euclidean signature, e.g.\ on $\R^d$. Such QFTs capture properties of the equilibrium state. By contrast, condensed matter and particle systems are described by QFTs in Lorentzian signature, e.g.\ on $\R^{d-1,1}$. Such QFTs encode time-dependent quantum dynamics.
 
-We will be interested in QFTs with rotational symmetry, by which we mean $\SO(d)$ symmetry in Euclidean signature and $\SO(d-1,1)$ symmetry in Lorentzian signature. In particle physics and string theory, this symmetry is built into the microscopic theory. However in lattice systems, rotational symmetry must be emergent. This means that correlation functions become rotationally invariant in the limit of large distances, even though microscopic correlation functions are not rotationally-invariant.\footnote{Emergent rotational symmetry is very familiar: weÊ often cannot determine the orientation of a microscopic lattice using macroscopic observations. Some examples of materials {\it without\/} emergent $\SO(d)$ symmetry are crystals like salt. A very exotic example is the Haah code \cite{}.} In particular, for condensed matter systems, the effective ``speed of light" associated with $\SO(d-1,1)$-invariance is an emergent property and has nothing to do with the speed of actual light. (We will see some explicit examples later.)
+We will be interested in QFTs with rotational symmetry, by which we mean $\SO(d)$ symmetry in Euclidean signature and $\SO(d-1,1)$ symmetry in Lorentzian signature. In particle physics and string theory, this symmetry is built into the microscopic theory. However in lattice systems, rotational symmetry is emergent. This means that correlation functions become rotationally invariant in the limit of large distances, even though microscopic correlation functions are not rotationally-invariant.\footnote{Emergent rotational symmetry is very familiar: weÊ often cannot determine the orientation of a microscopic lattice using macroscopic observations. Some examples of materials {\it without\/} emergent $\SO(d)$ symmetry are crystals like salt. A very exotic example is the Haah code \cite{}.} In particular, for condensed matter systems, the effective ``speed of light" associated with $\SO(d-1,1)$-invariance is an emergent property and has nothing to do with the speed of actual light. (We will see some explicit examples later.)
 
 Under general conditions, $\SO(d)$-invariant Euclidean QFTs are in one-to-one correspondence with $\SO(d-1,1)$-invariant Lorentzian QFTs. The map between them is called Wick rotation, and we will discuss it in detail. Because of this correspondence, we can focus mostly on Euclidean QFTs, and later understand Lorentzian QFTs by Wick rotating what we learned in Euclidean signature.
 
 \subsection{The mass gap and critical points}
 
-So far, we are interested in theories with Poincare symmetry
+Thus, we are interested in theories with Poincare symmetry
 \be
 G_\mathrm{Poincare} &= \R^d \rtimes \SO(d).
 \ee
 From the point of view of long-distance physics, the most important property of a Poincare-invariant theory is its mass gap 
 \be
-m_\mathrm{gap} &= E_1-E_0,
+m_\mathrm{gap} &= E_1-E_0 \geq 0,
 \ee
-where $E_0,E_1$ are the energies of the ground state and first excited state, respectively.\footnote{Some QFTs with topological order can have multiple degenerate ground states.} Theories with $m_\mathrm{gap}>0$ are called ``gapped." 
+where $E_0,E_1$ are the energies of the ground state and first excited state, respectively.\footnote{Some QFTs with topological order can have multiple degenerate ground states.} Theories with nonzero $m_\mathrm{gap}$ are called ``gapped." 
 
-To understand why $m_\mathrm{gap}$ is important, let us study a two-point function of a scalar local operator $\f(x)=\f(x^0,\mathbf{x})$. We  demand that $\f(0)$ have vanishing vacuum expectation value by subtracting off an appropriate multiple of the unit operator. By Poincare invariance, it suffices to consider $\<0|\f(x^0,\mathbf{0}) \f(0)|0\>$ with $x^0>0$. The two-point function is then given by
+To understand why $m_\mathrm{gap}$ is important, let us study a two-point function of a scalar local operator $\f(x)=\f(x^0,\mathbf{x})$. We  can ensure that $\f(0)$ has vanishing vacuum expectation value by subtracting off an appropriate multiple of the unit operator. By Poincare invariance, it suffices to consider $\<0|\f(x^0,\mathbf{0}) \f(0)|0\>$ with $x^0>0$. The two-point function is then given by
 \be
 \label{eq:completeset}
 \<0|\f(x^0,\mathbf{0})\f(0)|0\> &= \<0|\f(0) e^{-H x^0} \f(0)|0\> \nn\\
@@ -213,7 +213,7 @@ The key point is that the operator $e^{-H x^0}$ exponentially damps states with 
 %\<0|\f(x^0,\mathbf{0}) \f(0)|0\> &= \<0|\f(0)e^{-H x^0} \f(0)|0\>,
 %\ee
 %where $H$ is the Hamiltonian (with the ground state energy subtracted off), and we have taken the points to be separated only in the $x^0$ direction for simplicity.\footnote{Note that in Euclidean theories, the time-evolution operator is $e^{-H x^0}$ as opposed to $e^{-iHt}$ familiar from quantum mechanics. We will discuss this in much more detail later in the course.} 
-At large $x^0$, the correlator is dominated by $\psi$ with the smallest nonzero eigenvalue of $H$, which is $m_\mathrm{gap}$.\footnote{Note that the vacuum does not contribute as an intermediate state because we have demanded $\<0|\f(0)|0\>=0$.)}
+At large $x^0$, the correlator is dominated by $\psi$ with the smallest nonzero eigenvalue of $H$, which is $m_\mathrm{gap}$.\footnote{Note that the vacuum does not contribute as an intermediate state because we have demanded $\<0|\f(0)|0\>=0$.}
 
 Thus, when $m_\mathrm{gap}$ is nonzero, correlation functions of local operators fall off at least as fast as $e^{-|x|/\xi}$, where $\xi\equiv 1/m_\mathrm{gap}$ is called the ``correlation length." Generic statistical and condensed matter systems have microscopic correlation lengths $\xi \sim a$, or equivalently $m_\mathrm{gap} \sim \Lambda_{UV}$. At long distances, they are described by QFTs whose local correlation functions vanish, called topological quantum field theories (TQFTs).
 
@@ -224,6 +224,7 @@ At a critical point, the system experiences a phase transition, and develops non
 
 Long-distance correlation functions at critical points have no intrinsic length-scale because all memory of dimensionful microscopic quantities (like the lattice spacing $a$) disappears when distances become arbitrarily large. For example, critical two-point functions behave as pure power laws
 \be
+\label{eq:criticaltwopt}
 \<\f(x)\f(0)\> &= \frac{C}{|x|^{2\De}} \qquad(\textrm{critical point, }x\gg a),
 \ee
 where $C$ and $\De$ are constants depending on $\phi$. The quantity $\De$ is called the scaling dimension of $\f$.
@@ -233,8 +234,14 @@ where $C$ and $\De$ are constants depending on $\phi$. The quantity $\De$ is cal
 A more precise way to state the lack of an intrinsic length scale is to say that theories with $m_\mathrm{gap}=0$ have an emergent symmetry under rescaling
 \be
 \label{eq:rescalingsymmetry}
-x^\mu \to \l x^\mu\qquad (\l>0).
+x^\mu &\to \l x^\mu\qquad (\l>0).
 \ee
+Rescaling also acts on the operators\footnote{We will give a precise definition of what this means in section~\ref{}.}
+\be
+\f(x) &\to \l^\De \f(\l x),
+\ee
+and it is easy to check that (\ref{eq:criticaltwopt}) is invariant under this transformation.
+
 Under very general conditions (that we will discuss), critical points also display less obvious emergent symmetries called conformal transformations. A conformal transformation $x\to x'(x)$ is a map that looks like a rotation and rescaling near each point,
 \be
 \pdr{x'^\mu}{x^\nu} &= \Omega(x) R^{\mu}{}_\nu(x),\qquad R^{\mu}{}_\nu\in \SO(d).
@@ -245,7 +252,7 @@ An example is a special conformal transformation,
 \label{eq:specialconformalsymmetry}
 x^\mu \to \frac{x^\mu - b^\mu x^2}{1-2 b\.x + b^2 x^2}\qquad(b\in \R^d).
 \ee
-In 2 dimensions, there are more exotic examples, like the one pictured in figure~\ref{}.\footnote{We will give a precise definition for what it means for a theory to be invariant under transformations like (\ref{eq:rescalingsymmetry}) and (\ref{eq:specialconformalsymmetry}) later in the course.}
+In 2 dimensions, there are more exotic examples, like the one pictured in figure~\ref{}.
 
 Here is some rough intuition for why critical points display conformal symmetry. We know that a critical theory is invariant under rescalings and rotations. If the theory is also local, in the sense that degrees of freedom at a point only interact directly with other degrees of freedom at nearby points, then the theory should also be invariant under transformations that locally look like a rescaling and rotation. This is the defining property of a conformal transformation. Turning this rough intuition into a theorem is a difficult problem (that we will discuss in more detail later). However, it seems to be true in a wide class of systems.
 
@@ -262,7 +269,7 @@ So far our discussion has been very abstract, so let us introduce some examples.
 %\item How to tune $m_\mathrm{gap}\to 0$ in a solvable model,
 %\item How to study (some) CFTs using conventional QFT tools like perturbation theory.
 %\end{itemize}
-One of our goals will be to infer from examples a set of axioms that CFTs should satisfy. We will study these axioms in the next part of the course. Another goal will be to be more precise about how and why statistical and condensed matter systems are described by quantum field theory, and how critical points come about.
+One of our goals will be to infer from examples a set of axioms that CFTs should satisfy. We will then study these axioms in the next part of the course. Another goal will be to be more precise about how and why statistical and condensed matter systems are described by quantum field theory, and how critical points come about.
 
 \subsubsection{Magnets}
 
@@ -1633,7 +1640,7 @@ A beautiful and ambitious goal of the bootstrap program is to eventually provide
 
 The first step of the conformal bootstrap is to determine the full consequences of symmetries.  In this section, we review symmetries in quantum field theory, phrasing the discussion in language that will be useful later.  We work in Euclidean signature throughout.
 
-\subsection{The Stress Tensor}
+\subsection{The stress tensor}
 
 A local quantum field theory has a conserved stress tensor,
 \be
@@ -2296,7 +2303,7 @@ The fact that the conformal algebra is $\SO(d+1,1)$ suggests that it might be go
 
 Now that we have our conserved charges, we can classify operators into representations of those charges.  We do this in steps. First we classify operators into Poincare representations, then scale+Poincare representations, and finally conformal representations.
 
-\subsection{Poincare Representations}
+\subsection{Poincare representations}
 
 In a rotationally-invariant QFT, local operators at the origin transform in irreducible representations of the rotation group $\SO(d)$,
 \be
@@ -2444,7 +2451,7 @@ Show that (\ref{commutator}), (\ref{eq:actionbyrotation}), (\ref{eq:dilatationac
 Deduce that $T^{\mu\nu}$ is primary by comparing (\ref{eq:generatorsummary}) with (\ref{eq:conformaltransfofT}). 
 \end{exercise}
 
-\subsection{Finite Conformal Transformations}
+\subsection{Finite conformal transformations}
 
 An exponentiated charge $U=e^{Q_\e}$ implements a finite conformal transformation.  Denote the corresponding diffeomorphism $e^{\e}$ by $x\mapsto x'(x)$. By comparing with (\ref{eq:conformalinfinitesimal}) and (\ref{eq:conformalfinite}), we find that (\ref{eq:generatorsummary}) exponentiates to
 \be
@@ -3130,7 +3137,7 @@ To deal with more complicated correlators, it's extremely useful to use ``index-
 %\ee
 %where $S_d$ is the volume of the unit sphere $S^{d-1}$ and $C_{12}$ is the coefficient in the two-point function $\<\phi_1(x)\phi_2(0)\>=C_{12}x^{-2\De_1}$ (note $C_{12}$ vanishes unless $\Delta_1=\Delta_2$). The coefficient $f_{\phi_1\phi_2 J}$ is fixed by Ward identities whenever $J$ is a conserved current.
 %
-\section{Radial Quantization and the State-Operator Correspondence}
+\section{Radial quantization and the state-operator correspondence}
 
 
 So far, we've written lots of commutation relations, and carefully pointed out that they are true in any quantization of the theory. Now we'll really put that idea to use.  In general, we should to choose quantizations that respect symmetries.  In a scale-invariant theory, it's natural to foliate spacetime with spheres around the origin and consider evolving states from smaller spheres to larger spheres using the dilatation operator (figure~\ref{fig:radialquantization}).  This is called ``radial quantization." The sphere $S^{d-1}$ has an associated Hilbert space $\cH$. We can act on $\cH$ by inserting operators on the surface of the sphere. For example, to act with a symmetry generator $Q$, we insert the surface operator $Q(S^{d-1})$ into the path integral (figure~\ref{fig:chargeactionradialquantization}).
@@ -3164,7 +3171,7 @@ Of course, we can perform radial quantization around different points.  The same
 \caption{When we perform radial quantization around different points, the same correlator gets interpreted as a product of operators with different orderings.  \label{fig:radialquantdifferentpoints}}
 \end{figure}
 
-\subsection{Operator $\Longrightarrow$ State}
+\subsection{Operator $\Longrightarrow$ state}
 \label{sec:operatorimpliesstate}
 
 The simplest way to prepare a state in radial quantization is to perform the path integral over the interior $B$ of the sphere, with no operator insertions inside $B$.  This gives the vacuum state $|0\>$ on the boundary $\ptl B$ (figure~\ref{fig:radialvacuum.jpg}).  It's easy to see that $|0\>$ is invariant under all symmetries because a topological surface on the boundary of $B$ can be shrunk to zero inside $B$ (figure~\ref{fig:vacuuminvariant}).
@@ -3208,7 +3215,7 @@ By inserting different operators inside $B$, we can prepare a variety of states 
 \caption{The state $\cO(x)|0\>$ is given by inserting $\cO(x)$ inside the sphere and performing the path integral over the interior.  \label{fig:radialexcited}}
 \end{figure}
 
-\subsection{Operator $\Longleftarrow$ State}
+\subsection{Operator $\Longleftarrow$ state}
 
 This construction also works backwards. Let $|\cO_i\>$ be eigenstates of the dilatation operator
 \be
@@ -3257,7 +3264,7 @@ Because of (\ref{eq:eigenvectorofD}), the latter expression is the same as inser
 
 \stoplecture
 
-\subsection{Operator $\Longleftrightarrow$ State}
+\subsection{Operator $\Longleftrightarrow$ state}
 
 So far I've been vague about what I mean by a local operator.  But now, we can give a rigorous definition: we will simply {\it define\/} a local operator to be an eigenstate of $D$ in radial quantization.\footnote{The dilatation operator is diagonalizable in unitary (reflection positive) CFTs.  However, there exist interesting non-unitary theories where $D$ has a nontrivial Jordan block decomposition.  In these cases, we define a local operator as a finite-dimensional representation of $D$.} With this definition, the two constructions above are inverse to each other, with the identification
 \be
@@ -3268,11 +3275,11 @@ This is the ``state-operator correspondence."
 It is straightforward to see how the conformal group acts on states in radial quantization.  A primary operator creates a state that is killed by $K_\mu$ and transforms in a finite-dimensional representation of $D$ and $M_{\mu\nu}$,
 \begin{align}
 \label{eq:operatortostateconditionK}
-\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow &&  K_\mu|\cO\>&=0,\\
+\,[K_\mu,\cO(0)]&=0 &\longleftrightarrow &  K_\mu|\cO\>&=0,\\
 \label{eq:operatortostateconditionD}
-\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow && D|\cO\>&=\De|\cO\>,\\
+\,[D,\cO(0)] &= \De\cO(0) &\longleftrightarrow & D|\cO\>&=\De|\cO\>,\\
 \label{eq:operatortostateconditionM}
-\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow && M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
+\,[M_{\mu\nu},\cO(0)]&=\cS_{\mu\nu}\cO(0) &\longleftrightarrow & M_{\mu\nu}|\cO\> &= \cS_{\mu\nu}|\cO\>.
 \end{align}
 This follows by acting on $|0\>$ with the operator equations above and using the fact that $|0\>$ is killed by $K,D,$ and $M$.
 
@@ -3292,7 +3299,7 @@ The operator $\cO(x)$ creates an infinite linear combination of descendants,
 As with the classification of operators, the action of the conformal algebra on a multiplet in radial quantization is determined by the commutation relations of the algebra. In fact the required computations look {\it exactly identical\/} to the computations we did to determine the action of conformal generators on operators (\ref{eq:actionbyrotation}, \ref{eq:dilatationaction}, \ref{eq:actionofK}).  This is because by surrounding operators with charges supported on spheres, we were secretly doing radial quantization all along!
 
 
-\subsection{Another View of Radial Quantization}
+\subsection{Another view of radial quantization}
 
 To study a conformal Killing vector $\e$, it is often helpful to perform a Weyl rescaling of the metric $g\to \Omega(x)^2 g$ so that $\e$ becomes a regular Killing vector, i.e.\ an isometry.  We can turn a dilatation into an isometry by performing a Weyl rescaling from $\R^d$ to the cylinder $\R\x S^{d-1}$,
 \be
@@ -3334,9 +3341,9 @@ Using (\ref{eq:weyltransformation}), compute a two-point function of cylinder op
 Verify that it is time-translationally invariant on the cylinder. Show that in the limit of large time separation $\tau=\tau_2-\tau_1 \gg 1$, the two-point function has an expansion in terms of the form $e^{-(\De+n)\tau}$ with integer $n\geq 0$.  Interpret these as coming from the exchange of states in the conformal multiplet of $\cO$.
 \end{exercise}
 
-\section{Reflection Positivity and Unitarity Bounds}
+\section{Reflection positivity and unitarity bounds}
 
-\subsection{Reflection Positivity}
+\subsection{Reflection positivity}
 \label{sec:reflectionpositivity}
 
 In Lorentzian signature, we are interested in unitary theories: theories where the conserved charges (including the Hamiltonian) are Hermitian operators so that they generate unitary transformations.  Unitarity in Lorentzian signature is equivalent to a property called ``reflection positivity" in Euclidean signature.\footnote{We make some brief comments about Euclidean vs. Lorentzian field theory and analytic continuation in appendix~\ref{app:analyticcontinuation}.}
@@ -3431,7 +3438,7 @@ Consider the 2d Ising lattice correlator shown in figure~\ref{fig:isingreflectio
 
 The Osterwalder-Schrader reconstruction theorem says that, given a collection of Euclidean correlators satisfying reflection positivity (and some additional technical assumptions), we can reconstruct a unitary Lorentzian quantum field theory by analytic continuation \cite{GlimmJaffe}.  So reflection positivity in Euclidean signature and unitarity in Lorentzian signature are essentially equivalent, and we will use the terms interchangeably. 
 
-\subsubsection{Real vs.\ Complex Operators}
+\subsubsection{Real vs.\ complex operators}
 \label{sec:realvscomplex}
 
 Because Hermitian conjugation is tricky in Euclidean signature, it is helpful introduce some extra terminology.  We call a local operator ``real" if it is Hermitian in Lorentzian signature.  In Euclidean signature, real operators satisfy (\ref{eq:reflectionforhermitianconjugation}).  By contrast, for a complex operator $\cO_L^\dag = \cO_L^*$, we have
@@ -3458,7 +3465,7 @@ If $\f_1,\f_2$ are real scalars and $\cO$ is a real operator with spin $\ell$ in
 \ee
 Substituting (\ref{eq:scalarscalarspinL}) gives $f_{\f_1\f_2\cO}^*=f_{\f_1\f_2\cO}$.
 
-\subsection{Reflection Positivity on the Cylinder}
+\subsection{Reflection positivity on the cylinder}
 \label{sec:reflposcyl}
 
 Reflection-positivity (or unitarity) has interesting consequences for CFTs on the cylinder.  The Hermitian conjugate of a real cylinder operator is
@@ -3627,7 +3634,7 @@ Furthermore, in radial quantization, we have $D^\dag = D$. Now note that the com
 How can this be consistent with (\ref{eq:trickyequation})? Hint: see footnote~\ref{footnote:confusing}.
 \end{exercise}
 
-\subsection{Unitarity Bounds}
+\subsection{Unitarity bounds}
 
 Thinking about the theory on the cylinder gives a natural inner product on states in radial quantization.  Unitarity (or reflection positivity) implies that the norms of states must be nonnegative.  By demanding positivity for every state in a conformal multiplet, we obtain bounds on dimensions of primary operators \cite{Mack:1975je,Jantzen,Minwalla:1997ka}.  We have already seen an example in (\ref{eq:normoffirstdescendant}). We found
 \be
@@ -3695,7 +3702,7 @@ In summary, we have the unitarity bounds
 \ee
 
 
-\subsubsection{Null States and Conserved Currents}
+\subsubsection{Null states and conserved currents}
 
 If $\De$ saturates the bounds (\ref{eq:unitaritysummary}), the conformal multiplet will have a null state.  For the unit operator, all descendants are null.  For a scalar with dimension $\frac{d-2}{2}$, the null state is
 \be
@@ -3718,7 +3725,7 @@ The implication also works the other way:
 \ee
 Some important examples are global symmetry currents ($\ell=1$, $\Delta=d-1$) and the stress tensor ($\ell=2$, $\Delta=d$).  For CFTs in $d\geq 3$, the presence of currents with spin $\ell\geq 3$ implies that the theory is free \cite{Maldacena:2011jn,Boulanger:2013zza,Alba:2015upa}.\footnote{One must also assume the existence of exactly one stress tensor, since otherwise the theory could contain a free subsector, decoupled from the rest.}
 
-\subsection{Only Primaries and Descendants}
+\subsection{Only primaries and descendants}
 \label{sec:onlyprimariesanddescendants}
 
 With a positive-definite inner product, we can now prove that all operators in unitary CFTs are linear combinations of primaries and descendants. We will use one additional physical assumption: that the partition function of the theory on $S^{d-1}\x S^1_\beta$ is finite,
@@ -3729,7 +3736,7 @@ This means that $e^{-\beta D}$ is trace-class, and hence diagonalizable with a d
 
 Now consider a local operator $\cO$, and assume for simplicity it is an eigenvector of dilatation with dimension $\De$.  By finiteness of the partition function, there are a finite number of primary operators $\cO_p$ with dimension less than or equal to $\De$.  Using the inner product, we may subtract off the projections of $\cO$ onto the conformal multiplets of $\cO_p$ to get $\cO'$.  Now suppose (for a contradiction) that $\cO'\neq 0$.  Acting on it with $K_\mu$'s, we must eventually get zero (again by finiteness of the partition function), which means there is a new primary with dimension below $\De$, a contradiction.  Thus $\cO'=0$, and $\cO$ is a linear combination of states in the multiplets $\cO_p$.
 
-\section{The Operator Product Expansion}
+\section{The operator product expansion}
 
 If we insert two operators $\cO_i(x)\cO_j(0)$ inside a ball and perform the path integral over the interior, we get some state on the boundary.  Because every state is a linear combination of primaries and descendants, we can decompose this state as
 \be
@@ -3772,7 +3779,7 @@ We are being a bit schematic in writing the above equations.  It's possible for 
 \ee
 where $a,b,c$ are indices for (possibly different) representations of $\SO(d)$.
 
-\subsection{Consistency with Conformal Invariance}
+\subsection{Consistency with conformal invariance}
 
 Conformal invariance strongly restricts the form of the OPE\@.  For simplicity, suppose $\cO_i$, $\cO_j$, and $\cO_k$ are scalars.  
 \begin{exercise}
@@ -3811,7 +3818,7 @@ where
 \ee
 \end{exercise}
 
-\subsection{Computing Correlators with the OPE}
+\subsection{Computing correlators with the OPE}
 
 Equation (\ref{eq:threetotwo}) gives an example of using the OPE to reduce a three-point function to a sum of two-point functions.  In general, we can use the OPE to reduce any $n$-point function to a sum of $n-1$-point functions,
 \be
@@ -3828,7 +3835,7 @@ This gives an algorithm for computing any flat-space correlation function using 
 
 \stoplecture
 
-\section{Conformal Blocks}
+\section{Conformal blocks}
 
 \subsection{Using the OPE}
 
@@ -3893,7 +3900,7 @@ g_{\De,0}(u,v) &= u^{\De/2}\p{1+\dots}.
 Using (\ref{eq:scalarscalarspinL}), argue that $x^{2\De_\f} C_{\f\f\cO}(x,\ptl)$ is independent of $\Delta_\phi$ for any spin of $\cO$. Conclude that $g_{\De,\ell}(u,v)$ is independent of $\Delta_\phi$. (This is a special property of conformal blocks for operators with identical scaling dimensions.)
 \end{exercise}
 
-\subsection{In Radial Quantization}
+\subsection{In radial quantization}
 
 A conformal block represents the contribution of a single conformal multiplet to a four-point function.  It is instructive to understand it in radial quantization.  Along the way, we'll explain why the blocks are functions of the cross-ratios $u,v$ alone.
 
@@ -3927,7 +3934,7 @@ Verify the equivalence between (\ref{eq:newdefinitionofg}) and (\ref{eq:olddefin
 
 This expression makes it clear why $g_{\De,\ell}(u,v)$ is a function of $u$ and $v$: the projector $|\cO|$ commutes with all conformal generators (by construction).  Thus, the object above satisfies all the same Ward identities as a four-point function of primaries, and it must take the form (\ref{eq:fourptfunctionofprimaries}).  In path integral language, we can think of $|\cO|$ as a new type of  surface operator.  Here, we've inserted it on a sphere separating $x_{1,2}$ from $x_{3,4}$.
 
-\subsection{From the Conformal Casimir}
+\subsection{From the conformal Casimir}
 
 We can now give a simple and elegant way to compute the conformal block, due to Dolan \& Osborn \cite{DO2}.
 Recall that the conformal algebra is isomorphic to $\SO(d+1,1)$, with generators $L_{ab}$ given by (\ref{eq:conformalgeneratorssodplus11}).  The quadratic Casimir of the conformal group is defined by
@@ -4065,7 +4072,7 @@ In odd dimensions, no explicit formula in terms of elementary functions is known
 
 \stoplecture
 
-\subsection{Series Expansion}
+\subsection{Series expansion}
 
 It will be helpful to understand the series expansion of the conformal blocks in more detail.
  The ``radial coordinates" of \cite{Pappadopulo:2012jk,Hogervorst:2013sma} are ideal for this purpose.
@@ -4154,9 +4161,9 @@ g_{\De,\ell}(u,v) &= g_{\De,\ell}\p{\frac{u}{v},\frac 1 v},\qquad(\textrm{$\ell$
 \ee
 \end{exercise}
 
-\section{The Conformal Bootstrap}
+\section{The conformal bootstrap}
 
-\subsection{OPE Associativity and Crossing Symmetry}
+\subsection{OPE associativity and crossing symmetry}
 
 We've gotten pretty far using symmetries and basic principles of quantum field theory.  We  classified operators into primaries and descendants. We established the OPE, which determines $n$-point functions as sums of $(n-1)$-point functions,
 \be
@@ -4242,7 +4249,7 @@ Argue that by choosing different operators $\cO_4$ and taking linear combination
 
 %Most of the rest of this course will be devoted to studying its implications for the simplest possible case: a four-point function of identical scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$.  
 
-\subsubsection{Additional Structures and Consistency Conditions}
+\subsubsection{Additional structures and consistency conditions}
 \label{sec:additionalstructures}
 
 Let us reflect on the implications of exercise~\ref{ex:crossingexercise}:  A solution to the crossing equations~(\ref{eq:graphicalcrossing}) gives a completely nonperturbative definition of flat-space correlation functions of local operators, without the need for a Lagrangian.  This is most of the way towards a full theory. However, some structures associated with local QFTs are missing, and additional structures might bring new consistency conditions.
@@ -4251,7 +4258,7 @@ Firstly, CFTs can admit extended objects like line operators, surface operators,
 
 The full set of data and consistency conditions associated with a CFT is not known in general. However, we do have examples of constraints on local operators beyond the OPE and crossing equations. The most famous is modular invariance: the requirement that the partition function of a 2d CFT on the torus $T^2$ be invariant (or covariant) under large diffeomorphisms.  Imposing modular invariance is an additional step that must be performed after solving the crossing equations in 2d CFTs \cite{Moore:1988uz}.\footnote{2d is special because the space of states on a spatial slice $S^1\subset T^2$ is the same as the space of states in radial quantization, and thus modular invariance on $T^2$ directly constrains local operators.  This is not true in $d\geq 3$, so it is not clear how modular invariance on $T^d$ constrains local operators in that case.} We will study modular invariance in more detail in section~\ref{}.
 %
-\subsection{Crossing Symmetry for Identical Scalars} 
+\subsection{Crossing symmetry for identical scalars} 
 The crossing equation (\ref{eq:graphicalcrossing}) is a powerful but complicated constraint on the CFT data.  
 For concreteness, let us write it out for a four-point function of identical real scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$. We have the conformal block expansion
 \be
@@ -4309,7 +4316,6 @@ We conclude that any CFT must have an infinite number of primary operators, sinc
 One of our main goals for the rest of the course will be to study the crossing equations and find solutions if possible. 2-dimensional CFTs possess extra symmetries that will allow us to make significant progress in this direction. We will specialize to 2 dimensions in section~\ref{sec:twod}. Before we do so, there are a few more results to discuss in higher dimensions.
 
 \section{Ward identities}
-
 
 \subsection{Spin-$1$ current}
 
@@ -5474,6 +5480,8 @@ together with the trivial rule $1\x \cO=\cO$.
 
 Note that the fusion rules (\ref{eq:fusionrulesising}) are consistent with a $\Z_2$ global symmetry under which $\s$ has charge $-1$ and $\e$ has charge $+1$. Note also that $\e$ is the only $\Z_2$-even relevant scalar in the theory. Thus $\cM_{4,3}$ describes a unitary critical point with critical exponent $\nu = \frac{1}{2-\De_\e}=1$, where we've used (\ref{eq:nuexponent}). These are exactly the properties of the quantum transverse-field Ising model we computed in section~\ref{}. Indeed $\cM_{4,3}$ describes the critical point of the 2d Ising model.\footnote{In fact, in section~\ref{}, we showed that the 2d critical Ising model is equivalent to a free fermion. We will discuss the relationship between $\cM_{4,3}$ and the free fermion in section~\ref{}.}
 
+\stoplecture
+
 \subsubsection{Degenerate Virasoro blocks}
 
 Let us now apply the degeneracy condition (\ref{eq:degeneracycondition}) to a four-point function of primaries. For simplicity, consider the four-point function $\<\s\s\s\s\>$ in the 2d Ising model. This has Virasoro block expansion
@@ -5538,6 +5546,8 @@ Given a QFT with some symmetries, we can try to couple the corresponding symmetr
  It can happen that symmetries present in a trivial background are broken in a nontrivial background (and furthermore they cannot be restored by modifying details of the coupling to background fields). This is called an anomaly. Sometimes the procedure of coupling to a background field requires a choice, and by making different choices we can decide which symmetries are broken and which ones are preserved. This is called a mixed anomaly.
 
 A Weyl anomaly is a mixed anomaly between coordinate invariance and Weyl-invariance.\footnote{Coordinate invariance is often called ``diffeomorphism invariance" because a change of coordinates is equivalent to a diffeomorphism between different coordinate patches.} We almost always choose to preserve coordinate invariance (otherwise, the theory would depend on a choice of {\it coordinates}, not just a choice of metric). Thus a Weyl anomaly is effectively a breaking of Weyl invariance in a nontrivial background.\footnote{This can include a nontrivial metric, as well as gauge fields, background scalars, and more.}
+
+\stoplecture
 
 The simplest example of a Weyl anomaly occurs in 2 dimensions.
 Consider a correlation function $\<\cO_1\cdots\cO_n\>_g$ in a metric that is infinitesimally close to flat space
@@ -5686,6 +5696,7 @@ In general, addition of arbitrary counterterms allows us to remove any terms in 
 
 \end{itemize}
 
+
 Thus, the space of consistent anomalies is determined by solving a kind of cohomology problem. In two dimensions, the only nontrivial solution is the $a_1$ term, which we can fix by matching to the Weyl anomaly near flat space (\ref{eq:Weylanomaly}):
 \be
 \de_\w \mathcal{W} &= -\frac{c}{24\pi} \int d^2x \sqrt{g}\, \w R.
@@ -5703,6 +5714,8 @@ S_\mathrm{Weyl}[g,\w_1+\w_2] &= S_\mathrm{Weyl}[g,\w_1] + S_\mathrm{Weyl}[e^{2\w
 \ee
 Show that this is equivalent to the Wess-Zumino consistency condition.
 \end{exercise}
+
+\stoplecture
 
 Integrating the Weyl variation of a correlator (\ref{eq:weylvariationinfinitesimal}), we find
 \be
@@ -5730,7 +5743,7 @@ The Wess-Zumino consistency condition reduces this to
 \ee
 where $E_4$ is the Euler density and $W$ is the Weyl tensor. The coefficients $a$ and $c$ can be fixed by expanding around flat space and performing a similar analysis to the one in section~\ref{eq:twodflatspaceanalysis}. One finds that $c$ is proportional to the two-point function of the stress tensor $\<TT\>$, while $a$ is proportional to the coefficient of one of the structures in the stress-tensor three-point function $\<TTT\>$. The 4d Weyl anomaly can be integrated to compute $S_\mathrm{Weyl}[g,\s]$, see \cite{}.
 
-\subsection{Casimir Energy}
+\subsection{Casimir energy}
 
 To figure out how the stress-tensor transforms under a Weyl transformation, we can take a derivative of (\ref{eq:weylvariationwithanomaly}) with respect to the metric. We find %Let $g'=e^{2\w} g$. We have
 \be
@@ -6019,8 +6032,462 @@ In general, one can ask whether there are new constraints on 2d CFTs from consis
 
 Unfortunately, an equally nice analog of modular invariance in higher-dimensionals is not known. It is true that partition functions on higher-dimensional torii like $T^3$ should be invariant under a higher-dimensional generalization of the modular group. However, this doesn't give simple constraints on local operators because the spatial slices on $T^3$ have topology $T^2$, and the Hilbert-space on $T^2$ is not simply related to the Hilbert space on $S^2$ (which is related to local operators). The problem of understanding CFT partition functions and Hilbert spaces on general manifolds is still very much open.
 
-\begin{appendix}
-\end{appendix}
+\stoplecture
+
+\section{Numerical bootstrap methods}
+
+\subsection{Crossing symmetry recap} 
+
+For the rest of this course, we study the crossing equation for a four-point function of identical real scalars $\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\>$, using techniques that work in any spacetime dimension.  Let us summarize the consequences of conformal symmetry and unitarity for this case.
+\begin{itemize}
+\item We have the OPE
+\be
+\f(x_1)\f(x_2) &= \sum_{\cO} f_{\f\f\cO} C_{\mu_1\cdots\mu_\ell}(x_{12},\ptl_2) \cO^{\mu_1\cdots\mu_\ell}(x_2).
+\ee
+We denote the dimension of $\cO$ by $\De$ and the spin by $\ell$. By exercise~\ref{exercise:elleven}, $\ell$ must be even.
+
+\item We can choose a basis of operators such that the $\cO$'s are real and orthonormal, as in  (\ref{eq:canonicallynormalizedtwopt}).  Unitarity implies that the three-point coefficients $f_{\f\f\cO}$ are real in this basis (section~\ref{sec:realvscomplex}).
+
+\item Each $\cO$ satisfies the unitarity bounds
+\be
+\label{eq:unitarityboundsummary}
+\De &= 0 \ \textrm{(unit operator), or}\nn\\
+\De &\geq \left\{
+\begin{array}{ll}
+\frac{d-2}{2} & (\ell=0),\\
+\ell+d-2 & (\ell > 0).
+\end{array}
+\right.
+\ee
+
+\item We have the conformal block expansion
+\be
+\<\f(x_1)\f(x_2)\f(x_3)\f(x_4)\> &= \frac{g(u,v)}{x_{12}^{2\De_\f}x_{34}^{2\De_\f}}\\
+g(u,v) &= \sum_\cO f_{\f\f\cO}^2 g_{\De,\ell}(u,v),
+\ee
+where $g_{\De,\ell}(u,v)$ are conformal blocks, and the cross ratios are
+\be
+u = z\bar z = \frac{x_{12}^2 x_{34}^2}{x_{13}^2 x_{24}^2},\qquad v=(1-z)(1-\bar z) =\frac{x_{23}^2 x_{14}^2}{x_{13}^2 x_{24}^2}.
+\ee
+
+
+\item Crossing symmetry is equivalent to the condition (\ref{eq:crossingsymmetry}) that our four-point function is invariant under $1\leftrightarrow 3$ or $2\leftrightarrow 4$,
+\be
+\label{eq:crossingeqsummary}
+g(u,v) &= \p{\frac{u}{v}}^{\De_\f} g(v,u).
+\ee
+Eq.~(\ref{eq:invariantunderonetwo}) shows that invariance of the four-point function under $1\leftrightarrow 2$ or $3\leftrightarrow 4$ is true block-by-block.  All other permutations can be generated from these.
+
+\end{itemize}
+
+We know at least two operators present in the $\f\x\f$ OPE: the unit operator and the stress tensor.  Normalizing $\f$ so that $\<\f(x)\f(0)\>=x^{-2\De_\f}$, we have $f_{\f\f\mathbf{1}}=1$.  The stress tensor three-point coefficient is set by Ward identities to be $f_{\f\f T_{\mu\nu}}\propto \De_\f/\sqrt{C_T}$, where $C_T$ is the coefficient of the two-point function of the canonically normalized stress tensor (\ref{eq:twopointfunctionofspinL}).  The factor of $1/\sqrt{C_T}$ relative to (\ref{eq:stresstensorward}) comes from choosing the basis of operators $\cO$ to be orthonormal.
+
+%
+%\subsection{An Infinite Number of Primaries}
+%
+%To get a feel for the crossing equation (\ref{eq:crossingeqsummary}), let us consider a simple limit: $z\to 0$ with $z=\bar z$. This corresponds to $x_2\to x_1$ with all four operators collinear.
+%
+%Recall that the blocks go like $g_{\De,\ell}(u,v)\sim (z\bar z)^{\De/2}$ in this limit, so the left-hand side of (\ref{eq:crossingeqsummary}) is dominated by the smallest dimension operator in the OPE, the unit operator:
+%\be
+%\mathrm{LHS} &:& 1+\dots \qquad(z\to 0).
+%\ee
+%
+%Crossing $u\leftrightarrow v$ corresponds to $(z,\bar z)\to (1-z,1-\bar z)$.  In the limit $z\to 0$, the crossed conformal blocks $g_{\De,\ell}(1-z,1-z)$ go like $\log z$.
+%\begin{exercise}
+%Check this for the explicit formulae (\ref{eq:explicitblock2d}) and (\ref{eq:explicitblock4d}).
+%\end{exercise}
+%Thus, each term on the right-hand side goes like
+%\be
+%\label{eq:rhsterms}
+%\textrm{each term, RHS} &:& z^{2\De_\f}\log z + \dots \qquad(z\to 0).
+%\ee
+%As $z\to 0$, any finite sum of terms of the form (\ref{eq:rhsterms}) vanishes.  Thus, for a sum of operators on the right-hand side to reproduce the unit operator on the left-hand side, we need an infinite number of primary operators.\footnote{This doesn't contradict the textbook statement that rational 2d CFTs contain a finite number of primary operators.  In that context, ``primary" refers to primary operators with respect to the Virasoro algebra.  Here, we are discussing primaries with respect to the global conformal group, which is $\mathrm{SL}(2,\R)\x\mathrm{SL}(2,\R)$ in 2d.  A single Virasoro representation contains an infinite number of global conformal representations.}
+%
+%One can prove that as $z\to 0$, the sum on the right-hand side is dominated by operators of dimension $\Delta\sim 1/\sqrt z$ \cite{Pappadopulo:2012jk}.  In other words, the unit operator on the left-hand side maps to the large-$\De$ asymptotics of the sum over operators on the right-hand side.  This is a general feature of the crossing equation --- it cannot be satisfied block-by-block.
+%
+%One can also show \cite{Pappadopulo:2012jk} that the conformal block expansion converges exponentially in $\De$ whenever $|\rho|\leq 1$, where $\rho$ is defined in (\ref{eq:radialcoordinatedefinition}).  In particular, this means that both sides of the crossing equation converge exponentially in a finite neighborhood of the point $z=\bar z=\frac 1 2$, which will play an important role in the next section.
+%
+%Analyzing different limits of the crossing equation can give other information about the CFT spectrum.  For example, the limit $z\to 0$ with $\bar z$ fixed gives information about operators with large spin \cite{Alday:2007mf,Fitzpatrick:2012yx,Komargodski:2012ek,Alday:2015ewa}.
+
+\subsection{Bounds on CFT data}
+\label{sec:bounds}
+
+The crossing equation (\ref{eq:crossingeqsummary}) has been known for decades.  However, little progress was made in solving it for CFTs in $d\geq 3$ until 2008, in a breakthrough paper by Rattazzi, Rychkov, Tonni, and Vichi \cite{Rattazzi:2008pe}.  Instead of trying to solve the crossing equation exactly, their insight was to derive bounds on CFT data by studying the crossing equation geometrically.  Crucially, their methods let one make rigorous statements about some of the CFT data (for example, the lowest few operator dimensions), without having to compute all of it.
+
+The basic idea is simple.  Let us write the crossing equation as
+\be
+\label{eq:crossingononeside}
+\sum_\cO f_{\f\f\cO}^2 \underbrace{\p{v^{\De_\f}g_{\De,\ell}(u,v)-u^{\De_\f} g_{\De,\ell}(v,u)}}_{F_{\De,\ell}^{\De_\f}(u,v)} &= 0.
+\ee
+Abstractly, we can think of the functions $F_{\De,\ell}^{\De_\f}(u,v)$ as vectors $\vec{F}_{\De,\ell}^{\De_\f}$ in the (infinite-dimensional) vector space of functions of $u$ and $v$.  Recall that the coefficients $f_{\f\f\cO}^2$ are positive, so (\ref{eq:crossingononeside}) has the form
+\be
+\label{eq:abstractcrossingeq}
+\sum_{\De,\ell} p_{\De,\ell} \vec{F}_{\De,\ell}^{\De_\f} &= 0,\qquad p_{\De,\ell}\geq 0,
+\ee
+where $\De,\ell$ run over dimensions and spins of operators in the $\f\x\f$ OPE.  
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.85\textwidth]{vectorpossibilities.jpg}
+\end{center}
+\caption{On the left, a bunch of vectors that can sum to zero with positive coefficients.  On the right, a bunch of vectors that can't.  In the latter case, it's possible to find a separating plane $\a$.\label{fig:vectorpossibilities}}
+\end{figure}
+
+Equation~(\ref{eq:abstractcrossingeq}) says that a bunch of vectors sum to zero with positive coefficients.  This may or may not be possible, depending on the vectors.  The left-hand side of figure~\ref{fig:vectorpossibilities} shows a case where it's possible, and the right-hand side shows a case where it's impossible.  The way to distinguish these cases is to search for a {\it separating plane} $\alpha$ through the origin such that all the vectors $\vec{F}_{\De,\ell}^{\De_\f}$ lie on one side of $\alpha$.  If $\alpha$ exists, then the  $\vec{F}_{\De,\ell}^{\De_\f}$ cannot satisfy crossing, for any choice of coefficients $p_{\De,\ell}=f_{\f\f\cO}^2$.  This suggests the following procedure for bounding CFT data.
+
+\begin{algorithm}[Bounding Operator Dimensions]
+\label{thealgorithm}
+\qquad
+
+\begin{enumerate}
+\item Make a hypothesis for which dimensions and spins $\De,\ell$ appear in the $\f\x\f$ OPE.
+\item Search for a linear functional $\alpha$ that is nonnegative acting on all $\vec F_{\Delta,\ell}^{\Delta_\f}$ satisfying the hypothesis,
+\be
+\alpha(\vec F_{\Delta,\ell}^{\De_\f})\geq 0,
+\ee
+and strictly positive on at least one operator (usually taken to be the unit operator).
+\item If $\alpha$ exists, the hypothesis is wrong.  We see this by applying $\alpha$ to both sides of (\ref{eq:abstractcrossingeq}) and finding a contradiction.
+\end{enumerate}
+\end{algorithm}
+
+A slight modification of this algorithm also lets one bound OPE coefficients \cite{Caracciolo:2009bx}.
+
+\subsection{An example bound}
+\label{sec:boundsexample}
+
+Let's work through an example.\footnote{An early version of this example is due to Sheer El-Showk, and this specific implementation is due to Jo\~ao Penedones and Pedro Vieira.}  Consider a 2d CFT with a real scalar primary $\f$ of dimension $\De_\f=\frac 1 8$.
+Project the crossing equation onto a two-dimensional subspace with the linear map
+\be
+\label{eq:vecv}
+\vec v(F) &= \p{H\p{\frac 1 2,\frac 3 5} - H\p{\frac 1 2, \frac 1 3}, H\p{\frac 1 2,\frac 3 5} - H\p{\frac 1 3, \frac 1 4}}\in \R^2,\nn\\
+&\quad \textrm{where}\quad H(z,\bar z) = \frac{F(u,v)}{u^{\De_\f}-v^{\De_\f}},\nn\\
+&\qquad \qquad \qquad\,\,\,\,\,\,\, u=z\bar z,\nn\\
+&\qquad \qquad \qquad\,\,\,\,\,\,\, v= (1-z)(1-\bar z).
+\ee
+By linearity, the vectors $\vec v(F_{\De,\ell}^{\De_\f})$ also sum to zero with positive coefficients,
+\be
+\label{eq:finitedimensionalcrossing}
+\sum_{\De,\ell} p_{\De,\ell} \vec v(F_{\De,\ell}^{\De_\f}) &= 0.
+\ee
+
+In figure~\ref{fig:twodvectorsexample}, we plot $\vec v(F_{\De,\ell}^{\De_\f})$ for all $\De,\ell$ satisfying the unitarity bounds (\ref{eq:unitarityboundsummary}), where the conformal blocks are given by (\ref{eq:explicitblock2d}).  We have normalized the vectors so that they are easy to see, since changes in normalization can be absorbed into the coefficients $p_{\De,\ell}$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{2dVectorsExample}
+\end{center}
+\caption{Vectors $\vec v(F_{\De,\ell}^{\De_\f})$ for all values of $\De,\ell$ satisfying the 2d unitarity bound $\De\geq \ell$, with $\ell$ even.  Dots represent vectors at the unitarity bound $\De=\ell$.  As $\De$ varies, $\vec v(F_{\De,\ell}^{\De_\f})$ sweeps out a curve starting at the dot and approaching  the negative $y$-axis as $\De\to \oo$. The curves for spins $\ell=16,18,\dots$ look similar and converge quickly as $\ell\to \oo$, so we have not included them in the figure.  All vectors are normalized for visual simplicity, except for the unit operator $\vec v(F_{0,0}^{\De_\f})=\vec 0$.  The dashed line splits the figure into two half-spaces with the stress tensor $\vec v(F_{2,2}^{\De_\f})$ on the boundary.  The thicker region of the $\ell=0$ curve, in a different half-space from the rest of the figure, corresponds to scalars with dimension $\De\in[0.161,1.04]$.}
+\label{fig:twodvectorsexample} 
+\end{figure}
+
+As $\De$ varies from $\ell$ (the unitarity bound) to $\oo$, $\vec v(F_{\De,\ell}^{\De_\f})$ sweeps out a curve.  The curves for higher spin operators $\ell\geq 2$ are extremely simple, converging quickly at large $\De$.  The scalar curve is more interesting. It circles counterclockwise partway around the origin before circling back and converging as $\De\to \oo$.  The region $\De\in[0.161,1.04]$ of the scalar curve lies in a different half space from the other curves.  To satisfy (\ref{eq:finitedimensionalcrossing}), we must include at least one vector from this region.  Thus, we immediately conclude
+\begin{claim}
+In a unitary 2d CFT with a real operator $\f$ of dimension $\De_\f=\frac 1 8$, there must exist a scalar in the $\f\x\f$ OPE with dimension $\De\in[0.161,1.04]$.
+\label{claimboundone}
+\end{claim}
+\begin{proof}
+We have already given the proof, but let us rephrase it in terms of Algorithm~\ref{thealgorithm}.
+\begin{itemize}
+\item Suppose (for a contradiction) that there are no scalars with $\De\in[0.161,1.04]$ in the $\f\x\f$ OPE.
+\item Let
+\be
+\alpha(F) &= \vec u \. \vec v(F),
+\ee
+where $\vec v(F)$ is defined in (\ref{eq:vecv}) and $\vec u\in \R^2$ is normal to the dashed line, pointing to the bottom right in figure~\ref{fig:twodvectorsexample}.  Note that $\alpha(F_{\De,\ell}^{\De_\f})\geq 0$ for all $\De,\ell$ satisfying our hypothesis.  Further, $\alpha$ is strictly positive on at least one vector appearing in the $\f\x\f$ OPE. (To establish this, we could rotate $\vec u$ slightly so that $\alpha$ is strictly positive on the stress tensor vector. Alternatively, we could use the fact that at least one higher dimension operator must appear in the $\f\x\f$ OPE.)
+\item Applying $\alpha$ to both sides of (\ref{eq:abstractcrossingeq}), we find a contradiction: $0>0$.
+\end{itemize}
+\end{proof}
+
+\begin{exercise}
+\label{exercise:asymptotics}
+Check that $\alpha(F_{\De,\ell}^{\De_\f})\geq 0$ is true asymptotically as $\De\to \oo$ and $\ell\to \oo$.  Convince yourself that the proof of Claim~\ref{claimboundone} could be made rigorous to a mathematician's standards.
+\end{exercise}
+
+Fiddling around with two-dimensional vectors has yielded a surprisingly strong result.  The 2d Ising CFT is an example of a unitary theory with a real scalar $\s$ (the spin operator) with dimension $\De_\s=\frac 1 8$.  The lowest dimension scalar in the $\s\x\s$ OPE is the energy operator $\e$, which has $\De_\e=1$.  So our upper bound $\De_\mathrm{scalar}\leq 1.04$ is within $4$ percent of being saturated by an actual theory!
+
+\subsection{Numerical techniques}
+\label{sec:numericaltechniques}
+
+The bound $\De_\mathrm{scalar}\in[0.161,1.04]$ is not particularly special.  If we had picked a different two-dimensional subspace (\ref{eq:vecv}), we would have gotten different numbers.  We might also consider higher-dimensional subspaces and derive even stronger results.  Although it is possible to prove bounds by hand as we did in the previous subsection, computerized searches are the current state-of-the-art.  In this section, we describe some of the techniques involved.
+
+The hard part of Algorithm~\ref{thealgorithm} is the middle step: finding a functional $\alpha$ such that
+\be
+\label{eq:positivityconstraints}
+\alpha(\vec F_{\De,\ell}^{\De_\f}) \geq 0,\qquad\textrm{for all $\De,\ell$ satisfying our hypothesis}.
+\ee
+If we want to use a computer, we have two immediate difficulties:
+\begin{enumerate}
+\item The space of possible $\alpha$'s is infinite-dimensional.
+\item There are an infinite number of positivity constraints (\ref{eq:positivityconstraints}) --- one for each $\De,\ell$ satisfying our hypothesis.  Our hypothesis usually allows $\ell$ to range from $0$ to $\oo$, and $\De$ to vary continuously (aside from a few discrete values).\footnote{This is due to ignorance about the spectrum. Although physical CFT spectra should be discrete, we don't know exactly which discrete values $\De$ takes, and so we must include positivity constraints for continuously varying $\De$.}
+\end{enumerate}
+
+The first difficulty is easy to fix.  Instead of searching the infinite-dimensional space of all functionals, we restrict to a finite-dimensional subspace.  If we find $\alpha$ in our subspace that satisfies the positivity constraints, we can immediately rule out our hypothesis about the spectrum.  If we can't find $\alpha$, then we can't conclude anything about the spectrum: either no functional exists, or we just weren't searching a big enough subspace.
+
+In the example from section~\ref{sec:boundsexample}, we restricted $\alpha$ to linear combinations of the components of $\vec v(F)$ in (\ref{eq:vecv}).  For numerical computations, we usually take linear combinations of derivatives around the crossing-symmetric point $z=\bar z = \frac 1 2$,
+\be
+\label{eq:choiceoffunctionals}
+\alpha(F) &= \sum_{m+n\leq \Lambda} a_{mn}\ptl_z^m \ptl_{\bar z}^n F(z,\bar z)|_{z=\bar z=\frac 1 2},
+\ee
+where $\Lambda$ is some cutoff.  The functional $\alpha$ is now parameterized by a finite number of coefficients $a_{mn}$, and a computer can search over these coefficients.\footnote{Note that $F(z,\bar z)$ is symmetric under $z\leftrightarrow \bar z$ (because $u$ and $v$ are), so we can restrict $m\leq n$.  Also, $F(z,\bar z)$ is odd under $(z,\bar z)\to (1-z,1-\bar z)$, so we can restrict to $m+n$ odd. This gives $\frac 1 2\lfloor \frac{\Lambda+1}{2}\rfloor(\lfloor \frac{\Lambda+1}{2}\rfloor+1)$ coefficients.}\footnote{Sometimes these bounds appear to converge as $\Lambda$ increases, justifying post-hoc the choice of subspace (\ref{eq:choiceoffunctionals}).  However, this subspace is not always obviously the best choice.  New results might come from studying different points in the $z,\bar z$ plane, integrating against kernels $K(z,\bar z)$, or doing something more exotic.  For example, the limit $z\to 0$, with $\bar z$ fixed is known to encode interesting information about high spin operators. Finding the optimal space of functionals is an open problem.}
+
+Getting around the second difficulty takes more care.  To solve the inequalities (\ref{eq:positivityconstraints}) on a computer, we must encode them with a finite amount of data.  It is usually sufficient to restrict $\ell\leq \ell_\mathrm{max}$ for some large cutoff $\ell_\mathrm{max}$.  After we find $\alpha$, we can go back and check afterwards that it satisfies $\alpha(F_{\De,\ell}^{\De_\f})\geq 0$ for $\ell>\ell_\mathrm{max}$, as in exercise~\ref{exercise:asymptotics}.
+
+To deal with the continuous infinity of $\De$'s, three techniques have been used in the literature:
+\begin{itemize}
+\item Discretize $\De$ with a small spacing and impose a cutoff $\De_\mathrm{max}$.  We then have a finite set of linear inequalities for $a_{mn}$, which can be solved using {\it linear programming}.  This is the approach taken in the original paper on CFT bounds \cite{Rattazzi:2008pe}.
+
+\item Use a version of the simplex algorithm (underlying many linear programming solvers) that is customized to handle continuously varying constraints, see \cite{El-Showk:2014dwa,Paulos:2014vya}.
+
+\item Approximate the constraints (\ref{eq:positivityconstraints}) as positivity conditions on polynomials and use {\it semidefinite programming} \cite{Poland:2011ey,Kos:2013tga,Kos:2014bka,Simmons-Duffin:2015qma}.  We discuss this idea in more detail in section~\ref{app:semidefinite}.
+
+\end{itemize}
+
+\subsection{Improving on our hand-computed bound}
+
+Let us compute an upper bound on the lowest-dimension scalar in the $\f\x\f$ OPE using a computer search. We will assume a $\Z_2$ symmetry under which $\f$ is odd so that $\f$ doesn't appear in its own OPE\@. The procedure is as follows
+\begin{enumerate}
+\item Pick a value $\De_0$ and assume that all scalars in the $\f\x\f$ OPE have dimension $\De\geq \De_0$.
+
+\item Use a computer to search for $a_{mn}$ such that
+\begin{align}
+\label{eq:positivityconditioninexample}
+\sum_{m+n\leq \Lambda} & a_{mn}  \ptl_z^m\ptl_{\bar z}^n F^{\De_\f}_{\De,\ell}(z,\bar z)|_{z=\bar z = \frac 1 2} \geq 0,\nn\\
+\textrm{for all }\quad\ell &= 0,2,\dots,\ell_\mathrm{max},\quad\De \geq \begin{cases}
+\De_0 & (\ell=0), \\
+\ell+d-2 & (\ell>0).
+\end{cases}
+\end{align}
+
+\item If (\ref{eq:positivityconditioninexample}) is solvable, there must exist a scalar with dimension below $\De_0$.
+
+\end{enumerate}
+
+The best bound is the critical value $\De_{0}^\mathrm{crit.}$ above which (\ref{eq:positivityconditioninexample}) is solvable and below which it is not. To find it, we can perform a binary search in $\De_0$, running the algorithm above at each step. By additionally varying $\De_\f$, we obtain a $\De_\f$-dependent upper bound on the lowest-dimension scalar in the $\f\x\f$ OPE.
+
+An implementation of this procedure is included with the semidefinite program solver {\tt SDPB} \cite{Simmons-Duffin:2015qma}.\footnote{See {\tt mathematica/Bootstrap2dExample.m} at {\tt https://github.com/davidsd/sdpb}.}  See also \cite{Behan:2016dtz} for a Python interface to {\tt SDPB} and \cite{Paulos:2014vya} for another user-friendly bootstrap package.  Running the code for $\Lambda=6,8,12,16,20,28$ gives the bounds shown in figure~\ref{fig:2dbound}.\footnote{We use the {\tt SDPB} parameters listed in the appendix of \cite{Simmons-Duffin:2015qma}.}  
+
+\begin{figure}[hrt!]
+\begin{center}
+\includegraphics[width=\textwidth]{2dBound}
+\end{center}
+\caption{\label{fig:2dbound}
+Upper bounds on the dimension $\De_0$ of the lowest dimension scalar in the $\f\x\f$ OPE as a function of $\De_\f$, for 2d CFTs with a $\Z_2$ symmetry. The bounds are computed using {\tt SDPB} for $\Lambda=6,8,12,16,20,28$, with the strongest bound (darkest blue curve) corresponding to $\Lambda=28$ (a 105-dimensional space of functionals). The black dots represent the unitary minimal models $\mathcal{M}_{m,m+1}$ with $(\De_\f,\De_0)=(\frac 1 2 - \frac{3}{2(m+1)},2-\frac{4}{m+1})$ for $m=3,4,5,6$, of which the 2d Ising model is the case $m=3$.  The dashed line represents the lowest dimension scalar in an OPE of operators $\cos(k\phi)$ in the free boson theory.  These bounds first appeared in~\cite{Rychkov:2009ij}. It should be possible to improve on the lower bound in section~\ref{sec:boundsexample} as well, though we have not attempted this.
+}
+\end{figure}
+
+As the cutoff $\Lambda$ on the number of derivatives increases, the bounds $\De_0^\mathrm{crit.}(\De_\f)$ get stronger. Remarkably, the strongest bounds are nearly saturated by interesting physical theories. The most obvious feature of figure~\ref{fig:2dbound} is a {\it kink\/} near the location of the 2d Ising model $(\De_\f,\De_0)=(\frac 1 8,1)$.  (Other exactly soluble unitary minimal models $\mathcal{M}_{m,m+1}$ also lie near the bound.) The bounds for different $\Lambda$ at the 2d Ising point $\De_\f=\frac 1 8$ are given in table~\ref{tab:twodbounds}.  Taking $\Lambda=28$ gives a bound $\De_\e \leq \De_0^\mathrm{crit.}(\frac 1 8)\approx 1.0000005$, within $5\x 10^{-7}$ of the correct value.
+
+\begin{table}[ht]
+\tbl{\label{tab:twodbounds} Upper bounds on $\De_\e$ in the 2d Ising model, computed with different cutoffs $\Lambda$ on the number of derivatives.}{
+\begin{tabular}{c|c|c|c|c|c|c}
+$\Lambda$  & 6 & 8 & 12 & 16 & 20 & 28 \\
+\hline
+$\De_0^\mathrm{crit.}(\De_\f=\frac 1 8)$ & 1.020 & 1.0027 & 1.00053 & 1.000043 & 1.0000070 & $\sim1.0000005$
+\end{tabular}}
+\end{table}
+
+\subsection{Numerical results in 3d}
+
+It is helpful to compare to exact solutions in 2d, but the above results are remarkable because the methods are so general. We input information about 2d global conformal symmetry (nothing about the Virasoro algebra!) and unitarity, and the 2d Ising model pops out.  Wonderfully, the same thing happens in 3d! Again, we compute an upper bound on the lowest dimension scalar in the $\f\x\f$ OPE, this time using the 3d conformal blocks and the 3d unitarity bound.  The resulting bound, shown in figure~\ref{fig:singletbound3d}, has a kink at $(\De_\f,\De_0)\approx(0.518,1.412)$ --- close to the values realized in the 3d Ising CFT \cite{ElShowk:2012ht}.
+
+\begin{figure}[hrt!]
+\begin{center}
+\includegraphics[width=\textwidth]{singleCorrelator3dBound}
+\end{center}
+\caption{\label{fig:singletbound3d} Upper bound on the dimension $\De_\e$ of the lowest dimension scalar in the $\s\x\s$ OPE, where $\s$ is a real scalar primary in a unitary 3d CFT with a $\Z_2$ symmetry, from \cite{El-Showk:2014dwa}. This bound is computed with $\Lambda=24$ (78-dimensional space of derivatives).}
+\end{figure}
+
+All the results discussed so far come from studying crossing symmetry of a single four-point function.  However, the techniques can be generalized to systems of correlation functions. The system $\<\s\s\s\s\>$, $\<\s\s\e\e\>$, $\<\e\e\e\e\>$ in the 3d Ising CFT was studied in \cite{Kos:2014bka}.  To get interesting new bounds in this case, it's necessary to input an additional fact: that $\s$ and $\e$ are the only relevant scalars in the theory.\footnote{This is an obvious experimental fact about the 3d Ising CFT. (It would be interesting to prove mathematically.)  Relevant scalars are in one-to-one correspondence with parameters that must be tuned to reach the critical point in some microscopic theory.  The fact that the phase diagram of water is 2-dimensional (the axes are temperature and pressure) tells us that the critical point of water has two relevant operators.}  In practice, this roughly means that we impose positivity conditions $\alpha(F_{\De,\ell})\geq 0$ for $\De=\De_\s,\De_\e$, and $\De\geq 3$.  The resulting bound in figure~\ref{fig:multicorrelator3d} now restricts $(\De_\s,\De_\e)$ to a small island in the space of operator dimensions.
+
+\begin{figure}[hrt!]
+\begin{center}
+\includegraphics[width=\textwidth]{multiCorrelator3dBound}
+\end{center}
+\caption{\label{fig:multicorrelator3d} Bound on $(\De_\s,\De_\e)$ in a unitary 3d CFT with a $\Z_2$ symmetry and two relevant scalars $\s,\e$ with $\Z_2$ charges $-,+$.  The bound comes from studying crossing symmetry of $\<\s\s\s\s\>$, $\<\s\s\e\e\>$, $\<\e\e\e\e\>$, and is computed with $\Lambda=12$.  The allowed region is now a small island near the 3d Ising point (black cross), with an additional bulk region to the right.}
+\end{figure}
+
+The same multiple correlator bound, computed with $\Lambda=43$ using {\tt SDPB}, is shown in figure~\ref{fig:sdpbBound} \cite{Simmons-Duffin:2015qma}.  The island has shrunk substantially, giving a precise determination of the 3d Ising operator dimensions,
+\be
+(\De_\s,\De_\e) &= (0.518151(6), 1.41264(6)).
+\ee
+Figures~\ref{fig:multicorrelator3d} and~\ref{fig:sdpbBound} are conceptually interesting.  Firstly, the striking agreement between Monte Carlo simulations and the conformal bootstrap is strong evidence that the critical 3d Ising model actually does flow to a conformal fixed-point, as originally conjectured by Polyakov \cite{Polyakov:1970xd}.
+
+Secondly, figures~\ref{fig:multicorrelator3d} and~\ref{fig:sdpbBound} give a way to understand the phenomenon of critical universality discussed at the beginning of this course.  If a theory flows to a unitary 3d CFT with a $\Z_2$-symmetry and two relevant scalars $\s,\e$ --- and if $\De_\s,\De_\e$ don't live in the bulk region in figure~\ref{fig:multicorrelator3d} --- then the IR theory must live in the 3d Ising island!  Perhaps future bootstrap studies will shrink the 3d Ising island to a point, proving the IR equivalence of these theories.
+
+\begin{figure}[hrt!]
+\begin{center}
+\includegraphics[width=\textwidth]{sdpbBound}
+\end{center}
+\caption{\label{fig:sdpbBound} Bound on $(\De_\s,\De_\e)$ in a unitary 3d CFT with a $\Z_2$ symmetry and two relevant scalars $\s,\e$ with $\Z_2$ charges $-,+$.  The bound comes from studying crossing symmetry of $\<\s\s\s\s\>$, $\<\s\s\e\e\>$, $\<\e\e\e\e\>$, and is computed with $\Lambda=43$ using {\tt SDPB}. The allowed region is the blue sliver. The dashed rectangle shows the $68\%$ confidence region for the current best Monte Carlo determinations.}
+\end{figure}
+
+
+%\section*{Acknowledgements}
+%
+%I am grateful to Joe Polchinski and Pedro Vieira for inviting me to give this course, and Tom DeGrand, Oliver DeWolfe, and Sherry Namburi for helping make TASI such a fun experience.  I am also grateful to Justin David, Chethan Krishnan and Gautam Mandal for organizing the Advanced Strings School at ICTS, Bangalore.  A special thanks to the spectacular students at TASI and the Strings School, who asked so many good questions.  Thanks to Chris Beem, Joanna Huey, Filip Kos, Petr Kravchuk, David Poland, and Slava Rychkov for comments.  Thanks to Sheer El-Showk, Jo\~ao Penedones, and Pedro Vieira for the nice example in section~\ref{sec:boundsexample}. I am supported by DOE grant number DE-SC0009988 and a William D. Loughlin Membership at the Institute for Advanced Study.
+
+
+%\begin{appendix}[Quantization of the Lattice Ising Model]
+%\label{app:latticequantization}
+%
+%In this section, we show how to interpret the partition function of the Ising model on a square lattice in terms of Hilbert spaces and discrete time evolution.  This is a textbook trick,\footnote{It is the starting point for Onsager's exact solution of the 2d Ising model \cite{PhysRev.65.117}.} but we review it because it clearly illustrates several ideas from section~\ref{sec:quantization}.
+%
+%Consider the 2d Ising model on an $m\x n$ lattice with periodic boundary conditions.  The spins are given by $s_{i,j}\in \{\pm 1\}$, where $i\in \Z/m\Z$ and $j\in \Z/n\Z$.  The partition function is
+%\be
+%\label{eq:isingpartitionfunction}
+%Z &= \sum_{\{s\}} \exp\p{-JS_h(s) -J S_v(s)},\nn\\
+%S_h(s) &\equiv& \sum_{i,j} s_{i,j}s_{i+1,j},\nn\\
+%S_v(s) &\equiv& \sum_{i,j} s_{i,j} s_{i,j+1},
+%\ee
+%where we have separated the action into contributions from horizontal and vertical bonds.
+%
+%We will think of the $j$-direction as ``time", and introduce a Hilbert space $\cH_m$ associated with a ``slice" of $m$ lattice sites at constant time.  The space $\cH_m$ has a basis state for each spin configuration on the slice,
+%\be
+%|s_1,\dots,s_m\>,\qquad s_i\in\{\pm 1\}.
+%\ee
+%These are the analogs of the field eigenstates $|\phi_b\>$ in section~\ref{sec:operatorimpliesstate}.
+%The Pauli spin matrices $\widehat\sigma_i^{\mu}$, $\mu=x,y,z$ act on the $i$-th site.
+%
+%The operator
+%\be
+% U &\equiv & \exp\p{-J\sum_{i=1}^m \widehat\s^z_i \widehat\s^z_{i+1}}
+%\ee
+%encodes the contribution to the partition function from horizontal bonds between $m$ spins in a line. For example on an $m\x 1$ lattice, we would have
+%\be
+% U |s_1,\dots,s_m\> &= e^{-JS_h(s)}|s_1,\dots,s_m\>.
+%\ee
+%The operator
+%\be
+% V &\equiv& \prod_i(e^{-J} + e^{J}\widehat\s_i^x)
+%\ee
+%encodes the effects of vertical bonds. For each site, it either preserves the spin, giving a factor $e^{-J}$ associated with aligned spins, or flips it, giving a factor $e^{J}$ associated with anti-aligned spins.  Defining the ``transfer matrix" $ T\equiv VU$, it's easy to check that
+%\be
+%Z &= \Tr_{\cH_m}( T^n).
+%\ee
+%
+%We have interpreted the discrete path integral (\ref{eq:isingpartitionfunction}) in terms of operators on a Hilbert space.  The transfer matrix is a discrete analogue of the time-evolution operator $e^{-tH}$.  The path integral variable $s_{i,j}$ maps to the quantum operator
+%\be 
+%\label{eq:quantizationmapone}
+%s_{i,j} &\to& T^{-j} \s_i^z  T^j,
+%\ee
+%and correlation functions become traces of time-ordered products, e.g.\footnote{We use the convention $\th(0)=\frac 1 2$.}
+%\be
+%\<\s_{i_1,j_1}\s_{i_2,j_2}\> &= \Tr_{\cH_m}(T^{n+j_2-j_1} \widehat \s_{i_1}^z T^{j_1-j_2} \widehat \s_{i_2}^z)\theta(j_1 - j_2) + (1\leftrightarrow 2).\nn\\
+%\ee
+%
+%We could instead have quantized the theory with the horizontal direction as time.  This would give a different Hilbert space $\cH_n$ with dimension $2^n$ instead of $2^m$, a new transfer matrix $T'$ (acting on $\cH_n$), and a different formula for the same path integral
+%\be
+%Z &= \Tr_{\cH_n}(T'^m)=\Tr_{\cH_m}(T^n).
+%\ee
+%The new quantization map would be
+%\be
+%\label{eq:quantizationmaptwo}
+%s_{i,j} &\to& T'^{-i} \widehat \s_j^z T'^i.
+%\ee
+%Let us emphasize that the operators (\ref{eq:quantizationmapone}) and (\ref{eq:quantizationmaptwo}) are truly different, even though they represent the same path integral variable.  They even act on different-dimensional Hilbert spaces ($2^m$ vs.\ $2^n$)!  Thus, it's not surprising that properties associated to a particular quantization, like their behavior under Hermitian conjugation (section~\ref{sec:reflectionpositivity}), could be different.
+%
+%\vspace{0.2in}
+%
+%\end{appendix}
+%
+%\begin{appendix}[Euclidean vs. Lorentzian and Analytic Continuation]
+%\label{app:analyticcontinuation}
+%
+%Here we make some brief comments about Euclidean and Lorentzian correlation functions and analytic continuation between them.  
+%
+%The first comment is that in Euclidean quantum field theory, out-of-time-order correlators don't make sense.  For example, consider a Euclidean two-point function,
+%\be
+%\label{eq:euclideantwopt}
+%\<0|\cO_1(t_1)\cO_2(t_2)|0\> &= \<0| \cO_1(0) e^{H(t_2-t_1)} \cO_2(0)|0\>.
+%\ee
+%In QFT, the Hamiltonian $H$ is bounded from below and has arbitrarily large positive eigenvalues.  If we take $t_2 > t_1$, then the operator $e^{H(t_2-t_1)}$ is unbounded.  Generically, local operators $\cO_{1,2}(0)$ have nonzero amplitude to create arbitrarily high energy states. Thus, (\ref{eq:euclideantwopt}) is formally infinite.
+%
+%Because the Euclidean path integral gives a time-ordered product
+%\be
+%\label{eq:euclideantimeorderedproduct}
+%\<\cO_1(t_1)\cO_2(t_2)\> &= \<0|\cO_1(0)e^{H(t_2-t_1)}\cO_2(0)|0\>\th(t_1-t_2)+\nn\\
+%& \<0|\cO_2(0)e^{H(t_1-t_2)}\cO_1(0)|0\>\th(t_2-t_1),
+%\ee
+%it is well-defined for any ordering of the time coordinates. Specifically, the operators $e^{H(t_i-t_j)}$ in (\ref{eq:euclideantimeorderedproduct}) are always bounded.
+%
+%In Lorentzian quantum field theory, however,  non-time-ordered correlators (Wightman functions) are interesting observables.  They can be obtained from time-ordered Euclidean correlators as follows.  First set the Euclidean times equal to small values $t_{Ei}=\e_i$, increasing in the same order as the operator ordering we want.  For example, to place $\cO_1$ later than $\cO_2$, consider
+%\be
+%\<\cO_1(\e)\cO_2(0)\> &= \<0|\cO_1(0)e^{-\e H}\cO_2(0)|0\>,\qquad \e>0.
+%\ee
+%Now continue $t_{Ei}$ in the pure imaginary direction to the desired Lorentzian times $it_{Li}$.  Because $e^{H(t_{Ei}-t_{Ej})}$ never becomes unbounded, the operators remain in the same order,
+%\be
+%\<\cO_1(\e+i t_{L1})\cO_2(it_{L2})\> &= \<0|\cO_1(0)e^{-\e H - iH(t_{L1}-t_{L2})}\cO_2(0)|0\>.
+%\ee
+%Finally, take $\e\to 0$ to get the desired Wightman function.
+%
+%To get a time-ordered Lorentzian correlator, there is a simple trick: just simultaneously rotate all Euclidean times $t\to i (1-i\e) t$. Because the ordering of the real parts of $t$ are preserved, the order of the operators will be too. This is Wick rotation.
+%
+%Many properties of correlators under analytic continuation are clearer when thinking about states and Hamiltonians, as opposed to path integrals.
+%
+%\vspace{0.2in}
+%
+%\end{appendix}
+
+\subsection{Semidefinite programming}
+\label{app:semidefinite}
+
+For our purposes, a semidefinite program solver is an oracle that can solve the following problem:
+\be
+\label{eq:semidefiniteprogram}
+\textrm{Find $\vec a$ such that $\vec a \. \vec P_i(x) \geq 0$ for all $x\geq 0$, $i=1,\dots,N$},
+\ee
+where $\vec P_i(x)$ are vector-valued polynomials.  There are many freely-available semidefinite program solvers.  {\tt SDPB} \cite{Simmons-Duffin:2015qma} in particular was written for application to the conformal bootstrap.
+
+We would like to write our search in the form (\ref{eq:semidefiniteprogram}).
+After restricting to the subspace (\ref{eq:choiceoffunctionals}), our positivity constraints become
+\be
+\label{eq:positivityinfinitespace}
+\sum_{m+n\leq \Lambda} a_{mn}\ptl_z^m \ptl_{\bar z}^n F_{\De,\ell}^{\De_\f}(z,\bar z)|_{z=\bar z = \frac 1 2} \geq 0.
+\ee
+The trick is to find an approximation
+\be
+\label{eq:polynomialapproximation}
+\ptl_z^m \ptl_{\bar z}^n F_{\De,\ell}^{\De_\f}(z,\bar z)|_{z=\bar z= \frac 1 2} &\approx \chi_\ell(\De) P^{mn}_\ell(\De),
+\ee
+where $\chi_\ell(\De) \geq 0$ are positive and $P^{mn}_\ell(\De)$ are polynomials.  Then, dividing (\ref{eq:positivityinfinitespace}) by $\chi_\ell(\De)$ and writing $\De=\De_{\mathrm{min},\ell}+x$, our inequality becomes
+\be
+\sum_{m+n\leq \Lambda} a_{mn} P_\ell^{mn}(\De_{\mathrm{min},\ell}+x) &\geq 0.
+\ee
+This has the right form if we group the coefficients $a_{mn}$ into a vector $\vec a$ and identify $\ell\to i$, $\ell_\mathrm{max}\to N$.  The value $\De_{\mathrm{min},\ell}$ depends on the calculation at hand, see for example (\ref{eq:positivityconditioninexample}).
+
+To get a positive-times-polynomial approximation, we can start with the series expansion (\ref{eq:seriesexpansion}),
+\be
+g_{\De,\ell}(u,v) &= \sum_{n,j} B_{n,j} r^{\De+n} C_j^{\frac{d-2}{2}}(\cos\th).
+\ee
+Recall that the coefficients $B_{n,j}$ are positive rational functions of $\De$.  The crossing-symmetric point $z=\bar z = \frac 1 2$ corresponds to a very small value of $r=r_*=3-2\sqrt 2 \approx 0.17$.  Thus, truncating the series at some large $n_\mathrm{max}$ gives a good approximation,
+\be
+\ptl_r^a \ptl_\th^b g_{\De,\ell}(u,v)|_{r=r_*,\th=0} &\approx r_*^\De \frac{P^{ab}_\ell(\De)}{Q_\ell(\De)}  + O(r_*^{\De+n_\mathrm{max}}),
+\ee
+where $P^{ab}_\ell$ and $Q_\ell$ are polynomials and $Q_\ell(\De)$ is positive.  Since derivatives of $F_{\De,\ell}^{\De_\f}(z,\bar z)$ are linear combinations of derivatives of $g_{\De,\ell}(u,v)$, this establishes (\ref{eq:polynomialapproximation}) with
+\be
+\chi_\ell(\De) &= \frac{r_*^\De}{Q_\ell(\De)}.
+\ee
+
+When exact formulae for conformal blocks are not available (for example, in odd dimensions), the polynomials $P^{ab}_\ell(\De)$ can be computed using recursion relations \cite{Zamolodchikov:1985ie,Zamolodchikov:1987,Kos:2013tga,Kos:2014bka,Penedones:2015aga,Yamazaki:2016vqi,Iliesiu:2015akf} or differential equations \cite{Hogervorst:2013kva}.
+
+\subsection{Open questions}
+
+The techniques above have been applied to numerous theories in different spacetime dimensions, with different amounts of supersymmetry \cite{Rattazzi:2008pe, Rychkov:2009ij, Caracciolo:2009bx, Poland:2010wg, Rattazzi:2010gj, Rattazzi:2010yc, Vichi:2011ux, Poland:2011ey, Rychkov:2011et, ElShowk:2012ht,Liendo:2012hy, Beem:2013qxa, Kos:2013tga, El-Showk:2013nia, Alday:2013opa, Gaiotto:2013nva,Bashkirov:2013vya, Berkooz:2014yda, El-Showk:2014dwa, Nakayama:2014lva,Nakayama:2014yia, Alday:2014qfa, Chester:2014fya, Kos:2014bka, Caracciolo:2014cxa, Nakayama:2014sba, Golden:2014oqa, Chester:2014mea, Paulos:2014vya, Beem:2014zpa, Simmons-Duffin:2015qma, Bobev:2015vsa, Bobev:2015jxa, Kos:2015mba, Chester:2015qca, Beem:2015aoa, Iliesiu:2015qra,poland2015exploring,Lemos:2015awa,Lin:2015wcg,Chester:2015lej,Chester:2016wrc}.  Because we don't start with a Lagrangian, there's no guarantee when and how a particular physical theory will show up in the bounds. It's an open question which correlators to study to isolate different CFTs.
+
+Other open questions include the following:
+\begin{itemize}
+\item How do the bounds behave in the limit $\Lambda\to \oo$? Does the Ising island shrink to a point, still using a finite number of correlation functions, or must we study larger systems of crossing equations?
+\item How does one efficiently compute higher operator dimensions and OPE coefficients?  The extremal functional method \cite{Poland:2010wg,ElShowk:2012hu,El-Showk:2014dwa} is one way, but it is hard to estimate the associated errors.
+\item Can the requirement of unitarity be relaxed? Gliozzi's method of determinants \cite{Gliozzi:2013ysa} has shown success analyzing the crossing equation in nonunitary theories and other situations where positivity is not obviously present \cite{Gliozzi:2014jsa,Gliozzi:2015qsa,Nakayama:2016cim}. Can it be made rigorous?
+\item What information is hidden in correlators of higher-spin operators like stress tensors?
+\item What can we prove analytically about the crossing equations? Progress has been made in certain limits, for example large-$N$ \cite{Heemskerk:2009pn}, large dimension \cite{Pappadopulo:2012jk}, large spin \cite{Alday:2007mf,Fitzpatrick:2012yx,Komargodski:2012ek,Alday:2015ewa}, and combinations thereof \cite{Fitzpatrick:2014vua,Fitzpatrick:2015qma,Fitzpatrick:2015zha}. Another approach is to study the implications of slightly broken symmetries \cite{Maldacena:2012sf,Rychkov:2015naa,Alday:2015ota,Skvortsov:2015pea,Giombi:2016hkj}. It would be extremely interesting to prove analytical results about the small-$N$, small $\De,\ell$ regime.
+\item What additional structures and consistency conditions should we incorporate into the bootstrap? (See section~\ref{sec:additionalstructures}.)
+\item What protected information can be computed using supersymmetry? Bootstrap studies recently led to the discovery of beautiful new algebraic structures in the OPE algebra of supersymmetric theories in $3,4,6$ dimensions \cite{Beem:2013sza,Chester:2014mea,Beem:2016cbd}. How do these structures interact with the full non-protected bootstrap? 
+\end{itemize}
+
+That's a lot of open questions, and there are certainly many more.
+I hope some of you will help find the answers!
+
 
 \bibliographystyle{ws-rv-van}
 \bibliography{ph229-notes}
