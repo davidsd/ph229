@@ -2643,7 +2643,7 @@ which looks locally like a rescaling by $\l$ and a rotation by $h$. This is cons
 The Ward identity (\ref{eq:specializedtwoptward}) implies
 \be
 \label{eq:fancytwoptWardidentity}
-\<\cO_1^a(0) \cO_2^b(e)\> &= \l^{\De_1-\De_2} (\rho_1)^a{}_c(h^{-1}) (\rho_2)^b{}_d(\tl h^{-1}) \<\cO_1^c(0) \cO_2^d(0)\>.
+\<\cO_1^a(0) \cO_2^b(e)\> &= \l^{\De_1-\De_2} (\rho_1)^a{}_c(h^{-1}) (\rho_2)^b{}_d(\tl h^{-1}) \<\cO_1^c(0) \cO_2^d(e)\>.
 \ee
 This must hold for all $\l$, which immediately means $\De_1=\De_2$, as we concluded before.
 
@@ -2977,7 +2977,7 @@ in agreement with (\ref{}).
 
 For a three-point function $\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\>$, the analysis is similar. The only nontrivial $\SO(d+1,1)$-invariant objects are $X_1\.X_2,X_2\.X_3$, and $X_3\.X_1$. The correlator must have homogeneity $-\De_i$ in $X_i$, and the only possibility is
 \be
-\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\> &= \frac{f_{123}}{X_{12}^{\De_1+\De_2-\De_3} X_{23}^{\De_2+\De_3-\De_1} X_{31}^{\De_3+\De_1-\De_2}},
+\<\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\> &= \frac{f_{123}}{X_{12}^{\frac{\De_1+\De_2-\De_3}{2}} X_{23}^{\frac{\De_2+\De_3-\De_1}{2}} X_{31}^{\frac{\De_3+\De_1-\De_2}{2}}},
 \ee
 where $X_{ij}\equiv -2 X_i\.X_j$. Specializing to the Poincare section $X_{ij}\to (x_i-x_j)^2$, we recover (\ref{eq:conformalthreeptfunction}).
 
@@ -5243,13 +5243,13 @@ where $(h)_n=h(h+1)\cdots(h+n-1)=\frac{\Gamma(h+n)}{\Gamma(h)}$ is the Pochhamme
 \begin{exercise}
 Assuming $\<\cO|\cO\>=1$, show that
 \be
-\<\cO|L_1^n L_{-1}^n|\cO\> &= n!(2n)_n.
+\<\cO|L_1^n L_{-1}^n|\cO\> &= n!(2h)_n.
 \ee
 \end{exercise}
 Putting everything together and using (\ref{eq:zdependence}), the $\SL(2,\R)$ block is
 \be
 \label{eq:sumforsltwoblock}
-g^{\SL(2,\R)}_{h}(z)= \sum_{n=0}^\oo \frac{(h)_n^2}{n!(2n)_n} z^{h+n-2\de} = z^{-2\de} k_{2h}(z).
+g^{\SL(2,\R)}_{h}(z)= \sum_{n=0}^\oo \frac{(h)_n^2}{n!(2h)_n} z^{h+n-2\de} = z^{-2\de} k_{2h}(z).
 \ee
 In section~\ref{}, we used the Casimir equation to derive
 \be
@@ -5457,7 +5457,7 @@ Thus, the dimensions and central charge of $\cM_{m+1,m}$ are consistent with uni
 The simplest nontrivial unitary minimal model is $\cM_{4,3}$, with central charge $c= \frac{1}{2}$. Its left-moving weights are
 \be
 \label{eq:leftmovingisingweights}
-h_{1,1}=0,\quad h_{2,1}=\frac 1 2,\quad h_{1,2}=\frac 1{16}.
+h_{1,1}=0,\quad h_{1,2}=\frac 1 2,\quad h_{2,1}=\frac 1{16}.
 \ee
 (There are 6 values $(r,s)$ consistent with (\ref{eq:rangesrs}), but the reflection symmetry (\ref{eq:reflectionweights}) reduces the number of unique weights to 3.)
 The diagonal minimal model $\cM_{4,3}$ thus has operators
@@ -5819,7 +5819,7 @@ Now that we understand the Hamiltonian on the cylinder $S^1 \x \R$, let us compu
 \be
 Z(\b) &= \Tr(e^{-2\pi \ell H_\mathrm{cyl.}}) = \sum_\cO e^{-2\pi\ell(\De_\cO - \frac{c}{12})}.
 \ee
-More generally, we can consider the torus given by quotienting the complex plane $\mathbb{C}$ by the lattice $2\pi(\mathbb{Z}+\tau \mathbb{Z})$. The case we just considered is $\tau = i\ell$. If $\tau=\tau_1 + i\tau_2$ has a nonzero real part, the torus can be thought of as $S^1 \x S^1_\b$, where we twist the spatial $S^1$ by an angle $2\pi \tau_1$ before gluing. This is equivalent to inserting $e^{-2\pi \tau_1 M_{12}}$ into the trace, where $M_{12}=L_0-\bar L_0$ is the rotation generator (equivalently, minus the spatial translation generator on the cylinder). This more general partition function is
+More generally, we can consider the torus given by quotienting the complex plane $\mathbb{C}$ by the lattice $2\pi(\mathbb{Z}+\tau \mathbb{Z})$. The case we just considered is $\tau = i\ell$. If $\tau=\tau_1 + i\tau_2$ has a nonzero real part, the torus can be thought of as $S^1 \x S^1_\b$, where we twist the spatial $S^1$ by an angle $2\pi \tau_1$ before gluing. This is equivalent to inserting $e^{-2\pi \tau_1 M_{12}}$ into the trace, where $M_{12}=i(L_0-\bar L_0)$ is the rotation generator (equivalently, minus the spatial translation generator on the cylinder). This more general partition function is
 \be
 Z(\tau) &= \Tr(e^{-2\pi \tau_2 H_\mathrm{cyl.} - 2\pi \tau_1 M_{12}}) \nn\\
 &= \Tr(e^{2\pi i \tau (L_0 - \frac{c}{24}) - 2\pi i \bar\tau (\bar L_0 - \frac{c}{24})}) \nn\\
@@ -5974,7 +5974,7 @@ In minimal models, the partition function can be written as a sum of characters 
 \be
 Z(\tau) &= \sum_{(h,\bar h)} m_{h,\bar h} \chi_{M(h,c)}(\tau)\chi_{\bar M(\bar h,c)}(\bar\tau).
 \ee
-The individual characters are not modular-invariant, but instead transform in an interesting way under $\mathrm{PSL}(2,\Z)$. One can show using the Poincare resummation formula that
+The individual characters are not modular-invariant, but instead transform in an interesting way under $\mathrm{PSL}(2,\Z)$. One can show using the Poisson resummation formula that
 \be
 \label{eq:minimalmodulartrans}
 \chi_{r,s}(-1/\tau) &= \sum_{r',s'} \mathcal{S}_{rs,r's'} \chi_{r',s'}(\tau) \nn\\
